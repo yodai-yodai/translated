@@ -41,6 +41,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://docs.pydantic.dev/warning/</loc>
+         <lastmod>2024-07-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://docs.pydantic.dev/why/</loc>
          <lastmod>2024-07-28</lastmod>
          <changefreq>daily</changefreq>
