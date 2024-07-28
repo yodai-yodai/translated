@@ -1,3 +1,3 @@
-# 私家版日本語訳置き場
+# 私家版日本語訳ドキュメント置き場😼
 
-* [Pydantic私家版日本語訳](https://yodai-yodai.github.io/translated/pydantic-docs-ja/)
+* [Pydantic(v2.8.2)私家版日本語訳ドキュメント](https://yodai-yodai.github.io/translated/pydantic-docs-ja/)
