@@ -3782,8 +3782,8 @@ For many simple cases you can greatly minimize this by using `pydantic.GetPydant
 </div>
 <!-- You can use [Generic Classes](https://docs.python.org/3/library/typing.html#typing.Generic) as field types and perform custom validation based on the "type parameters" (or sub-types) with `__get_pydantic_core_schema__`. -->
 <p><a href="https://docs.python.org/3/library/typing.html#typing.Generic">Generic Classes</a>をフィールド型として使用し、<code>__get_pydantic_core_schema__</code>で"型パラメータ"(またはサブ型)に基づいてカスタム検証を実行できます。</p>
-<p>If the Generic class that you are using as a sub-type has a classmethod <code>__get_pydantic_core_schema__</code>, you don't need to use <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.arbitrary_types_allowed"><code>arbitrary_types_allowed</code></a> for it to work.
-サブタイプとして使用しているGenericクラスに<code>__get_pydantic_core_schema__</code>クラスメソッドがある場合、それが動作するために<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.arbitrary_types_allowed"><code>arbitrary_types_allowed</code></a>を使用する必要はありません。</p>
+<!-- If the Generic class that you are using as a sub-type has a classmethod `__get_pydantic_core_schema__`, you don't need to use [`arbitrary_types_allowed`][pydantic.config.ConfigDict.arbitrary_types_allowed] for it to work. -->
+<p>サブタイプとして使用しているGenericクラスに<code>__get_pydantic_core_schema__</code>クラスメソッドがある場合、それが動作するために<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.arbitrary_types_allowed"><code>arbitrary_types_allowed</code></a>を使用する必要はありません。</p>
 <!-- Because the `source_type` parameter is not the same as the `cls` parameter, you can use `typing.get_args` (or `typing_extensions.get_args`) to extract the generic parameters. -->
 <p><code>source_type</code>パラメータは<code>cls</code>パラメータと同じではないので、<code>typing.get_args</code>(または<code>typing_extensions.get_args</code>)を使用して汎用パラメータを抽出できます。</p>
 <!-- Then you can use the `handler` to generate a schema for them by calling `handler.generate_schema`. -->

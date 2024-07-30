@@ -3114,7 +3114,7 @@
 Pydanticでは、「serialize」と「dump」という用語を同じ意味で使用しています。どちらも、モデルを辞書またはJSONでエンコードされた文字列に変換するプロセスを指します。</p>
 <p><!-- Outside of Pydantic, the word "serialize" usually refers to converting in-memory data into a string or bytes. -->
 Pydantic以外では、「シリアライズ」という言葉は通常、メモリ内のデータを文字列やバイトに変換することを意味します。
-However, in the context of Pydantic, there is a very close relationship between converting an object from a more structured form &mdash; such as a Pydantic model, a dataclass, etc. &mdash; into a less structured form comprised of Python built-ins such as dict.
+<!-- However, in the context of Pydantic, there is a very close relationship between converting an object from a more structured form &mdash; such as a Pydantic model, a dataclass, etc. &mdash; into a less structured form comprised of Python built-ins such as dict. -->
 しかし、Pydanticのコンテキストでは、オブジェクトをPydanticモデルやデータクラスなどのより構造化された形式から、dictなどのPython組み込みで構成されたより構造化されていない形式に変換することには、非常に密接な関係があります。</p>
 <p><!-- While we could (and on occasion, do) distinguish between these scenarios by using the word "dump" when converting to primitives and "serialize" when converting to string, for practical purposes, we frequently use the word "serialize" to refer to both of these situations, even though it does not always imply conversion to a string or bytes. -->
 プリミティブへの変換時には「dump」、文字列への変換時には「serialize」という単語を使用することで、これらのシナリオを区別することができます(場合によっては区別します)が、実際には、必ずしも文字列やバイトへの変換を意味するわけではありませんが、「serialize」という単語を両方の状況を指すためによく使用します。</p>
@@ -3128,7 +3128,7 @@ However, in the context of Pydantic, there is a very close relationship between 
 <p>これは、モデルを辞書に変換する主要な方法です。サブモデルは再帰的に辞書に変換されます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0187</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
+<p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0182</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
 辞書に変換されるサブモデルの1つの例外は、<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>とそのサブクラスが、ラッピング辞書なしで直接ダンプされる<code>root</code>フィールド値を持つことです。これも再帰的に行われます。</p>
 </div>
 <div class="admonition note">
@@ -3318,7 +3318,7 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer">klzzwxh:0153</a> decorator. -->
+<p><!-- A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer">klzzwxh:0148</a> decorator. -->
 <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a>デコレータに特別な値'*'を渡すことで、すべてのフィールドで単一のシリアライザを呼び出すこともできます。</p>
 </div>
 <!-- In addition, [`PlainSerializer`][pydantic.functional_serializers.PlainSerializer] and [`WrapSerializer`][pydantic.functional_serializers.WrapSerializer] enable you to use a function to modify the output of serialization. -->
@@ -3516,7 +3516,7 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
 ダック型シリアライゼーションとは、オブジェクトのスキーマに存在するフィールドではなく、オブジェクト自体に存在するフィールドに基づいてオブジェクトをシリアライズする動作のことです。
 <!-- This means that when an object is serialized, fields present in a subclass, but not in the original schema, will be included in the serialized output. -->
 つまり、オブジェクトがシリアライズされると、サブクラスに存在するが元のスキーマには存在しないフィールドが、シリアライズされた出力に含まれます。</p>
-<p>This behavior was the default in Pydantic V1, but was changed in V2 to help ensure that you know precisely which fields would be included when serializing, even if subclasses get passed when instantiating the object.
+<p><!-- This behavior was the default in Pydantic V1, but was changed in V2 to help ensure that you know precisely which fields would be included when serializing, even if subclasses get passed when instantiating the object. -->
 この動作はPydantic V1ではデフォルトでしたが、V2では、オブジェクトのインスタンス化時にサブクラスが渡された場合でも、シリアライズ時にどのフィールドが含まれるかを正確に把握できるように変更されました。
 <!-- This helps prevent security risks when serializing subclasses with sensitive information, for example. -->
 これにより、たとえば機密情報を含むサブクラスをシリアライズする際のセキュリティリスクを防ぐことができます。</p>
@@ -3891,8 +3891,8 @@ To exclude a field from **every** member of a list or tuple, the dictionary key 
 <h3 id="model-and-field-level-include-and-exclude">Model- and field-level include and exclude<a class="headerlink" href="#model-and-field-level-include-and-exclude" title="Permanent link">&para;</a></h3>
 <!-- In addition to the explicit arguments `exclude` and `include` passed to `model_dump` and `model_dump_json` methods, we can also pass the `exclude: bool` arguments directly to the `Field` constructor: -->
 <p><code>model_dump</code>および<code>model_dump_json</code>メソッドに渡される明示的な引数<code>exclude</code>および<code>include</code>に加えて、<code>exclude:bool</code>引数を<code>Field</code>コンストラクタに直接渡すこともできます。</p>
-<p>Setting <code>exclude</code> on the field constructor (<code>Field(..., exclude=True)</code>) takes priority over the <code>exclude</code>/<code>include</code> on <code>model_dump</code> and <code>model_dump_json</code>:
-フィールドコンストラクタ(<code>Field(... ,exclude=True)</code>)に<code>exclude</code>を設定すると、<code>model_dump</code>と<code>model_dump_json</code>の<code>exclude</code>/<code>include</code>よりも優先されます。</p>
+<!-- Setting `exclude` on the field constructor (`Field(..., exclude=True)`) takes priority over the `exclude`/`include` on `model_dump` and `model_dump_json`: -->
+<p>フィールドコンストラクタ(<code>Field(... ,exclude=True)</code>)に<code>exclude</code>を設定すると、<code>model_dump</code>と<code>model_dump_json</code>の<code>exclude</code>/<code>include</code>よりも優先されます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">SecretStr</span>
 
 
@@ -3958,10 +3958,9 @@ To exclude a field from **every** member of a list or tuple, the dictionary key 
 <!-- You can pass a context object to the serialization methods which can be accessed from the `info` argument to decorated serializer functions. -->
 <p>デコレートされたシリアライザ関数への<code>info</code>引数からアクセスできるシリアライゼーションメソッドにコンテキストオブジェクトを渡すことができます。</p>
 <!-- This is useful when you need to dynamically update the serialization behavior during runtime. -->
-<p>これは、実行時にシリアル化の動作を動的に更新する必要がある場合に便利です。
-For example, if you wanted a field to be dumped depending on a dynamically controllable set of allowed values, this could be done by passing the allowed values by context:</p>
-<!-- たとえば、動的に制御可能な許可された値のセットに応じてフィールドをダンプする場合は、コンテキスト別に許可された値を渡すことで実行できます。 -->
-
+<p>これは、実行時にシリアル化の動作を動的に更新する必要がある場合に便利です。</p>
+<!-- For example, if you wanted a field to be dumped depending on a dynamically controllable set of allowed values, this could be done by passing the allowed values by context: -->
+<p>たとえば、動的に制御可能な許可された値のセットに応じてフィールドをダンプする場合は、コンテキスト別に許可された値を渡すことで実行できます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SerializationInfo</span><span class="p">,</span> <span class="n">field_serializer</span>
 
 

@@ -769,15 +769,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       バリデーション
@@ -3061,15 +3052,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#validation" class="md-nav__link">
-    <span class="md-ellipsis">
-      validation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       バリデーション
@@ -3400,17 +3382,13 @@ Pydanticでスキーマを定義する主な方法の1つは、モデルを使�
 <h3 id="_1">詳しい説明<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <p><!-- The potential confusion around the term "validation" arises from the fact that, strictly speaking, Pydantic's primary focus doesn't align precisely with the dictionary definition of "validation": -->
 "バリデーション"という用語をめぐる潜在的な混乱は、厳密に言えば、Pydanticの主な焦点が辞書の"バリデーション"の定義と正確に一致していないという事実からきています。</p>
-<p>&lt;!--</p>
-<h3 id="validation">validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h3>
-<blockquote>
-<p><em>noun</em>
-the action of checking or proving the validity or accuracy of something.
---&gt;</p>
-</blockquote>
+<!-- ### validation
+ _noun_
+ the action of checking or proving the validity or accuracy of something.
+-->
 <h3 id="_2">バリデーション<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <blockquote>
-<p><em>名詞</em>
-何かの有効性または正確さをチェックまたは証明する行為。</p>
+<p><em>名詞</em>: 何かの有効性または正確さをチェックまたは証明する行為。</p>
 </blockquote>
 <p><!-- In Pydantic, the term "validation" refers to the process of instantiating a model (or other type) that adheres to specified types and constraints. Pydantic guarantees the types and constraints of the output, not the input data.
 This distinction becomes apparent when considering that Pydantic's <code>ValidationError</code> is raised when data cannot be successfully parsed into a model instance. -->
@@ -3541,12 +3519,12 @@ Models possess the following methods and attributes: -->
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- See <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel">klzzwxh:0375</a> for the class definition including a full list of methods and attributes. -->
+<p><!-- See <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel">klzzwxh:0377</a> for the class definition including a full list of methods and attributes. -->
 メソッドと属性の完全なリストを含むクラス定義については、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel"><code>BaseModel</code></a>を参照してください。</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><!-- See <a href="../migration.md#changes-to-pydanticbasemodel">Changes to klzzwxh:0368</a> in the <a href="../migration.md">Migration Guide</a> for details on changes from Pydantic V1. -->
+<p><!-- See <a href="../migration.md#changes-to-pydanticbasemodel">Changes to klzzwxh:0370</a> in the <a href="../migration.md">Migration Guide</a> for details on changes from Pydantic V1. -->
 Pydantic V1からの変更の詳細については、<a href="../../migration/">Migration Guide</a>の<a href="../../migration/#changes-to-pydanticbasemodel">Changes to <code>pydantic.BaseModel</code></a>を参照してください。</p>
 </div>
 <h2 id="nested-models">Nested models<a class="headerlink" href="#nested-models" title="Permanent link">&para;</a></h2>
@@ -3918,9 +3896,9 @@ See [Model Config][pydantic.config.ConfigDict.from_attributes] and [ConfigDict][
 <p>JSON以外のフォーマットでシリアライズされたデータを検証したい場合は、データを自分でdictにロードしてから、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a>に渡してください。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- Depending on the types and model configs involved, <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate">klzzwxh:0318</a> and <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json">klzzwxh:0319</a> may have different validation behavior. -->
+<p><!-- Depending on the types and model configs involved, <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate">klzzwxh:0320</a> and <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json">klzzwxh:0321</a> may have different validation behavior. -->
 関連する型とモデルの設定によって、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a>と<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>model_validate_json</code></a>の検証動作が異なる場合があります。</p>
-<p><!-- If you have data coming from a non-JSON source, but want the same validation behavior and errors you'd get from <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json">klzzwxh:0327</a>, our recommendation for now is to use either use <code>model_validate_json(json.dumps(data))</code>, or use <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_strings">klzzwxh:0329</a> if the data takes the form of a (potentially nested) dict with string keys and values. -->
+<p><!-- If you have data coming from a non-JSON source, but want the same validation behavior and errors you'd get from <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json">klzzwxh:0329</a>, our recommendation for now is to use either use <code>model_validate_json(json.dumps(data))</code>, or use <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_strings">klzzwxh:0331</a> if the data takes the form of a (potentially nested) dict with string keys and values. -->
 JSON以外のソースからのデータがあり、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>model_validate_json</code></a>と同じ検証動作とエラーが必要な場合は、今のところ、<code>model_validate_json(json.dumps(data))</code>を使用するか、データが文字列のキーと値を持つ(ネストされている可能性のある)dictの形式をとる場合は<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_strings"><code>model_validate_strings</code></a>を使用することをお勧めします。</p>
 </div>
 <div class="admonition note">
@@ -3930,7 +3908,7 @@ JSONパースの詳細については、ドキュメントの<a href="../json/">
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- If you're passing in an instance of a model to <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate">klzzwxh:0305</a>, you will want to consider setting <a href="https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.revalidate_instances">klzzwxh:0306</a> in the model's config. -->
+<p><!-- If you're passing in an instance of a model to <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate">klzzwxh:0307</a>, you will want to consider setting <a href="https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.revalidate_instances">klzzwxh:0308</a> in the model's config. -->
 モデルのインスタンスを<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a>に渡す場合は、モデルの構成に<a href="https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.revalidate_instances"><code>revalidate_instances</code></a>を設定することを検討してください。</p>
 <p><!-- If you don't set this value, then validation will be skipped on model instances. See the below example: -->
 この値を設定しない場合、モデルインスタンスの検証はスキップされます。次の例を参照してください。</p>
@@ -3999,14 +3977,14 @@ JSONパースの詳細については、ドキュメントの<a href="../json/">
 <p class="admonition-title">Note</p>
 <p><!-- In Pydantic V2, the performance gap between <code>BaseModel.__init__</code> and <code>BaseModel.model_construct</code> has been narrowed considerably. For simple models, calling <code>BaseModel.__init__</code> may even be faster. -->
 Pydantic V2では、<code>BaseModel.__init__</code>と<code>BaseModel.model_construct</code>の間のパフォーマンスの差が大幅に縮小されました。単純なモデルの場合、<code>BaseModel.__init__</code>を呼び出す方が高速になる可能性があります。</p>
-<p><!-- If you are using <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0292</a> for performance reasons, you may want to profile your use case before assuming that <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0293</a> is faster. -->
+<p><!-- If you are using <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0294</a> for performance reasons, you may want to profile your use case before assuming that <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0295</a> is faster. -->
 パフォーマンス上の理由から<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct"><code>model_construct()</code></a>を使用している場合は、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct"><code>model_construct()</code></a>の方が高速であると想定する前に、ユースケースをプロファイルすることをお勧めします。</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><!-- <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0274</a> does not do any validation, meaning it can create models which are invalid. -->
+<p><!-- <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0276</a> does not do any validation, meaning it can create models which are invalid. -->
 <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct"><code>model_construct()</code></a>は検証を行いません。つまり、無効なモデルを作成する可能性があります。</p>
-<p><!-- **You should only ever use the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0279</a> method with data which has already been validated, or that you definitely trust.** -->
+<p><!-- **You should only ever use the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct">klzzwxh:0281</a> method with data which has already been validated, or that you definitely trust.** -->
 <strong><a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_construct"><code>model_construct()</code></a>メソッドは、すでに検証済みのデータ、または確実に信頼できるデータに対してのみ使用してください。</strong></p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -4338,7 +4316,7 @@ Pydantic V2では、<code>BaseModel.__init__</code>と<code>BaseModel.model_cons
 <p class="admonition-title">Warning</p>
 <p><!-- While it may not raise an error, we strongly advise against using parametrized generics in isinstance checks. -->
 エラーになることはありませんが、isinstanceチェックでパラメーター化されたジェネリックスを使用しないことを強くお勧めします。</p>
-<p>For example, you should not do <code>isinstance(my_model, MyGenericModel[int])</code>. However, it is fine to do <code>isinstance(my_model, MyGenericModel)</code>. (Note that, for standard generics, it would raise an error to do a subclass check with a parameterized generic.)
+<p><!-- For example, you should not do <code>isinstance(my_model, MyGenericModel[int])</code>. However, it is fine to do <code>isinstance(my_model, MyGenericModel)</code>. (Note that, for standard generics, it would raise an error to do a subclass check with a parameterized generic.) -->
 例えば、<code>isinstance(my_model, MyGenericModel[int])</code>を実行すべきではありませんが、<code>isinstance(my_model, MyGenericModel)</code>を実行しても問題ありません(標準のジェネリックスの場合、パラメータ化されたジェネリックスでサブクラスのチェックを行うとエラーが発生することに注意してください)。</p>
 <p><!-- If you need to perform isinstance checks against parametrized generics, you can do this by subclassing the parametrized generic class. This looks like <code>class MyIntModel(MyGenericModel[int]): ...</code> and <code>isinstance(my_model, MyIntModel)</code>. -->
 パラメータ化されたジェネリックに対してisinstanceチェックを実行する必要がある場合は、パラメータ化されたジェネリッククラスをサブクラス化することで実行できます。これは<code>class MyIntModel(MyGenericModel[int]):...</code>および<code>isinstance(my_model, MyIntModel)</code>のようになります。</p>
@@ -4730,7 +4708,7 @@ This config flag is deprecated in Pydantic V2, and has been replaced with <code>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>In Python, immutability is not enforced. Developers have the ability to modify objects that are conventionally considered "immutable" if they choose to do so.
+<p><!-- In Python, immutability is not enforced. Developers have the ability to modify objects that are conventionally considered "immutable" if they choose to do so. -->
 Pythonでは、不変性は強制されません。開発者は、従来"不変"と見なされていたオブジェクトを、変更することを選択した場合に変更することができます。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>

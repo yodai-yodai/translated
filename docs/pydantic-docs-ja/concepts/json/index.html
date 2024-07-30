@@ -3064,7 +3064,7 @@ We've written some blog posts about this topic, which you can find <a href="http
 <div class="admonition note">
 <p class="admonition-title">String Caching Details</p>
 <p><!-- 1. Strings are cached using a fully associative cache with a size of <a href="https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113">16,384</a>. -->
-1. 文字列は、サイズ[16,384]のフルアソシアティブ方式を使用してキャッシュされます(https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113)。
+1. 文字列は、サイズ<a href="https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113">16,384</a>のフルアソシアティブ方式を使用してキャッシュされます。
 <!-- 2. Only strings where <code>len(string) &lt; 64</code> are cached. -->
 2. <code>len(string)&lt;64</code>の文字列のみがキャッシュされます。
 <!-- 3. There is some overhead to looking up the cache, which is normally worth it to avoid constructing strings. However, if you know there will be very few repeated strings in your data, you might get a performance boost by disabling this setting with <code>cache_strings=False</code>. -->

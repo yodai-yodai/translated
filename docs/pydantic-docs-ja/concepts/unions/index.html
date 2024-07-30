@@ -2968,10 +2968,10 @@
 </div>
 <!-- END INCLUDE -->
 
-<p>Unions are fundamentally different to all other types Pydantic validates - instead of requiring all fields/items/values to be valid, unions require only one member to be valid.
-Unionは、Pydanticが検証する他のすべてのタイプとは根本的に異なります。すべてのフィールド/アイテム/値が有効であることを要求するのではなく、Unionは1つのメンバーのみが有効であることを要求します。</p>
-<p>This leads to some nuance around how to validate unions:
-これは、Unionの検証方法に関するいくつかのニュアンスにつながります。</p>
+<!-- Unions are fundamentally different to all other types Pydantic validates - instead of requiring all fields/items/values to be valid, unions require only one member to be valid. -->
+<p>Unionは、Pydanticが検証する他のすべてのタイプとは根本的に異なります。すべてのフィールド/アイテム/値が有効であることを要求するのではなく、Unionは1つのメンバーのみが有効であることを要求します。</p>
+<!-- This leads to some nuance around how to validate unions: -->
+<p>これは、Unionの検証方法に関するいくつかのニュアンスにつながります。</p>
 <!--
 * which member(s) of the union should you validate data against, and in which order?
 * which errors to raise when validation fails?
@@ -3105,7 +3105,7 @@ These counts bubble up to the top-level union, where the union member with the h
 <code>正確さ</code>のために、Pydanticは組合員の試合を次の3つのグループのいずれかに採点します(最高得点から最低得点まで)。</p>
 <p><!--
 - An exact type match, for example an <code>int</code> input to a <code>float | int</code> union validation is an exact type match for the <code>int</code> member
-- Validation would have succeeded in <a href="../concepts/strict_mode.md">klzzwxh:0101 mode</a>
+- Validation would have succeeded in <a href="../concepts/strict_mode.md">klzzwxh:0100 mode</a>
 - Validation would have succeeded in lax mode
 -->
 - 正確な型の一致。たとえば、<code>float int</code>Union検証への<code>int</code>入力は、<code>int</code>メンバーの正確な型の一致です。
@@ -3191,8 +3191,8 @@ These counts bubble up to the top-level union, where the union member with the h
 <h3 id="discriminated-unions-with-str-discriminators">Discriminated Unions with <code>str</code> discriminators<a class="headerlink" href="#discriminated-unions-with-str-discriminators" title="Permanent link">&para;</a></h3>
 <!-- Frequently, in the case of a `Union` with multiple models, there is a common field to all members of the union that can be used to distinguish which union case the data should be validated against; this is referred to as the "discriminator" in [OpenAPI](https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/). -->
 <p>多くの場合、複数のモデルを持つ<code>Union</code>の場合、Unionのすべてのメンバーに共通のフィールドがあり、どのUnionケースに対してデータを検証すべきかを区別するために使用できます。これは、<a href="https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/">OpenAPI</a>では「識別子」と呼ばれています。</p>
-<p>To validate models based on that information you can set the same field - let's call it <code>my_discriminator</code> - in each of the models with a discriminated value, which is one (or many) <code>Literal</code> value(s).
-その情報に基づいてモデルを検証するには、同じフィールド(<code>my_discriminator</code>と呼びましょう)を、1つ(または複数)の<code>Literal</code>値である識別された値を持つ各モデルに設定します。</p>
+<!-- To validate models based on that information you can set the same field - let's call it `my_discriminator` - in each of the models with a discriminated value, which is one (or many) `Literal` value(s). -->
+<p>その情報に基づいてモデルを検証するには、同じフィールド(<code>my_discriminator</code>と呼びましょう)を、1つ(または複数)の<code>Literal</code>値である識別された値を持つ各モデルに設定します。</p>
 <!-- For your `Union`, you can set the discriminator in its value: `Field(discriminator='my_discriminator')`. -->
 <p><code>Union</code>では、<code>Field(discriminator='my_discriminator')</code>の値に識別子を設定することができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
@@ -3299,8 +3299,8 @@ This is the perfect use case for a callable `Discriminator`. -->
 <span class="sd">ThanksgivingDinner(dessert=PumpkinPie(time_to_cook=40, num_ingredients=6, filling=&#39;pumpkin&#39;))</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p><code>Discriminator</code>s can also be used to validate <code>Union</code> types with combinations of models and primitive types.
-<code>Discriminator</code>は、モデルとプリミティブ型の組み合わせで<code>Union</code>型を検証するためにも使用できます。</p>
+<!-- `Discriminator`s can also be used to validate `Union` types with combinations of models and primitive types. -->
+<p><code>Discriminator</code>は、モデルとプリミティブ型の組み合わせで<code>Union</code>型を検証するためにも使用できます。</p>
 <p>For example:</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
 
@@ -3361,14 +3361,12 @@ This is the perfect use case for a callable `Discriminator`. -->
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Using the <a href="../types/#composing-types-via-annotated"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Annotated"><code>typing.Annotated</code></a> fields syntax</a> can be handy to regroup
-the <code>Union</code> and <code>discriminator</code> information. See the next example for more details.
-<a href="../types/#composing-types-via-annotated"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Annotated"><code>typing.Annotated</code></a> fields syntax</a>を使用すると、グループを再編成するのに便利です。
-<code>Union</code>と<code>discriminator</code>の情報です。詳細は次の例を参照してください。</p>
+<p><!-- Using the <a href="../concepts/types.md#composing-types-via-annotated">klzzwxh:0064 fields syntax</a> can be handy to regroup the <code>Union</code> and <code>discriminator</code> information. See the next example for more details. -->
+<a href="./concepts/types.md#composing-types-via-annotated"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Annotated"><code>typing.Annotated</code></a>fields syntax</a>を使用すると、<code>Union</code>および<code>discriminator</code>情報を簡単に再グループ化できます。詳細については、次の例を参照してください。</p>
 <p><!-- There are a few ways to set a discriminator for a field, all varying slightly in syntax. -->
 フィールドに識別子を設定する方法はいくつかありますが、構文はわずかに異なります。</p>
-<p>For <code>str</code> discriminators:
-<code>str</code> discriminatorsの場合:
+<p><!-- For <code>str</code> discriminators: -->
+<code>str</code> 識別子の場合:
 <div class="language-text highlight"><pre><span></span><code>some_field: Union[...] = Field(discriminator=&#39;my_discriminator&#39;
 some_field: Annotated[Union[...], Field(discriminator=&#39;my_discriminator&#39;)]
 </code></pre></div></p>
@@ -3450,9 +3448,10 @@ You can do it by creating nested `Annotated` types, e.g.: -->
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p><!-- If you want to validate data against a union, and solely a union, you can use pydantic's <a href="../concepts/type_adapter.md">klzzwxh:0040</a> construct instead of inheriting from the standard <code>BaseModel</code>. -->
+<p><!-- If you want to validate data against a union, and solely a union, you can use pydantic's <a href="../concepts/type_adapter.md">klzzwxh:0036</a> construct instead of inheriting from the standard <code>BaseModel</code>. -->
 Unionのみに対してデータを検証したい場合は、標準の<code>BaseModel</code>から継承する代わりに、pydanticの<a href="../type_adapter/"><code>TypeAdapter</code></a>構文を使用できます。</p>
-<p>In the context of the previous example, we have the following:</p>
+<p><!-- In the context of the previous example, we have the following: -->
+前の例では、次のようになります。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="n">type_adapter</span> <span class="o">=</span> <span class="n">TypeAdapter</span><span class="p">(</span><span class="n">Pet</span><span class="p">)</span>
 
 <span class="n">pet</span> <span class="o">=</span> <span class="n">type_adapter</span><span class="o">.</span><span class="n">validate_python</span><span class="p">(</span>
