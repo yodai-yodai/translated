@@ -235,7 +235,7 @@
         <a href="../.." class="md-tabs__link">
           
   
-  Pydanticを始めよう
+  Get Started
 
         </a>
       </li>
@@ -457,7 +457,7 @@
             
   
   <span class="md-ellipsis">
-    Pydanticを始めよう
+    Get Started
   </span>
   
 
@@ -467,7 +467,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Pydanticを始めよう
+            Get Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -482,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticへようこそ
+    Welcome to Pydantic
   </span>
   
 
@@ -503,7 +503,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticを使う理由
+    Why use Pydantic
   </span>
   
 
@@ -524,7 +524,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticヘルプ
+    Help with Pydantic
   </span>
   
 
@@ -545,7 +545,7 @@
         
   
   <span class="md-ellipsis">
-    インストール
+    Installation
   </span>
   
 
@@ -2830,6 +2830,16 @@
   
 
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <div class="admonition warning">
 <p class="admonition-title">🚧 Work in Progress</p>
 <p>This page is a work in progress.</p>
@@ -2842,16 +2852,20 @@
 <a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter.validate_json"><code>pydantic.type_adapter.TypeAdapter.validate_json</code></a>
 <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a></p>
 </details>
-<p>Pydantic provides builtin JSON parsing, which helps achieve:</p>
+<!-- Pydantic provides builtin JSON parsing, which helps achieve: -->
+<p>Pydanticは組み込みのJSON解析を提供し、次のことを実現するのに役立ちます。</p>
+<!--
+* Significant performance improvements without the cost of using a 3rd party library
+* Support for custom errors
+* Support for `strict` specifications
+-->
 <ul>
-<li>Significant performance improvements without the cost of using a 3rd party library</li>
-<li>Support for custom errors</li>
-<li>Support for <code>strict</code> specifications</li>
+<li>サードパーティ製ライブラリを使用せずに、パフォーマンスが大幅に向上</li>
+<li>カスタムエラーのサポート</li>
+<li>「厳密な」仕様のサポート</li>
 </ul>
-<p>Here's an example of Pydantic's builtin JSON parsing via the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>model_validate_json</code></a> method, showcasing the support for <code>strict</code> specifications while parsing JSON data that doesn't match the model's type annotations:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python 3.7 and above</label><label for="__tabbed_1_2">Python 3.9 and above</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<!-- Here's an example of Pydantic's builtin JSON parsing via the [`model_validate_json`][pydantic.main.BaseModel.model_validate_json] method, showcasing the support for `strict` specifications while parsing JSON data that doesn't match the model's type annotations: -->
+<p>以下は、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>model_validate_json</code></a>メソッドによるPydanticの組み込みJSON解析の例で、モデルの型アノテーションと一致しないJSONデータを解析する際の<code>strict</code>仕様のサポートを示しています。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
@@ -2881,55 +2895,25 @@
 <span class="sd">      Input should be a valid tuple [type=tuple_type, input_value=[51, -1], input_type=list]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
+<!-- 1. JSON has no `date` or tuple types, but Pydantic knows that so allows strings and arrays as inputs respectively when parsing JSON directly. -->
 <ol>
-<li>JSON has no <code>date</code> or tuple types, but Pydantic knows that so allows strings and arrays as inputs respectively when parsing JSON directly.</li>
-<li>If you pass the same values to the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a> method, Pydantic will raise a validation error because the <code>strict</code> configuration is enabled.</li>
+<li>JSONには<code>date</code>型もタプル型もありませんが、Pydanticはそれを知っているので、JSONを直接解析するときには文字列と配列をそれぞれ入力として使用できます。</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
-
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
-
-
-<span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="n">when</span><span class="p">:</span> <span class="n">date</span>
-    <span class="n">where</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
-
-
-<span class="n">json_data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;when&quot;: &quot;1987-01-28&quot;, &quot;where&quot;: [51, -1]}&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Event</span><span class="o">.</span><span class="n">model_validate_json</span><span class="p">(</span><span class="n">json_data</span><span class="p">))</span>  <span class="c1"># (1)!</span>
-<span class="c1">#&gt; when=datetime.date(1987, 1, 28) where=(51, -1)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">Event</span><span class="o">.</span><span class="n">model_validate</span><span class="p">({</span><span class="s1">&#39;when&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-01-28&#39;</span><span class="p">,</span> <span class="s1">&#39;where&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">51</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]})</span>  <span class="c1"># (2)!</span>
-<span class="k">except</span> <span class="n">ValidationError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    2 validation errors for Event</span>
-<span class="sd">    when</span>
-<span class="sd">      Input should be a valid date [type=date_type, input_value=&#39;1987-01-28&#39;, input_type=str]</span>
-<span class="sd">    where</span>
-<span class="sd">      Input should be a valid tuple [type=tuple_type, input_value=[51, -1], input_type=list]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div>
+<!-- 2. If you pass the same values to the [`model_validate`][pydantic.main.BaseModel.model_validate] method, Pydantic will raise a validation error because the `strict` configuration is enabled. -->
 <ol>
-<li>JSON has no <code>date</code> or tuple types, but Pydantic knows that so allows strings and arrays as inputs respectively when parsing JSON directly.</li>
-<li>If you pass the same values to the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a> method, Pydantic will raise a validation error because the <code>strict</code> configuration is enabled.</li>
+<li>同じ値を<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a>メソッドに渡した場合、<code>strict</code>設定が有効になっているため、Pydanticは検証エラーを発生します。</li>
 </ol>
-</div>
-</div>
-</div>
-<p>In v2.5.0 and above, Pydantic uses <a href="https://docs.rs/jiter/latest/jiter/"><code>jiter</code></a>, a fast and iterable JSON parser, to parse JSON data.
-Using <code>jiter</code> compared to <code>serde</code> results in modest performance improvements that will get even better in the future.</p>
-<p>The <code>jiter</code> JSON parser is almost entirely compatible with the <code>serde</code> JSON parser,
-with one noticeable enhancement being that <code>jiter</code> supports deserialization of <code>inf</code> and <code>NaN</code> values.
-In the future, <code>jiter</code> is intended to enable support validation errors to include the location
-in the original JSON input which contained the invalid value.</p>
+<!-- In v2.5.0 and above, Pydantic uses [`jiter`](https://docs.rs/jiter/latest/jiter/), a fast and iterable JSON parser, to parse JSON data.
+Using `jiter` compared to `serde` results in modest performance improvements that will get even better in the future. -->
+<p>v2.5.0以降では、Pydanticは高速で反復可能なJSONパーサーである<a href="https://docs.rs/jiter/latest/jiter/"><code>jiter</code></a>を使用してJSONデータを解析します。
+<code>serde</code>と比較して<code>jeter</code>を使用すると、将来さらに良くなるであろう適度なパフォーマンスの改善が得られます。</p>
+<!-- The `jiter` JSON parser is almost entirely compatible with the `serde` JSON parser, with one noticeable enhancement being that `jiter` supports deserialization of `inf` and `NaN` values. -->
+<!-- In the future, `jiter` is intended to enable support validation errors to include the location in the original JSON input which contained the invalid value. -->
+<p><code>jeter</code>JSONパーサーは<code>serde</code>JSONパーサーとほぼ完全に互換性がありますが、注目すべき改良点の1つは<code>jeter</code>が<code>inf</code>値と<code>NaN</code>値のデシリアライズをサポートしていることです。
+将来、<code>jeter</code>は、サポート検証エラーが、無効な値を含む元のJSON入力内の場所を含むことを可能にすることを意図しています。</p>
 <h3 id="partial-json-parsing">Partial JSON Parsing<a class="headerlink" href="#partial-json-parsing" title="Permanent link">&para;</a></h3>
-<p><strong>Starting in v2.7.0</strong>, Pydantic's <a href="https://docs.rs/jiter/latest/jiter/">JSON parser</a> offers support for partial JSON parsing, which is exposed via <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>. Here's an example of this feature in action:</p>
+<!-- **Starting in v2.7.0**, Pydantic's [JSON parser](https://docs.rs/jiter/latest/jiter/) offers support for partial JSON parsing, which is exposed via [`pydantic_core.from_json`][pydantic_core.from_json]. Here's an example of this feature in action: -->
+<p><strong>v2.7.0から</strong>、Pydanticの<a href="https://docs.rs/jiter/latest/jiter/">JSON parser</a>は、<a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>で公開されている部分的なJSON解析をサポートしています。この機能の動作例を次に示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic_core</span> <span class="kn">import</span> <span class="n">from_json</span>
 
 <span class="n">partial_json_data</span> <span class="o">=</span> <span class="s1">&#39;[&quot;aa&quot;, &quot;bb&quot;, &quot;c&#39;</span>  <span class="c1"># (1)!</span>
@@ -2944,12 +2928,20 @@ in the original JSON input which contained the invalid value.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1"># (3)!</span>
 <span class="c1">#&gt; [&#39;aa&#39;, &#39;bb&#39;]</span>
 </code></pre></div>
+<!-- 1. The JSON list is incomplete - it's missing a closing `"]` -->
 <ol>
-<li>The JSON list is incomplete - it's missing a closing <code>"]</code></li>
-<li>When <code>allow_partial</code> is set to <code>False</code> (the default), a parsing error occurs.</li>
-<li>When <code>allow_partial</code> is set to <code>True</code>, part of the input is deserialized successfully.</li>
+<li>JSONリストが不完全です - <code>"]</code>で閉じられていません。</li>
 </ol>
-<p>This also works for deserializing partial dictionaries. For example:</p>
+<!-- 2. When `allow_partial` is set to `False` (the default), a parsing error occurs. -->
+<ol>
+<li><code>allow_partial</code>が<code>False</code>(デフォルト)に設定されている場合、解析エラーが発生します。</li>
+</ol>
+<!-- 3. When `allow_partial` is set to `True`, part of the input is deserialized successfully. -->
+<ol>
+<li><code>allow_partial</code>が<code>True</code>に設定されている場合、入力の一部が正常にデシリアライズされます。</li>
+</ol>
+<!-- This also works for deserializing partial dictionaries. For example: -->
+<p>これは、部分的な辞書をデシリアライズする場合にも有効です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic_core</span> <span class="kn">import</span> <span class="n">from_json</span>
 
 <span class="n">partial_dog_json</span> <span class="o">=</span> <span class="s1">&#39;{&quot;breed&quot;: &quot;lab&quot;, &quot;name&quot;: &quot;fluffy&quot;, &quot;friends&quot;: [&quot;buddy&quot;, &quot;spot&quot;, &quot;rufus&quot;], &quot;age&#39;</span>
@@ -2959,13 +2951,15 @@ in the original JSON input which contained the invalid value.</p>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Validating LLM Output</p>
-<p>This feature is particularly beneficial for validating LLM outputs.
-We've written some blog posts about this topic, which you can find <a href="https://blog.pydantic.dev/blog/category/llms/">here</a>.</p>
+<p><!-- This feature is particularly beneficial for validating LLM outputs.
+We've written some blog posts about this topic, which you can find <a href="https://blog.pydantic.dev/blog/category/llms/">here</a>. -->
+この機能は、LLM出力の検証に特に有効です。
+私たちはこのトピックについていくつかのブログ記事を書いており、<a href="https://blog.pydantic.dev/blog/category/llms/">ここ</a>で見ることができます。</p>
 </div>
-<p>In future versions of Pydantic, we expect to expand support for this feature through either Pydantic's other JSON validation functions
-(<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>pydantic.main.BaseModel.model_validate_json</code></a> and
-<a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter.validate_json"><code>pydantic.type_adapter.TypeAdapter.validate_json</code></a>) or model configuration. Stay tuned 🚀!</p>
-<p>For now, you can use <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a> in combination with <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>pydantic.main.BaseModel.model_validate</code></a> to achieve the same result. Here's an example:</p>
+<!-- In future versions of Pydantic, we expect to expand support for this feature through either Pydantic's other JSON validation functions ([`pydantic.main.BaseModel.model_validate_json`][pydantic.main.BaseModel.model_validate_json] and [`pydantic.type_adapter.TypeAdapter.validate_json`][pydantic.type_adapter.TypeAdapter.validate_json]) or model configuration. Stay tuned 🚀! -->
+<p>Pydanticの将来のバージョンでは、Pydanticの他のJSON検証関数(<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate_json"><code>pydantic.main.BaseModel.model_validate_json</code></a>および<a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter.validate_json"><code>pydantic.type_adapter.TypeAdapter.validate_json</code></a>)またはモデル構成のいずれかを使用して、この機能のサポートを拡張する予定です🚀!</p>
+<!-- For now, you can use [`pydantic_core.from_json`][pydantic_core.from_json] in combination with [`pydantic.main.BaseModel.model_validate`][pydantic.main.BaseModel.model_validate] to achieve the same result. Here's an example: -->
+<p>今のところ、<a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>を<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>pydantic.main.BaseModel.model_validate</code></a>と組み合わせて使用しても同じ結果が得られます。以下に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic_core</span> <span class="kn">import</span> <span class="n">from_json</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -2984,9 +2978,11 @@ We've written some blog posts about this topic, which you can find <a href="http
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>For partial JSON parsing to work reliably, all fields on the model should have default values.</p>
+<p><!-- For partial JSON parsing to work reliably, all fields on the model should have default values. -->
+部分的なJSON解析が確実に動作するためには、モデル上のすべてのフィールドにデフォルト値が必要です。</p>
 </div>
-<p>Check out the following example for a more in-depth look at how to use default values with partial JSON parsing:</p>
+<!-- Check out the following example for a more in-depth look at how to use default values with partial JSON parsing: -->
+<p>部分的なJSON解析でデフォルト値を使用する方法の詳細については、次の例を参照してください。</p>
 <div class="admonition example">
 <p class="admonition-title">Using default values with partial JSON parsing</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
@@ -3047,24 +3043,32 @@ We've written some blog posts about this topic, which you can find <a href="http
 </code></pre></div>
 </div>
 <h3 id="caching-strings">Caching Strings<a class="headerlink" href="#caching-strings" title="Permanent link">&para;</a></h3>
-<p><strong>Starting in v2.7.0</strong>, Pydantic's <a href="https://docs.rs/jiter/latest/jiter/">JSON parser</a> offers support for configuring how Python strings are cached during JSON parsing and validation (when Python strings are constructed from Rust strings during Python validation, e.g. after <code>strip_whitespace=True</code>).
-The <code>cache_strings</code> setting is exposed via both <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict">model config</a> and <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>.</p>
-<p>The <code>cache_strings</code> setting can take any of the following values:</p>
+<!-- **Starting in v2.7.0**, Pydantic's [JSON parser](https://docs.rs/jiter/latest/jiter/) offers support for configuring how Python strings are cached during JSON parsing and validation (when Python strings are constructed from Rust strings during Python validation, e.g. after `strip_whitespace=True`). -->
+<p><strong>v2.7.0</strong>から、Pydanticの<a href="https://docs.rs/jiter/latest/jiter/">JSONパーサ</a>は、JSONの解析と検証中にPython文字列をキャッシュする方法の設定をサポートしています(Python検証中にPython文字列がRust文字列から構築される場合、例えば<code>strip_whitespace=True</code>の後など)。</p>
+<!-- The `cache_strings` setting is exposed via both [model config][pydantic.config.ConfigDict] and [`pydantic_core.from_json`][pydantic_core.from_json]. -->
+<p><code>cache_strings</code>の設定は、<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict">model config</a>と<a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>の両方で公開されています。</p>
+<!-- The `cache_strings` setting can take any of the following values: -->
+<p><code>cache_strings</code>設定には、次のいずれかの値を指定できます。</p>
+<!--
+* `True` or `'all'` (the default): cache all strings
+* `'keys'`: cache only dictionary keys, this **only** applies when used with [`pydantic_core.from_json`][pydantic_core.from_json] or when parsing JSON using [`Json`][pydantic.types.Json]
+* `False` or `'none'`: no caching
+ -->
 <ul>
-<li><code>True</code> or <code>'all'</code> (the default): cache all strings</li>
-<li><code>'keys'</code>: cache only dictionary keys, this <strong>only</strong> applies when used with <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a> or when parsing JSON using <a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.Json"><code>Json</code></a></li>
-<li><code>False</code> or <code>'none'</code>: no caching</li>
+<li><code>True</code>または<code>'all'</code>(デフォルト): すべての文字列をキャッシュします。</li>
+<li><code>'keys'</code>: 辞書キーのみをキャッシュします。これは<a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.from_json"><code>pydantic_core.from_json</code></a>と一緒に使用する場合、または<a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.Json"><code>Json</code></a>を使用してJSONを解析する場合に<strong>のみ</strong>適用されます。</li>
+<li><code>False</code>または<code>'none'</code>: キャッシュしない</li>
 </ul>
-<p>Using the string caching feature results in performance improvements, but increases memory usage slightly.</p>
+<!-- Using the string caching feature results in performance improvements, but increases memory usage slightly. -->
+<p>文字列キャッシング機能を使用すると、パフォーマンスが向上しますが、メモリ使用量が若干増加します。</p>
 <div class="admonition note">
 <p class="admonition-title">String Caching Details</p>
-<ol>
-<li>Strings are cached using a fully associative cache with a size of
-<a href="https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113">16,384</a>.</li>
-<li>Only strings where <code>len(string) &lt; 64</code> are cached.</li>
-<li>There is some overhead to looking up the cache, which is normally worth it to avoid constructing strings.
-However, if you know there will be very few repeated strings in your data, you might get a performance boost by disabling this setting with <code>cache_strings=False</code>.</li>
-</ol>
+<p><!-- 1. Strings are cached using a fully associative cache with a size of <a href="https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113">16,384</a>. -->
+1. 文字列は、サイズ[16,384]のフルアソシアティブ方式を使用してキャッシュされます(https://github.com/pydantic/jiter/blob/5bbdcfd22882b7b286416b22f74abd549c7b2fd7/src/py_string_cache.rs#L113)。
+<!-- 2. Only strings where <code>len(string) &lt; 64</code> are cached. -->
+2. <code>len(string)&lt;64</code>の文字列のみがキャッシュされます。
+<!-- 3. There is some overhead to looking up the cache, which is normally worth it to avoid constructing strings. However, if you know there will be very few repeated strings in your data, you might get a performance boost by disabling this setting with <code>cache_strings=False</code>. -->
+3. キャッシュの検索には多少のオーバーヘッドがありますが、これは通常、文字列の構築を避けるために行う価値があります。ただし、データ内に繰り返される文字列がほとんどないことがわかっている場合は、<code>cache_strings=False</code>でこの設定を無効にすることでパフォーマンスが向上する可能性があります。</p>
 </div>
 <h2 id="json-serialization">JSON Serialization<a class="headerlink" href="#json-serialization" title="Permanent link">&para;</a></h2>
 <details class="api">
@@ -3073,7 +3077,8 @@ However, if you know there will be very few repeated strings in your data, you m
 <a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter.dump_json"><code>pydantic.type_adapter.TypeAdapter.dump_json</code></a><br>
 <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.to_json"><code>pydantic_core.to_json</code></a><br></p>
 </details>
-<p>For more information on JSON serialization, see the <a href="../serialization/#modelmodel_dump_json">Serialization Concepts</a> page.</p>
+<!-- For more information on JSON serialization, see the [Serialization Concepts](./serialization.md#modelmodel_dump_json) page. -->
+<p>JSONシリアライゼーションの詳細については、<a href="../serialization/#modelmodel_dump_json">Serialization Concepts</a>ページを参照してください。</p>
 
 
 

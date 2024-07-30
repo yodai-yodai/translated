@@ -235,7 +235,7 @@
         <a href="../.." class="md-tabs__link">
           
   
-  Pydanticを始めよう
+  Get Started
 
         </a>
       </li>
@@ -457,7 +457,7 @@
             
   
   <span class="md-ellipsis">
-    Pydanticを始めよう
+    Get Started
   </span>
   
 
@@ -467,7 +467,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            Pydanticを始めよう
+            Get Started
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -482,7 +482,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticへようこそ
+    Welcome to Pydantic
   </span>
   
 
@@ -503,7 +503,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticを使う理由
+    Why use Pydantic
   </span>
   
 
@@ -524,7 +524,7 @@
         
   
   <span class="md-ellipsis">
-    Pydanticヘルプ
+    Help with Pydantic
   </span>
   
 
@@ -545,7 +545,7 @@
         
   
   <span class="md-ellipsis">
-    インストール
+    Installation
   </span>
   
 
@@ -2958,34 +2958,66 @@
 
   <h1>Unions</h1>
 
-<p>Unions are fundamentally different to all other types Pydantic validates - instead of requiring all fields/items/values to be valid, unions require only one member to be valid.</p>
-<p>This leads to some nuance around how to validate unions:</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<p>Unions are fundamentally different to all other types Pydantic validates - instead of requiring all fields/items/values to be valid, unions require only one member to be valid.
+Unionは、Pydanticが検証する他のすべてのタイプとは根本的に異なります。すべてのフィールド/アイテム/値が有効であることを要求するのではなく、Unionは1つのメンバーのみが有効であることを要求します。</p>
+<p>This leads to some nuance around how to validate unions:
+これは、Unionの検証方法に関するいくつかのニュアンスにつながります。</p>
+<!--
+* which member(s) of the union should you validate data against, and in which order?
+* which errors to raise when validation fails?
+-->
 <ul>
-<li>which member(s) of the union should you validate data against, and in which order?</li>
-<li>which errors to raise when validation fails?</li>
+<li>Unionのどのメンバーに対して、どのような順序でデータを検証する必要がありますか?</li>
+<li>検証が失敗した場合に発生するエラー</li>
 </ul>
-<p>Validating unions feels like adding another orthogonal dimension to the validation process.</p>
-<p>To solve these problems, Pydantic supports three fundamental approaches to validating unions:</p>
+<!-- Validating unions feels like adding another orthogonal dimension to the validation process. -->
+<p>Unionの検証は、検証プロセスに別の直交次元を追加するように感じられます。</p>
+<!-- To solve these problems, Pydantic supports three fundamental approaches to validating unions: -->
+<p>これらの問題を解決するために、PydanticはUnionを検証するための3つの基本的なアプローチをサポートしています。</p>
+<!-- 1. [left to right mode](#left-to-right-mode) - the simplest approach, each member of the union is tried in order and the first match is returned -->
 <ol>
-<li><a href="#left-to-right-mode">left to right mode</a> - the simplest approach, each member of the union is tried in order and the first match is returned</li>
-<li><a href="#smart-mode">smart mode</a> - similar to "left to right mode" members are tried in order; however, validation will proceed past the first match to attempt to find a better match, this is the default mode for most union validation</li>
-<li><a href="#discriminated-unions">discriminated unions</a> - only one member of the union is tried, based on a discriminator</li>
+<li><a href="#left-to-right-mode">left-to-right mode</a> - 最も簡単な方法で、Unionの各メンバーが順番に試行され、最初の一致が返されます。</li>
+</ol>
+<!-- 2. [smart mode](#smart-mode) - similar to "left to right mode" members are tried in order; however, validation will proceed past the first match to attempt to find a better match, this is the default mode for most union validation -->
+<ol>
+<li><a href="#smart-mode">smart mode</a> - 「左から右へのモード」と同様に、メンバーは順番に試行されます。ただし、検証は最初の一致を超えて進行し、より適切な一致を見つけようとします。これは、ほとんどのUnion検証のデフォルトモードです。</li>
+</ol>
+<!-- 3. [discriminated unions](#discriminated-unions) - only one member of the union is tried, based on a discriminator -->
+<ol>
+<li><a href="#discriminated-unions">識別されたUnion</a> - 識別子に基づいて、Unionの1つのメンバーのみが試行されます。</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>In general, we recommend using <a href="#discriminated-unions">discriminated unions</a>. They are both more performant and more predictable than untagged unions, as they allow you to control which member of the union to validate against.</p>
-<p>For complex cases, if you're using untagged unions, it's recommended to use <code>union_mode='left_to_right'</code> if you need guarantees about the order of validation attempts against the union members.</p>
-<p>If you're looking for incredibly specialized behavior, you can use a <a href="../validators/#field-validators">custom validator</a>.</p>
+<p><!-- In general, we recommend using <a href="#discriminated-unions">discriminated unions</a>. They are both more performant and more predictable than untagged unions, as they allow you to control which member of the union to validate against. -->
+一般的に、<a href="#discriminated-unions">discriminatedUnion</a>を使用することをお薦めします。これらは、どのUnionのメンバーに対して検証するかを制御できるため、タグなしUnionよりもパフォーマンスが高く、予測可能です。</p>
+<p><!-- For complex cases, if you're using untagged unions, it's recommended to use <code>union_mode='left_to_right'</code> if you need guarantees about the order of validation attempts against the union members. -->
+複雑なケースでは、タグなしUnionを使用している場合、Unionメンバーに対する検証試行の順序を保証する必要がある場合は、<code>union_mode='left_to_right'</code>を使用することをお勧めします。</p>
+<p><!-- If you're looking for incredibly specialized behavior, you can use a <a href="../concepts/validators.md#field-validators">custom validator</a>. -->
+非常に特殊な動作を探している場合は、<a href="../validators/#field-validators">custom validator</a>を使用できます。</p>
 </div>
 <h2 id="union-modes">Union Modes<a class="headerlink" href="#union-modes" title="Permanent link">&para;</a></h2>
 <h3 id="left-to-right-mode">Left to Right Mode<a class="headerlink" href="#left-to-right-mode" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Because this mode often leads to unexpected validation results, it is not the default in Pydantic &gt;=2, instead <code>union_mode='smart'</code> is the default.</p>
+<p><!-- Because this mode often leads to unexpected validation results, it is not the default in Pydantic >=2, instead <code>union_mode='smart'</code> is the default. -->
+このモードは予期しない検証結果をもたらすことが多いため、Pydantic&gt;=2ではデフォルトではなく、<code>union_mode='smart'</code>がデフォルトです。</p>
 </div>
-<p>With this approach, validation is attempted against each member of the union in their order they're defined, and the first successful validation is accepted as input.</p>
-<p>If validation fails on all members, the validation error includes the errors from all members of the union.</p>
-<p><code>union_mode='left_to_right'</code> must be set as a <a href="../fields/"><code>Field</code></a> parameter on union fields where you want to use it.</p>
+<!-- With this approach, validation is attempted against each member of the union in their order they're defined, and the first successful validation is accepted as input. -->
+<p>この手法では、Unionの各メンバーに対して、定義された順序で検証が試行され、最初に成功した検証が入力として受け入れられます。</p>
+<!-- If validation fails on all members, the validation error includes the errors from all members of the union. -->
+<p>すべてのメンバーで検証が失敗した場合、検証エラーにはUnionのすべてのメンバーからのエラーが含まれます。</p>
+<!-- `union_mode='left_to_right'` must be set as a [`Field`](../concepts/fields.md) parameter on union fields where you want to use it. -->
+<p><code>union_mode='left_to_right'</code>は、使用するUnionフィールドの<a href="../fields/"><code>Field</code></a>パラメータとして設定する必要があります。</p>
 <div class="language-py highlight"><span class="filename">Union with left to right mode</span><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -3012,7 +3044,8 @@
 <span class="sd">      Input should be a valid integer [type=int_type, input_value=[], input_type=list]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>The order of members is very important in this case, as demonstrated by tweak the above example:</p>
+<!-- The order of members is very important in this case, as demonstrated by tweak the above example: -->
+<p>この場合、メンバーの順序が非常に重要になります。これは、上記の例を微調整して示しています。</p>
 <div class="language-py highlight"><span class="filename">Union with left to right - unexpected results</span><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
@@ -3027,65 +3060,84 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;456&#39;</span><span class="p">))</span>  <span class="c1"># (2)</span>
 <span class="c1">#&gt; id=456</span>
 </code></pre></div>
+<!-- 1. As expected the input is validated against the `int` member and the result is as expected. -->
 <ol>
-<li>As expected the input is validated against the <code>int</code> member and the result is as expected.</li>
-<li>We're in lax mode and the numeric string <code>'123'</code> is valid as input to the first member of the union, <code>int</code>.
-   Since that is tried first, we get the surprising result of <code>id</code> being an <code>int</code> instead of a <code>str</code>.</li>
+<li>予想通り、入力は<code>int</code>メンバーに対して検証され、結果は予想通りです。</li>
+</ol>
+<!-- 2. We're in lax mode and the numeric string `'123'` is valid as input to the first member of the union, `int`. Since that is tried first, we get the surprising result of `id` being an `int` instead of a `str`. -->
+<ol>
+<li>laxモードになっていて、数値文字列<code>'123'</code>がUnionの最初のメンバー<code>int</code>への入力として有効です。これが最初に試行されるので、<code>id</code>が<code>str</code>ではなく<code>int</code>であるという驚くべき結果が得られます。</li>
 </ol>
 <h3 id="smart-mode">Smart Mode<a class="headerlink" href="#smart-mode" title="Permanent link">&para;</a></h3>
-<p>Because of the potentially surprising results of <code>union_mode='left_to_right'</code>, in Pydantic &gt;=2 the default mode for <code>Union</code> validation is <code>union_mode='smart'</code>.</p>
-<p>In this mode, pydantic attempts to select the best match for the input from the union members. The exact algorithm may change between Pydantic minor releases to allow for improvements in both performance and accuracy.</p>
+<!-- Because of the potentially surprising results of `union_mode='left_to_right'`, in Pydantic >=2 the default mode for `Union` validation is `union_mode='smart'`. -->
+<p><code>union_mode='left_to_right'</code>は意外な結果をもたらす可能性があるため、Pydantic&gt;=2では<code>Union</code>検証のデフォルトモードは<code>union_mode='smart'</code>です。</p>
+<!-- In this mode, pydantic attempts to select the best match for the input from the union members. The exact algorithm may change between Pydantic minor releases to allow for improvements in both performance and accuracy. -->
+<p>このモードでは、pydanticはUnionメンバからの入力に最も一致するものを選択しようとします。正確なアルゴリズムは、パフォーマンスと精度の両方を向上させるために、Pydanticのマイナーリリース間で変更される可能性があります。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We reserve the right to tweak the internal <code>smart</code> matching algorithm in future versions of Pydantic. If you rely on very specific
-matching behavior, it's recommended to use <code>union_mode='left_to_right'</code> or <a href="#discriminated-unions">discriminated unions</a>.</p>
+<p><!-- We reserve the right to tweak the internal <code>smart</code> matching algorithm in future versions of Pydantic. If you rely on very specific  matching behavior, it's recommended to use <code>union_mode='left_to_right'</code> or <a href="#discriminated-unions">discriminated unions</a>. -->
+Pydanticの将来のバージョンでは、内部の<code>smart</code>マッチングアルゴリズムを微調整する権利を留保します。非常に特殊なマッチング動作に依存している場合は、<code>union_mode='left_to_right'</code>または<a href="#discriminated-unions">discriminated unions</a>を使用することをお勧めします。</p>
 </div>
 <details class="info">
 <summary>Smart Mode Algorithm</summary>
-<p>The smart mode algorithm uses two metrics to determine the best match for the input:</p>
-<ol>
-<li>The number of valid fields set (relevant for models, dataclasses, and typed dicts)</li>
-<li>The exactness of the match (relevant for all types)</li>
-</ol>
+<p><!-- The smart mode algorithm uses two metrics to determine the best match for the input: -->
+スマートモードアルゴリズムは、次の2つのメトリックを使用して、入力の最適な一致を判断します。</p>
+<p><!-- 1. The number of valid fields set (relevant for models, dataclasses, and typed dicts)
+2. The exactness of the match (relevant for all types) -->
+1. 有効なフィールドセットの数(モデル、データクラス、および型指定された辞書に関連)
+2. 一致の正確さ(すべてのタイプに関連)</p>
 <h4 id="number-of-valid-fields-set">Number of valid fields set<a class="headerlink" href="#number-of-valid-fields-set" title="Permanent link">&para;</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This metric was introduced in Pydantic v2.8.0. Prior to this version, only exactness was used to determine the best match.</p>
+<p><!-- This metric was introduced in Pydantic v2.8.0. Prior to this version, only exactness was used to determine the best match. -->
+このメトリックは、Pydantic v2.8.0で導入されました。このバージョン以前は、正確さのみを使用して最適な一致を決定していました。</p>
 </div>
-<p>This metric is currently only relevant for models, dataclasses, and typed dicts.</p>
-<p>The greater the number of valid fields set, the better the match. The number of fields set on nested models is also taken into account.
-These counts bubble up to the top-level union, where the union member with the highest count is considered the best match.</p>
-<p>For data types where this metric is relevant, we prioritize this count over exactness. For all other types, we use solely exactness.</p>
+<p><!-- This metric is currently only relevant for models, dataclasses, and typed dicts. -->
+このメトリックは現在、モデル、データクラス、および型付き辞書にのみ関連しています。</p>
+<p><!-- The greater the number of valid fields set, the better the match. The number of fields set on nested models is also taken into account.
+These counts bubble up to the top-level union, where the union member with the highest count is considered the best match. -->
+設定された有効なフィールドの数が多いほど、一致度が高くなります。ネストされたモデルに設定されたフィールドの数も考慮されます。
+これらのカウントは最上位レベルのUnionまでバブルアップされ、最も高いカウントを持つUnionメンバーが最適な一致と見なされます。</p>
+<p>For data types where this metric is relevant, we prioritize this count over exactness. For all other types, we use solely exactness.
+このメトリックが関連するデータ型では、このカウントが正確さよりも優先されます。その他のすべてのデータ型では、正確さのみが使用されます。</p>
 <h4 id="exactness">Exactness<a class="headerlink" href="#exactness" title="Permanent link">&para;</a></h4>
-<p>For <code>exactness</code>, Pydantic scores a match of a union member into one of the following three groups (from highest score to lowest score):</p>
-<ul>
-<li>An exact type match, for example an <code>int</code> input to a <code>float | int</code> union validation is an exact type match for the <code>int</code> member</li>
-<li>Validation would have succeeded in <a href="../strict_mode/"><code>strict</code> mode</a></li>
-<li>Validation would have succeeded in lax mode</li>
-</ul>
-<p>The union match which produced the highest exactness score will be considered the best match.</p>
-<p>In smart mode, the following steps are taken to try to select the best match for the input:</p>
+<p><!-- For <code>exactness</code>, Pydantic scores a match of a union member into one of the following three groups (from highest score to lowest score): -->
+<code>正確さ</code>のために、Pydanticは組合員の試合を次の3つのグループのいずれかに採点します(最高得点から最低得点まで)。</p>
+<p><!--
+- An exact type match, for example an <code>int</code> input to a <code>float | int</code> union validation is an exact type match for the <code>int</code> member
+- Validation would have succeeded in <a href="../concepts/strict_mode.md">klzzwxh:0101 mode</a>
+- Validation would have succeeded in lax mode
+-->
+- 正確な型の一致。たとえば、<code>float int</code>Union検証への<code>int</code>入力は、<code>int</code>メンバーの正確な型の一致です。
+- 検証は<a href="../strict_mode/"><code>strict</code>モード</a>で成功します。
+- 検証はlaxモードで成功します。</p>
+<p><!-- The union match which produced the highest exactness score will be considered the best match. -->
+最も高い正確さのスコアを生成したUnionマッチが、ベストマッチと見なされます。</p>
+<p><!-- In smart mode, the following steps are taken to try to select the best match for the input: -->
+スマートモードでは、入力に最適なものを選択するために次の手順が実行されます。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>BaseModel</code>, <code>dataclass</code>, and <code>TypedDict</code></label><label for="__tabbed_1_2">All other data types</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<ol>
-<li>Union members are attempted left to right, with any successful matches scored into one of the three exactness categories described above,
-with the valid fields set count also tallied.</li>
-<li>After all members have been evaluated, the member with the highest "valid fields set" count is returned.</li>
-<li>If there's a tie for the highest "valid fields set" count, the exactness score is used as a tiebreaker, and the member with the highest exactness score is returned.</li>
-<li>If validation failed on all the members, return all the errors.</li>
-</ol>
+<p><!-- 1. Union members are attempted left to right, with any successful matches scored into one of the three exactness categories described above, with the valid fields set count also tallied. -->
+1. Union・メンバーは左から右に試行され、成功した一致は前述の3つの正確さのカテゴリーのいずれかにスコア付けされ、有効なフィールド・セット・カウントも集計されます。
+<!-- 2. After all members have been evaluated, the member with the highest "valid fields set" count is returned. -->
+2. すべてのメンバーが評価された後、「有効なフィールド・セット」カウントが最も高いメンバーが戻されます。
+<!-- 3. If there's a tie for the highest "valid fields set" count, the exactness score is used as a tiebreaker, and the member with the highest exactness score is returned. -->
+3. 最大の「有効フィールド・セット」カウントに対してタイがある場合、正確さのスコアがタイ・ブレーカーとして使用され、正確さのスコアが最も高いメンバーが戻されます。
+<!-- 4. If validation failed on all the members, return all the errors. -->
+4. すべてのメンバーで検証が失敗した場合は、すべてのエラーが戻されます。</p>
 </div>
 <div class="tabbed-block">
-<ol>
-<li>Union members are attempted left to right, with any successful matches scored into one of the three exactness categories described above.<ul>
-<li>If validation succeeds with an exact type match, that member is returned immediately and following members will not be attempted.</li>
-</ul>
-</li>
-<li>If validation succeeded on at least one member as a "strict" match, the leftmost of those "strict" matches is returned.</li>
-<li>If validation succeeded on at least one member in "lax" mode, the leftmost match is returned.</li>
-<li>Validation failed on all the members, return all the errors.</li>
-</ol>
+<p><!-- 1. Union members are attempted left to right, with any successful matches scored into one of the three exactness categories described above. -->
+1. Unionは左から右に試みられ、成功した試合は上記の3つの正確さのカテゴリーのいずれかに得点されます。
+    <!-- - If validation succeeds with an exact type match, that member is returned immediately and following members will not be attempted. -->
+    - 型が完全に一致して検証が成功した場合、そのメンバーはすぐに戻され、後続のメンバーは試行されません。
+<!-- 2. If validation succeeded on at least one member as a "strict" match, the leftmost of those "strict" matches is returned. -->
+2. 少なくとも1つのメンバーで検証が「厳密な」一致として成功した場合、それらの「厳密な」一致のうち最も左のものが戻されます。
+<!-- 3. If validation succeeded on at least one member in "lax" mode, the leftmost match is returned. -->
+3. 「lax」モードで少なくとも1つのメンバーの検証が成功した場合、一番左の一致が戻されます。
+<!-- 4. Validation failed on all the members, return all the errors. -->
+4. すべてのメンバーで検証が失敗すると、すべてのエラーが戻されます。</p>
 </div>
 </div>
 </div>
@@ -3122,22 +3174,27 @@ with the valid fields set count also tallied.</li>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>The type <code>Optional[x]</code> is a shorthand for <code>Union[x, None]</code>.</p>
-<p>See more details in <a href="../models/#required-fields">Required fields</a>.</p>
+<p><!-- The type <code>Optional[x]</code> is a shorthand for <code>Union[x, None]</code>. -->
+型<code>Optional[x]</code>は<code>Union[x, None]</code>の省略形です。</p>
+<p><!-- See more details in <a href="../concepts/models.md#required-fields">Required fields</a>. -->
+詳細については、<a href="../models/#required-fields">Required fields</a>を参照してください。</p>
 </div>
 <h2 id="discriminated-unions">Discriminated Unions<a class="headerlink" href="#discriminated-unions" title="Permanent link">&para;</a></h2>
-<p><strong>Discriminated unions are sometimes referred to as "Tagged Unions".</strong></p>
-<p>We can use discriminated unions to more efficiently validate <code>Union</code> types, by choosing which member of the union to validate against.</p>
-<p>This makes validation more efficient and also avoids a proliferation of errors when validation fails.</p>
-<p>Adding discriminator to unions also means the generated JSON schema implements the <a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#discriminator-object">associated OpenAPI specification</a>.</p>
+<!-- **Discriminated unions are sometimes referred to as "Tagged Unions".** -->
+<p><strong>識別されたUnionは、「タグ付きUnion」と呼ばれることがあります。</strong></p>
+<!-- We can use discriminated unions to more efficiently validate `Union` types, by choosing which member of the union to validate against. -->
+<p>識別されたUnionを使用して、どのUnionのメンバーに対して検証するかを選択することで、<code>Union</code>タイプをより効率的に検証することができる。</p>
+<!-- This makes validation more efficient and also avoids a proliferation of errors when validation fails. -->
+<p>これにより、検証がより効率的になり、検証が失敗した場合のエラーの急増も回避されます。</p>
+<!-- Adding discriminator to unions also means the generated JSON schema implements the [associated OpenAPI specification](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#discriminator-object). -->
+<p>Unionに識別子を追加することは、生成されたJSONスキーマが<a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#discriminator-object">associated OpenAPI specification</a>を実装することも意味します。</p>
 <h3 id="discriminated-unions-with-str-discriminators">Discriminated Unions with <code>str</code> discriminators<a class="headerlink" href="#discriminated-unions-with-str-discriminators" title="Permanent link">&para;</a></h3>
-<p>Frequently, in the case of a <code>Union</code> with multiple models,
-there is a common field to all members of the union that can be used to distinguish
-which union case the data should be validated against; this is referred to as the "discriminator" in
-<a href="https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/">OpenAPI</a>.</p>
-<p>To validate models based on that information you can set the same field - let's call it <code>my_discriminator</code> -
-in each of the models with a discriminated value, which is one (or many) <code>Literal</code> value(s).
-For your <code>Union</code>, you can set the discriminator in its value: <code>Field(discriminator='my_discriminator')</code>.</p>
+<!-- Frequently, in the case of a `Union` with multiple models, there is a common field to all members of the union that can be used to distinguish which union case the data should be validated against; this is referred to as the "discriminator" in [OpenAPI](https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/). -->
+<p>多くの場合、複数のモデルを持つ<code>Union</code>の場合、Unionのすべてのメンバーに共通のフィールドがあり、どのUnionケースに対してデータを検証すべきかを区別するために使用できます。これは、<a href="https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/">OpenAPI</a>では「識別子」と呼ばれています。</p>
+<p>To validate models based on that information you can set the same field - let's call it <code>my_discriminator</code> - in each of the models with a discriminated value, which is one (or many) <code>Literal</code> value(s).
+その情報に基づいてモデルを検証するには、同じフィールド(<code>my_discriminator</code>と呼びましょう)を、1つ(または複数)の<code>Literal</code>値である識別された値を持つ各モデルに設定します。</p>
+<!-- For your `Union`, you can set the discriminator in its value: `Field(discriminator='my_discriminator')`. -->
+<p><code>Union</code>では、<code>Field(discriminator='my_discriminator')</code>の値に識別子を設定することができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -3180,9 +3237,10 @@ For your <code>Union</code>, you can set the discriminator in its value: <code>F
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.Discriminator"><code>pydantic.types.Discriminator</code></a><br></p>
 </details>
-<p>In the case of a <code>Union</code> with multiple models, sometimes there isn't a single uniform field
-across all models that you can use as a discriminator.
-This is the perfect use case for a callable <code>Discriminator</code>.</p>
+<!-- In the case of a `Union` with multiple models, sometimes there isn't a single uniform field across all models that you can use as a discriminator.
+This is the perfect use case for a callable `Discriminator`. -->
+<p>複数のモデルを持つ<code>Union</code>の場合、すべてのモデルにわたって識別子として使用できる単一の均一なフィールドが存在しないことがあります。
+これは、呼び出し可能な<code>Discriminator</code>の完璧なユースケースです。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3241,7 +3299,8 @@ This is the perfect use case for a callable <code>Discriminator</code>.</p>
 <span class="sd">ThanksgivingDinner(dessert=PumpkinPie(time_to_cook=40, num_ingredients=6, filling=&#39;pumpkin&#39;))</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p><code>Discriminator</code>s can also be used to validate <code>Union</code> types with combinations of models and primitive types.</p>
+<p><code>Discriminator</code>s can also be used to validate <code>Union</code> types with combinations of models and primitive types.
+<code>Discriminator</code>は、モデルとプリミティブ型の組み合わせで<code>Union</code>型を検証するためにも使用できます。</p>
 <p>For example:</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Union</span>
 
@@ -3294,20 +3353,27 @@ This is the perfect use case for a callable <code>Discriminator</code>.</p>
 <span class="sd">      Unable to extract tag using discriminator model_x_discriminator() [type=union_tag_not_found, input_value=&#39;not an int or a model&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
+<!-- 1. Notice the callable discriminator function returns `None` if a discriminator value is not found.
+   When `None` is returned, this `union_tag_not_found` error is raised. -->
 <ol>
-<li>Notice the callable discriminator function returns <code>None</code> if a discriminator value is not found.
-   When <code>None</code> is returned, this <code>union_tag_not_found</code> error is raised.</li>
+<li>識別子の値が見つからない場合、呼び出し可能な識別子関数が<code>None</code>を返すことに注意してください。
+<code>None</code>が返された場合、この<code>union_tag_not_found</code>エラーが発生します。</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using the <a href="../types/#composing-types-via-annotated"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Annotated"><code>typing.Annotated</code></a> fields syntax</a> can be handy to regroup
-the <code>Union</code> and <code>discriminator</code> information. See the next example for more details.</p>
-<p>There are a few ways to set a discriminator for a field, all varying slightly in syntax.</p>
+the <code>Union</code> and <code>discriminator</code> information. See the next example for more details.
+<a href="../types/#composing-types-via-annotated"><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/typing.html#typing.Annotated"><code>typing.Annotated</code></a> fields syntax</a>を使用すると、グループを再編成するのに便利です。
+<code>Union</code>と<code>discriminator</code>の情報です。詳細は次の例を参照してください。</p>
+<p><!-- There are a few ways to set a discriminator for a field, all varying slightly in syntax. -->
+フィールドに識別子を設定する方法はいくつかありますが、構文はわずかに異なります。</p>
 <p>For <code>str</code> discriminators:
+<code>str</code> discriminatorsの場合:
 <div class="language-text highlight"><pre><span></span><code>some_field: Union[...] = Field(discriminator=&#39;my_discriminator&#39;
 some_field: Annotated[Union[...], Field(discriminator=&#39;my_discriminator&#39;)]
 </code></pre></div></p>
-<p>For callable <code>Discriminator</code>s:
+<p><!-- For callable <code>Discriminator</code>s: -->
+呼び出し可能な<code>Discriminator</code>の場合:
 <div class="language-text highlight"><pre><span></span><code>some_field: Union[...] = Field(discriminator=Discriminator(...))
 some_field: Annotated[Union[...], Discriminator(...)]
 some_field: Annotated[Union[...], Field(discriminator=Discriminator(...))]
@@ -3315,13 +3381,16 @@ some_field: Annotated[Union[...], Field(discriminator=Discriminator(...))]
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Discriminated unions cannot be used with only a single variant, such as <code>Union[Cat]</code>.</p>
-<p>Python changes <code>Union[T]</code> into <code>T</code> at interpretation time, so it is not possible for <code>pydantic</code> to
-distinguish fields of <code>Union[T]</code> from <code>T</code>.</p>
+<p><!-- Discriminated unions cannot be used with only a single variant, such as <code>Union[Cat]</code>. -->
+識別されたUnionは、<code>Union[Cat]</code>のような単一のバリアントでのみ使用することはできません。</p>
+<p><!-- Python changes <code>Union[T]</code> into <code>T</code> at interpretation time, so it is not possible for <code>pydantic</code> to distinguish fields of <code>Union[T]</code> from <code>T</code>. -->
+Pythonは解釈時に<code>Union[T]</code>を<code>T</code>に変更するので、<code>pydantic</code>が<code>Union[T]</code>と<code>T</code>のフィールドを区別することはできません。</p>
 </div>
 <h3 id="nested-discriminated-unions">Nested Discriminated Unions<a class="headerlink" href="#nested-discriminated-unions" title="Permanent link">&para;</a></h3>
-<p>Only one discriminator can be set for a field but sometimes you want to combine multiple discriminators.
-You can do it by creating nested <code>Annotated</code> types, e.g.:</p>
+<!-- Only one discriminator can be set for a field but sometimes you want to combine multiple discriminators.
+You can do it by creating nested `Annotated` types, e.g.: -->
+<p>1つのフィールドに設定できる識別子は1つだけですが、複数の識別子を組み合わせたい場合があります。
+これを行うには、ネストされた<code>Annotated</code>型を作成します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3381,7 +3450,8 @@ You can do it by creating nested <code>Annotated</code> types, e.g.:</p>
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you want to validate data against a union, and solely a union, you can use pydantic's <a href="../type_adapter/"><code>TypeAdapter</code></a> construct instead of inheriting from the standard <code>BaseModel</code>.</p>
+<p><!-- If you want to validate data against a union, and solely a union, you can use pydantic's <a href="../concepts/type_adapter.md">klzzwxh:0040</a> construct instead of inheriting from the standard <code>BaseModel</code>. -->
+Unionのみに対してデータを検証したい場合は、標準の<code>BaseModel</code>から継承する代わりに、pydanticの<a href="../type_adapter/"><code>TypeAdapter</code></a>構文を使用できます。</p>
 <p>In the context of the previous example, we have the following:</p>
 <div class="language-python highlight"><pre><span></span><code><span class="n">type_adapter</span> <span class="o">=</span> <span class="n">TypeAdapter</span><span class="p">(</span><span class="n">Pet</span><span class="p">)</span>
 
@@ -3393,14 +3463,14 @@ You can do it by creating nested <code>Annotated</code> types, e.g.:</p>
 </code></pre></div>
 </div>
 <h2 id="union-validation-errors">Union Validation Errors<a class="headerlink" href="#union-validation-errors" title="Permanent link">&para;</a></h2>
-<p>When <code>Union</code> validation fails, error messages can be quite verbose, as they will produce validation errors for
-each case in the union.
-This is especially noticeable when dealing with recursive models, where reasons may be generated at each level of
-recursion.
-Discriminated unions help to simplify error messages in this case, as validation errors are only produced for
-the case with a matching discriminator value.</p>
-<p>You can also customize the error type, message, and context for a <code>Discriminator</code> by passing
-these specifications as parameters to the <code>Discriminator</code> constructor, as seen in the example below.</p>
+<!-- When `Union` validation fails, error messages can be quite verbose, as they will produce validation errors for each case in the union.
+This is especially noticeable when dealing with recursive models, where reasons may be generated at each level of recursion.
+Discriminated unions help to simplify error messages in this case, as validation errors are only produced for the case with a matching discriminator value. -->
+<p><code>Union</code>の検証が失敗した場合、エラーメッセージは非常に冗長になる可能性があります。なぜなら、エラーメッセージはUnionの各ケースに対して検証エラーを生成するからです。
+これは、再帰モデルを処理する場合に特に顕著であり、再帰の各レベルで理由が生成される可能性があります。
+識別された結合は、この場合のエラーメッセージを単純化するのに役立つ。検証エラーは、識別値が一致する場合にのみ生成されるからです。</p>
+<!-- You can also customize the error type, message, and context for a `Discriminator` by passing these specifications as parameters to the `Discriminator` constructor, as seen in the example below. -->
+<p>以下の例に示すように、<code>Discriminator</code>コンストラクタにこれらの指定をパラメータとして渡すことで、<code>Discriminator</code>のエラータイプ、メッセージ、コンテキストをカスタマイズすることもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3495,13 +3565,20 @@ these specifications as parameters to the <code>Discriminator</code> constructor
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; {&#39;x&#39;: {&#39;x&#39;: {&#39;x&#39;: &#39;a&#39;}}}</span>
 </code></pre></div>
+<!--
+1. `custom_error_type` is the `type` attribute of the `ValidationError` raised when validation fails.
+2. `custom_error_message` is the `msg` attribute of the `ValidationError` raised when validation fails.
+3. `custom_error_context` is the `ctx` attribute of the `ValidationError` raised when validation fails.
+ -->
 <ol>
-<li><code>custom_error_type</code> is the <code>type</code> attribute of the <code>ValidationError</code> raised when validation fails.</li>
-<li><code>custom_error_message</code> is the <code>msg</code> attribute of the <code>ValidationError</code> raised when validation fails.</li>
-<li><code>custom_error_context</code> is the <code>ctx</code> attribute of the <code>ValidationError</code> raised when validation fails.</li>
+<li><code>custom_error_type</code>は、検証が失敗したときに発生する<code>ValidationError</code>の<code>type</code>属性です。</li>
+<li><code>custom_error_message</code>は、検証が失敗したときに発生する<code>ValidationError</code>の<code>msg</code>属性です。</li>
+<li><code>custom_error_context</code>は、検証が失敗したときに発生する<code>ValidationError</code>の<code>ctx</code>属性です。</li>
 </ol>
-<p>You can also simplify error messages by labeling each case with a <a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.Tag"><code>Tag</code></a>.
-This is especially useful when you have complex types like those in this example:</p>
+<!-- You can also simplify error messages by labeling each case with a [`Tag`][pydantic.types.Tag].
+This is especially useful when you have complex types like those in this example: -->
+<p>各ケースに<a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.Tag"><code>Tag</code></a>というラベルを付けることで、エラーメッセージを簡略化することもできます。
+これは、この例のような複雑な型がある場合に特に便利です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
