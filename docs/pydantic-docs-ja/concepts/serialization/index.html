@@ -3111,13 +3111,13 @@
 <div class="admonition tip">
 <p class="admonition-title">Serialize versus dump</p>
 <p><!-- Pydantic uses the terms "serialize" and "dump" interchangeably. Both refer to the process of converting a model to a dictionary or JSON-encoded string. -->
-Pydanticでは、「serialize」と「dump」という用語を同じ意味で使用しています。どちらも、モデルを辞書またはJSONでエンコードされた文字列に変換するプロセスを指します。</p>
+Pydanticでは、"serialize"と"dump"という用語を同じ意味で使用しています。どちらも、モデルを辞書またはJSONでエンコードされた文字列に変換するプロセスを指します。</p>
 <p><!-- Outside of Pydantic, the word "serialize" usually refers to converting in-memory data into a string or bytes. -->
-Pydantic以外では、「シリアライズ」という言葉は通常、メモリ内のデータを文字列やバイトに変換することを意味します。
+Pydantic以外では、"シリアライズ"という言葉は通常、メモリ内のデータを文字列やバイトに変換することを意味します。
 <!-- However, in the context of Pydantic, there is a very close relationship between converting an object from a more structured form &mdash; such as a Pydantic model, a dataclass, etc. &mdash; into a less structured form comprised of Python built-ins such as dict. -->
 しかし、Pydanticのコンテキストでは、オブジェクトをPydanticモデルやデータクラスなどのより構造化された形式から、dictなどのPython組み込みで構成されたより構造化されていない形式に変換することには、非常に密接な関係があります。</p>
 <p><!-- While we could (and on occasion, do) distinguish between these scenarios by using the word "dump" when converting to primitives and "serialize" when converting to string, for practical purposes, we frequently use the word "serialize" to refer to both of these situations, even though it does not always imply conversion to a string or bytes. -->
-プリミティブへの変換時には「dump」、文字列への変換時には「serialize」という単語を使用することで、これらのシナリオを区別することができます(場合によっては区別します)が、実際には、必ずしも文字列やバイトへの変換を意味するわけではありませんが、「serialize」という単語を両方の状況を指すためによく使用します。</p>
+プリミティブへの変換時には"dump"、文字列への変換時には"serialize"という単語を使用することで、これらのシナリオを区別することができます(場合によっては区別します)が、実際には、必ずしも文字列やバイトへの変換を意味するわけではありませんが、"serialize"という単語を両方の状況を指すためによく使用します。</p>
 </div>
 <h2 id="modelmodel_dump"><code>model.model_dump(...)</code> <a name="model_dump"></a><a class="headerlink" href="#modelmodel_dump" title="Permanent link">&para;</a></h2>
 <details class="api">
@@ -3128,7 +3128,7 @@ Pydantic以外では、「シリアライズ」という言葉は通常、メモ
 <p>これは、モデルを辞書に変換する主要な方法です。サブモデルは再帰的に辞書に変換されます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0182</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
+<p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0183</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
 辞書に変換されるサブモデルの1つの例外は、<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>とそのサブクラスが、ラッピング辞書なしで直接ダンプされる<code>root</code>フィールド値を持つことです。これも再帰的に行われます。</p>
 </div>
 <div class="admonition note">
@@ -3318,7 +3318,7 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><!-- A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer">klzzwxh:0148</a> decorator. -->
+<p><!-- A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer">klzzwxh:0149</a> decorator. -->
 <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a>デコレータに特別な値'*'を渡すことで、すべてのフィールドで単一のシリアライザを呼び出すこともできます。</p>
 </div>
 <!-- In addition, [`PlainSerializer`][pydantic.functional_serializers.PlainSerializer] and [`WrapSerializer`][pydantic.functional_serializers.WrapSerializer] enable you to use a function to modify the output of serialization. -->
@@ -3565,7 +3565,7 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
 <!-- When a field is annotated as `SerializeAsAny[<SomeType>]`, the validation behavior will be the same as if it was annotated as `<SomeType>`, and type-checkers like mypy will treat the attribute as having the appropriate type as well. -->
 <p>フィールドに<code>SerializeAsAny[&lt;SomeType&gt;]</code>という注釈が付けられた場合、検証の動作は<code>&lt;SomeType&gt;</code>という注釈が付けられた場合と同じになり、mypyのような型チェッカーも属性を適切な型として扱います。</p>
 <!-- But when serializing, the field will be serialized as though the type hint for the field was `Any`, which is where the name comes from. -->
-<p>しかし、シリアライズすると、フィールドの型ヒントが「Any」であるかのようにフィールドがシリアライズされます。これが名前の由来です。</p>
+<p>しかし、シリアライズすると、フィールドの型ヒントが"Any"であるかのようにフィールドがシリアライズされます。これが名前の由来です。</p>
 <h4 id="serialize_as_any-runtime-setting"><code>serialize_as_any</code> runtime setting<a class="headerlink" href="#serialize_as_any-runtime-setting" title="Permanent link">&para;</a></h4>
 <!-- The `serialize_as_any` runtime setting can be used to serialize model data with or without duck typed serialization behavior. -->
 <p><code>serialize_as_any</code>ランタイム設定は、duck型のシリアライゼーション動作の有無にかかわらず、モデルデータをシリアライズするために使用できます。</p>
@@ -3784,7 +3784,7 @@ See more about the differences in this <a href="https://github.com/pydantic/pyda
 </code></pre></div>
 <!-- The `True` indicates that we want to exclude or include an entire key, just as if we included it in a set.
 This can be done at any depth level. -->
-<p>「True」は、キー全体をセットに含めたかのように、キー全体を除外または含めたいことを示します。
+<p>"True"は、キー全体をセットに含めたかのように、キー全体を除外または含めたいことを示します。
 これは、任意の深さのレベルで実行できます。</p>
 <!-- Special care must be taken when including or excluding fields from a list or tuple of submodels or dictionaries.
 In this scenario, `model_dump` and related methods expect integer keys for element-wise inclusion or exclusion.
@@ -3985,7 +3985,7 @@ To exclude a field from **every** member of a list or tuple, the dictionary key 
 <span class="c1">#&gt; {&#39;text&#39;: &#39;This is an example&#39;}</span>
 </code></pre></div>
 <!-- Similarly, you can [use a context for validation](../concepts/validators.md#validation-context). -->
-<p>同様に、[use a context for validation]することもできます。(../concepts/validators.md#validation-context)</p>
+<p>同様に、<a href="../validators/#validation-context">use a context for validation</a>することもできます。</p>
 <h2 id="model_copy"><code>model_copy(...)</code> <a name="model_copy"><a class="headerlink" href="#model_copy" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
