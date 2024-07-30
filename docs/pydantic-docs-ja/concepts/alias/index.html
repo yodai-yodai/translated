@@ -2874,35 +2874,64 @@
 
   <h1>Alias</h1>
 
-<p>An alias is an alternative name for a field, used when serializing and deserializing data.</p>
-<p>You can specify an alias in the following ways:</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- An alias is an alternative name for a field, used when serializing and deserializing data. -->
+<p>エイリアスはフィールドの別名で、データのシリアライズおよびデシリアライズ時に使用されます。</p>
+<p>You can specify an alias in the following ways:
+エイリアスは次の方法で指定できます。</p>
+<!-- * `alias` on the [`Field`][pydantic.fields.Field] -->
 <ul>
-<li><code>alias</code> on the <a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a><ul>
-<li>must be a <code>str</code></li>
-</ul>
-</li>
-<li><code>validation_alias</code> on the <a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a><ul>
-<li>can be an instance of <code>str</code>, <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasPath"><code>AliasPath</code></a>, or <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasChoices"><code>AliasChoices</code></a></li>
-</ul>
-</li>
-<li><code>serialization_alias</code> on the <a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a><ul>
-<li>must be a <code>str</code></li>
-</ul>
-</li>
-<li><code>alias_generator</code> on the <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.alias_generator"><code>Config</code></a><ul>
-<li>can be a callable or an instance of <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a></li>
+<li><a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a>の<code>alias</code>
+    <!-- * must be a <code>str</code> --><ul>
+<li><code>str</code>でなければなりません。</li>
 </ul>
 </li>
 </ul>
-<p>For examples of how to use <code>alias</code>, <code>validation_alias</code>, and <code>serialization_alias</code>, see <a href="../fields/#field-aliases">Field aliases</a>.</p>
+<!-- * `validation_alias` on the [`Field`][pydantic.fields.Field] -->
+<ul>
+<li><a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a>の*<code>validation_alias</code>
+    <!-- * can be an instance of <code>str</code>, <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasPath">klzzwxh:0077</a>, or <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasChoices">klzzwxh:0078</a> --><ul>
+<li><code>str</code>のインスタンスで、<a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasPath"><code>AliasPath</code></a>、または<a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasChoices"><code>AliasChoices</code></a>となります。</li>
+</ul>
+</li>
+</ul>
+<!-- * `serialization_alias` on the [`Field`][pydantic.fields.Field] -->
+<ul>
+<li><a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a>の*<code>serialization_alias</code>
+    <!-- * must be a <code>str</code> --><ul>
+<li><code>str</code>でなければなりません</li>
+</ul>
+</li>
+</ul>
+<!-- * `alias_generator` on the [`Config`][pydantic.config.ConfigDict.alias_generator] -->
+<ul>
+<li><code>alias_generator</code>を<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.alias_generator"><code>Config</code></a>
+    <!-- * can be a callable or an instance of <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasGenerator">klzzwxh:0062</a> --><ul>
+<li>、<a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>の呼び出し可能オブジェクトまたはインスタンスです。</li>
+</ul>
+</li>
+</ul>
+<!-- For examples of how to use `alias`, `validation_alias`, and `serialization_alias`, see [Field aliases](../concepts/fields.md#field-aliases). -->
+<p><code>alias</code>、<code>validation_alias</code>、および<code>serialization_alias</code>の使用例については、<a href="../fields/#field-aliases">Field aliases</a>を参照してください。</p>
 <h2 id="aliaspath-and-aliaschoices"><code>AliasPath</code> and <code>AliasChoices</code><a class="headerlink" href="#aliaspath-and-aliaschoices" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasPath"><code>pydantic.aliases.AliasPath</code></a><br>
 <a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasChoices"><code>pydantic.aliases.AliasChoices</code></a><br></p>
 </details>
-<p>Pydantic provides two special types for convenience when using <code>validation_alias</code>: <code>AliasPath</code> and <code>AliasChoices</code>.</p>
-<p>The <code>AliasPath</code> is used to specify a path to a field using aliases. For example:</p>
+<!-- Pydantic provides two special types for convenience when using `validation_alias`: `AliasPath` and `AliasChoices`. -->
+<p>Pydanticは<code>validation_alias</code>を使用する際の利便性のために、<code>AliasPath</code>と<code>AliasChoices</code>という2つの特別な型を提供しています。</p>
+<!-- The `AliasPath` is used to specify a path to a field using aliases. For example: -->
+<p><code>AliasPath</code>は、エイリアスを使用してフィールドへのパスを指定するために使用されます。次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">AliasPath</span>
 
 
@@ -2914,15 +2943,18 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 <span class="c1">#&gt; first_name=&#39;John&#39; last_name=&#39;Doe&#39;</span>
 </code></pre></div>
+<!-- 1. We are using `model_validate` to validate a dictionary using the field aliases. -->
 <ol>
-<li>
-<p>We are using <code>model_validate</code> to validate a dictionary using the field aliases.</p>
-<p>You can see more details about <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a> in the API reference.</p>
-</li>
+<li>フィールドエイリアスを使用して辞書を検証するために<code>model_validate</code>を使用しています。
+    <!-- You can see more details about <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate">klzzwxh:0049</a> in the API reference. -->
+    <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_validate"><code>model_validate</code></a>の詳細については、APIリファレンスを参照してください。</li>
 </ol>
-<p>In the <code>'first_name'</code> field, we are using the alias <code>'names'</code> and the index <code>0</code> to specify the path to the first name.
-In the <code>'last_name'</code> field, we are using the alias <code>'names'</code> and the index <code>1</code> to specify the path to the last name.</p>
-<p><code>AliasChoices</code> is used to specify a choice of aliases. For example:</p>
+<!-- In the `'first_name'` field, we are using the alias `'names'` and the index `0` to specify the path to the first name.
+In the `'last_name'` field, we are using the alias `'names'` and the index `1` to specify the path to the last name. -->
+<p>"first_name"フィールドでは、エイリアス"names"とインデックス"0"を使用して、名へのパスを指定しています。
+"last_name"フィールドでは、エイリアス"names"とインデックス"1"を使用して、姓へのパスを指定しています。</p>
+<!-- `AliasChoices` is used to specify a choice of aliases. For example: -->
+<p><code>AliasChoices</code>は、エイリアスの選択を指定するために使用されます。次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">AliasChoices</span>
 
 
@@ -2937,12 +2969,16 @@ In the <code>'last_name'</code> field, we are using the alias <code>'names'</cod
 <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
 <span class="c1">#&gt; first_name=&#39;John&#39; last_name=&#39;Doe&#39;</span>
 </code></pre></div>
+<!-- 1. We are using the second alias choice for both fields. -->
 <ol>
-<li>We are using the second alias choice for both fields.</li>
-<li>We are using the first alias choice for the field <code>'first_name'</code> and the second alias choice
-   for the field <code>'last_name'</code>.</li>
+<li>両方のフィールドに2番目のエイリアスを使用しています。</li>
 </ol>
-<p>You can also use <code>AliasChoices</code> with <code>AliasPath</code>:</p>
+<!-- 2. We are using the first alias choice for the field `'first_name'` and the second alias choice for the field `'last_name'`. -->
+<ol>
+<li>フィールド<code>'first_name'</code>に最初のエイリアス選択を使用し、フィールド<code>'last_name'</code>に2番目のエイリアス選択を使用しています。</li>
+</ol>
+<!-- You can also use `AliasChoices` with `AliasPath`: -->
+<p><code>AliasChoices</code>は<code>AliasPath</code>と一緒に使用することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">AliasPath</span><span class="p">,</span> <span class="n">AliasChoices</span>
 
 
@@ -2962,19 +2998,21 @@ In the <code>'last_name'</code> field, we are using the alias <code>'names'</cod
 <span class="c1">#&gt; first_name=&#39;John&#39; last_name=&#39;Doe&#39;</span>
 </code></pre></div>
 <h2 id="using-alias-generators">Using alias generators<a class="headerlink" href="#using-alias-generators" title="Permanent link">&para;</a></h2>
-<p>You can use the <code>alias_generator</code> parameter of <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.alias_generator"><code>Config</code></a> to specify
-a callable (or group of callables, via <code>AliasGenerator</code>) that will generate aliases for all fields in a model.
-This is useful if you want to use a consistent naming convention for all fields in a model, but do not
-want to specify the alias for each field individually.</p>
+<!-- You can use the `alias_generator` parameter of [`Config`][pydantic.config.ConfigDict.alias_generator] to specify a callable (or group of callables, via `AliasGenerator`) that will generate aliases for all fields in a model.
+This is useful if you want to use a consistent naming convention for all fields in a model, but do not want to specify the alias for each field individually. -->
+<p><a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.alias_generator"><code>Config</code></a>の<code>alias_generator</code>パラメータを使用して、モデル内のすべてのフィールドのエイリアスを生成する呼び出し可能オブジェクト(または<code>AliasGenerator</code>による呼び出し可能オブジェクトのグループ)を指定できます。
+これは、モデル内のすべてのフィールドに対して一貫した命名規則を使用し、各フィールドに個別にエイリアスを指定しない場合に便利です。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pydantic offers three built-in alias generators that you can use out of the box:</p>
+<p><!-- Pydantic offers three built-in alias generators that you can use out of the box: -->
+Pydanticには、すぐに使用できる3つの組み込みエイリアスジェネレータが用意されています。</p>
 <p><a class="autorefs autorefs-internal" href="../../api/config/#pydantic.alias_generators.to_pascal"><code>to_pascal</code></a><br>
 <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.alias_generators.to_camel"><code>to_camel</code></a><br>
 <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.alias_generators.to_snake"><code>to_snake</code></a><br></p>
 </div>
 <h3 id="using-a-callable">Using a callable<a class="headerlink" href="#using-a-callable" title="Permanent link">&para;</a></h3>
-<p>Here's a basic example using a callable:</p>
+<!-- Here's a basic example using a callable: -->
+<p>次に、callableを使用した基本的な例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 
@@ -2997,11 +3035,14 @@ want to specify the alias for each field individually.</p>
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/aliases/#pydantic.aliases.AliasGenerator"><code>pydantic.aliases.AliasGenerator</code></a><br></p>
 </details>
-<p><code>AliasGenerator</code> is a class that allows you to specify multiple alias generators for a model.
-You can use an <code>AliasGenerator</code> to specify different alias generators for validation and serialization.</p>
-<p>This is particularly useful if you need to use different naming conventions for loading and saving data,
-but you don't want to specify the validation and serialization aliases for each field individually.</p>
-<p>For example:</p>
+<!-- `AliasGenerator` is a class that allows you to specify multiple alias generators for a model.
+You can use an `AliasGenerator` to specify different alias generators for validation and serialization. -->
+<p><code>AliasGenerator</code>は、1つのモデルに複数のエイリアスジェネレータを指定できるクラスです。
+<code>AliasGenerator</code>を使用して、検証とシリアライゼーションのために異なるエイリアスジェネレータを指定できます。</p>
+<!-- This is particularly useful if you need to use different naming conventions for loading and saving data, but you don't want to specify the validation and serialization aliases for each field individually. -->
+<p>これは、データのロードと保存に異なる命名規則を使用する必要がありますが、各フィールドに個別に検証エイリアスとシリアル化エイリアスを指定したくない場合に特に便利です。</p>
+<!-- For example: -->
+<p>次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AliasGenerator</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 
@@ -3024,6 +3065,8 @@ but you don't want to specify the validation and serialization aliases for each 
 </code></pre></div>
 <h2 id="alias-precedence">Alias Precedence<a class="headerlink" href="#alias-precedence" title="Permanent link">&para;</a></h2>
 <p>If you specify an <code>alias</code> on the <a class="autorefs autorefs-internal" href="../../api/fields/#pydantic.fields.Field"><code>Field</code></a>, it will take precedence over the generated alias by default:</p>
+<!-- [`Field`][pydantic.fields.Field]に`alias`を指定すると、デフォルトでは生成されたエイリアスよりも優先されます。 -->
+
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span>
 
 
@@ -3045,18 +3088,30 @@ but you don't want to specify the validation and serialization aliases for each 
 <span class="c1">#&gt; {&#39;Name&#39;: &#39;Filiz&#39;, &#39;lang&#39;: &#39;tr-TR&#39;}</span>
 </code></pre></div>
 <h3 id="alias-priority">Alias Priority<a class="headerlink" href="#alias-priority" title="Permanent link">&para;</a></h3>
-<p>You may set <code>alias_priority</code> on a field to change this behavior:</p>
+<!-- You may set `alias_priority` on a field to change this behavior: -->
+<p>この動作を変更するには、フィールドに<code>alias_priority</code>を設定します。</p>
+<!-- * `alias_priority=2` the alias will *not* be overridden by the alias generator. -->
 <ul>
-<li><code>alias_priority=2</code> the alias will <em>not</em> be overridden by the alias generator.</li>
-<li><code>alias_priority=1</code> the alias <em>will</em> be overridden by the alias generator.</li>
-<li><code>alias_priority</code> not set:<ul>
-<li>alias is set: the alias will <em>not</em> be overridden by the alias generator.</li>
-<li>alias is not set: the alias <em>will</em> be overridden by the alias generator.</li>
+<li><code>alias_priority=2</code>エイリアスはエイリアスジェネレータによって上書き<em>されません</em>。</li>
+</ul>
+<!-- * `alias_priority=1` the alias *will* be overridden by the alias generator. -->
+<ul>
+<li><code>alias_priority=1</code>エイリアスはエイリアスジェネレータによって上書きされます。</li>
+</ul>
+<!-- * `alias_priority` not set:
+    * alias is set: the alias will *not* be overridden by the alias generator.
+    * alias is not set: the alias *will* be overridden by the alias generator. -->
+<ul>
+<li><code>alias_priority</code>が設定されない:<ul>
+<li>aliasの設定: エイリアスはエイリアスジェネレータによって上書き<em>されません</em>。</li>
+<li>aliasの未設定: エイリアスはエイリアスジェネレータによって<em>オーバーライド</em>されます。</li>
 </ul>
 </li>
 </ul>
-<p>The same precedence applies to <code>validation_alias</code> and <code>serialization_alias</code>.
-See more about the different field aliases under <a href="../fields/#field-aliases">field aliases</a>.</p>
+<!-- The same precedence applies to `validation_alias` and `serialization_alias`.
+See more about the different field aliases under [field aliases](../concepts/fields.md#field-aliases). -->
+<p>同じ優先順位が<code>validation_alias</code>と<code>serialization_alias</code>にも適用されます。
+さまざまなフィールドエイリアスの詳細については、<a href="../fields/#field-aliases">field aliases</a>を参照してください。</p>
 
 
 

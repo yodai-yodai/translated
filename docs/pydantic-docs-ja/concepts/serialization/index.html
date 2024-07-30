@@ -3096,38 +3096,48 @@
 
   <h1>Serialization</h1>
 
-<p>Beyond accessing model attributes directly via their field names (e.g. <code>model.foobar</code>), models can be converted, dumped,
-serialized, and exported in a number of ways.</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- Beyond accessing model attributes directly via their field names (e.g. `model.foobar`), models can be converted, dumped, serialized, and exported in a number of ways. -->
+<p>フィールド名(例えば<code>model.foobar</code>)から直接モデル属性にアクセスする以外にも、モデルはさまざまな方法で変換、ダンプ、シリアライズ、エクスポートすることができます。</p>
 <div class="admonition tip">
 <p class="admonition-title">Serialize versus dump</p>
-<p>Pydantic uses the terms "serialize" and "dump" interchangeably. Both refer to the process of converting a model to a
-dictionary or JSON-encoded string.</p>
-<p>Outside of Pydantic, the word "serialize" usually refers to converting in-memory data into a string or bytes.
-However, in the context of Pydantic, there is a very close relationship between converting an object from a more
-structured form &mdash; such as a Pydantic model, a dataclass, etc. &mdash; into a less structured form comprised of
-Python built-ins such as dict.</p>
-<p>While we could (and on occasion, do) distinguish between these scenarios by using the word "dump" when converting to
-primitives and "serialize" when converting to string, for practical purposes, we frequently use the word "serialize"
-to refer to both of these situations, even though it does not always imply conversion to a string or bytes.</p>
+<p><!-- Pydantic uses the terms "serialize" and "dump" interchangeably. Both refer to the process of converting a model to a dictionary or JSON-encoded string. -->
+Pydanticでは、「serialize」と「dump」という用語を同じ意味で使用しています。どちらも、モデルを辞書またはJSONでエンコードされた文字列に変換するプロセスを指します。</p>
+<p><!-- Outside of Pydantic, the word "serialize" usually refers to converting in-memory data into a string or bytes. -->
+Pydantic以外では、「シリアライズ」という言葉は通常、メモリ内のデータを文字列やバイトに変換することを意味します。
+However, in the context of Pydantic, there is a very close relationship between converting an object from a more structured form &mdash; such as a Pydantic model, a dataclass, etc. &mdash; into a less structured form comprised of Python built-ins such as dict.
+しかし、Pydanticのコンテキストでは、オブジェクトをPydanticモデルやデータクラスなどのより構造化された形式から、dictなどのPython組み込みで構成されたより構造化されていない形式に変換することには、非常に密接な関係があります。</p>
+<p><!-- While we could (and on occasion, do) distinguish between these scenarios by using the word "dump" when converting to primitives and "serialize" when converting to string, for practical purposes, we frequently use the word "serialize" to refer to both of these situations, even though it does not always imply conversion to a string or bytes. -->
+プリミティブへの変換時には「dump」、文字列への変換時には「serialize」という単語を使用することで、これらのシナリオを区別することができます(場合によっては区別します)が、実際には、必ずしも文字列やバイトへの変換を意味するわけではありませんが、「serialize」という単語を両方の状況を指すためによく使用します。</p>
 </div>
 <h2 id="modelmodel_dump"><code>model.model_dump(...)</code> <a name="model_dump"></a><a class="headerlink" href="#modelmodel_dump" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_dump"><code>pydantic.main.BaseModel.model_dump</code></a><br></p>
 </details>
-<p>This is the primary way of converting a model to a dictionary. Sub-models will be recursively converted to dictionaries.</p>
+<!-- This is the primary way of converting a model to a dictionary. Sub-models will be recursively converted to dictionaries. -->
+<p>これは、モデルを辞書に変換する主要な方法です。サブモデルは再帰的に辞書に変換されます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The one exception to sub-models being converted to dictionaries is that <a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a>
-and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also
-done recursively.</p>
+<p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0187</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
+辞書に変換されるサブモデルの1つの例外は、<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>とそのサブクラスが、ラッピング辞書なしで直接ダンプされる<code>root</code>フィールド値を持つことです。これも再帰的に行われます。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can use <a href="../../api/fields/#pydantic.fields.computed_field">computed fields</a> to include <code>property</code> and
-<code>cached_property</code> data in the <code>model.model_dump(...)</code> output.</p>
+<p><!-- You can use <a href="../api/fields.md#pydantic.fields.computed_field">computed fields</a> to include <code>property</code> and <code>cached_property</code> data in the <code>model.model_dump(...)</code> output. -->
+<a href="../../api/fields/#pydantic.fields.computed_field">computed fields</a>を使用して、<code>property</code>および<code>cached_property</code>データを<code>model.model_dump(...)</code>出力に含めることができます。</p>
 </div>
-<p>Example:</p>
+<!-- Example: -->
+<p>次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">Json</span>
@@ -3194,13 +3204,14 @@ done recursively.</p>
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_dump_json"><code>pydantic.main.BaseModel.model_dump_json</code></a><br></p>
 </details>
-<p>The <code>.model_dump_json()</code> method serializes a model directly to a JSON-encoded string
-that is equivalent to the result produced by <a href="#modelmodel_dump"><code>.model_dump()</code></a>.</p>
-<p>See <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_dump_json">arguments</a> for more information.</p>
+<!-- The `.model_dump_json()` method serializes a model directly to a JSON-encoded string that is equivalent to the result produced by [`.model_dump()`](#modelmodel_dump). -->
+<p><code>.model_dump_json()</code>メソッドは、<a href="#modelmodel_dump"><code>.model_dump()</code></a>で生成された結果と等価なJSONエンコードされた文字列にモデルを直接シリアライズします。</p>
+<!-- See [arguments][pydantic.main.BaseModel.model_dump_json] for more information. -->
+<p>詳細については、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_dump_json">arguments</a>を参照してください。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pydantic can serialize many commonly used types to JSON that would otherwise be incompatible with a simple
-<code>json.dumps(foobar)</code> (e.g. <code>datetime</code>, <code>date</code> or <code>UUID</code>) .</p>
+<p><!-- Pydantic can serialize many commonly used types to JSON that would otherwise be incompatible with a simple <code>json.dumps(foobar)</code> (e.g. <code>datetime</code>, <code>date</code> or <code>UUID</code>) . -->
+Pydanticは、一般的に使用されている多くの型を、単純な<code>json.dumps(foobar)</code>(例えば<code>datetime</code>、<code>date</code>、<code>UUID</code>)と互換性のないJSONにシリアライズすることができます。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
@@ -3230,10 +3241,10 @@ that is equivalent to the result produced by <a href="#modelmodel_dump"><code>.m
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="dictmodel-and-iteration"><code>dict(model)</code> and iteration<a class="headerlink" href="#dictmodel-and-iteration" title="Permanent link">&para;</a></h2>
-<p>Pydantic models can also be converted to dictionaries using <code>dict(model)</code>, and you can also iterate over a model's
-fields using <code>for field_name, field_value in model:</code>. With this approach the raw field values are returned, so
-sub-models will not be converted to dictionaries.</p>
-<p>Example:</p>
+<!-- Pydantic models can also be converted to dictionaries using `dict(model)`, and you can also iterate over a model's fields using `for field_name, field_value in model:`. With this approach the raw field values are returned, so sub-models will not be converted to dictionaries. -->
+<p>Pydanticモデルは<code>dict(model)</code>を使って辞書に変換することもできますし、<code>for field_name, field_value in model:</code>を使ってモデルのフィールドを繰り返し処理することもできます。この方法では生のフィールド値が返されるので、サブモデルは辞書に変換されません。</p>
+<!-- Example: -->
+<p>次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 
@@ -3257,18 +3268,19 @@ sub-models will not be converted to dictionaries.</p>
     <span class="c1">#&gt; foo: hello</span>
     <span class="c1">#&gt; bar: whatever=123</span>
 </code></pre></div>
-<p>Note also that <a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a> <em>does</em> get converted to a dictionary with the key <code>'root'</code>.</p>
+<!-- Note also that [`RootModel`](models.md#rootmodel-and-custom-root-types) _does_ get converted to a dictionary with the key `'root'`. -->
+<p><a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>_does_が<code>'root'</code>キーを持つ辞書に変換されることにも注意してください。</p>
 <h2 id="custom-serializers">Custom serializers<a class="headerlink" href="#custom-serializers" title="Permanent link">&para;</a></h2>
-<p>Pydantic provides several <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers">functional serializers</a> to customise how a model is serialized to a dictionary or JSON.</p>
+<!-- Pydantic provides several [functional serializers][pydantic.functional_serializers] to customise how a model is serialized to a dictionary or JSON. -->
+<p>Pydanticには、モデルを辞書やJSONにシリアライズする方法をカスタマイズするための<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers">functional serializer</a>がいくつか用意されています。</p>
 <ul>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a></li>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.model_serializer"><code>@model_serializer</code></a></li>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.PlainSerializer"><code>PlainSerializer</code></a></li>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.WrapSerializer"><code>WrapSerializer</code></a></li>
 </ul>
-<p>Serialization can be customised on a field using the
-<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a> decorator, and on a model using the
-<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.model_serializer"><code>@model_serializer</code></a> decorator.</p>
+<!-- Serialization can be customised on a field using the [`@field_serializer`][pydantic.functional_serializers.field_serializer] decorator, and on a model using the [`@model_serializer`][pydantic.functional_serializers.model_serializer] decorator. -->
+<p>シリアライゼーションは、<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a>デコレータを使用してフィールド上で、また<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.model_serializer"><code>@model_serializer</code></a>デコレータを使用してモデル上でカスタマイズできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
@@ -3306,17 +3318,23 @@ sub-models will not be converted to dictionaries.</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a> decorator.</p>
+<p><!-- A single serializer can also be called on all fields by passing the special value '*' to the <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer">klzzwxh:0153</a> decorator. -->
+<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a>デコレータに特別な値'*'を渡すことで、すべてのフィールドで単一のシリアライザを呼び出すこともできます。</p>
 </div>
-<p>In addition, <a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.PlainSerializer"><code>PlainSerializer</code></a> and
-<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.WrapSerializer"><code>WrapSerializer</code></a> enable you to use a function to modify the output of serialization.</p>
-<p>Both serializers accept optional arguments including:</p>
+<!-- In addition, [`PlainSerializer`][pydantic.functional_serializers.PlainSerializer] and [`WrapSerializer`][pydantic.functional_serializers.WrapSerializer] enable you to use a function to modify the output of serialization. -->
+<p>さらに、<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.PlainSerializer"><code>PlainSerializer</code></a>と<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.WrapSerializer"><code>WrapSerializer</code></a>では、シリアライゼーションの出力を変更する関数を使うことができます。</p>
+<!-- Both serializers accept optional arguments including: -->
+<p>どちらのシリアライザも、以下のようなオプションの引数を受け付けます。</p>
+<!-- - `return_type` specifies the return type for the function. If omitted it will be inferred from the type annotation. -->
 <ul>
-<li><code>return_type</code> specifies the return type for the function. If omitted it will be inferred from the type annotation.</li>
-<li><code>when_used</code> specifies when this serializer should be used. Accepts a string with values 'always',
-    'unless-none', 'json', and 'json-unless-none'. Defaults to 'always'.</li>
+<li><code>return_type</code>は、関数の戻り値の型を指定します。省略すると、型の注釈から推測されます。</li>
 </ul>
-<p><code>PlainSerializer</code> uses a simple function to modify the output of serialization.</p>
+<!-- - `when_used` specifies when this serializer should be used. Accepts a string with values 'always', 'unless-none', 'json', and 'json-unless-none'. Defaults to 'always'. -->
+<ul>
+<li><code>when_used</code>は、このシリアライザをいつ使用すべきかを指定します。'always'、'unless-none'、'json'、および'json-unless-none'の値を持つ文字列を受け入れます。デフォルトは'always'です。</li>
+</ul>
+<!-- `PlainSerializer` uses a simple function to modify the output of serialization. -->
+<p><code>PlainSerializer</code>は、単純な関数を使用してシリアライゼーションの出力を変更します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -3337,8 +3355,8 @@ sub-models will not be converted to dictionaries.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">MyModel</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">))</span>
 <span class="c1">#&gt; {&#39;x&#39;: &#39;1,234&#39;}</span>
 </code></pre></div>
-<p><code>WrapSerializer</code> receives the raw inputs along with a handler function that applies the standard serialization
-logic, and can modify the resulting value before returning it as the final output of serialization.</p>
+<!-- `WrapSerializer` receives the raw inputs along with a handler function that applies the standard serialization logic, and can modify the resulting value before returning it as the final output of serialization. -->
+<p><code>WrapSerializer</code>は、標準のシリアライゼーションロジックを適用するハンドラ関数とともに生の入力を受け取り、シリアライゼーションの最終出力として返す前に結果の値を変更できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3365,8 +3383,8 @@ logic, and can modify the resulting value before returning it as the final outpu
 <span class="c1">#&gt; {&#39;x&#39;: &#39;1,235&#39;}</span>
 </code></pre></div>
 <h3 id="overriding-the-return-type-when-dumping-a-model">Overriding the return type when dumping a model<a class="headerlink" href="#overriding-the-return-type-when-dumping-a-model" title="Permanent link">&para;</a></h3>
-<p>While the return value of <code>.model_dump()</code> can usually be described as <code>dict[str, Any]</code>, through the use of
-<code>@model_serializer</code> you can actually cause it to return a value that doesn't match this signature:
+<!-- While the return value of `.model_dump()` can usually be described as `dict[str, Any]`, through the use of `@model_serializer` you can actually cause it to return a value that doesn't match this signature: -->
+<p><code>.model_dump()</code>の戻り値は通常<code>dict[str, Any]</code>と記述できますが、実際には<code>@model_serializer</code>を使用することで、このシグネチャと一致しない値を返すようにすることができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">model_serializer</span>
 
 
@@ -3380,9 +3398,9 @@ logic, and can modify the resulting value before returning it as the final outpu
 
 <span class="nb">print</span><span class="p">(</span><span class="n">Model</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;not a dict&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; not a dict</span>
-</code></pre></div></p>
-<p>If you want to do this and still get proper type-checking for this method, you can override <code>.model_dump()</code> in an
-<code>if TYPE_CHECKING:</code> block:</p>
+</code></pre></div>
+<!-- If you want to do this and still get proper type-checking for this method, you can override `.model_dump()` in an `if TYPE_CHECKING:` block: -->
+<p>これを行いながら、このメソッドに対して適切な型チェックを行いたい場合は、<code>if TYPE_CHECKING:</code>ブロック内の<code>.model_dump()</code>をオーバーライドすることができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
@@ -3413,10 +3431,12 @@ logic, and can modify the resulting value before returning it as the final outpu
             <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="o">...</span>
 </code></pre></div>
-<p>This trick is actually used in <a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a> for precisely this purpose.</p>
+<!-- This trick is actually used in [`RootModel`](models.md#rootmodel-and-custom-root-types) for precisely this purpose. -->
+<p>このトリックは、実際には<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>でまさにこの目的のために使われています。</p>
 <h2 id="serializing-subclasses">Serializing subclasses<a class="headerlink" href="#serializing-subclasses" title="Permanent link">&para;</a></h2>
 <h3 id="subclasses-of-standard-types">Subclasses of standard types<a class="headerlink" href="#subclasses-of-standard-types" title="Permanent link">&para;</a></h3>
-<p>Subclasses of standard types are automatically dumped like their super-classes:</p>
+<!-- Subclasses of standard types are automatically dumped like their super-classes: -->
+<p>標準タイプのサブクラスは、スーパークラスと同様に自動的にダンプされます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Type</span>
 
@@ -3455,10 +3475,8 @@ logic, and can modify the resulting value before returning it as the final outpu
 <span class="c1">#&gt; {&quot;date&quot;:&quot;2023-10-28&quot;}</span>
 </code></pre></div>
 <h3 id="subclass-instances-for-fields-of-basemodel-dataclasses-typeddict">Subclass instances for fields of <code>BaseModel</code>, dataclasses, <code>TypedDict</code><a class="headerlink" href="#subclass-instances-for-fields-of-basemodel-dataclasses-typeddict" title="Permanent link">&para;</a></h3>
-<p>When using fields whose annotations are themselves struct-like types (e.g., <code>BaseModel</code> subclasses, dataclasses, etc.),
-the default behavior is to serialize the attribute value as though it was an instance of the annotated type,
-even if it is a subclass. More specifically, only the fields from the <em>annotated</em> type will be included in the
-dumped object:</p>
+<!-- When using fields whose annotations are themselves struct-like types (e.g., `BaseModel` subclasses, dataclasses, etc.), the default behavior is to serialize the attribute value as though it was an instance of the annotated type, even if it is a subclass. More specifically, only the fields from the _annotated_ type will be included in the dumped object: -->
+<p>構造体に似た型(例えば<code>BaseModel</code>のサブクラスやデータクラスなど)のアノテーションを持つフィールドを使用する場合、デフォルトの動作では、サブクラスであっても、属性値をアノテーション付き型のインスタンスであるかのようにシリアライズします。具体的には、_annotated_typeのフィールドのみがダンプされたオブジェクトに含まれます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 
@@ -3484,30 +3502,40 @@ dumped object:</p>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Migration Warning</p>
-<p>This behavior is different from how things worked in Pydantic V1, where we would always include
-all (subclass) fields when recursively dumping models to dicts. The motivation behind this change in
-behavior is that it helps ensure that you know precisely which fields could be included when serializing,
-even if subclasses get passed when instantiating the object. In particular, this can help prevent surprises
-when adding sensitive information like secrets as fields of subclasses.</p>
+<p><!-- This behavior is different from how things worked in Pydantic V1, where we would always include all (subclass) fields when recursively dumping models to dicts. -->
+この動作は、モデルをディクテーションに再帰的にダンプするときに常にすべての(サブクラス)フィールドを含めるPydantic V1での動作とは異なります。
+<!-- The motivation behind this change in behavior is that it helps ensure that you know precisely which fields could be included when serializing, even if subclasses get passed when instantiating the object. -->
+この動作変更の背後にあるモチベーションは、オブジェクトのインスタンス化時にサブクラスが渡された場合でも、シリアライズ時にどのフィールドが含まれるかを正確に把握できるようにするためです。
+<!-- In particular, this can help prevent surprises when adding sensitive information like secrets as fields of subclasses. -->
+特に、これは、サブクラスのフィールドとして秘密などの機密情報を追加するときに、不測の事態を防ぐのに役立ちます。</p>
 </div>
 <h3 id="serializing-with-duck-typing">Serializing with duck-typing 🦆<a class="headerlink" href="#serializing-with-duck-typing" title="Permanent link">&para;</a></h3>
 <div class="admonition question">
 <p class="admonition-title">What is serialization with duck typing?</p>
-<p>Duck-typing serialization is the behavior of serializing an object based on the fields present in the object itself,
-rather than the fields present in the schema of the object. This means that when an object is serialized, fields present in
-a subclass, but not in the original schema, will be included in the serialized output.</p>
-<p>This behavior was the default in Pydantic V1, but was changed in V2 to help ensure that you know precisely which
-fields would be included when serializing, even if subclasses get passed when instantiating the object. This helps
-prevent security risks when serializing subclasses with sensitive information, for example.</p>
+<p><!-- Duck-typing serialization is the behavior of serializing an object based on the fields present in the object itself, rather than the fields present in the schema of the object. -->
+ダック型シリアライゼーションとは、オブジェクトのスキーマに存在するフィールドではなく、オブジェクト自体に存在するフィールドに基づいてオブジェクトをシリアライズする動作のことです。
+<!-- This means that when an object is serialized, fields present in a subclass, but not in the original schema, will be included in the serialized output. -->
+つまり、オブジェクトがシリアライズされると、サブクラスに存在するが元のスキーマには存在しないフィールドが、シリアライズされた出力に含まれます。</p>
+<p>This behavior was the default in Pydantic V1, but was changed in V2 to help ensure that you know precisely which fields would be included when serializing, even if subclasses get passed when instantiating the object.
+この動作はPydantic V1ではデフォルトでしたが、V2では、オブジェクトのインスタンス化時にサブクラスが渡された場合でも、シリアライズ時にどのフィールドが含まれるかを正確に把握できるように変更されました。
+<!-- This helps prevent security risks when serializing subclasses with sensitive information, for example. -->
+これにより、たとえば機密情報を含むサブクラスをシリアライズする際のセキュリティリスクを防ぐことができます。</p>
 </div>
-<p>If you want v1-style duck-typing serialization behavior, you can use a runtime setting, or annotate individual types.</p>
+<!-- If you want v1-style duck-typing serialization behavior, you can use a runtime setting, or annotate individual types. -->
+<p>v1スタイルのduck-typingシリアライゼーション動作が必要な場合は、ランタイム設定を使用するか、個々の型にアノテーションを付けることができます。</p>
+<!--
+* Field / type level: use the `SerializeAsAny` annotation
+* Runtime level: use the `serialize_as_any` flag when calling `model_dump()` or `model_dump_json()`
+ -->
 <ul>
-<li>Field / type level: use the <code>SerializeAsAny</code> annotation</li>
-<li>Runtime level: use the <code>serialize_as_any</code> flag when calling <code>model_dump()</code> or <code>model_dump_json()</code></li>
+<li>フィールド/型レベル:<code>SerializeAsAny</code>アノテーションを使用します。</li>
+<li>実行時レベル:<code>model_dump()</code>または<code>model_dump_json()</code>を呼び出すときに<code>serialize_as_any</code>フラグを使用してください。</li>
 </ul>
-<p>We discuss these options below in more detail:</p>
+<!-- We discuss these options below in more detail: -->
+<p>これらのオプションについては、以下で詳しく説明します。</p>
 <h4 id="serializeasany-annotation"><code>SerializeAsAny</code> annotation:<a class="headerlink" href="#serializeasany-annotation" title="Permanent link">&para;</a></h4>
-<p>If you want duck-typing serialization behavior, this can be done using the <code>SerializeAsAny</code> annotation on a type:</p>
+<!-- If you want duck-typing serialization behavior, this can be done using the `SerializeAsAny` annotation on a type: -->
+<p>型指定のシリアライズ動作を省略したい場合は、型に対して<code>SerializeAsAny</code>アノテーションを使用します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SerializeAsAny</span>
 
 
@@ -3534,27 +3562,30 @@ prevent security risks when serializing subclasses with sensitive information, f
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p>When a field is annotated as <code>SerializeAsAny[&lt;SomeType&gt;]</code>, the validation behavior will be the same as if it was
-annotated as <code>&lt;SomeType&gt;</code>, and type-checkers like mypy will treat the attribute as having the appropriate type as well.
-But when serializing, the field will be serialized as though the type hint for the field was <code>Any</code>, which is where the
-name comes from.</p>
+<!-- When a field is annotated as `SerializeAsAny[<SomeType>]`, the validation behavior will be the same as if it was annotated as `<SomeType>`, and type-checkers like mypy will treat the attribute as having the appropriate type as well. -->
+<p>フィールドに<code>SerializeAsAny[&lt;SomeType&gt;]</code>という注釈が付けられた場合、検証の動作は<code>&lt;SomeType&gt;</code>という注釈が付けられた場合と同じになり、mypyのような型チェッカーも属性を適切な型として扱います。</p>
+<!-- But when serializing, the field will be serialized as though the type hint for the field was `Any`, which is where the name comes from. -->
+<p>しかし、シリアライズすると、フィールドの型ヒントが「Any」であるかのようにフィールドがシリアライズされます。これが名前の由来です。</p>
 <h4 id="serialize_as_any-runtime-setting"><code>serialize_as_any</code> runtime setting<a class="headerlink" href="#serialize_as_any-runtime-setting" title="Permanent link">&para;</a></h4>
-<p>The <code>serialize_as_any</code> runtime setting can be used to serialize model data with or without duck typed serialization behavior.
-<code>serialize_as_any</code> can be passed as a keyword argument to the <code>model_dump()</code> and <code>model_dump_json</code> methods of <code>BaseModel</code>s and <code>RootModel</code>s. It can also be passed as a keyword argument to the <code>dump_python()</code> and <code>dump_json()</code> methods of <code>TypeAdapter</code>s.</p>
-<p>If <code>serialize_as_any</code> is set to <code>True</code>, the model will be serialized using duck typed serialization behavior,
-which means that the model will ignore the schema and instead ask the object itself how it should be serialized.
-In particular, this means that when model subclasses are serialized, fields present in the subclass but not in
-the original schema will be included.</p>
-<p>If <code>serialize_as_any</code> is set to <code>False</code> (which is the default), the model will be serialized using the schema,
-which means that fields present in a subclass but not in the original schema will be ignored.</p>
+<!-- The `serialize_as_any` runtime setting can be used to serialize model data with or without duck typed serialization behavior. -->
+<p><code>serialize_as_any</code>ランタイム設定は、duck型のシリアライゼーション動作の有無にかかわらず、モデルデータをシリアライズするために使用できます。</p>
+<!-- `serialize_as_any` can be passed as a keyword argument to the `model_dump()` and `model_dump_json` methods of `BaseModel`s and `RootModel`s. It can also be passed as a keyword argument to the `dump_python()` and `dump_json()` methods of `TypeAdapter`s. -->
+<p><code>serialize_as_any</code>は、<code>BaseModel</code>および<code>RootModel</code>の<code>model_dump()</code>および<code>model_dump_json</code>メソッドにキーワード引数として渡すことができます。また、<code>TypeAdapter</code>の<code>dump_python()</code>および<code>dump_json()</code>メソッドにキーワード引数として渡すこともできます。</p>
+<!-- If `serialize_as_any` is set to `True`, the model will be serialized using duck typed serialization behavior, which means that the model will ignore the schema and instead ask the object itself how it should be serialized. -->
+<p><code>serialize_as_any</code>が<code>True</code>に設定されている場合、モデルはduck型の直列化動作を使用して直列化されます。つまり、モデルはスキーマを無視し、代わりにオブジェクト自体にどのように直列化されるべきかを尋ねます。</p>
+<!-- In particular, this means that when model subclasses are serialized, fields present in the subclass but not in the original schema will be included. -->
+<p>特に、これは、モデルサブクラスがシリアライズされるとき、サブクラスに存在するが元のスキーマには存在しないフィールドが含まれることを意味します。</p>
+<!-- If `serialize_as_any` is set to `False` (which is the default), the model will be serialized using the schema, which means that fields present in a subclass but not in the original schema will be ignored. -->
+<p><code>serialize_as_any</code>が<code>False</code>(デフォルト)に設定されている場合、モデルはスキーマを使用してシリアライズされます。つまり、サブクラスに存在するが元のスキーマには存在しないフィールドは無視されます。</p>
 <div class="admonition question">
 <p class="admonition-title">Why is this flag useful?</p>
-<p>Sometimes, you want to make sure that no matter what fields might have been added in subclasses,
-the serialized object will only have the fields listed in the original type definition.
-This can be useful if you add something like a <code>password: str</code> field in a subclass that you don't
-want to accidentally include in the serialized output.</p>
+<p><!-- Sometimes, you want to make sure that no matter what fields might have been added in subclasses, the serialized object will only have the fields listed in the original type definition. -->
+場合によっては、サブクラスに追加されたフィールドが何であっても、直列化されたオブジェクトには元の型定義にリストされたフィールドしかないことを確認したいことがあります。
+<!-- This can be useful if you add something like a <code>password: str</code> field in a subclass that you don't want to accidentally include in the serialized output. -->
+これは、シリアル化された出力に誤って含めたくない<code>password:str</code>フィールドのようなものをサブクラスに追加する場合に便利です。</p>
 </div>
-<p>For example:</p>
+<!-- For example: -->
+<p>次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 
@@ -3585,15 +3616,16 @@ want to accidentally include in the serialized output.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">outer_model</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">serialize_as_any</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># (2)!</span>
 <span class="c1">#&gt; {&#39;user1&#39;: {&#39;name&#39;: &#39;pydantic&#39;}, &#39;user2&#39;: {&#39;name&#39;: &#39;pydantic&#39;}}</span>
 </code></pre></div>
+<!--
+1. With `serialize_as_any` set to `True`, the result matches that of V1.
+2. With `serialize_as_any` set to `False` (the V2 default), fields present on the subclass, but not the base class, are not included in serialization.
+-->
 <ol>
-<li>With <code>serialize_as_any</code> set to <code>True</code>, the result matches that of V1.</li>
-<li>With <code>serialize_as_any</code> set to <code>False</code> (the V2 default), fields present on the subclass,
-but not the base class, are not included in serialization.</li>
+<li><code>serialize_as_any</code>が<code>True</code>に設定されている場合、結果はV1の結果と一致します。</li>
+<li><code>serialize_as_any</code>を<code>False</code>(V2のデフォルト)に設定すると、サブクラスに存在するが基本クラスには存在しないフィールドはシリアライゼーションに含まれません。</li>
 </ol>
-<p>This setting even takes effect with nested and recursive patterns as well. For example:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python 3.7 and above</label><label for="__tabbed_1_2">Python 3.9 and above</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<!-- This setting even takes effect with nested and recursive patterns as well. For example: -->
+<p>この設定は、ネストされた再帰的なパターンに対しても有効です。次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -3636,71 +3668,28 @@ but not the base class, are not included in serialization.</li>
 <span class="sd">{&#39;user&#39;: {&#39;name&#39;: &#39;samuel&#39;, &#39;friends&#39;: [{&#39;name&#39;: &#39;sebastian&#39;, &#39;friends&#39;: []}]}}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
+<!--
+1. Even nested `User` model instances are dumped with fields unique to `User` subclasses.
+2. Even nested `User` model instances are dumped without fields unique to `User` subclasses.
+ -->
 <ol>
-<li>Even nested <code>User</code> model instances are dumped with fields unique to <code>User</code> subclasses.</li>
-<li>Even nested <code>User</code> model instances are dumped without fields unique to <code>User</code> subclasses.</li>
+<li>ネストされた<code>User</code>モデルインスタンスであっても、<code>User</code>サブクラスに固有のフィールドでダンプされます。</li>
+<li>ネストされた<code>User</code>モデルインスタンスであっても、<code>User</code>サブクラスに固有のフィールドなしでダンプされます。</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
-
-
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">friends</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s1">&#39;User&#39;</span><span class="p">]</span>
-
-
-<span class="k">class</span> <span class="nc">UserLogin</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
-    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span>
-
-
-<span class="k">class</span> <span class="nc">OuterModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">user</span><span class="p">:</span> <span class="n">User</span>
-
-
-<span class="n">user</span> <span class="o">=</span> <span class="n">UserLogin</span><span class="p">(</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;samuel&#39;</span><span class="p">,</span>
-    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;pydantic-pw&#39;</span><span class="p">,</span>
-    <span class="n">friends</span><span class="o">=</span><span class="p">[</span><span class="n">UserLogin</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;sebastian&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;fastapi-pw&#39;</span><span class="p">,</span> <span class="n">friends</span><span class="o">=</span><span class="p">[])],</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">OuterModel</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">serialize_as_any</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># (1)!</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">{</span>
-<span class="sd">    &#39;user&#39;: {</span>
-<span class="sd">        &#39;name&#39;: &#39;samuel&#39;,</span>
-<span class="sd">        &#39;friends&#39;: [</span>
-<span class="sd">            {&#39;name&#39;: &#39;sebastian&#39;, &#39;friends&#39;: [], &#39;password&#39;: &#39;fastapi-pw&#39;}</span>
-<span class="sd">        ],</span>
-<span class="sd">        &#39;password&#39;: &#39;pydantic-pw&#39;,</span>
-<span class="sd">    }</span>
-<span class="sd">}</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">OuterModel</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">serialize_as_any</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># (2)!</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">{&#39;user&#39;: {&#39;name&#39;: &#39;samuel&#39;, &#39;friends&#39;: [{&#39;name&#39;: &#39;sebastian&#39;, &#39;friends&#39;: []}]}}</span>
-<span class="sd">&quot;&quot;&quot;</span>
-</code></pre></div>
-<ol>
-<li>Even nested <code>User</code> model instances are dumped with fields unique to <code>User</code> subclasses.</li>
-<li>Even nested <code>User</code> model instances are dumped without fields unique to <code>User</code> subclasses.</li>
-</ol>
-</div>
-</div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The behavior of the <code>serialize_as_any</code> runtime flag is almost the same as the behavior of the <code>SerializeAsAny</code> annotation.
+<p><!-- The behavior of the <code>serialize_as_any</code> runtime flag is almost the same as the behavior of the <code>SerializeAsAny</code> annotation.
 There are a few nuanced differences that we're working to resolve, but for the most part, you can expect the same behavior from both.
-See more about the differences in this <a href="https://github.com/pydantic/pydantic/issues/9049">active issue</a></p>
+See more about the differences in this <a href="https://github.com/pydantic/pydantic/issues/9049">active issue</a> -->
+<code>serialize_as_any</code>実行時フラグの動作は、<code>SerializeAsAny</code>アノテーションの動作とほとんど同じです。
+私たちが解決しようとしている微妙な違いがいくつかありますが、ほとんどの場合、両方から同じ動作が期待できます。
+このの違いについては<a href="https://github.com/pydantic/pydantic/issues/9049">active issue</a>を参照してください。</p>
 </div>
 <h4 id="overriding-the-serialize_as_any-default-false">Overriding the <code>serialize_as_any</code> default (False)<a class="headerlink" href="#overriding-the-serialize_as_any-default-false" title="Permanent link">&para;</a></h4>
-<p>You can override the default setting for <code>serialize_as_any</code> by configuring a subclass of <code>BaseModel</code> that overrides the default for the <code>serialize_as_any</code> argument to <code>model_dump()</code> and <code>model_dump_json()</code>, and then use that as the base class (instead of <code>pydantic.BaseModel</code>) for any model you want to have this default behavior.</p>
-<p>For example, you could do the following if you want to use duck-typing serialization by default:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python 3.7 and above</label><label for="__tabbed_2_2">Python 3.9 and above</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<!-- You can override the default setting for `serialize_as_any` by configuring a subclass of `BaseModel` that overrides the default for the `serialize_as_any` argument to `model_dump()` and `model_dump_json()`, and then use that as the base class (instead of `pydantic.BaseModel`) for any model you want to have this default behavior. -->
+<p><code>serialize_as_any</code>のデフォルト設定を上書きするには、<code>model_dump()</code>と<code>model_dump_json()</code>の<code>serialize_as_any</code>引数のデフォルトを上書きする<code>BaseModel</code>のサブクラスを設定し、このデフォルトの動作をさせたいモデルの基本クラスとして(<code>pydantic.BaseModel</code>の代わりに)それを使用します。</p>
+<!-- For example, you could do the following if you want to use duck-typing serialization by default: -->
+<p>たとえば、デフォルトでduck-typingシリアライゼーションを使用する場合は、次のようにします。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SecretStr</span>
@@ -3730,48 +3719,13 @@ See more about the differences in this <a href="https://github.com/pydantic/pyda
 <span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>  <span class="c1"># (1)!</span>
 <span class="c1">#&gt; {&quot;user&quot;:{&quot;name&quot;:&quot;John&quot;,&quot;password&quot;:&quot;**********&quot;}}</span>
 </code></pre></div>
+<!-- 1. By default, `model_dump_json` will use duck-typing serialization behavior, which means that the `password` field is included in the output. -->
 <ol>
-<li>By default, <code>model_dump_json</code> will use duck-typing serialization behavior, which means that the <code>password</code> field is included in the output.</li>
+<li>デフォルトでは、<code>model_dump_json</code>はduck-typingシリアライゼーション動作を使用します。つまり、<code>password</code>フィールドが出力に含まれます。</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
-
-<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SecretStr</span>
-
-
-<span class="k">class</span> <span class="nc">MyBaseModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">model_dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">serialize_as_any</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">model_dump_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">(</span><span class="n">serialize_as_any</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">MyBaseModel</span><span class="p">):</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-
-
-<span class="k">class</span> <span class="nc">UserInfo</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
-    <span class="n">password</span><span class="p">:</span> <span class="n">SecretStr</span>
-
-
-<span class="k">class</span> <span class="nc">OuterModel</span><span class="p">(</span><span class="n">MyBaseModel</span><span class="p">):</span>
-    <span class="n">user</span><span class="p">:</span> <span class="n">User</span>
-
-
-<span class="n">u</span> <span class="o">=</span> <span class="n">OuterModel</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">UserInfo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;secret_pw&#39;</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">model_dump_json</span><span class="p">())</span>  <span class="c1"># (1)!</span>
-<span class="c1">#&gt; {&quot;user&quot;:{&quot;name&quot;:&quot;John&quot;,&quot;password&quot;:&quot;**********&quot;}}</span>
-</code></pre></div>
-<ol>
-<li>By default, <code>model_dump_json</code> will use duck-typing serialization behavior, which means that the <code>password</code> field is included in the output.</li>
-</ol>
-</div>
-</div>
-</div>
 <h2 id="pickledumpsmodel"><code>pickle.dumps(model)</code><a class="headerlink" href="#pickledumpsmodel" title="Permanent link">&para;</a></h2>
-<p>Pydantic models support efficient pickling and unpickling.</p>
+<!-- Pydantic models support efficient pickling and unpickling. -->
+<p>Pydanticモデルは、効率的なピクルとアンピクルをサポートします。</p>
 <!-- TODO need to get pickling doctest to work -->
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pickle</span>
 
@@ -3794,8 +3748,8 @@ See more about the differences in this <a href="https://github.com/pydantic/pyda
 <span class="c1">#&gt; a=&#39;hello&#39; b=123</span>
 </code></pre></div>
 <h2 id="advanced-include-and-exclude">Advanced include and exclude<a class="headerlink" href="#advanced-include-and-exclude" title="Permanent link">&para;</a></h2>
-<p>The <code>model_dump</code> and <code>model_dump_json</code> methods support <code>include</code> and <code>exclude</code> arguments which can either be
-sets or dictionaries. This allows nested selection of which fields to export:</p>
+<!-- The `model_dump` and `model_dump_json` methods support `include` and `exclude` arguments which can either be sets or dictionaries. This allows nested selection of which fields to export: -->
+<p><code>model_dump</code>および<code>model_dump_json</code>メソッドは、セットまたはディクショナリのいずれかである<code>include</code>および<code>exclude</code>引数をサポートします。これにより、エクスポートするフィールドをネストして選択できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SecretStr</span>
 
 
@@ -3828,11 +3782,16 @@ sets or dictionaries. This allows nested selection of which fields to export:</p
 <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">}}))</span>
 <span class="c1">#&gt; {&#39;id&#39;: &#39;1234567890&#39;, &#39;user&#39;: {&#39;id&#39;: 42}}</span>
 </code></pre></div>
-<p>The <code>True</code> indicates that we want to exclude or include an entire key, just as if we included it in a set.
-This can be done at any depth level.</p>
-<p>Special care must be taken when including or excluding fields from a list or tuple of submodels or dictionaries.
-In this scenario, <code>model_dump</code> and related methods expect integer keys for element-wise inclusion or exclusion.
-To exclude a field from <strong>every</strong> member of a list or tuple, the dictionary key <code>'__all__'</code> can be used, as shown here:</p>
+<!-- The `True` indicates that we want to exclude or include an entire key, just as if we included it in a set.
+This can be done at any depth level. -->
+<p>「True」は、キー全体をセットに含めたかのように、キー全体を除外または含めたいことを示します。
+これは、任意の深さのレベルで実行できます。</p>
+<!-- Special care must be taken when including or excluding fields from a list or tuple of submodels or dictionaries.
+In this scenario, `model_dump` and related methods expect integer keys for element-wise inclusion or exclusion.
+To exclude a field from **every** member of a list or tuple, the dictionary key `'__all__'` can be used, as shown here: -->
+<p>サブモデルまたはディクショナリのリストまたはタプルからフィールドを含めたり除外したりする場合は、特別な注意が必要です。
+このシナリオでは、<code>model_dump</code>および関連するメソッドは、要素ごとの包含または除外に整数キーを必要とします。
+リストまたはタプルの<strong>すべての</strong>メンバーからフィールドを除外するには、次に示すように、辞書キー<code>__all__'</code>を使用できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -3927,12 +3886,13 @@ To exclude a field from <strong>every</strong> member of a list or tuple, the di
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p>The same holds for the <code>model_dump_json</code> method.</p>
+<!-- The same holds for the `model_dump_json` method. -->
+<p>同じことが<code>model_dump_json</code>メソッドにも当てはまります。</p>
 <h3 id="model-and-field-level-include-and-exclude">Model- and field-level include and exclude<a class="headerlink" href="#model-and-field-level-include-and-exclude" title="Permanent link">&para;</a></h3>
-<p>In addition to the explicit arguments <code>exclude</code> and <code>include</code> passed to <code>model_dump</code> and <code>model_dump_json</code> methods,
-we can also pass the <code>exclude: bool</code> arguments directly to the <code>Field</code> constructor:</p>
-<p>Setting <code>exclude</code> on the field constructor (<code>Field(..., exclude=True)</code>) takes priority over the
-<code>exclude</code>/<code>include</code> on <code>model_dump</code> and <code>model_dump_json</code>:</p>
+<!-- In addition to the explicit arguments `exclude` and `include` passed to `model_dump` and `model_dump_json` methods, we can also pass the `exclude: bool` arguments directly to the `Field` constructor: -->
+<p><code>model_dump</code>および<code>model_dump_json</code>メソッドに渡される明示的な引数<code>exclude</code>および<code>include</code>に加えて、<code>exclude:bool</code>引数を<code>Field</code>コンストラクタに直接渡すこともできます。</p>
+<p>Setting <code>exclude</code> on the field constructor (<code>Field(..., exclude=True)</code>) takes priority over the <code>exclude</code>/<code>include</code> on <code>model_dump</code> and <code>model_dump_json</code>:
+フィールドコンストラクタ(<code>Field(... ,exclude=True)</code>)に<code>exclude</code>を設定すると、<code>model_dump</code>と<code>model_dump_json</code>の<code>exclude</code>/<code>include</code>よりも優先されます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">SecretStr</span>
 
 
@@ -3957,14 +3917,12 @@ we can also pass the <code>exclude: bool</code> arguments directly to the <code>
 <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}))</span>  <span class="c1"># (1)!</span>
 <span class="c1">#&gt; {&#39;id&#39;: &#39;1234567890&#39;}</span>
 </code></pre></div>
+<!-- 1. `value` excluded from the output because it excluded in `Field`. -->
 <ol>
-<li><code>value</code> excluded from the output because it excluded in <code>Field</code>.</li>
+<li><code>value</code>は<code>Field</code>で除外されているため、出力から除外されます。</li>
 </ol>
-<p>That being said, setting <code>exclude</code> on the field constructor (<code>Field(..., exclude=True)</code>) does not take priority
-over the <code>exclude_unset</code>, <code>exclude_none</code>, and <code>exclude_default</code> parameters on <code>model_dump</code> and <code>model_dump_json</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python 3.7 and above</label><label for="__tabbed_3_2">Python 3.10 and above</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
+<!-- That being said, setting `exclude` on the field constructor (`Field(..., exclude=True)`) does not take priority over the `exclude_unset`, `exclude_none`, and `exclude_default` parameters on `model_dump` and `model_dump_json`: -->
+<p>とはいうものの、フィールドコンストラクタ(<code>Field(...,exclude=True)</code>)に<code>exclude</code>を設定しても、<code>model_dump</code>と<code>model_dump_json</code>の<code>exclude_unset</code>、<code>exclude_none</code>、<code>exclude_default</code>パラメータよりも優先されません。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
@@ -3986,46 +3944,24 @@ over the <code>exclude_unset</code>, <code>exclude_none</code>, and <code>exclud
 <span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_defaults</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># (3)!</span>
 <span class="c1">#&gt; {&#39;name&#39;: &#39;Jeremy&#39;}</span>
 </code></pre></div>
+<!--
+1. `age` excluded from the output because `exclude_none` was set to `True`, and `age` is `None`.
+2. `age` excluded from the output because `exclude_unset` was set to `True`, and `age` was not set in the Person constructor.
+3. `age` excluded from the output because `exclude_defaults` was set to `True`, and `age` takes the default value of `None`.
+-->
 <ol>
-<li><code>age</code> excluded from the output because <code>exclude_none</code> was set to <code>True</code>, and <code>age</code> is <code>None</code>.</li>
-<li><code>age</code> excluded from the output because <code>exclude_unset</code> was set to <code>True</code>, and <code>age</code> was not set in the Person constructor.</li>
-<li><code>age</code> excluded from the output because <code>exclude_defaults</code> was set to <code>True</code>, and <code>age</code> takes the default value of <code>None</code>.</li>
+<li><code>exclude_none</code>が<code>True</code>に設定され、<code>age</code>が<code>None</code>であるため、<code>age</code>は出力から除外されます。</li>
+<li><code>exclude_unset</code>が<code>True</code>に設定され、<code>age</code>がPersonコンストラクタで設定されなかったため、<code>age</code>は出力から除外されました。</li>
+<li><code>exclude_defaults</code>が<code>True</code>に設定されているため、<code>age</code>は出力から除外され、<code>age</code>はデフォルト値の<code>None</code>を取ります。</li>
 </ol>
-</div>
-<div class="tabbed-block">
-<div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
-
-
-<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">age</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-
-<span class="n">person</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;Jeremy&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
-<span class="c1">#&gt; {&#39;name&#39;: &#39;Jeremy&#39;, &#39;age&#39;: None}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_none</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># (1)!</span>
-<span class="c1">#&gt; {&#39;name&#39;: &#39;Jeremy&#39;}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># (2)!</span>
-<span class="c1">#&gt; {&#39;name&#39;: &#39;Jeremy&#39;}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">person</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">exclude_defaults</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>  <span class="c1"># (3)!</span>
-<span class="c1">#&gt; {&#39;name&#39;: &#39;Jeremy&#39;}</span>
-</code></pre></div>
-<ol>
-<li><code>age</code> excluded from the output because <code>exclude_none</code> was set to <code>True</code>, and <code>age</code> is <code>None</code>.</li>
-<li><code>age</code> excluded from the output because <code>exclude_unset</code> was set to <code>True</code>, and <code>age</code> was not set in the Person constructor.</li>
-<li><code>age</code> excluded from the output because <code>exclude_defaults</code> was set to <code>True</code>, and <code>age</code> takes the default value of <code>None</code>.</li>
-</ol>
-</div>
-</div>
-</div>
 <h2 id="serialization-context">Serialization Context<a class="headerlink" href="#serialization-context" title="Permanent link">&para;</a></h2>
-<p>You can pass a context object to the serialization methods which can be accessed from the <code>info</code>
-argument to decorated serializer functions. This is useful when you need to dynamically update the
-serialization behavior during runtime. For example, if you wanted a field to be dumped depending on
-a dynamically controllable set of allowed values, this could be done by passing the allowed values
-by context:</p>
+<!-- You can pass a context object to the serialization methods which can be accessed from the `info` argument to decorated serializer functions. -->
+<p>デコレートされたシリアライザ関数への<code>info</code>引数からアクセスできるシリアライゼーションメソッドにコンテキストオブジェクトを渡すことができます。</p>
+<!-- This is useful when you need to dynamically update the serialization behavior during runtime. -->
+<p>これは、実行時にシリアル化の動作を動的に更新する必要がある場合に便利です。
+For example, if you wanted a field to be dumped depending on a dynamically controllable set of allowed values, this could be done by passing the allowed values by context:</p>
+<!-- たとえば、動的に制御可能な許可された値のセットに応じてフィールドをダンプする場合は、コンテキスト別に許可された値を渡すことで実行できます。 -->
+
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">SerializationInfo</span><span class="p">,</span> <span class="n">field_serializer</span>
 
 
@@ -4049,14 +3985,17 @@ by context:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;stopwords&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">]}))</span>
 <span class="c1">#&gt; {&#39;text&#39;: &#39;This is an example&#39;}</span>
 </code></pre></div>
-<p>Similarly, you can <a href="../validators/#validation-context">use a context for validation</a>.</p>
+<!-- Similarly, you can [use a context for validation](../concepts/validators.md#validation-context). -->
+<p>同様に、[use a context for validation]することもできます。(../concepts/validators.md#validation-context)</p>
 <h2 id="model_copy"><code>model_copy(...)</code> <a name="model_copy"><a class="headerlink" href="#model_copy" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_copy"><code>pydantic.main.BaseModel.model_copy</code></a><br></p>
 </details>
-<p><code>model_copy()</code> allows models to be duplicated (with optional updates), which is particularly useful when working with frozen models.</p>
-<p>Example:</p>
+<!-- `model_copy()` allows models to be duplicated (with optional updates), which is particularly useful when working with frozen models. -->
+<p><code>model_copy()</code>を使用すると、モデルを複製することができます(オプションの更新を使用)。これは、フリーズされたモデルを操作する場合に特に便利です。</p>
+<!-- Example: -->
+<p>次に例を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 

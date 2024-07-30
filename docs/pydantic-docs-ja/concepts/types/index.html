@@ -3593,7 +3593,7 @@ This is equivalent to implementing `__get_validators__` in Pydantic V1.
 </code></pre></div>
 <!-- 1. The `frozen=True` specification makes `MyAfterValidator` hashable. Without this, a union such as `Username | None` will raise an error. -->
 <ol>
-<li><code>frozen=True</code>の指定は<code>MyAfterValidator</code>をハッシュ可能にします。これがないと、<code>Username None</code>のような共用体でエラーが発生します。</li>
+<li><code>frozen=True</code>の指定は<code>MyAfterValidator</code>をハッシュ可能にします。これがないと、<code>Username None</code>のようなUnionでエラーが発生します。</li>
 </ol>
 <!-- 2. Notice that type checkers will not complain about assigning `'ABC'` to `Username` like they did in the previous example because they do not consider `Username` to be a distinct type from `str`. -->
 <ol>

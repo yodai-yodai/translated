@@ -2778,11 +2778,22 @@
 
   <h1>Configuration</h1>
 
-<p>Behaviour of Pydantic can be controlled via the <a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_config"><code>BaseModel.model_config</code></a>,
-and as an argument to <a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a>.</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- Behaviour of Pydantic can be controlled via the [`BaseModel.model_config`][pydantic.BaseModel.model_config], and as an argument to [`TypeAdapter`][pydantic.TypeAdapter]. -->
+<p>Pydanticの動作は、<a class="autorefs autorefs-internal" href="../../api/base_model/#pydantic.BaseModel.model_config"><code>BaseModel.model_config</code></a>を介して、また<a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a>への引数として制御できます。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Before <strong>v2.0</strong>, the <code>Config</code> class was used. This is still supported, but <strong>deprecated</strong>.</p>
+<p><!-- Before **v2.0**, the <code>Config</code> class was used. This is still supported, but **deprecated**. -->
+<strong>v2.0</strong>より前は、<code>Config</code>クラスが使用されていました。これはまだサポートされていますが、<strong>非推奨</strong>です。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
@@ -2803,7 +2814,8 @@ and as an argument to <a class="autorefs autorefs-internal" href="../../api/type
 <span class="sd">      String should have at most 10 characters [type=string_too_long, input_value=&#39;xxxxxxxxxxxxxxxxxxxx&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>Also, you can specify config options as model class kwargs:
+<!-- Also, you can specify config options as model class kwargs: -->
+<p>また、configオプションをモデルクラスkwargsとして指定することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -2820,11 +2832,13 @@ and as an argument to <a class="autorefs autorefs-internal" href="../../api/type
 <span class="sd">    b</span>
 <span class="sd">      Extra inputs are not permitted [type=extra_forbidden, input_value=&#39;oh no&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div></p>
+</code></pre></div>
+<!-- 1. See the [Extra Attributes](models.md#extra-fields) section for more details. -->
 <ol>
-<li>See the <a href="../models/#extra-fields">Extra Attributes</a> section for more details.</li>
+<li>詳細については、<a href="../models/#extra-fields">Extra Attributes</a>セクションを参照してください。</li>
 </ol>
-<p>Similarly, if using the <a class="autorefs autorefs-internal" href="../../api/dataclasses/#pydantic.dataclasses"><code>@dataclass</code></a> decorator from Pydantic:
+<!-- Similarly, if using the [`@dataclass`][pydantic.dataclasses] decorator from Pydantic: -->
+<p>同様に、Pydanticの<a class="autorefs autorefs-internal" href="../../api/dataclasses/#pydantic.dataclasses"><code>@dataclass</code></a>デコレータを使用する場合:
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -2852,7 +2866,8 @@ and as an argument to <a class="autorefs autorefs-internal" href="../../api/type
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div></p>
 <h2 id="configuration-with-dataclass-from-the-standard-library-or-typeddict">Configuration with <code>dataclass</code> from the standard library or <code>TypedDict</code><a class="headerlink" href="#configuration-with-dataclass-from-the-standard-library-or-typeddict" title="Permanent link">&para;</a></h2>
-<p>If using the <code>dataclass</code> from the standard library or <code>TypedDict</code>, you should use <code>__pydantic_config__</code> instead.</p>
+<!-- If using the `dataclass` from the standard library or `TypedDict`, you should use `__pydantic_config__` instead. -->
+<p>標準ライブラリの<code>dataclass</code>や<code>TypedDict</code>を使用する場合は、代わりに<code>__pydantic_config__</code>を使用してください。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
@@ -2867,7 +2882,8 @@ and as an argument to <a class="autorefs autorefs-internal" href="../../api/type
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;John Doe&#39;</span>
     <span class="n">signup_ts</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
-<p>Alternatively, the <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.with_config"><code>with_config</code></a> decorator can be used to comply with type checkers.</p>
+<!-- Alternatively, the [`with_config`][pydantic.config.with_config] decorator can be used to comply with type checkers. -->
+<p>あるいは、<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.with_config"><code>with_config</code></a>デコレータを使用して、型チェッカーに準拠することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypedDict</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">with_config</span>
@@ -2878,8 +2894,8 @@ and as an argument to <a class="autorefs autorefs-internal" href="../../api/type
     <span class="n">x</span><span class="p">:</span> <span class="nb">str</span>
 </code></pre></div>
 <h2 id="change-behaviour-globally">Change behaviour globally<a class="headerlink" href="#change-behaviour-globally" title="Permanent link">&para;</a></h2>
-<p>If you wish to change the behaviour of Pydantic globally, you can create your own custom <code>BaseModel</code>
-with custom <code>model_config</code> since the config is inherited:</p>
+<!-- If you wish to change the behaviour of Pydantic globally, you can create your own custom `BaseModel` with custom `model_config` since the config is inherited: -->
+<p>Pydanticの動作をグローバルに変更したい場合は、設定が継承されるので、カスタム<code>model_config</code>を使用して独自のカスタム<code>BaseModel</code>を作成できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 
@@ -2895,7 +2911,8 @@ with custom <code>model_config</code> since the config is inherited:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; {&#39;x&#39;: &#39;foo&#39;, &#39;y&#39;: &#39;bar&#39;}</span>
 </code></pre></div>
-<p>If you add a <code>model_config</code> to the <code>Model</code> class, it will <em>merge</em> with the <code>model_config</code> from <code>Parent</code>:</p>
+<!-- If you add a `model_config` to the `Model` class, it will _merge_ with the `model_config` from `Parent`: -->
+<p><code>model_config</code>を<code>Model</code>クラスに追加すると、<code>Parent</code>の<code>model_config</code>と_merge_します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 
