@@ -3000,6 +3000,16 @@
 
   <h1>Validators</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <h2 id="annotated-validators">Annotated Validators<a class="headerlink" href="#annotated-validators" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
@@ -3008,8 +3018,10 @@
 <a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.BeforeValidator"><code>pydantic.functional_validators.BeforeValidator</code></a><br>
 <a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.AfterValidator"><code>pydantic.functional_validators.AfterValidator</code></a><br></p>
 </details>
-<p>Pydantic provides a way to apply validators via use of <code>Annotated</code>.
-You should use this whenever you want to bind validation to a type instead of model or field.</p>
+<!-- Pydantic provides a way to apply validators via use of `Annotated`.
+You should use this whenever you want to bind validation to a type instead of model or field. -->
+<p>Pydanticは<code>Annotated</code>を使用してバリデータを適用する方法を提供します。
+検証をモデルまたはフィールドではなく型にバインドする場合は、この関数を使用してください。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3047,24 +3059,37 @@ You should use this whenever you want to bind validation to a type instead of mo
 <span class="sd">    assert ((8 ** 0.5) % 1) == 0 [type=assertion_error, input_value=4, input_type=int]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>In this example we used some type aliases (<code>MyNumber = Annotated[...]</code>).
-While this can help with legibility of the code, it is not required, you can use <code>Annotated</code> directly in a model field type hint.
-These type aliases are also not actual types but you can use a similar approach with <code>TypeAliasType</code> to create actual types.
-See <a href="../types/#custom-types">Custom Types</a> for a more detailed explanation of custom types.</p>
-<p>It is also worth noting that you can nest <code>Annotated</code> inside other types.
+<!-- In this example we used some type aliases (`MyNumber = Annotated[...]`).
+While this can help with legibility of the code, it is not required, you can use `Annotated` directly in a model field type hint.
+These type aliases are also not actual types but you can use a similar approach with `TypeAliasType` to create actual types.
+See [Custom Types](../concepts/types.md#custom-types) for a more detailed explanation of custom types. -->
+<p>この例では、いくつかの型エイリアス(<code>MyNumber=Annotated[...]</code>)を使用しました。
+これはコードの読みやすさに役立ちますが、必須ではありません。モデルのフィールド型ヒントで直接<code>Annotated</code>を使用できます。
+これらの型エイリアスも実際の型ではありませんが、<code>TypeAliasType</code>で同様のアプローチを使用して実際の型を作成できます。
+カスタムタイプの詳細については、<a href="../types/#custom-types">Custom Types</a>を参照してください。</p>
+<!-- It is also worth noting that you can nest `Annotated` inside other types.
 In this example we used that to apply validation to the inner items of a list.
-The same approach can be used for dict keys, etc.</p>
+The same approach can be used for dict keys, etc. -->
+<p><code>Annotated</code>を他の型の中にネストできることも注目に値します。
+この例では、これを使用して、リストの内部項目に検証を適用しました。
+同じアプローチをdictキーなどにも使用できます。</p>
 <h3 id="before-after-wrap-and-plain-validators">Before, After, Wrap and Plain validators<a class="headerlink" href="#before-after-wrap-and-plain-validators" title="Permanent link">&para;</a></h3>
-<p>Pydantic provides multiple types of validator functions:</p>
+<!-- Pydantic provides multiple types of validator functions: -->
+<p>Pydanticには複数のタイプのバリデータ関数が用意されています。</p>
+<!-- * `After` validators run after Pydantic's internal parsing. They are generally more type safe and thus easier to implement.
+* `Before` validators run before Pydantic's internal parsing and validation (e.g. coercion of a `str` to an `int`). These are more flexible than `After` validators since they can modify the raw input, but they also have to deal with the raw input, which in theory could be any arbitrary object.
+* `Plain` validators are like a `mode='before'` validator but they terminate validation immediately, no further validators are called and Pydantic does not do any of its internal validation.
+* `Wrap` validators are the most flexible of all. You can run code before or after Pydantic and other validators do their thing or you can terminate validation immediately, both with a successful value or an error. -->
 <ul>
-<li><code>After</code> validators run after Pydantic's internal parsing. They are generally more type safe and thus easier to implement.</li>
-<li><code>Before</code> validators run before Pydantic's internal parsing and validation (e.g. coercion of a <code>str</code> to an <code>int</code>). These are more flexible than <code>After</code> validators since they can modify the raw input, but they also have to deal with the raw input, which in theory could be any arbitrary object.</li>
-<li><code>Plain</code> validators are like a <code>mode='before'</code> validator but they terminate validation immediately, no further validators are called and Pydantic does not do any of its internal validation.</li>
-<li><code>Wrap</code> validators are the most flexible of all. You can run code before or after Pydantic and other validators do their thing or you can terminate validation immediately, both with a successful value or an error.</li>
+<li><code>After</code>バリデータは、Pydanticの内部解析の後に実行されます。一般的に型安全性が高いため、実装が簡単です。</li>
+<li><code>Before</code>バリデータは、Pydanticの内部解析と検証の前に実行されます(例えば<code>str</code>の<code>int</code>への強制)。これらは生の入力を変更できるので<code>After</code>バリデータよりも柔軟ですが、理論的には任意のオブジェクトである生の入力も処理する必要があります。</li>
+<li><code>Plain</code>バリデータは<code>mode='before'</code>バリデータのようなものですが、すぐに検証を終了し、それ以上のバリデータは呼び出されず、Pydanticは内部検証を行いません。</li>
+<li><code>Wrap</code>バリデーターは、すべての中で最も柔軟です。Pydanticや他のバリデーターが処理を行う前または後にコードを実行することも、値が成功した場合やエラーが発生した場合に検証をすぐに終了することもできます。</li>
 </ul>
-<p>You can use multiple before, after, or <code>mode='wrap'</code> validators, but only one <code>PlainValidator</code> since a plain validator
-will not call any inner validators.</p>
-<p>Here's an example of a <code>mode='wrap'</code> validator:</p>
+<!-- You can use multiple before, after, or `mode='wrap'` validators, but only one `PlainValidator` since a plain validator will not call any inner validators. -->
+<p>複数のbefore、after、または<code>mode='wrap'</code>バリデータを使用できますが、<code>PlainValidator</code>は1つだけです。これは、プレーンバリデータは内部バリデータを呼び出さないためです。</p>
+<!-- Here's an example of a `mode='wrap'` validator: -->
+<p>以下に<code>mode='wrap'</code>バリデータの例を示します。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span>
 
@@ -3119,10 +3144,15 @@ will not call any inner validators.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <p>The same "modes" apply to <code>@field_validator</code>, which is discussed in the next section.</p>
+<!-- 同じ"モード"が`@field_validator`にも適用されます。これについては次のセクションで説明します。 -->
+
 <h3 id="ordering-of-validators-within-annotated">Ordering of validators within <code>Annotated</code><a class="headerlink" href="#ordering-of-validators-within-annotated" title="Permanent link">&para;</a></h3>
-<p>Order of validation metadata within <code>Annotated</code> matters.
+<!-- Order of validation metadata within `Annotated` matters.
 Validation goes from right to left and back.
-That is, it goes from right to left running all "before" validators (or calling into "wrap" validators), then left to right back out calling all "after" validators.</p>
+That is, it goes from right to left running all "before" validators (or calling into "wrap" validators), then left to right back out calling all "after" validators. -->
+<p>"注釈付き"事項内の検証メタデータの順序。
+検証は右から左へ、そして逆方向に行われます。
+つまり、右から左に向かってすべての"before"バリデーターを実行し(または"wrap"バリデーターを呼び出し)、左から右に戻ってすべての"after"バリデーターを呼び出します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">TypedDict</span>
@@ -3250,9 +3280,12 @@ That is, it goes from right to left running all "before" validators (or calling 
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="validation-of-default-values">Validation of default values<a class="headerlink" href="#validation-of-default-values" title="Permanent link">&para;</a></h2>
-<p>Validators won't run when the default value is used.
-This applies both to <code>@field_validator</code> validators and <code>Annotated</code> validators.
-You can force them to run with <code>Field(validate_default=True)</code>. Setting <code>validate_default</code> to <code>True</code> has the closest behavior to using <code>always=True</code> in <code>validator</code> in Pydantic v1. However, you are generally better off using a <code>@model_validator(mode='before')</code> where the function is called before the inner validator is called.</p>
+<!-- Validators won't run when the default value is used.
+This applies both to `@field_validator` validators and `Annotated` validators.
+You can force them to run with `Field(validate_default=True)`. Setting `validate_default` to `True` has the closest behavior to using `always=True` in `validator` in Pydantic v1. However, you are generally better off using a `@model_validator(mode='before')` where the function is called before the inner validator is called. -->
+<p>デフォルト値を使用すると、バリデータは実行されません。
+これは<code>@field_validator</code>バリデータと<code>Annotated</code>バリデータの両方に適用されます。
+<code>Field(validate_default=True)</code>で強制的に実行させることができます。<code>validate_default</code>を<code>True</code>に設定することは、Pydantic v1の<code>validator</code>で<code>always=True</code>を使用することに最も近い動作をします。ただし、一般的には、内部バリデータが呼び出される前に関数が呼び出される<code>@model_validator(mode='before')</code>を使用する方がよいでしょう。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">field_validator</span>
@@ -3282,7 +3315,8 @@ You can force them to run with <code>Field(validate_default=True)</code>. Settin
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.field_validator"><code>pydantic.functional_validators.field_validator</code></a><br></p>
 </details>
-<p>If you want to attach a validator to a specific field of a model you can use the <code>@field_validator</code> decorator.</p>
+<!-- If you want to attach a validator to a specific field of a model you can use the `@field_validator` decorator. -->
+<p>モデルの特定のフィールドにバリデータを付加したい場合は、<code>@field_validator</code>デコレータを使用できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BaseModel</span><span class="p">,</span>
     <span class="n">ValidationError</span><span class="p">,</span>
@@ -3347,34 +3381,45 @@ You can force them to run with <code>Field(validate_default=True)</code>. Settin
 <span class="sd">    assert False [type=assertion_error, input_value=&#39;John Doe!&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>A few things to note on validators:</p>
+<!-- A few things to note on validators: -->
+<p>バリデータに関して注意すべき点がいくつかあります。</p>
+<!-- * `@field_validator`s are "class methods", so the first argument value they receive is the `UserModel` class, not an instance of `UserModel`. We recommend you use the `@classmethod` decorator on them below the `@field_validator` decorator to get proper type checking.
+* the second argument is the field value to validate; it can be named as you please
+* the third argument, if present, is an instance of `pydantic.ValidationInfo`
+* validators should either return the parsed value or raise a `ValueError` or `AssertionError` (``assert`` statements may be used).
+* A single validator can be applied to multiple fields by passing it multiple field names.
+* A single validator can also be called on *all* fields by passing the special value `'*'`. -->
 <ul>
-<li><code>@field_validator</code>s are "class methods", so the first argument value they receive is the <code>UserModel</code> class, not an instance of <code>UserModel</code>. We recommend you use the <code>@classmethod</code> decorator on them below the <code>@field_validator</code> decorator to get proper type checking.</li>
-<li>the second argument is the field value to validate; it can be named as you please</li>
-<li>the third argument, if present, is an instance of <code>pydantic.ValidationInfo</code></li>
-<li>validators should either return the parsed value or raise a <code>ValueError</code> or <code>AssertionError</code> (<code>assert</code> statements may be used).</li>
-<li>A single validator can be applied to multiple fields by passing it multiple field names.</li>
-<li>A single validator can also be called on <em>all</em> fields by passing the special value <code>'*'</code>.</li>
+<li><code>@field_validator</code>は"クラスメソッド"であるため、受け取る最初の引数値は<code>UserModel</code>クラスであり、<code>UserModel</code>のインスタンスではありません。適切な型チェックを行うには、<code>@field_validator</code>デコレータの下で<code>@classmethod</code>デコレータを使用することをお勧めします。</li>
+<li>2番目の引数は検証するフィールド値です。任意の名前を付けることができます。</li>
+<li>3番目の引数が存在する場合は、<code>pydantic.ValidationInfo</code>のインスタンスです。</li>
+<li>バリデータは解析された値を返すか、<code>ValueError</code>または<code>AssertionError</code>を送出する必要があります(<code>assert</code>文を使用することもできます)。</li>
+<li>1つのバリデータを複数のフィールドに適用するには、複数のフィールド名を渡します。</li>
+<li>特殊な値<code>'*'</code>を渡すことで、<em>すべての</em>フィールドに対して単一のバリデータを呼び出すこともできます。</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>If you make use of <code>assert</code> statements, keep in mind that running
-Python with the <a href="https://docs.python.org/3/using/cmdline.html#cmdoption-o"><code>-O</code> optimization flag</a>
-disables <code>assert</code> statements, and <strong>validators will stop working</strong>.</p>
+<p><!-- If you make use of <code>assert</code> statements, keep in mind that running Python with the <a href="https://docs.python.org/3/using/cmdline.html#cmdoption-o">klzzwxh:0093 optimization flag</a> disables <code>assert</code> statements, and **validators will stop working**. -->
+<code>assert</code>文を使用する場合、<a href="https://docs.python.org/3/using/cmdline.html#cmdoption-o"><code>-O</code> optimization flag</a>を付けてPythonを実行すると<code>assert</code>文が無効になり、<strong>バリデータが動作しなくなる</strong>ことに注意してください。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>FieldValidationInfo</code> is <strong>deprecated</strong> in 2.4, use <code>ValidationInfo</code> instead.</p>
+<p><!-- <code>FieldValidationInfo</code> is **deprecated** in 2.4, use <code>ValidationInfo</code> instead. -->
+<code>FieldValidationInfo</code>は2.4で<strong>廃止されました</strong>。代わりに<code>ValidationInfo</code>を使用してください。</p>
 </div>
-<p>If you want to access values from another field inside a <code>@field_validator</code>, this may be possible using <code>ValidationInfo.data</code>, which is a dict of field name to field value.
-Validation is done in the order fields are defined, so you have to be careful when using <code>ValidationInfo.data</code> to not access a field that has not yet been validated/populated — in the code above, for example, you would not be able to access <code>info.data['id']</code> from within <code>name_must_contain_space</code>.
-However, in most cases where you want to perform validation using multiple field values, it is better to use <code>@model_validator</code> which is discussed in the section below.</p>
+<!-- If you want to access values from another field inside a `@field_validator`, this may be possible using `ValidationInfo.data`, which is a dict of field name to field value.
+Validation is done in the order fields are defined, so you have to be careful when using `ValidationInfo.data` to not access a field that has not yet been validated/populated — in the code above, for example, you would not be able to access `info.data['id']` from within `name_must_contain_space`.
+However, in most cases where you want to perform validation using multiple field values, it is better to use `@model_validator` which is discussed in the section below. -->
+<p><code>@field_validator</code>内の別のフィールドの値にアクセスしたい場合は、フィールド名からフィールド値への辞書である<code>ValidationInfo.data</code>を使用することができます。
+検証はフィールドが定義された順序で行われるので、<code>ValidationInfo.data</code>を使用するときは、まだ検証/入力されていないフィールドにアクセスしないように注意する必要があります。たとえば、上記のコードでは、<code>name_must_contain_space</code>内から<code>info.data['id']</code>にアクセスすることはできません。
+ただし、複数のフィールド値を使用して検証を実行する場合は、以下のセクションで説明する<code>@model_validator</code>を使用することをお勧めします。</p>
 <h2 id="model-validators">Model validators<a class="headerlink" href="#model-validators" title="Permanent link">&para;</a></h2>
 <details class="api">
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.model_validator"><code>pydantic.functional_validators.model_validator</code></a><br></p>
 </details>
-<p>Validation can also be performed on the entire model's data using <code>@model_validator</code>.</p>
+<!-- Validation can also be performed on the entire model's data using `@model_validator`. -->
+<p>検証は、<code>@model_validator</code>を使用してモデルのデータ全体に対して実行することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Self</span>
@@ -3433,30 +3478,45 @@ However, in most cases where you want to perform validation using multiple field
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">On return type checking</p>
-<p>Methods decorated with <code>@model_validator</code> should return the self instance at the end of the method.
-For type checking purposes, you can use <code>Self</code> from either <code>typing</code> or the <code>typing_extensions</code> backport as the
-return type of the decorated method.
-In the context of the above example, you could also use <code>def check_passwords_match(self: 'UserModel') -&gt; 'UserModel'</code> to indicate that
-the method returns an instance of the model.</p>
+<p><!-- Methods decorated with <code>@model_validator</code> should return the self instance at the end of the method.
+For type checking purposes, you can use <code>Self</code> from either <code>typing</code> or the <code>typing_extensions</code> backport as the return type of the decorated method.
+In the context of the above example, you could also use <code>def check_passwords_match(self: 'UserModel') -&gt; 'UserModel'</code> to indicate that the method returns an instance of the model. -->
+<code>@model_validator</code>でデコレートされたメソッドは、メソッドの最後にselfインスタンスを返します。
+型チェックの目的で、デコレートされたメソッドの戻り値の型として<code>typing</code>または<code>typing_extensions</code>バックポートから<code>Self</code>を使用できます。
+上記の例では、<code>def check_passwords_match(self:'UserModel')-&gt;'UserModel'</code>を使用して、メソッドがモデルのインスタンスを返すことを示すこともできます。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">On Inheritance</p>
-<p>A <code>@model_validator</code> defined in a base class will be called during the validation of a subclass instance.</p>
-<p>Overriding a <code>@model_validator</code> in a subclass will override the base class' <code>@model_validator</code>, and thus only the subclass' version of said <code>@model_validator</code> will be called.</p>
+<p><!-- A <code>@model_validator</code> defined in a base class will be called during the validation of a subclass instance. -->
+基底クラスで定義された<code>@model_validator</code>は、サブクラスインスタンスの検証中に呼び出されます。</p>
+<p><!-- Overriding a <code>@model_validator</code> in a subclass will override the base class' <code>@model_validator</code>, and thus only the subclass' version of said <code>@model_validator</code> will be called. -->
+サブクラスの<code>@model_validator</code>をオーバーライドすると、ベースクラスの'<code>@model_validator</code>がオーバーライドされるので、その<code>@model_validator</code>のサブクラスのバージョンだけが呼び出されます。</p>
 </div>
-<p>Model validators can be <code>mode='before'</code>, <code>mode='after'</code> or <code>mode='wrap'</code>.</p>
-<p>Before model validators are passed the raw input which is often a <code>dict[str, Any]</code> but could also be an instance of the model itself (e.g. if <code>UserModel.model_validate(UserModel.construct(...))</code> is called) or anything else since you can pass arbitrary objects into <code>model_validate</code>.
-Because of this <code>mode='before'</code> validators are extremely flexible and powerful but can be cumbersome and error prone to implement.
+<!-- Model validators can be `mode='before'`, `mode='after'` or `mode='wrap'`. -->
+<p>モデルバリデータは<code>mode='before'</code>,<code>mode='after'</code>,<code>mode='wrap'</code>のいずれかです。</p>
+<!-- Before model validators are passed the raw input which is often a `dict[str, Any]` but could also be an instance of the model itself (e.g. if `UserModel.model_validate(UserModel.construct(...))` is called) or anything else since you can pass arbitrary objects into `model_validate`.
+Because of this `mode='before'` validators are extremely flexible and powerful but can be cumbersome and error prone to implement.
 Before model validators should be class methods.
-The first argument should be <code>cls</code> (and we also recommend you use <code>@classmethod</code> below <code>@model_validator</code> for proper type checking), the second argument will be the input (you should generally type it as <code>Any</code> and use <code>isinstance</code> to narrow the type) and the third argument (if present) will be a <code>pydantic.ValidationInfo</code>.</p>
-<p><code>mode='after'</code> validators are instance methods and always receive an instance of the model as the first argument. Be sure to return the instance at the end of your validator.
-You should not use <code>(cls, ModelType)</code> as the signature, instead just use <code>(self)</code> and let type checkers infer the type of <code>self</code> for you.
-Since these are fully type safe they are often easier to implement than <code>mode='before'</code> validators.
-If any field fails to validate, <code>mode='after'</code> validators for that field will not be called.</p>
+The first argument should be `cls` (and we also recommend you use `@classmethod` below `@model_validator` for proper type checking), the second argument will be the input (you should generally type it as `Any` and use `isinstance` to narrow the type) and the third argument (if present) will be a `pydantic.ValidationInfo`. -->
+<p>モデルバリデータが渡される前に、生の入力が渡されます。これは<code>dict[str, Any]</code>であることがよくありますが、モデル自体のインスタンスであることもあります(例えば<code>UserModel.model_validate(UserModel.construct(...))</code>が呼び出された場合)。また、<code>model_validate</code>には任意のオブジェクトを渡すことができるので、その他のものでもかまいません。
+このため、<code>mode='before'</code>バリデータは非常に柔軟で強力ですが、実装が煩雑でエラーが発生しやすくなります。
+モデルの前では、バリデーターはクラスメソッドでなければなりません。
+最初の引数は<code>cls</code>でなければならず(適切な型チェックのために<code>@model_validator</code>の下に<code>@classmethod</code>を使用することもお勧めします)、2番目の引数は入力になり(通常は<code>Any</code>と入力し、型を絞り込むために<code>isinstance</code>を使用します)、3番目の引数(存在する場合)は<code>pydantic.ValidationInfo</code>になります。</p>
+<!-- `mode='after'` validators are instance methods and always receive an instance of the model as the first argument. Be sure to return the instance at the end of your validator.
+You should not use `(cls, ModelType)` as the signature, instead just use `(self)` and let type checkers infer the type of `self` for you.
+Since these are fully type safe they are often easier to implement than `mode='before'` validators.
+If any field fails to validate, `mode='after'` validators for that field will not be called. -->
+<p><code>mode='after'</code>バリデータはインスタンスメソッドであり、常に最初の引数としてモデルのインスタンスを受け取ります。バリデータの最後に必ずインスタンスを返してください。
+署名として<code>(cls, ModelType)</code>を使うべきではなく、単に<code>(self)</code>を使って、型チェッカーに<code>self</code>の型を推測させてください。
+これらは完全に型安全なので、<code>mode='before'</code>バリデータよりも実装しやすいことがよくあります。
+検証に失敗したフィールドがある場合、そのフィールドの<code>mode='after'</code>バリデータは呼び出されません。</p>
 <h2 id="handling-errors-in-validators">Handling errors in validators<a class="headerlink" href="#handling-errors-in-validators" title="Permanent link">&para;</a></h2>
-<p>As mentioned in the previous sections you can raise either a <code>ValueError</code> or <code>AssertionError</code> (including ones generated by <code>assert ...</code> statements) within a validator to indicate validation failed.
-You can also raise a <code>PydanticCustomError</code> which is a bit more verbose but gives you extra flexibility.
-Any other errors (including <code>TypeError</code>) are bubbled up and not wrapped in a <code>ValidationError</code>.</p>
+<!-- As mentioned in the previous sections you can raise either a `ValueError` or `AssertionError` (including ones generated by `assert ...` statements) within a validator to indicate validation failed.
+You can also raise a `PydanticCustomError` which is a bit more verbose but gives you extra flexibility.
+Any other errors (including `TypeError`) are bubbled up and not wrapped in a `ValidationError`. -->
+<p>前のセクションで説明したように、バリデータ内で<code>ValueError</code>または<code>AssertionError</code>(<code>assert...</code>文によって生成されたものを含む)を発生させて、検証が失敗したことを示すことができます。
+<code>PydanticCustomError</code>を発生させることもできます。これはもう少し冗長ですが、より柔軟性があります。
+その他のエラー(<code>TypeError</code>を含む)はバブルアップされ、<code>ValidationError</code>にラップされません。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic_core</span> <span class="kn">import</span> <span class="n">PydanticCustomError</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">field_validator</span>
@@ -3488,9 +3548,11 @@ Any other errors (including <code>TypeError</code>) are bubbled up and not wrapp
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <h2 id="special-types">Special Types<a class="headerlink" href="#special-types" title="Permanent link">&para;</a></h2>
-<p>Pydantic provides a few special types that can be used to customize validation.</p>
+<!-- Pydantic provides a few special types that can be used to customize validation. -->
+<p>Pydanticには、検証をカスタマイズするために使用できる特殊な型がいくつか用意されています。</p>
+<!-- - [`InstanceOf`][pydantic.functional_validators.InstanceOf] is a type that can be used to validate that a value is an instance of a given class. -->
 <ul>
-<li><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.InstanceOf"><code>InstanceOf</code></a> is a type that can be used to validate that a value is an instance of a given class.</li>
+<li><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.InstanceOf"><code>InstanceOf</code></a>は、値が指定されたクラスのインスタンスであることを検証するために使用できる型です。</li>
 </ul>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -3524,8 +3586,9 @@ Any other errors (including <code>TypeError</code>) are bubbled up and not wrapp
 <span class="sd">      Input should be an instance of Fruit [type=is_instance_of, input_value=&#39;Apple&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
+<!-- - [`SkipValidation`][pydantic.functional_validators.SkipValidation] is a type that can be used to skip validation on a field. -->
 <ul>
-<li><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.SkipValidation"><code>SkipValidation</code></a> is a type that can be used to skip validation on a field.</li>
+<li><a class="autorefs autorefs-internal" href="../../api/functional_validators/#pydantic.functional_validators.SkipValidation"><code>SkipValidation</code></a>は、フィールドの検証をスキップするために使用できる型です。</li>
 </ul>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -3544,17 +3607,20 @@ Any other errors (including <code>TypeError</code>) are bubbled up and not wrapp
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="c1">#&gt; names=[&#39;foo&#39;, 123]</span>
 </code></pre></div>
+<!-- 1. Note that the validation of the second item is skipped. If it has the wrong type it will emit a warning during serialization. -->
 <ol>
-<li>Note that the validation of the second item is skipped. If it has the wrong type it will emit a warning during serialization.</li>
+<li>2番目のアイテムの検証はスキップされることに注意してください。タイプが間違っている場合は、シリアル化中に警告が表示されます。</li>
 </ol>
 <h2 id="field-checks">Field checks<a class="headerlink" href="#field-checks" title="Permanent link">&para;</a></h2>
-<p>During class creation, validators are checked to confirm that the fields they specify actually exist on the model.</p>
-<p>This may be undesirable if, for example, you want to define a validator to validate fields that will only be present
-on subclasses of the model where the validator is defined.</p>
-<p>If you want to disable these checks during class creation, you can pass <code>check_fields=False</code> as a keyword argument to
-the validator.</p>
+<!-- During class creation, validators are checked to confirm that the fields they specify actually exist on the model. -->
+<p>クラスの作成中に、指定されたフィールドが実際にモデル上に存在することを確認するためにバリデーターがチェックされます。</p>
+<!-- This may be undesirable if, for example, you want to define a validator to validate fields that will only be present on subclasses of the model where the validator is defined. -->
+<p>これは、たとえば、バリデータが定義されているモデルのサブクラスにのみ存在するフィールドを検証するバリデータを定義する場合には望ましくないことがあります。</p>
+<!-- If you want to disable these checks during class creation, you can pass `check_fields=False` as a keyword argument to the validator. -->
+<p>クラスの作成中にこれらのチェックを無効にしたい場合は、<code>check_fields=False</code>をキーワード引数としてバリデータに渡すことができます。</p>
 <h2 id="dataclass-validators">Dataclass validators<a class="headerlink" href="#dataclass-validators" title="Permanent link">&para;</a></h2>
-<p>Validators also work with Pydantic dataclasses.</p>
+<!-- Validators also work with Pydantic dataclasses. -->
+<p>バリデーターはPydanticデータ・クラスでも動作します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">field_validator</span>
 <span class="kn">from</span> <span class="nn">pydantic.dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
@@ -3577,8 +3643,8 @@ the validator.</p>
 <span class="c1">#&gt; DemoDataclass(product_id=&#39;02468&#39;)</span>
 </code></pre></div>
 <h2 id="validation-context">Validation Context<a class="headerlink" href="#validation-context" title="Permanent link">&para;</a></h2>
-<p>You can pass a context object to the validation methods which can be accessed from the <code>info</code>
-argument to decorated validator functions:</p>
+<!-- You can pass a context object to the validation methods which can be accessed from the `info` argument to decorated validator functions: -->
+<p>デコレートされたバリデータ関数の<code>info</code>引数からアクセスできる検証メソッドにコンテキストオブジェクトを渡すことができます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationInfo</span><span class="p">,</span> <span class="n">field_validator</span>
 
 
@@ -3603,9 +3669,8 @@ argument to decorated validator functions:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;stopwords&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;document&#39;</span><span class="p">]}))</span>
 <span class="c1">#&gt; text=&#39;This is an example&#39;</span>
 </code></pre></div>
-<p>This is useful when you need to dynamically update the validation behavior during runtime. For example, if you wanted
-a field to have a dynamically controllable set of allowed values, this could be done by passing the allowed values
-by context, and having a separate mechanism for updating what is allowed:</p>
+<!-- This is useful when you need to dynamically update the validation behavior during runtime. For example, if you wanted a field to have a dynamically controllable set of allowed values, this could be done by passing the allowed values by context, and having a separate mechanism for updating what is allowed: -->
+<p>これは、実行時に検証動作を動的に更新する必要がある場合に便利です。たとえば、フィールドに動的に制御可能な許可された値のセットを持たせたい場合、コンテキストによって許可された値を渡し、許可されたものを更新するための別のメカニズムを持つことによって、これを行うことができます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="p">(</span>
@@ -3664,10 +3729,11 @@ by context, and having a separate mechanism for updating what is allowed:</p>
 <span class="sd">      Value error, choice must be one of [&#39;b&#39;, &#39;c&#39;] [type=value_error, input_value=&#39;a&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>Similarly, you can <a href="../serialization/#serialization-context">use a context for serialization</a>.</p>
+<!-- Similarly, you can [use a context for serialization](../concepts/serialization.md#serialization-context). -->
+<p>同様に、[use a context for serialization]こともできます(../concepts/serialization.md#serialization-context)。</p>
 <h3 id="using-validation-context-with-basemodel-initialization">Using validation context with <code>BaseModel</code> initialization<a class="headerlink" href="#using-validation-context-with-basemodel-initialization" title="Permanent link">&para;</a></h3>
-<p>Although there is no way to specify a context in the standard <code>BaseModel</code> initializer, you can work around this through
-the use of <code>contextvars.ContextVar</code> and a custom <code>__init__</code> method:</p>
+<!-- Although there is no way to specify a context in the standard `BaseModel` initializer, you can work around this through the use of `contextvars.ContextVar` and a custom `__init__` method: -->
+<p>標準の<code>BaseModel</code>イニシャライザでコンテキストを指定する方法はありませんが、<code>contextvars.ContextVar</code>とカスタムの<code>__init__</code>メソッドを使用してこれを回避することができます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
 <span class="kn">from</span> <span class="nn">contextvars</span> <span class="kn">import</span> <span class="n">ContextVar</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Iterator</span>
@@ -3716,10 +3782,14 @@ the use of <code>contextvars.ContextVar</code> and a custom <code>__init__</code
 <span class="c1">#&gt; my_number=2</span>
 </code></pre></div>
 <h2 id="reusing-validators">Reusing Validators<a class="headerlink" href="#reusing-validators" title="Permanent link">&para;</a></h2>
-<p>Occasionally, you will want to use the same validator on multiple fields/models (e.g. to normalize some input data).
+<!-- Occasionally, you will want to use the same validator on multiple fields/models (e.g. to normalize some input data).
 The "naive" approach would be to write a separate function, then call it from multiple decorators.
 Obviously, this entails a lot of repetition and boiler plate code.
-The following approach demonstrates how you can reuse a validator so that redundancy is minimized and the models become again almost declarative.</p>
+The following approach demonstrates how you can reuse a validator so that redundancy is minimized and the models become again almost declarative. -->
+<p>場合によっては、複数のフィールド/モデルに対して同じバリデータを使用することもあります(たとえば、一部の入力データを正規化する場合)。
+"単純な"アプローチは、別の関数を作成し、複数のデコレータからそれを呼び出すことです。
+明らかに、これは多くの繰り返しとボイラープレートコードを必要とします。
+次のアプローチでは、冗長性が最小限に抑えられ、モデルが再びほぼ宣言型になるように、バリデータを再利用する方法を示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">field_validator</span>
 
 

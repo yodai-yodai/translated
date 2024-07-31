@@ -2964,12 +2964,22 @@
 
   <h1>Dataclasses</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <details class="api">
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/dataclasses/#pydantic.dataclasses.dataclass"><code>pydantic.dataclasses.dataclass</code></a><br></p>
 </details>
-<p>If you don't want to use Pydantic's <code>BaseModel</code> you can instead get the same data validation on standard
-<a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a> (introduced in Python 3.7).</p>
+<!-- If you don't want to use Pydantic's `BaseModel` you can instead get the same data validation on standard [dataclasses](https://docs.python.org/3/library/dataclasses.html) (introduced in Python 3.7). -->
+<p>Pydanticの<code>BaseModel</code>を使用したくない場合は、代わりに標準の<a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a>(Python 3.7で導入)で同じデータ検証を行うことができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic.dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -2990,23 +3000,29 @@
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Keep in mind that <code>pydantic.dataclasses.dataclass</code> is <strong>not</strong> a replacement for <code>pydantic.BaseModel</code>.
-<code>pydantic.dataclasses.dataclass</code> provides a similar functionality to <code>dataclasses.dataclass</code> with the addition of
-Pydantic validation.
-There are cases where subclassing <code>pydantic.BaseModel</code> is the better choice.</p>
-<p>For more information and discussion see
-<a href="https://github.com/pydantic/pydantic/issues/710">pydantic/pydantic#710</a>.</p>
+<p><!-- Keep in mind that <code>pydantic.dataclasses.dataclass</code> is **not** a replacement for <code>pydantic.BaseModel</code>.
+<code>pydantic.dataclasses.dataclass</code> provides a similar functionality to <code>dataclasses.dataclass</code> with the addition of Pydantic validation.
+There are cases where subclassing <code>pydantic.BaseModel</code> is the better choice. -->
+<code>pydantic.dataclasses.dataclass</code>は<code>pydantic.BaseModel</code>の置き換え<strong>では</strong>ないことに注意してください。
+<code>pydantic.dataclasses.dataclass</code>は、<code>dataclasses.dataclass</code>と同様の機能を提供しますが、Pydantic検証が追加されています。
+<code>pydantic.BaseModel</code>をサブクラス化した方が良い場合もあります。</p>
+<p><!-- For more information and discussion see <a href="https://github.com/pydantic/pydantic/issues/710">pydantic/pydantic#710</a>. -->
+詳細な情報と議論については、<a href="https://github.com/pydantic/pydantic/issues/710">pydantic/pydantic#710</a>を参照。</p>
 </div>
-<p>Some differences between Pydantic dataclasses and <code>BaseModel</code> include:</p>
+<!-- Some differences between Pydantic dataclasses and `BaseModel` include: -->
+<p>Pydanticのデータクラスと<code>BaseModel</code>の違いは以下のとおりです。</p>
+<!-- *  How [initialization hooks](#initialization-hooks) work
+*  [JSON dumping](#json-dumping) -->
 <ul>
-<li>How <a href="#initialization-hooks">initialization hooks</a> work</li>
+<li><a href="#initialization-hooks">initialization hooks</a>の動作</li>
 <li><a href="#json-dumping">JSON dumping</a></li>
 </ul>
-<p>You can use all the standard Pydantic field types. Note, however, that arguments passed to constructor will be copied in
-order to perform validation and, where necessary coercion.</p>
-<p>To perform validation or generate a JSON schema on a Pydantic dataclass, you should now wrap the dataclass
-with a <a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a> and make use of its methods.</p>
-<p>Fields that require a <code>default_factory</code> can be specified by either a <code>pydantic.Field</code> or a <code>dataclasses.field</code>.</p>
+<!-- You can use all the standard Pydantic field types. Note, however, that arguments passed to constructor will be copied in order to perform validation and, where necessary coercion. -->
+<p>標準のPydanticフィールド型をすべて使用することができます。ただし、コンストラクタに渡された引数は、検証や必要に応じて強制を実行するためにコピーされることに注意してください。</p>
+<!-- To perform validation or generate a JSON schema on a Pydantic dataclass, you should now wrap the dataclass with a [`TypeAdapter`][pydantic.type_adapter.TypeAdapter] and make use of its methods. -->
+<p>Pydanticデータクラスの検証やJSONスキーマの生成を行うには、データクラスを<a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a>でラップし、そのメソッドを利用する必要があります。</p>
+<!-- Fields that require a `default_factory` can be specified by either a `pydantic.Field` or a `dataclasses.field`. -->
+<p><code>default_factory</code>を必要とするフィールドは、<code>pydantic.Field</code>または<code>dataclasses.field</code>で指定できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
@@ -3059,19 +3075,23 @@ with a <a class="autorefs autorefs-internal" href="../../api/type_adapter/#pydan
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p><code>pydantic.dataclasses.dataclass</code>'s arguments are the same as the standard decorator, except one extra
-keyword argument <code>config</code> which has the same meaning as <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict">model_config</a>.</p>
+<!-- `pydantic.dataclasses.dataclass`'s arguments are the same as the standard decorator, except one extra keyword argument `config` which has the same meaning as [model_config][pydantic.config.ConfigDict]. -->
+<p><code>pydantic.dataclasses.dataclass</code>の引数は標準デコレータと同じですが、<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict">model_config</a>と同じ意味を持つキーワード引数<code>config</code>が1つ追加されています。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>After v1.2, <a href="../../integrations/mypy/">The Mypy plugin</a> must be installed to type check <em>pydantic</em> dataclasses.</p>
+<p><!-- After v1.2, <a href="../integrations/mypy.md">The Mypy plugin</a> must be installed to type check _pydantic_ dataclasses. -->
+v1.2以降では、<a href="../../integrations/mypy/">The Mypy plugin</a>をcheck_pydantic_dataclasses型にインストールする必要があります。</p>
 </div>
-<p>For more information about combining validators with dataclasses, see
-<a href="../validators/#dataclass-validators">dataclass validators</a>.</p>
+<p>For more information about combining validators with dataclasses, see <a href="../validators/#dataclass-validators">dataclass validators</a>.
+バリデータとデータクラスの組み合わせの詳細については、<a href="../validators/#dataclass-validators">dataclass validators</a>を参照してください。</p>
 <h2 id="dataclass-config">Dataclass config<a class="headerlink" href="#dataclass-config" title="Permanent link">&para;</a></h2>
-<p>If you want to modify the <code>config</code> like you would with a <code>BaseModel</code>, you have two options:</p>
+<!-- If you want to modify the `config` like you would with a `BaseModel`, you have two options: -->
+<p><code>config</code>を<code>BaseModel</code>のように変更したい場合は、2つのオプションがあります。</p>
+<!-- * Apply config to the dataclass decorator as a dict
+* Use `ConfigDict` as the config -->
 <ul>
-<li>Apply config to the dataclass decorator as a dict</li>
-<li>Use <code>ConfigDict</code> as the config</li>
+<li>configをデータクラスデコレータにdictとして適用します</li>
+<li><code>ConfigDict</code>を設定として使用します</li>
 </ul>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ConfigDict</span>
 <span class="kn">from</span> <span class="nn">pydantic.dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
@@ -3090,18 +3110,20 @@ keyword argument <code>config</code> which has the same meaning as <a class="aut
 <span class="k">class</span> <span class="nc">MyDataclass2</span><span class="p">:</span>
     <span class="n">a</span><span class="p">:</span> <span class="nb">int</span>
 </code></pre></div>
+<!-- 1. You can read more about `validate_assignment` in [API reference][pydantic.config.ConfigDict.validate_assignment]. -->
 <ol>
-<li>You can read more about <code>validate_assignment</code> in <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.validate_assignment">API reference</a>.</li>
+<li><code>validate_assignment</code>の詳細については、<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.validate_assignment">API reference</a>を参照してください。</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Pydantic dataclasses support <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.extra"><code>extra</code></a> configuration to <code>ignore</code>, <code>forbid</code>, or
-<code>allow</code> extra fields passed to the initializer. However, some default behavior of stdlib dataclasses may prevail.
-For example, any extra fields present on a Pydantic dataclass using <code>extra='allow'</code> are omitted when the dataclass
-is <code>print</code>ed.</p>
+<p><!-- Pydantic dataclasses support <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.extra">klzzwxh:0046</a> configuration to <code>ignore</code>, <code>forbid</code>, or <code>allow</code> extra fields passed to the initializer. However, some default behavior of stdlib dataclasses may prevail.
+For example, any extra fields present on a Pydantic dataclass using <code>extra='allow'</code> are omitted when the dataclass is <code>print</code>ed. -->
+Pydanticデータクラスは、イニシャライザに渡される追加フィールドを<code>ignore</code>、<code>forbid</code>、<code>allow</code>するための<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.extra"><code>extra</code></a>設定をサポートしています。ただし、stdlibデータクラスのデフォルトの動作が優先される場合があります。
+例えば、<code>extra='allow'</code>を使用するPydanticデータクラスに存在する余分なフィールドは、データクラスが<code>print</code>されるときに省略されます。</p>
 </div>
 <h2 id="nested-dataclasses">Nested dataclasses<a class="headerlink" href="#nested-dataclasses" title="Permanent link">&para;</a></h2>
-<p>Nested dataclasses are supported both in dataclasses and normal models.</p>
+<!-- Nested dataclasses are supported both in dataclasses and normal models. -->
+<p>ネストされたデータクラスは、データクラスと通常のモデルの両方でサポートされます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AnyUrl</span>
 <span class="kn">from</span> <span class="nn">pydantic.dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
@@ -3120,9 +3142,11 @@ is <code>print</code>ed.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">navbar</span><span class="p">)</span>
 <span class="c1">#&gt; Navbar(button=NavbarButton(href=Url(&#39;https://example.com/&#39;)))</span>
 </code></pre></div>
-<p>When used as fields, dataclasses (Pydantic or vanilla) should use dicts as validation inputs.</p>
+<!-- When used as fields, dataclasses (Pydantic or vanilla) should use dicts as validation inputs. -->
+<p>フィールドとして使用する場合、データ・クラス(Pydanticまたはvanilla)は検証入力としてディクテーションを使用する必要があります。</p>
 <h2 id="generic-dataclasses">Generic dataclasses<a class="headerlink" href="#generic-dataclasses" title="Permanent link">&para;</a></h2>
-<p>Pydantic supports generic dataclasses, including those with type variables.</p>
+<!-- Pydantic supports generic dataclasses, including those with type variables. -->
+<p>Pydanticは、型変数を持つものを含む汎用データクラスをサポートしています。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generic</span><span class="p">,</span> <span class="n">TypeVar</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">TypeAdapter</span>
@@ -3142,11 +3166,12 @@ is <code>print</code>ed.</p>
 <span class="k">assert</span> <span class="n">validator</span><span class="o">.</span><span class="n">validate_python</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">validator</span><span class="o">.</span><span class="n">validate_python</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;a&#39;</span>
 </code></pre></div>
-<p>Note that, if you use the dataclass as a field of a <code>BaseModel</code> or via FastAPI you don't need a <code>TypeAdapter</code>.</p>
+<!-- Note that, if you use the dataclass as a field of a `BaseModel` or via FastAPI you don't need a `TypeAdapter`. -->
+<p><code>BaseModel</code>のフィールドとして、またはFastAPI経由でデータクラスを使用する場合、<code>TypeAdapter</code>は必要ないことに注意してください。</p>
 <h2 id="stdlib-dataclasses-and-pydantic-dataclasses">Stdlib dataclasses and Pydantic dataclasses<a class="headerlink" href="#stdlib-dataclasses-and-pydantic-dataclasses" title="Permanent link">&para;</a></h2>
 <h3 id="inherit-from-stdlib-dataclasses">Inherit from stdlib dataclasses<a class="headerlink" href="#inherit-from-stdlib-dataclasses" title="Permanent link">&para;</a></h3>
-<p>Stdlib dataclasses (nested or not) can also be inherited and Pydantic will automatically validate
-all the inherited fields.</p>
+<!-- Stdlib dataclasses (nested or not) can also be inherited and Pydantic will automatically validate all the inherited fields. -->
+<p>Stdlibデータクラス(ネストされているかどうかにかかわらず)も継承でき、Pydanticは継承されたすべてのフィールドを自動的に検証します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
@@ -3182,9 +3207,9 @@ all the inherited fields.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
 <h3 id="use-of-stdlib-dataclasses-with-basemodel">Use of stdlib dataclasses with <code>BaseModel</code><a class="headerlink" href="#use-of-stdlib-dataclasses-with-basemodel" title="Permanent link">&para;</a></h3>
-<p>Bear in mind that stdlib dataclasses (nested or not) are <strong>automatically converted</strong> into Pydantic
-dataclasses when mixed with <code>BaseModel</code>! Furthermore the generated Pydantic dataclass will have
-the <strong>exact same configuration</strong> (<code>order</code>, <code>frozen</code>, ...) as the original one.</p>
+<!-- Bear in mind that stdlib dataclasses (nested or not) are **automatically converted** into Pydantic dataclasses when mixed with `BaseModel`! Furthermore the generated Pydantic dataclass will have the **exact same configuration** (`order`, `frozen`, ...) as the original one. -->
+<p>stdlibデータクラス(ネストされているかどうかにかかわらず)は、<code>BaseModel</code>と混合されると、Pydanticデータクラスに<strong>自動的に変換</strong>されることに注意してください!
+さらに、生成されたPydanticデータクラスは、元のものと<strong>まったく同じ構成</strong>(<code>order</code>、<code>frozen</code>、...)になります。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
@@ -3238,9 +3263,10 @@ the <strong>exact same configuration</strong> (<code>order</code>, <code>frozen<
     <span class="c1">#&gt; cannot assign to field &#39;name&#39;</span>
 </code></pre></div>
 <h3 id="use-custom-types">Use custom types<a class="headerlink" href="#use-custom-types" title="Permanent link">&para;</a></h3>
-<p>Since stdlib dataclasses are automatically converted to add validation, using
-custom types may cause some unexpected behavior.
-In this case you can simply add <code>arbitrary_types_allowed</code> in the config!</p>
+<!-- Since stdlib dataclasses are automatically converted to add validation, using custom types may cause some unexpected behavior. -->
+<!-- In this case you can simply add `arbitrary_types_allowed` in the config! -->
+<p>stdlibデータクラスは検証を追加するために自動的に変換されるため、カスタム型を使用すると予期しない動作が発生する可能性があります。
+この場合は単に<code>arbitrary_types_allowed</code>を設定に追加すればよいのです!</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
@@ -3293,7 +3319,8 @@ In this case you can simply add <code>arbitrary_types_allowed</code> in the conf
 <span class="c1">#&gt; Model(dc=DC(a=ArbitraryType(value=3), b=&#39;qwe&#39;), other=&#39;other&#39;)</span>
 </code></pre></div>
 <h3 id="checking-if-a-dataclass-is-a-pydantic-dataclass">Checking if a dataclass is a pydantic dataclass<a class="headerlink" href="#checking-if-a-dataclass-is-a-pydantic-dataclass" title="Permanent link">&para;</a></h3>
-<p>Pydantic dataclasses are still considered dataclasses, so using <code>dataclasses.is_dataclass</code> will return <code>True</code>. To check if a type is specifically a pydantic dataclass you can use <code>pydantic.dataclasses.is_pydantic_dataclass</code>.</p>
+<!-- Pydantic dataclasses are still considered dataclasses, so using `dataclasses.is_dataclass` will return `True`. To check if a type is specifically a pydantic dataclass you can use `pydantic.dataclasses.is_pydantic_dataclass`. -->
+<p>Pydanticデータクラスは今でもデータクラスとみなされるので、<code>dataclasses.is_dataclass</code>を使用すると<code>True</code>が返されます。型が特にpydanticデータクラスであるかどうかを確認するには、<code>pydantic.dataclasses.is_pydantic_dataclass</code>を使用します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
@@ -3317,8 +3344,8 @@ In this case you can simply add <code>arbitrary_types_allowed</code> in the conf
 <span class="c1">#&gt; True</span>
 </code></pre></div>
 <h2 id="initialization-hooks">Initialization hooks<a class="headerlink" href="#initialization-hooks" title="Permanent link">&para;</a></h2>
-<p>When you initialize a dataclass, it is possible to execute code <em>before</em> or <em>after</em> validation
-with the help of the <a href="../validators/#model-validators"><code>@model_validator</code></a> decorator <code>mode</code> parameter.</p>
+<!-- When you initialize a dataclass, it is possible to execute code *before* or *after* validation with the help of the [`@model_validator`](validators.md#model-validators) decorator `mode` parameter. -->
+<p>データクラスを初期化する場合、<a href="../validators/#model-validators"><code>@model_validator</code></a>デコレータの<code>mode</code>パラメータを使用して、検証の<em>前</em>または<em>後</em>にコードを実行できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Self</span>
@@ -3360,16 +3387,19 @@ with the help of the <a href="../validators/#model-validators"><code>@model_vali
 
 <span class="n">user</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="s1">&#39;birth&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1995</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}})</span>
 </code></pre></div>
-<p>The <code>__post_init__</code> in Pydantic dataclasses is called in the <em>middle</em> of validators.
-Here is the order:</p>
+<!-- The `__post_init__` in Pydantic dataclasses is called in the _middle_ of validators. -->
+<!-- Here is the order: -->
+<p>Pydanticデータクラスの<code>__post_init__</code>はバリデータの_middle_で呼び出されます。
+オーダーは以下の通りです。</p>
 <ul>
 <li><code>model_validator(mode='before')</code></li>
 <li><code>field_validator(mode='before')</code></li>
 <li><code>field_validator(mode='after')</code></li>
-<li>Inner validators. e.g. validation for types like <code>int</code>, <code>str</code>, ...</li>
-<li><code>__post_init__</code>.</li>
-<li><code>model_validator(mode='after')</code></li>
 </ul>
+<!-- * Inner validators. e.g. validation for types like `int`, `str`, ... -->
+<p>*内部バリデータ。例えば、<code>int</code>、<code>str</code>、..のような型の検証。
+* <code>__post_init__</code>.
+* <code>model_validator(mode='after')</code></p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">InitVar</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
@@ -3394,10 +3424,11 @@ Here is the order:</p>
 <span class="k">assert</span> <span class="n">path_data</span><span class="o">.</span><span class="n">path</span> <span class="o">==</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/hello/world&#39;</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="difference-with-stdlib-dataclasses">Difference with stdlib dataclasses<a class="headerlink" href="#difference-with-stdlib-dataclasses" title="Permanent link">&para;</a></h3>
-<p>Note that the <code>dataclasses.dataclass</code> from Python stdlib implements only the <code>__post_init__</code> method since it doesn't run a validation step.</p>
+<!-- Note that the `dataclasses.dataclass` from Python stdlib implements only the `__post_init__` method since it doesn't run a validation step. -->
+<p>Python stdlibの<code>dataclasses.dataclass</code>は検証ステップを実行しないので、<code>__post_init__</code>メソッドしか実装していないことに注意してください。</p>
 <h2 id="json-dumping">JSON dumping<a class="headerlink" href="#json-dumping" title="Permanent link">&para;</a></h2>
-<p>Pydantic dataclasses do not feature a <code>.model_dump_json()</code> function. To dump them as JSON, you will need to
-make use of the <a href="../models/#rootmodel-and-custom-root-types">RootModel</a> as follows:</p>
+<!-- Pydantic dataclasses do not feature a `.model_dump_json()` function. To dump them as JSON, you will need to make use of the [RootModel](models.md#rootmodel-and-custom-root-types) as follows: -->
+<p>Pydanticデータクラスには<code>.model_dump_json()</code>関数がありません。JSONとしてダンプするには、次のように<a href="../models/#RootModel-and-custom-root-types">RootModel</a>を使用する必要があります。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dataclasses</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
