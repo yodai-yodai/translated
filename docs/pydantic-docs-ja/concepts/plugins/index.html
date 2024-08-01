@@ -2796,26 +2796,46 @@
 
   <h1>Pydantic Plugins</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <div class="admonition warning">
 <p class="admonition-title">Experimental feature</p>
-<p>Plugins support is experimental and is subject to change in minor releases.
-Developing plugins is not recommended until the feature becomes stable.</p>
+<p><!-- Plugins support is experimental and is subject to change in minor releases.
+Developing plugins is not recommended until the feature becomes stable. -->
+プラグインのサポートは実験的なものであり、マイナーリリースで変更される可能性があります。
+プラグインの開発は、機能が安定するまでお勧めしません。</p>
 </div>
-<p>Pydantic allows users to create plugins that can be used to extend the functionality of the library.</p>
-<p>Plugins are installed via Python entry points. You can read more about entry points in the
-<a href="https://packaging.python.org/specifications/entry-points/">Entry points specification</a> from the
-Python Packaging Authority.</p>
-<p>In case you have a project called <code>my-pydantic-plugin</code>, you can create a plugin by adding the following
-to your <code>pyproject.toml</code>:</p>
+<!-- Pydantic allows users to create plugins that can be used to extend the functionality of the library. -->
+<p>Pydanticでは、ユーザーがライブラリの機能を拡張するために使用できるプラグインを作成できる。</p>
+<!-- Plugins are installed via Python entry points.
+You can read more about entry points in the [Entry points specification](https://packaging.python.org/specifications/entry-points/) from the Python Packaging Authority. -->
+<p>プラグインはPythonのエントリポイントを介してインストールされます。
+エントリポイントの詳細については、Python Packaging Authorityの<a href="https://packaging.python.org/specifications/entry-points/">Entry points specification</a>を参照してください。</p>
+<!-- In case you have a project called `my-pydantic-plugin`, you can create a plugin by adding the following to your `pyproject.toml`: -->
+<p><code>my-pydantic-plugin</code>という名前のプロジェクトがある場合は、<code>pyproject.toml</code>に以下を追加してプラグインを作成できます。</p>
 <div class="language-toml highlight"><pre><span></span><code><span class="k">[project.entry-points.pydantic]</span>
 <span class="n">my_plugin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;my_pydantic_plugin:plugin&quot;</span>
 </code></pre></div>
-<p>The entry point group is <code>pydantic</code>, <code>my_plugin</code> is the name of the plugin, <code>my_pydantic_plugin</code> is the module to load plugin object from, and <code>plugin</code> is the object name to load.</p>
-<p>Plugins are loaded in the order they are found, and the order they are found is not guaranteed.</p>
-<p>As a user, you can modify the behavior of the plugin in a <code>BaseModel</code> using the <code>plugin_settings</code> <a href="../config/">Model Config</a> argument or
-class keyword argument. This argument takes a dictionary of settings that will be passed to all plugins as is.
-The plugin can then use these settings to modify its behavior. It is recommended for plugins to separate their settings
-into their own dedicates keys in a plugin specific key in the <code>plugin_settings</code> dictionary.</p>
+<!-- The entry point group is `pydantic`, `my_plugin` is the name of the plugin, `my_pydantic_plugin` is the module to load plugin object from, and `plugin` is the object name to load. -->
+<p>エントリポイントグループは<code>pydantic</code>、<code>my_plugin</code>はプラグインの名前、<code>my_pydantic_plugin</code>はプラグインオブジェクトをロードするモジュール、<code>plugin</code>はロードするオブジェクトの名前です。</p>
+<!-- Plugins are loaded in the order they are found, and the order they are found is not guaranteed. -->
+<p>プラグインは検出された順序でロードされ、検出された順序は保証されません。</p>
+<!-- As a user, you can modify the behavior of the plugin in a `BaseModel` using the `plugin_settings` [Model Config](config.md) argument or class keyword argument.
+This argument takes a dictionary of settings that will be passed to all plugins as is.
+The plugin can then use these settings to modify its behavior.
+It is recommended for plugins to separate their settings into their own dedicates keys in a plugin specific key in the `plugin_settings` dictionary. -->
+<p>ユーザは、<code>plugin_settings</code><a href="../config/">Model Config</a>引数またはクラスキーワード引数を使用して、<code>BaseModel</code>内のプラグインの動作を変更できます。
+この引数は、すべてのプラグインにそのまま渡される設定のディクショナリを取ります。
+プラグインは、これらの設定を使用して動作を変更できます。
+プラグインの設定は、<code>plugin_settings</code>ディクショナリ内のプラグイン固有のキー内の専用キーに分離することをお勧めします。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 
@@ -2826,20 +2846,30 @@ into their own dedicates keys in a plugin specific key in the <code>plugin_setti
 <summary>API Documentation</summary>
 <p><a class="autorefs autorefs-internal" href="../../api/plugin/#pydantic.plugin"><code>pydantic.plugin</code></a><br></p>
 </details>
-<p>Pydantic provides an API for creating plugins. The API is exposed via the <code>pydantic.plugin</code> module.</p>
-<p>On your plugin you can <em>wrap</em> the following methods:</p>
+<!-- Pydantic provides an API for creating plugins. The API is exposed via the `pydantic.plugin` module. -->
+<p>Pydanticはプラグインを作成するためのAPIを提供しています。このAPIは<code>pydantic.plugin</code>モジュールを介して公開されます。</p>
+<!-- On your plugin you can _wrap_ the following methods: -->
+<p>プラグインでは、次のメソッドを_wrap_できます。</p>
+<!-- * [`validate_python`][pydantic_core.SchemaValidator.validate_python]: Used to validate the data from a Python object.
+* [`validate_json`][pydantic_core.SchemaValidator.validate_json]: Used to validate the data from a JSON string.
+* [`validate_strings`][pydantic_core.SchemaValidator.validate_strings]: Used to validate the data from strings. -->
 <ul>
-<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_python"><code>validate_python</code></a>: Used to validate the data from a Python object.</li>
-<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_json"><code>validate_json</code></a>: Used to validate the data from a JSON string.</li>
-<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_strings"><code>validate_strings</code></a>: Used to validate the data from strings.</li>
+<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_python"><code>validate_python</code></a>: Pythonオブジェクトからのデータを検証するために使用します。</li>
+<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_json"><code>validate_json</code></a>: JSON文字列からデータを検証するために使用されます。</li>
+<li><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator.validate_strings"><code>validate_strings</code></a>: 文字列からデータを検証するために使用されます。</li>
 </ul>
-<p>For each method, you can implement the following callbacks:</p>
+<!-- For each method, you can implement the following callbacks: -->
+<p>各メソッドに対して、次のコールバックを実装できます。</p>
+<!-- * `on_enter`: Called before the validation of a field starts.
+* `on_success`: Called when the validation of a field succeeds.
+* `on_error`: Called when the validation of a field fails. -->
 <ul>
-<li><code>on_enter</code>: Called before the validation of a field starts.</li>
-<li><code>on_success</code>: Called when the validation of a field succeeds.</li>
-<li><code>on_error</code>: Called when the validation of a field fails.</li>
+<li><code>on_enter</code>: フィールドの検証が始まる前に呼び出されます。</li>
+<li><code>on_success</code>: フィールドの検証が成功したときに呼び出されます。</li>
+<li><code>on_error</code>: フィールドの検証が失敗したときに呼び出されます。</li>
 </ul>
-<p>Let's see an example of a plugin that <em>wraps</em> the <code>validate_python</code> method of the <a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator"><code>SchemaValidator</code></a>.</p>
+<!-- Let's see an example of a plugin that _wraps_ the `validate_python` method of the [`SchemaValidator`][pydantic_core.SchemaValidator]. -->
+<p><a class="autorefs autorefs-internal" href="../../api/pydantic_core/#pydantic_core.SchemaValidator"><code>SchemaValidator</code></a>の<code>validate_python</code>メソッドを_ラップ_するプラグインの例を見てみましょう。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">pydantic_core</span> <span class="kn">import</span> <span class="n">CoreConfig</span><span class="p">,</span> <span class="n">CoreSchema</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -2888,15 +2918,18 @@ into their own dedicates keys in a plugin specific key in the <code>plugin_setti
 <span class="n">plugin</span> <span class="o">=</span> <span class="n">Plugin</span><span class="p">()</span>
 </code></pre></div>
 <h2 id="using-plugin-settings">Using Plugin Settings<a class="headerlink" href="#using-plugin-settings" title="Permanent link">&para;</a></h2>
-<p>Consider that you have a plugin called setting called "observer", then you can use it like this:</p>
+<!-- Consider that you have a plugin called setting called "observer", then you can use it like this: -->
+<p>"observer"という設定というプラグインがあるとします。次のように使用できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 
 <span class="k">class</span> <span class="nc">Foo</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">plugin_settings</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;observer&#39;</span><span class="p">:</span> <span class="s1">&#39;all&#39;</span><span class="p">}):</span> <span class="o">...</span>
 </code></pre></div>
-<p>On each validation call, the <code>plugin_settings</code> will be passed to a callable registered for the events.</p>
+<!-- On each validation call, the `plugin_settings` will be passed to a callable registered for the events. -->
+<p>検証の呼び出しごとに、イベント用に登録された呼び出し可能オブジェクトに<code>plugin_settings</code>が渡されます。</p>
 <h2 id="disabling-plugins">Disabling Plugins<a class="headerlink" href="#disabling-plugins" title="Permanent link">&para;</a></h2>
-<p>You can use environment variable <code>PYDANTIC_DISABLE_PLUGINS</code> to disable all or specific plugin(s).</p>
+<!-- You can use environment variable `PYDANTIC_DISABLE_PLUGINS` to disable all or specific plugin(s). -->
+<p>環境変数<code>PYDANTIC_DISABLE_PLUGINS</code>を使用して、すべてまたは特定のプラグインを無効にすることができます。</p>
 <table>
 <thead>
 <tr>

@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#description-support-for-loading-a-settings-or-config-class-from-environment-variables-or-secrets-files" class="md-skip">
+        <a href="#description" class="md-skip">
           Skip to content
         </a>
       
@@ -1078,9 +1078,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description-support-for-loading-a-settings-or-config-class-from-environment-variables-or-secrets-files" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      description: Support for loading a settings or config class from environment variables or secrets files.
+      description: 環境変数またはシークレットファイルから設定クラスまたは構成クラスをロードするためのサポートです。
     </span>
   </a>
   
@@ -3109,9 +3109,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description-support-for-loading-a-settings-or-config-class-from-environment-variables-or-secrets-files" class="md-nav__link">
+  <a href="#description" class="md-nav__link">
     <span class="md-ellipsis">
-      description: Support for loading a settings or config class from environment variables or secrets files.
+      description: 環境変数またはシークレットファイルから設定クラスまたは構成クラスをロードするためのサポートです。
     </span>
   </a>
   
@@ -3525,9 +3525,11 @@
 <!-- END INCLUDE -->
 
 <hr />
-<h2 id="description-support-for-loading-a-settings-or-config-class-from-environment-variables-or-secrets-files">description: Support for loading a settings or config class from environment variables or secrets files.<a class="headerlink" href="#description-support-for-loading-a-settings-or-config-class-from-environment-variables-or-secrets-files" title="Permanent link">&para;</a></h2>
+<!-- description: Support for loading a settings or config class from environment variables or secrets files. -->
+<h2 id="description">description: 環境変数またはシークレットファイルから設定クラスまたは構成クラスをロードするためのサポートです。<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
 <h1 id="settings-management">Settings Management<a class="headerlink" href="#settings-management" title="Permanent link">&para;</a></h1>
-<p><a href="https://github.com/pydantic/pydantic-settings">Pydantic Settings</a> provides optional Pydantic features for loading a settings or config class from environment variables or secrets files.</p>
+<!-- [Pydantic Settings](https://github.com/pydantic/pydantic-settings) provides optional Pydantic features for loading a settings or config class from environment variables or secrets files. -->
+<p><a href="https://github.com/pydantic/pydantic-settings">Pydantic Settings</a>は、環境変数やシークレットファイルから設定や構成クラスをロードするためのオプションのPydantic機能を提供します。</p>
 <!-- ## Installation
 
 Installation is as simple as:
@@ -6388,7 +6390,7 @@ To use these secrets in a *pydantic* application the process is simple. More inf
         <span class="k">return</span> <span class="p">(</span><span class="n">TomlConfigSettingsSource</span><span class="p">(</span><span class="n">settings_cls</span><span class="p">),)</span>
 </code></pre></div>
 <!-- This will be able to read the following "config.toml" file, located in your working directory: -->
-<p>これにより、ワーキングディレクトリにある次の「config.toml」ファイルを読み込むことができます。</p>
+<p>これにより、ワーキングディレクトリにある次の"config.toml"ファイルを読み込むことができます。</p>
 <div class="language-toml highlight"><pre><span></span><code><span class="n">foobar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span>
 <span class="k">[nested]</span>
 <span class="n">nested_field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;world!&quot;</span>
@@ -6396,7 +6398,7 @@ To use these secrets in a *pydantic* application the process is simple. More inf
 <h3 id="pyprojecttoml">pyproject.toml<a class="headerlink" href="#pyprojecttoml" title="Permanent link">&para;</a></h3>
 <!-- "pyproject.toml" is a standardized file for providing configuration values in Python projects. [PEP 518](https://peps.python.org/pep-0518/#tool-table) defines a `[tool]` table that can be used to provide arbitrary tool configuration.
 While encouraged to use the `[tool]` table, `PyprojectTomlConfigSettingsSource` can be used to load variables from any location with in "pyproject.toml" file. -->
-<p>「pyproject.toml」は、Pythonプロジェクトで構成値を提供するための標準化されたファイルです。<a href="https://peps.python.org/pep-0518/#tool-table">PEP 518</a>では、任意のツール構成を提供するために使用できる<code>[tool]</code>テーブルが定義されています。
+<p>"pyproject.toml"は、Pythonプロジェクトで構成値を提供するための標準化されたファイルです。<a href="https://peps.python.org/pep-0518/#tool-table">PEP 518</a>では、任意のツール構成を提供するために使用できる<code>[tool]</code>テーブルが定義されています。
 <code>[tool]</code>テーブルを使用することをお勧めしますが、<code>PyprojectTomlConfigSettingsSource</code>は"pyproject.toml"ファイル内の任意の場所から変数をロードするために使用できます。</p>
 <!-- This is controlled by providing `SettingsConfigDict(pyproject_toml_table_header=tuple[str, ...])` where the value is a tuple of header parts.
 By default, `pyproject_toml_table_header=('tool', 'pydantic-settings')` which will load variables from the `[tool.pydantic-settings]` table. -->
@@ -6512,7 +6514,7 @@ However, there are two options to change this behavior. -->
 </code></pre></div>
 <h2 id="field-value-priority">Field value priority<a class="headerlink" href="#field-value-priority" title="Permanent link">&para;</a></h2>
 <!-- In the case where a value is specified for the same `Settings` field in multiple ways, the selected value is determined as follows (in descending order of priority): -->
-<p>同じ「設定」フィールドに複数の方法で値が指定されている場合、選択された値は次のように決定されます(優先順位の高い順に)。</p>
+<p>同じ"設定"フィールドに複数の方法で値が指定されている場合、選択された値は次のように決定されます(優先順位の高い順に)。</p>
 <!-- 1. If `cli_parse_args` is enabled, arguments passed in at the CLI.
 2. Arguments passed to the `Settings` class initialiser.
 3. Environment variables, e.g. `my_prefix_special_function` as described above.

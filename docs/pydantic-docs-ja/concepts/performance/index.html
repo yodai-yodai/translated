@@ -2908,21 +2908,39 @@
   
 
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <h1 id="performance-tips">Performance tips<a class="headerlink" href="#performance-tips" title="Permanent link">&para;</a></h1>
-<p>In most cases Pydantic won't be your bottle neck, only follow this if you're sure it's necessary.</p>
+<!-- In most cases Pydantic won't be your bottle neck, only follow this if you're sure it's necessary. -->
+<p>ほとんどの場合、Pydanticはボトルネックにはならないので、それが必要だと確信している場合にのみ利用してください。</p>
 <h2 id="in-general-use-model_validate_json-not-model_validatejsonloads">In general, use <code>model_validate_json()</code> not <code>model_validate(json.loads(...))</code><a class="headerlink" href="#in-general-use-model_validate_json-not-model_validatejsonloads" title="Permanent link">&para;</a></h2>
-<p>On <code>model_validate(json.loads(...))</code>, the JSON is parsed in Python, then converted to a dict, then it's validated internally.
-On the other hand, <code>model_validate_json()</code> already performs the validation internally.</p>
-<p>There are a few cases where <code>model_validate(json.loads(...))</code> may be faster. Specifically, when using a <code>'before'</code> or <code>'wrap'</code> validator
-on a model, validation may be faster with the two step method. You can read more about these special cases in
-<a href="https://github.com/pydantic/pydantic/discussions/6388#discussioncomment-8193105">this discussion</a>.</p>
-<p>Many performance improvements are currently in the works for <code>pydantic-core</code>, as discussed
-<a href="https://github.com/pydantic/pydantic/discussions/6388#discussioncomment-8194048">here</a>. Once these changes are merged, we should be at
-the point where <code>model_validate_json()</code> is always faster than <code>model_validate(json.loads(...))</code>.</p>
+<!-- On `model_validate(json.loads(...))`, the JSON is parsed in Python, then converted to a dict, then it's validated internally.
+On the other hand, `model_validate_json()` already performs the validation internally. -->
+<p><code>model_validate(json.loads(.))</code>では、JSONがPythonで解析され、dictに変換されてから内部で検証されます。
+一方、<code>model_validate_json()</code>はすでに内部で検証を実行しています。</p>
+<!-- There are a few cases where `model_validate(json.loads(...))` may be faster. Specifically, when using a `'before'` or `'wrap'` validator on a model, validation may be faster with the two step method.
+You can read more about these special cases in [this discussion](https://github.com/pydantic/pydantic/discussions/6388#discussioncomment-8193105). -->
+<p><code>model_validate(json.loads(...))</code>の方が高速な場合がいくつかあります。具体的には、モデルに対して<code>'before'</code>または<code>'wrap'</code>バリデータを使用する場合、2ステップ法の方が検証が高速になる可能性があります。
+これらの特殊なケースの詳細については、<a href="https://github.com/pydantic/pydantic/discussion/6388#discussioncomment-8193105">this discussion</a>を参照してください。</p>
+<!-- Many performance improvements are currently in the works for `pydantic-core`, as discussed [here](https://github.com/pydantic/pydantic/discussions/6388#discussioncomment-8194048).
+Once these changes are merged, we should be at the point where `model_validate_json()` is always faster than `model_validate(json.loads(...))`. -->
+<p>現在、<code>pydantic-core</code>では、[here]で議論されているように、多くのパフォーマンス改善が行われている(https://github.com/pydantic/pydantic/discussion/6388#discussioncomment-8194048)。
+これらの変更がマージされれば、<code>model_validate_json()</code>が常に<code>model_validate(json.loads(...))</code>よりも高速になるはずです。</p>
 <h2 id="typeadapter-instantiated-once"><code>TypeAdapter</code> instantiated once<a class="headerlink" href="#typeadapter-instantiated-once" title="Permanent link">&para;</a></h2>
-<p>The idea here is to avoid constructing validators and serializers more than necessary. Each time a <code>TypeAdapter</code> is instantiated,
-it will construct a new validator and serializer. If you're using a <code>TypeAdapter</code> in a function, it will be instantiated each time
-the function is called. Instead, instantiate it once, and reuse it.</p>
+<!-- The idea here is to avoid constructing validators and serializers more than necessary.
+Each time a `TypeAdapter` is instantiated, it will construct a new validator and serializer.
+If you're using a `TypeAdapter` in a function, it will be instantiated each time the function is called. Instead, instantiate it once, and reuse it. -->
+<p>ここでの考え方は、必要以上にバリデーターとシリアライザーを構築しないようにすることです。
+<code>TypeAdapter</code>がインスタンス化されるたびに、新しいバリデータとシリアライザが構築されます。
+関数で<code>TypeAdapter</code>を使用している場合、関数が呼び出されるたびにインスタンス化されます。代わりに、一度インスタンス化してから再利用してください。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><img alt="❌" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/274c.svg" title=":x:" /> Bad</label><label for="__tabbed_1_2"><img alt="✅" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/2705.svg" title=":white_check_mark:" /> Good</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -2951,13 +2969,19 @@ the function is called. Instead, instantiate it once, and reuse it.</p>
 </div>
 </div>
 <h2 id="sequence-vs-list-or-tuple-mapping-vs-dict"><code>Sequence</code> vs <code>list</code> or <code>tuple</code> - <code>Mapping</code> vs <code>dict</code><a class="headerlink" href="#sequence-vs-list-or-tuple-mapping-vs-dict" title="Permanent link">&para;</a></h2>
-<p>When using <code>Sequence</code>, Pydantic calls <code>isinstance(value, Sequence)</code> to check if the value is a sequence.
-Also, Pydantic will try to validate against different types of sequences, like <code>list</code> and <code>tuple</code>.
-If you know the value is a <code>list</code> or <code>tuple</code>, use <code>list</code> or <code>tuple</code> instead of <code>Sequence</code>.</p>
-<p>The same applies to <code>Mapping</code> and <code>dict</code>.
-If you know the value is a <code>dict</code>, use <code>dict</code> instead of <code>Mapping</code>.</p>
+<!-- When using `Sequence`, Pydantic calls `isinstance(value, Sequence)` to check if the value is a sequence.
+Also, Pydantic will try to validate against different types of sequences, like `list` and `tuple`.
+If you know the value is a `list` or `tuple`, use `list` or `tuple` instead of `Sequence`. -->
+<p><code>Sequence</code>を使用する場合、Pydanticは<code>isinstance(value, Sequence)</code>を呼び出して、値がシーケンスかどうかをチェックします。
+また、Pydanticは<code>list</code>や<code>tuple</code>のような異なるタイプのシーケンスに対して検証を試みます。
+値が<code>list</code>または<code>tuple</code>であることがわかっている場合は、<code>Sequence</code>の代わりに<code>list</code>または<code>tuple</code>を使用してください。</p>
+<!-- The same applies to `Mapping` and `dict`.
+If you know the value is a `dict`, use `dict` instead of `Mapping`. -->
+<p>同じことが<code>Mapping</code>と<code>dict</code>にも当てはまります。
+値が<code>dict</code>であることがわかっている場合は、<code>Mapping</code>の代わりに<code>dict</code>を使用してください。</p>
 <h2 id="dont-do-validation-when-you-dont-have-to-use-any-to-keep-the-value-unchanged">Don't do validation when you don't have to - use <code>Any</code> to keep the value unchanged<a class="headerlink" href="#dont-do-validation-when-you-dont-have-to-use-any-to-keep-the-value-unchanged" title="Permanent link">&para;</a></h2>
-<p>If you don't need to validate a value, use <code>Any</code> to keep the value unchanged.</p>
+<!-- If you don't need to validate a value, use `Any` to keep the value unchanged. -->
+<p>値を検証する必要がない場合は、<code>Any</code>を使用して値を変更しないようにします。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -2991,7 +3015,8 @@ If you know the value is a <code>dict</code>, use <code>dict</code> instead of <
 </div>
 </div>
 <h2 id="use-tagged-union-not-union">Use tagged union, not union<a class="headerlink" href="#use-tagged-union-not-union" title="Permanent link">&para;</a></h2>
-<p>Tagged union (or discriminated union) is a union with a field that indicates which type it is.</p>
+<!-- Tagged union (or discriminated union) is a union with a field that indicates which type it is. -->
+<p>タグ付きユニオン(または識別されたユニオン)は、それがどのタイプであるかを示すフィールドを持つユニオンです。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
@@ -3028,12 +3053,15 @@ If you know the value is a <code>dict</code>, use <code>dict</code> instead of <
         <span class="n">discriminator</span><span class="o">=</span><span class="s1">&#39;el_type&#39;</span>
     <span class="p">)</span>
 </code></pre></div>
-<p>See <a href="../unions/#discriminated-unions">Discriminated Unions</a> for more details.</p>
+<!-- See [Discriminated Unions] for more details. -->
+<p>詳細については、<a href="../unions/#discriminated-unions">Discriminated Unions</a>を参照してください。</p>
 <h2 id="use-typeddict-over-nested-models">Use <code>TypedDict</code> over nested models<a class="headerlink" href="#use-typeddict-over-nested-models" title="Permanent link">&para;</a></h2>
-<p>Instead of using nested models, use <code>TypedDict</code> to define the structure of the data.</p>
+<!-- Instead of using nested models, use `TypedDict` to define the structure of the data. -->
+<p>ネストされたモデルを使用する代わりに、<code>TypedDict</code>を使用してデータの構造を定義してください。</p>
 <details class="info">
 <summary>Performance comparison</summary>
-<p>With a simple benchmark, <code>TypedDict</code> is about ~2.5x faster than nested models:</p>
+<p><!-- With a simple benchmark, <code>TypedDict</code> is about ~2.5x faster than nested models: -->
+単純なベンチマークでは、<code>TypedDict</code>はネストされたモデルよりも約2.5倍高速です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">timeit</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypedDict</span>
@@ -3070,13 +3098,15 @@ If you know the value is a <code>dict</code>, use <code>dict</code> instead of <
 </code></pre></div>
 </details>
 <h2 id="avoid-wrap-validators-if-you-really-care-about-performance">Avoid wrap validators if you really care about performance<a class="headerlink" href="#avoid-wrap-validators-if-you-really-care-about-performance" title="Permanent link">&para;</a></h2>
-<p>Wrap validators are generally slower than other validators. This is because they require
-that data is materialized in Python during validation. Wrap validators can be incredibly useful
-for complex validation logic, but if you're looking for the best performance, you should avoid them.</p>
+<!-- Wrap validators are generally slower than other validators.
+This is because they require that data is materialized in Python during validation. Wrap validators can be incredibly useful for complex validation logic, but if you're looking for the best performance, you should avoid them. -->
+<p>一般に、ラップ・バリデーターは他のバリデーターよりも低速です。
+これは、検証時にPythonでデータを実体化する必要があるためです。ラップ・バリデーターは複雑な検証ロジックには非常に便利ですが、最高のパフォーマンスを求めるのであれば、ラップ・バリデーターは避けるべきです。</p>
 <h2 id="failing-early-with-failfast">Failing early with <code>FailFast</code><a class="headerlink" href="#failing-early-with-failfast" title="Permanent link">&para;</a></h2>
-<p>Starting in v2.8+, you can apply the <code>FailFast</code> annotation to sequence types to fail early if any item in the sequence fails validation.
-If you use this annotation, you won't get validation errors for the rest of the items in the sequence if one fails, so you're effectively
-trading off visibility for performance.</p>
+<!-- Starting in v2.8+, you can apply the `FailFast` annotation to sequence types to fail early if any item in the sequence fails validation.
+If you use this annotation, you won't get validation errors for the rest of the items in the sequence if one fails, so you're effectively trading off visibility for performance. -->
+<p>v2.8以降では、シーケンス内のいずれかの項目が検証に失敗した場合に早期に失敗するように、シーケンスタイプに<code>FailFast</code>アノテーションを適用できるようになりました。
+このアノテーションを使用すると、シーケンス内の残りの項目が失敗しても検証エラーが発生しないため、可視性とパフォーマンスを効果的にトレードオフすることができます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
@@ -3094,7 +3124,8 @@ trading off visibility for performance.</p>
 <span class="sd">      Input should be a valid boolean, unable to interpret input [type=bool_parsing, input_value=&#39;invalid&#39;, input_type=str]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<p>Read more about <code>FailFast</code> <a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.FailFast">here</a>.</p>
+<!-- Read more about `FailFast` [here][pydantic.types.FailFast]. -->
+<p><code>FailFast</code>についての詳細はこちら<a class="autorefs autorefs-internal" href="../../api/types/#pydantic.types.FailFast">here</a>をご覧ください。</p>
 
 
 
