@@ -3223,7 +3223,7 @@
 </code></pre></div>
 <!-- 1. The alias `'username'` is used for instance creation and validation. -->
 <ol>
-<li>エイリアス「username」`は、インスタンスの作成と検証に使用されます。</li>
+<li>エイリアス"username"`は、インスタンスの作成と検証に使用されます。</li>
 </ol>
 <!-- 2. We are using `model_dump` to convert the model into a serializable format. -->
 <ol>
@@ -3278,7 +3278,7 @@
 <ol>
 <li>The field name <code>'name'</code> is used for validation.</li>
 </ol>
-<!-- 1. フィールド名「name」は検証に使用されます。 -->
+<!-- 1. フィールド名"name"は検証に使用されます。 -->
 <!-- 2. The serialization alias `'username'` is used for serialization. -->
 <ol>
 <li>シリアル化には、シリアル化エイリアス<code>'username'</code>が使用されます。</li>
@@ -3323,7 +3323,7 @@ VSCodeでは、<a href="https://marketplace.visualstudio.com/items?itemName=ms-p
 <p><!-- 1. VSCode will show a warning here. -->
 1. VSCodeはここに警告を表示します。</p>
 <p><!-- To "trick" VSCode into preferring the field name, you can use the <code>str</code> function to wrap the alias value. -->
-VSCodeを「だまして」フィールド名を優先させるには、<code>str</code>関数を使用してエイリアス値をラップします。
+VSCodeを"だまして"フィールド名を優先させるには、<code>str</code>関数を使用してエイリアス値をラップします。
 <!-- With this approach, though, a warning is shown when instantiating a model using the alias for the field: -->
 ただし、この方法では、フィールドのエイリアスを使用してモデルをインスタンス化するときに警告が表示されます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span>

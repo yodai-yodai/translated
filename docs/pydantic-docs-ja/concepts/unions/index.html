@@ -2990,7 +2990,7 @@
 </ol>
 <!-- 2. [smart mode](#smart-mode) - similar to "left to right mode" members are tried in order; however, validation will proceed past the first match to attempt to find a better match, this is the default mode for most union validation -->
 <ol>
-<li><a href="#smart-mode">smart mode</a> - 「左から右へのモード」と同様に、メンバーは順番に試行されます。ただし、検証は最初の一致を超えて進行し、より適切な一致を見つけようとします。これは、ほとんどのUnion検証のデフォルトモードです。</li>
+<li><a href="#smart-mode">smart mode</a> - "左から右へのモード"と同様に、メンバーは順番に試行されます。ただし、検証は最初の一致を超えて進行し、より適切な一致を見つけようとします。これは、ほとんどのUnion検証のデフォルトモードです。</li>
 </ol>
 <!-- 3. [discriminated unions](#discriminated-unions) - only one member of the union is tried, based on a discriminator -->
 <ol>
@@ -3121,9 +3121,9 @@ These counts bubble up to the top-level union, where the union member with the h
 <p><!-- 1. Union members are attempted left to right, with any successful matches scored into one of the three exactness categories described above, with the valid fields set count also tallied. -->
 1. Union・メンバーは左から右に試行され、成功した一致は前述の3つの正確さのカテゴリーのいずれかにスコア付けされ、有効なフィールド・セット・カウントも集計されます。
 <!-- 2. After all members have been evaluated, the member with the highest "valid fields set" count is returned. -->
-2. すべてのメンバーが評価された後、「有効なフィールド・セット」カウントが最も高いメンバーが戻されます。
+2. すべてのメンバーが評価された後、"有効なフィールド・セット"カウントが最も高いメンバーが戻されます。
 <!-- 3. If there's a tie for the highest "valid fields set" count, the exactness score is used as a tiebreaker, and the member with the highest exactness score is returned. -->
-3. 最大の「有効フィールド・セット」カウントに対してタイがある場合、正確さのスコアがタイ・ブレーカーとして使用され、正確さのスコアが最も高いメンバーが戻されます。
+3. 最大の"有効フィールド・セット"カウントに対してタイがある場合、正確さのスコアがタイ・ブレーカーとして使用され、正確さのスコアが最も高いメンバーが戻されます。
 <!-- 4. If validation failed on all the members, return all the errors. -->
 4. すべてのメンバーで検証が失敗した場合は、すべてのエラーが戻されます。</p>
 </div>
@@ -3133,9 +3133,9 @@ These counts bubble up to the top-level union, where the union member with the h
     <!-- - If validation succeeds with an exact type match, that member is returned immediately and following members will not be attempted. -->
     - 型が完全に一致して検証が成功した場合、そのメンバーはすぐに戻され、後続のメンバーは試行されません。
 <!-- 2. If validation succeeded on at least one member as a "strict" match, the leftmost of those "strict" matches is returned. -->
-2. 少なくとも1つのメンバーで検証が「厳密な」一致として成功した場合、それらの「厳密な」一致のうち最も左のものが戻されます。
+2. 少なくとも1つのメンバーで検証が"厳密な"一致として成功した場合、それらの"厳密な"一致のうち最も左のものが戻されます。
 <!-- 3. If validation succeeded on at least one member in "lax" mode, the leftmost match is returned. -->
-3. 「lax」モードで少なくとも1つのメンバーの検証が成功した場合、一番左の一致が戻されます。
+3. "lax"モードで少なくとも1つのメンバーの検証が成功した場合、一番左の一致が戻されます。
 <!-- 4. Validation failed on all the members, return all the errors. -->
 4. すべてのメンバーで検証が失敗すると、すべてのエラーが戻されます。</p>
 </div>
@@ -3181,7 +3181,7 @@ These counts bubble up to the top-level union, where the union member with the h
 </div>
 <h2 id="discriminated-unions">Discriminated Unions<a class="headerlink" href="#discriminated-unions" title="Permanent link">&para;</a></h2>
 <!-- **Discriminated unions are sometimes referred to as "Tagged Unions".** -->
-<p><strong>識別されたUnionは、「タグ付きUnion」と呼ばれることがあります。</strong></p>
+<p><strong>識別されたUnionは、"タグ付きUnion"と呼ばれることがあります。</strong></p>
 <!-- We can use discriminated unions to more efficiently validate `Union` types, by choosing which member of the union to validate against. -->
 <p>識別されたUnionを使用して、どのUnionのメンバーに対して検証するかを選択することで、<code>Union</code>タイプをより効率的に検証することができる。</p>
 <!-- This makes validation more efficient and also avoids a proliferation of errors when validation fails. -->
@@ -3190,7 +3190,7 @@ These counts bubble up to the top-level union, where the union member with the h
 <p>Unionに識別子を追加することは、生成されたJSONスキーマが<a href="https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#discriminator-object">associated OpenAPI specification</a>を実装することも意味します。</p>
 <h3 id="discriminated-unions-with-str-discriminators">Discriminated Unions with <code>str</code> discriminators<a class="headerlink" href="#discriminated-unions-with-str-discriminators" title="Permanent link">&para;</a></h3>
 <!-- Frequently, in the case of a `Union` with multiple models, there is a common field to all members of the union that can be used to distinguish which union case the data should be validated against; this is referred to as the "discriminator" in [OpenAPI](https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/). -->
-<p>多くの場合、複数のモデルを持つ<code>Union</code>の場合、Unionのすべてのメンバーに共通のフィールドがあり、どのUnionケースに対してデータを検証すべきかを区別するために使用できます。これは、<a href="https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/">OpenAPI</a>では「識別子」と呼ばれています。</p>
+<p>多くの場合、複数のモデルを持つ<code>Union</code>の場合、Unionのすべてのメンバーに共通のフィールドがあり、どのUnionケースに対してデータを検証すべきかを区別するために使用できます。これは、<a href="https://swagger.io/docs/specification/data-models/inheritance-and-polymorphism/">OpenAPI</a>では"識別子"と呼ばれています。</p>
 <!-- To validate models based on that information you can set the same field - let's call it `my_discriminator` - in each of the models with a discriminated value, which is one (or many) `Literal` value(s). -->
 <p>その情報に基づいてモデルを検証するには、同じフィールド(<code>my_discriminator</code>と呼びましょう)を、1つ(または複数)の<code>Literal</code>値である識別された値を持つ各モデルに設定します。</p>
 <!-- For your `Union`, you can set the discriminator in its value: `Field(discriminator='my_discriminator')`. -->
