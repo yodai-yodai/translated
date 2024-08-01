@@ -1423,9 +1423,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accesing-the-result-of-previous-sources" class="md-nav__link">
+  <a href="#accessing-the-result-of-previous-sources" class="md-nav__link">
     <span class="md-ellipsis">
-      Accesing the result of previous sources
+      Accessing the result of previous sources
     </span>
   </a>
   
@@ -3454,9 +3454,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#accesing-the-result-of-previous-sources" class="md-nav__link">
+  <a href="#accessing-the-result-of-previous-sources" class="md-nav__link">
     <span class="md-ellipsis">
-      Accesing the result of previous sources
+      Accessing the result of previous sources
     </span>
   </a>
   
@@ -5658,7 +5658,7 @@ Pydantic設定は、モデルの<code>env_prefix</code>に関係なく、dotenv�
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<!-- To enable CLI parsing, we simply set the `cli_parse_args` flag to a valid value, which retains similar conotations as defined in `argparse`. Alternatively, we can also directly provide the args to parse at time of instantiation: -->
+<!-- To enable CLI parsing, we simply set the `cli_parse_args` flag to a valid value, which retains similar connotations as defined in `argparse`. Alternatively, we can also directly provide the args to parse at time of instantiation: -->
 <p>CLIでのパースを有効にするには、単に<code>cli_parse_args</code>フラグを有効な値に設定します。このフラグは<code>argparse</code>で定義されているのと同様の意味を保持します。あるいは、インスタンス化時にパースする引数を直接指定することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic_settings</span> <span class="kn">import</span> <span class="n">BaseSettings</span>
 
@@ -6000,7 +6000,7 @@ CLI設定サブコマンドは、モデルごとに1つのサブパーサーに�
     <span class="c1">#&gt; error parsing CLI: unrecognized arguments: --bad-arg</span>
 </code></pre></div>
 <h4 id="enforce-required-arguments-at-cli">Enforce Required Arguments at CLI<a class="headerlink" href="#enforce-required-arguments-at-cli" title="Permanent link">&para;</a></h4>
-<!-- Pydantic settings is designed to pull values in from various sources when instantating a model.
+<!-- Pydantic settings is designed to pull values in from various sources when instantiating a model.
 This means a field that is required is not strictly required from any single source (e.g. the CLI).
 Instead, all that matters is that one of the sources provides the required value. -->
 <p>Pydantic設定は、モデルをインスタンス化するときにさまざまなソースから値を取得するように設計されている。
@@ -6649,7 +6649,7 @@ In turn these callables are called to build the inputs to the fields of the sett
 <span class="nb">print</span><span class="p">(</span><span class="n">Settings</span><span class="p">())</span>
 <span class="c1">#&gt; foobar=&#39;test&#39;</span>
 </code></pre></div>
-<h4 id="accesing-the-result-of-previous-sources">Accesing the result of previous sources<a class="headerlink" href="#accesing-the-result-of-previous-sources" title="Permanent link">&para;</a></h4>
+<h4 id="accessing-the-result-of-previous-sources">Accessing the result of previous sources<a class="headerlink" href="#accessing-the-result-of-previous-sources" title="Permanent link">&para;</a></h4>
 <!-- Each source of settings can access the output of the previous ones. -->
 <p>設定の各ソースは、前の設定の出力にアクセスできます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span>
@@ -6669,7 +6669,7 @@ In turn these callables are called to build the inputs to the fields of the sett
         <span class="n">current_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_state</span>
         <span class="n">current_state</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;some_setting&#39;</span><span class="p">)</span>
 
-        <span class="c1"># Retrive settings from all sources individually</span>
+        <span class="c1"># Retrieve settings from all sources individually</span>
         <span class="c1"># self.settings_sources_data[&quot;SettingsSourceName&quot;]: Dict[str, Any]</span>
         <span class="n">settings_sources_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">settings_sources_data</span>
         <span class="n">settings_sources_data</span><span class="p">[</span><span class="s1">&#39;SomeSettingsSource&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;some_setting&#39;</span><span class="p">)</span>
