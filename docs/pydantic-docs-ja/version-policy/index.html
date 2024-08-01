@@ -2898,48 +2898,80 @@
 
   <h1>Version Policy</h1>
 
-<p>First of all, we recognize that the transitions from Pydantic V1 to V2 has been and will be painful for some users.
-We're sorry about this pain <img alt="🙏" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f64f.svg" title=":pray:" />, it was an unfortunate but necessary step to correct design mistakes of V1.</p>
+<!-- BEGIN INCLUDE ./warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- First of all, we recognize that the transitions from Pydantic V1 to V2 has been and will be painful for some users.
+We're sorry about this pain :pray:, it was an unfortunate but necessary step to correct design mistakes of V1. -->
+<p>まず第一に、Pydantic V1からV2への移行は、一部のユーザにとって苦痛であり、これからも苦痛であることを認識しています。
+私たちはこの苦痛についてお詫びします <img alt="🙏" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.0.3/assets/svg/1f64f.svg" title=":pray:" />、これは不幸なことでしたが、V1の設計ミスを修正するために必要なステップでした。</p>
 <p><strong>There will not be another breaking change of this magnitude!</strong></p>
 <h2 id="pydantic-v1">Pydantic V1<a class="headerlink" href="#pydantic-v1" title="Permanent link">&para;</a></h2>
-<p>Active development of V1 has already stopped, however critical bug fixes and security vulnerabilities will be fixed in V1 for <strong>one year</strong> after the release of V2 (June 30, 2024).</p>
+<!-- Active development of V1 has already stopped, however critical bug fixes and security vulnerabilities will be fixed in V1 for **one year** after the release of V2 (June 30, 2024). -->
+<p>V1の積極的な開発はすでに中止されていますが、重大なバグ修正とセキュリティ脆弱性は、V2のリリース(2024年6月30日)から<strong>1年間</strong>V1で修正されます。</p>
 <h2 id="pydantic-v2">Pydantic V2<a class="headerlink" href="#pydantic-v2" title="Permanent link">&para;</a></h2>
-<p>We will not intentionally make breaking changes in minor releases of V2.</p>
-<p>Methods marked as <code>deprecated</code> will not be removed until the next major release, V3.</p>
-<p>Of course some apparently safe changes and bug fixes will inevitably break some users' code &mdash; obligatory link to <a href="https://m.xkcd.com/1172/">XKCD</a>.</p>
-<p>The following changes will <strong>NOT</strong> be considered breaking changes, and may occur in minor releases:</p>
+<!-- We will not intentionally make breaking changes in minor releases of V2. -->
+<p>V2のマイナーリリースで意図的に重大な変更を加えることはありません。</p>
+<!-- Methods marked as `deprecated` will not be removed until the next major release, V3. -->
+<p><code>deprecated</code>とマークされたメソッドは、次のメジャーリリースであるV3まで削除されません。</p>
+<!-- Of course some apparently safe changes and bug fixes will inevitably break some users' code &mdash; obligatory link to [XKCD](https://m.xkcd.com/1172/). -->
+<p>もちろん、一見安全な変更やバグ修正の中には、<a href="https://m.xkcd.com/1172/">XKCD</a>への必須リンクなど、一部のユーザーのコードを破壊するものもあります。</p>
+<!-- The following changes will **NOT** be considered breaking changes, and may occur in minor releases: -->
+<p>以下の変更は、重大な変更とはみなされず、マイナーリリースで発生する可能性があります。</p>
+<!-- * Changing the format of `ref` as used in JSON Schema.
+* Changing the `msg`, `ctx`, and `loc` fields of `ValidationError` errors. `type` will not change &mdash; if you're programmatically parsing error messages, you should use `type`.
+* Adding new keys to `ValidationError` errors &mdash; e.g. we intend to add `line_number` and `column_number` to errors when validating JSON once we migrate to a new JSON parser.
+* Adding new `ValidationError` errors.
+* Changing `repr` even of public classes. -->
 <ul>
-<li>Changing the format of <code>ref</code> as used in JSON Schema.</li>
-<li>Changing the <code>msg</code>, <code>ctx</code>, and <code>loc</code> fields of <code>ValidationError</code> errors. <code>type</code> will not change &mdash; if you're programmatically parsing error messages, you should use <code>type</code>.</li>
-<li>Adding new keys to <code>ValidationError</code> errors &mdash; e.g. we intend to add <code>line_number</code> and <code>column_number</code> to errors when validating JSON once we migrate to a new JSON parser.</li>
-<li>Adding new <code>ValidationError</code> errors.</li>
-<li>Changing <code>repr</code> even of public classes.</li>
+<li>JSONスキーマで使用される<code>ref</code>のフォーマットを変更します。</li>
+<li><code>ValidationError</code>エラーの<code>msg</code>、<code>ctx</code>、<code>loc</code>フィールドを変更します。<code>type</code>は変更されません。プログラムでエラーメッセージを解析している場合は、<code>type</code>を使用する必要があります。</li>
+<li><code>ValidationError</code>エラーに新しいキーを追加します。たとえば、新しいJSONパーサに移行した後、JSONを検証するときにエラーに<code>line_number</code>と<code>column_number</code>を追加する予定です。</li>
+<li>新しい<code>ValidationError</code>エラーを追加します。</li>
+<li>パブリッククラスの「repr」も変更します。</li>
 </ul>
-<p>In all cases we will aim to minimize churn and do so only when justified by the increase of quality of <code>pydantic</code> for users.</p>
+<!-- In all cases we will aim to minimize churn and do so only when justified by the increase of quality of `pydantic` for users. -->
+<p>いずれの場合も、私たちはひっかきまわすことをを最小限に抑えることを目指し、ユーザーにとって「pydantic」の質の向上によって正当化される場合にのみ修正します。</p>
 <h2 id="pydantic-v3-and-beyond">Pydantic V3 and beyond<a class="headerlink" href="#pydantic-v3-and-beyond" title="Permanent link">&para;</a></h2>
-<p>We expect to make new major releases roughly once a year going forward, although as mentioned above, any associated breaking changes should be trivial to fix compared to the V1-to-V2 transition.</p>
+<!-- We expect to make new major releases roughly once a year going forward, although as mentioned above, any associated breaking changes should be trivial to fix compared to the V1-to-V2 transition. -->
+<p>今後、新しいメジャーリリースはほぼ1年に1回行われる予定ですが、前述したように、関連する重大な変更は、V 1からV 2への移行と比較して簡単に修正できるはずです。</p>
 <h2 id="experimental-features">Experimental Features<a class="headerlink" href="#experimental-features" title="Permanent link">&para;</a></h2>
-<p>At Pydantic, we like to move quickly and innovate! To that end, we may introduce experimental features in minor releases.</p>
+<!-- At Pydantic, we like to move quickly and innovate! To that end, we may introduce experimental features in minor releases. -->
+<p>Pydanticでは、私たちは迅速に行動し、革新することを望んでいます!そのために、マイナーリリースで実験的な機能を導入することがあります。</p>
 <div class="admonition abstract">
 <p class="admonition-title">Usage Documentation</p>
-<p>To learn more about our current experimental features, see the <a href="../concepts/experimental/">experimental features documentation</a>.</p>
+<p><!-- To learn more about our current experimental features, see the <a href="./concepts/experimental.md">experimental features documentation</a>. -->
+現在の試験的な機能の詳細については、<a href="../concepts/experimental/">experimental features documentation</a>を参照してください。</p>
 </div>
-<p>Please keep in mind, experimental features are active works in progress. If these features are successful, they'll eventually beocme part of Pydantic. If unsuccessful, said features will be removed with little notice. While in its experimental phase, a feature's API and behaviors may not be stable, and it's very possible that changes made to the feature will not be backward-compatible.</p>
+<!-- Please keep in mind, experimental features are active works in progress. If these features are successful, they'll eventually beocme part of Pydantic. If unsuccessful, said features will be removed with little notice. While in its experimental phase, a feature's API and behaviors may not be stable, and it's very possible that changes made to the feature will not be backward-compatible. -->
+<p>実験的な機能は進行中の活発な作業であることを覚えておいてください。これらの機能が成功すれば、最終的にはPydanticの一部になるでしょう。失敗した場合、これらの機能はほとんど予告なしに削除されます。実験段階では、機能のAPIと動作が安定していない可能性があり、機能に加えられた変更が下位互換性を持たない可能性が非常に高くなります。</p>
 <h3 id="naming-conventions">Naming Conventions<a class="headerlink" href="#naming-conventions" title="Permanent link">&para;</a></h3>
-<p>We use one of the following naming conventions to indicate that a feature is experimental:</p>
+<!-- We use one of the following naming conventions to indicate that a feature is experimental: -->
+<p>次の命名規則のいずれかを使用して、機能が試験的であることを示します。</p>
+<!-- 1. The feature is located in the `experimental` module. In this case, you can access the feature like this: -->
 <ol>
 <li>
-<p>The feature is located in the <code>experimental</code> module. In this case, you can access the feature like this:</p>
+<p>機能は<code>experimental</code>モジュールにあります。この場合、次のように機能にアクセスできます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic.experimental</span> <span class="kn">import</span> <span class="n">feature_name</span>
 </code></pre></div>
 </li>
-<li>
-<p>The feature is located in the main module, but prefixed with <code>experimental_</code>. This case occurs when we add a new field, argument, or method to an existing data structure already within the main <code>pydantic</code> module.</p>
-</li>
 </ol>
-<p>New features with these naming conventions are subject to change or removal, and we are looking for feedback and suggestions before making them a permanent part of Pydantic. See the <a href="../concepts/experimental/#feedback">feedback section</a> for more information.</p>
+<!-- 2. The feature is located in the main module, but prefixed with `experimental_`. This case occurs when we add a new field, argument, or method to an existing data structure already within the main `pydantic` module. -->
+<ol>
+<li>機能はメインモジュールにありますが、先頭に<code>experimental_</code>が付いています。このケースは、メインの<code>pydantic</code>モジュール内にすでにある既存のデータ構造に新しいフィールド、引数、またはメソッドを追加したときに発生します。</li>
+</ol>
+<!-- New features with these naming conventions are subject to change or removal, and we are looking for feedback and suggestions before making them a permanent part of Pydantic. See the [feedback section](./concepts/experimental.md#feedback) for more information. -->
+<p>これらの命名規則を持つ新機能は変更または削除される可能性があり、Pydanticの恒久的な一部にする前にフィードバックと提案を求めています。詳細については、<a href="../concepts/experimental/#feedback">feedback section</a>を参照してください。</p>
 <h3 id="importing-experimental-features">Importing Experimental Features<a class="headerlink" href="#importing-experimental-features" title="Permanent link">&para;</a></h3>
-<p>When you import an experimental feature from the <code>experimental</code> module, you'll see a warning message that the feature is experimental. You can disable this warning with the following:</p>
+<!-- When you import an experimental feature from the `experimental` module, you'll see a warning message that the feature is experimental. You can disable this warning with the following: -->
+<p><code>experimental</code>モジュールから試験的な機能をインポートすると、その機能が試験的であることを示す警告メッセージが表示されます。この警告を無効にするには、次のようにします。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">PydanticExperimentalWarning</span>
@@ -2947,21 +2979,32 @@ We're sorry about this pain <img alt="🙏" class="twemoji" src="https://cdn.jsd
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">PydanticExperimentalWarning</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="lifecycle-of-experimental-features">Lifecycle of Experimental Features<a class="headerlink" href="#lifecycle-of-experimental-features" title="Permanent link">&para;</a></h3>
+<!-- 1. A new feature is added, either in the `experimental` module or with the `experimental_` prefix.
+2. The behavior is often modified during patch/minor releases, with potential API/behavior changes.
+3. If the feature is successful, we promote it to Pydantic with the following steps: -->
 <ol>
-<li>A new feature is added, either in the <code>experimental</code> module or with the <code>experimental_</code> prefix.</li>
-<li>The behavior is often modified during patch/minor releases, with potential API/behavior changes.</li>
-<li>If the feature is successful, we promote it to Pydantic with the following steps:
-    a. If it was in the <code>experimental</code> module, the feature is cloned to Pydantic's main module. The original experimental feature still remains in the <code>experimental</code> module, but it will show a warning when used. If the feature was already in the main Pydantic module, we create a copy of the feature without the <code>experimental_</code> prefix, so the feature exists with both the official and experimental names. A deprecation warning is attached to the experimental version.
-    b. At some point, the code of the experimental feature is removed, but there will still be a stub of the feature that provides an error message with appropriate instructions.
-    c. As a last step, the experimental version of the feature is entirely removed from the codebase.</li>
+<li>新しい機能が<code>experimental</code>モジュールか<code>experimental_</code>プレフィックスで追加されます。</li>
+<li>動作は、パッチ/マイナーリリース中に変更されることが多く、API/動作が変更される可能性があります。</li>
+<li>機能が成功した場合は、次の手順でPydanticにプロモートします:
+    <!-- a. If it was in the <code>experimental</code> module, the feature is cloned to Pydantic's main module. The original experimental feature still remains in the <code>experimental</code> module, but it will show a warning when used. If the feature was already in the main Pydantic module, we create a copy of the feature without the <code>experimental_</code> prefix, so the feature exists with both the official and experimental names. A deprecation warning is attached to the experimental version. -->
+    a. それが<code>experimental</code>モジュールにあった場合、その機能はPydanticのメインモジュールにクローンされます。元の実験的な機能はまだ<code>experimental</code>モジュールに残っていますが、使用時に警告が表示されます。機能がすでにメインのPydanticモジュールにあった場合、<code>experimental_</code>プレフィックスなしで機能のコピーを作成するので、その機能は正式な名前と実験的な名前の両方で存在します。非推奨の警告は実験バージョンに添付されます。
+    <!-- b. At some point, the code of the experimental feature is removed, but there will still be a stub of the feature that provides an error message with appropriate instructions. -->
+    b. ある時点で、実験的な機能のコードは削除されますが、適切な指示とともにエラーメッセージを提供する機能のスタブがまだ存在します。
+    <!-- c. As a last step, the experimental version of the feature is entirely removed from the codebase. -->
+    c. 最後のステップとして、機能の実験バージョンがコードベースから完全に削除されます。</li>
 </ol>
-<p>If the feature is unsuccessful or unpopular, it's removed with little notice. A stub will remain in the location of the deprecated feature with an error message.</p>
-<p>Thanks to <a href="https://docs.streamlit.io/develop/quick-reference/prerelease">streamlit</a> for the inspiration for the lifecycle and naming conventions of our new experimental feature patterns.</p>
+<!-- If the feature is unsuccessful or unpopular, it's removed with little notice. A stub will remain in the location of the deprecated feature with an error message. -->
+<p>機能が成功しなかったり、人気がない場合は、ほとんど通知なしに削除されます。スタブは、エラーメッセージとともに非推奨の機能の場所に残ります。</p>
+<!-- Thanks to [streamlit](https://docs.streamlit.io/develop/quick-reference/prerelease) for the inspiration for the lifecycle and naming conventions of our new experimental feature patterns. -->
+<p>新しい実験的な機能パターンのライフサイクルと命名規則のヒントを与えてくれた<a href="https://docs.streamlit.io/develop/quick-reference/prerelease">streamlit</a>に感謝します。</p>
 <h2 id="support-for-python-versions">Support for Python versions<a class="headerlink" href="#support-for-python-versions" title="Permanent link">&para;</a></h2>
-<p>Pydantic will drop support for a Python version when the following conditions are met:</p>
+<!-- Pydantic will drop support for a Python version when the following conditions are met: -->
+<p>Pydanticは、次の条件が満たされた場合、Pythonバージョンのサポートを終了します。</p>
+<!-- * The Python version has reached [EOL](https://devguide.python.org/versions/).
+* <5% of downloads of the most recent minor release need to be using that version. -->
 <ul>
-<li>The Python version has reached <a href="https://devguide.python.org/versions/">EOL</a>.</li>
-<li>&lt;5% of downloads of the most recent minor release need to be using that version.</li>
+<li>Pythonのバージョンが[EOL]に達したとき(https://devguide.python.org/versions/)。</li>
+<li>最新のマイナーリリースのダウンロードの5%未満しかそのバージョンを使用していないとき。</li>
 </ul>
 
 

@@ -4452,12 +4452,21 @@
 
   <h1>Validation Errors</h1>
 
-<p>Pydantic attempts to provide useful validation errors. Below are details on common validation errors users
-may encounter when working with pydantic, together with some suggestions on how to fix them.</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- Pydantic attempts to provide useful validation errors. Below are details on common validation errors users may encounter when working with pydantic, together with some suggestions on how to fix them. -->
+<p>Pydanticは有用な検証エラーを提供しようとしている。以下は、pydanticを使用しているときにユーザーが遭遇する可能性のある一般的な検証エラーの詳細と、それらを修正する方法に関するいくつかの提案である。</p>
 <h2 id="arguments_type"><code>arguments_type</code><a class="headerlink" href="#arguments_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when an object that would be passed as arguments to a function during validation is not
-a <code>tuple</code>, <code>list</code>, or <code>dict</code>. Because <code>NamedTuple</code> uses function calls in its implementation, that is one way to
-produce this error:</p>
+<!-- This error is raised when an object that would be passed as arguments to a function during validation is not a `tuple`, `list`, or `dict`. Because `NamedTuple` uses function calls in its implementation, that is one way to produce this error: -->
+<p>このエラーは、検証中に引数として関数に渡されるオブジェクトが<code>tuple</code>、<code>list</code>、または<code>dict</code>でない場合に発生します。<code>NamedTuple</code>は実装で関数呼び出しを使用するので、これがこのエラーを発生させる1つの方法です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NamedTuple</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4478,7 +4487,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;arguments_type&#39;</span>
 </code></pre></div>
 <h2 id="assertion_error"><code>assertion_error</code><a class="headerlink" href="#assertion_error" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a failing <code>assert</code> statement is encountered during validation:</p>
+<!-- This error is raised when a failing `assert` statement is encountered during validation: -->
+<p>このエラーは、検証中に失敗した<code>assert</code>文が検出された場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">field_validator</span>
 
 
@@ -4499,7 +4509,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;assertion_error&#39;</span>
 </code></pre></div>
 <h2 id="bool_parsing"><code>bool_parsing</code><a class="headerlink" href="#bool_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string that is not valid for coercion to a boolean:</p>
+<!-- This error is raised when the input value is a string that is not valid for coercion to a boolean: -->
+<p>このエラーは、入力値がブール演算への強制に有効でない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4516,7 +4527,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;bool_parsing&#39;</span>
 </code></pre></div>
 <h2 id="bool_type"><code>bool_type</code><a class="headerlink" href="#bool_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>bool</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `bool` field: -->
+<p>このエラーは、入力値の型が<code>bool</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4530,9 +4542,11 @@ produce this error:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;bool_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>bool</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `bool`. -->
+<p>このエラーは、入力値が<code>bool</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="bytes_too_long"><code>bytes_too_long</code><a class="headerlink" href="#bytes_too_long" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the length of a <code>bytes</code> value is greater than the field's <code>max_length</code> constraint:</p>
+<!-- This error is raised when the length of a `bytes` value is greater than the field's `max_length` constraint: -->
+<p>このエラーは、<code>bytes</code>値の長さがフィールドの<code>max_length</code>制約より大きい場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4547,7 +4561,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;bytes_too_long&#39;</span>
 </code></pre></div>
 <h2 id="bytes_too_short"><code>bytes_too_short</code><a class="headerlink" href="#bytes_too_short" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the length of a <code>bytes</code> value is less than the field's <code>min_length</code> constraint:</p>
+<!-- This error is raised when the length of a `bytes` value is less than the field's `min_length` constraint: -->
+<p>このエラーは、<code>bytes</code>値の長さがフィールドの<code>min_length</code>制約より小さい場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4562,7 +4577,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;bytes_too_short&#39;</span>
 </code></pre></div>
 <h2 id="bytes_type"><code>bytes_type</code><a class="headerlink" href="#bytes_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>bytes</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `bytes` field: -->
+<p>このエラーは、入力値のタイプが<code>bytes</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4576,9 +4592,11 @@ produce this error:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;bytes_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>bytes</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `bytes`. -->
+<p>このエラーは、入力値が<code>bytes</code>のインスタンスでないstrictフィールドに対しても発生します。</p>
 <h2 id="callable_type"><code>callable_type</code><a class="headerlink" href="#callable_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not valid as a <code>Callable</code>:</p>
+<!-- This error is raised when the input value is not valid as a `Callable`: -->
+<p>このエラーは、入力値が<code>Callable</code>として有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ImportString</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4597,7 +4615,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;callable_type&#39;</span>
 </code></pre></div>
 <h2 id="dataclass_exact_type"><code>dataclass_exact_type</code><a class="headerlink" href="#dataclass_exact_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when validating a dataclass with <code>strict=True</code> and the input is not an instance of the dataclass:</p>
+<!-- This error is raised when validating a dataclass with `strict=True` and the input is not an instance of the dataclass: -->
+<p>このエラーは、<code>strict=True</code>でデータクラスを検証し、入力がデータクラスのインスタンスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pydantic.dataclasses</span>
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">TypeAdapter</span><span class="p">,</span> <span class="n">ValidationError</span>
 
@@ -4621,7 +4640,8 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;dataclass_exact_type&#39;</span>
 </code></pre></div>
 <h2 id="dataclass_type"><code>dataclass_type</code><a class="headerlink" href="#dataclass_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not valid for a <code>dataclass</code> field:</p>
+<!-- This error is raised when the input value is not valid for a `dataclass` field: -->
+<p>このエラーは、入力値が<code>dataclass</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">dataclasses</span>
 
 
@@ -4644,8 +4664,10 @@ produce this error:</p>
     <span class="c1">#&gt; &#39;dataclass_type&#39;</span>
 </code></pre></div>
 <h2 id="date_from_datetime_inexact"><code>date_from_datetime_inexact</code><a class="headerlink" href="#date_from_datetime_inexact" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input <code>datetime</code> value provided for a <code>date</code> field has a nonzero time component.
-For a timestamp to parse into a field of type <code>date</code>, the time components must all be zero:</p>
+<!-- This error is raised when the input `datetime` value provided for a `date` field has a nonzero time component.
+For a timestamp to parse into a field of type `date`, the time components must all be zero: -->
+<p>このエラーは、<code>date</code>フィールドに与えられた入力<code>datetime</code>値がゼロ以外の時間要素を持つ場合に発生します。
+タイムスタンプを解析して<code>date</code>型のフィールドにするには、時刻の要素がすべて0でなければなりません。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4665,7 +4687,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;date_from_datetime_inexact&#39;</span>
 </code></pre></div>
 <h2 id="date_from_datetime_parsing"><code>date_from_datetime_parsing</code><a class="headerlink" href="#date_from_datetime_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string that cannot be parsed for a <code>date</code> field:</p>
+<!-- This error is raised when the input value is a string that cannot be parsed for a `date` field: -->
+<p>このエラーは、入力値が<code>date</code>フィールドで解析できない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4682,7 +4705,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;date_from_datetime_parsing&#39;</span>
 </code></pre></div>
 <h2 id="date_future"><code>date_future</code><a class="headerlink" href="#date_future" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value provided for a <code>FutureDate</code> field is not in the future:</p>
+<!-- This error is raised when the input value provided for a `FutureDate` field is not in the future: -->
+<p>このエラーは、<code>FutureDate</code>フィールドに指定された入力値が将来のものでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">FutureDate</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4699,7 +4723,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;date_future&#39;</span>
 </code></pre></div>
 <h2 id="date_parsing"><code>date_parsing</code><a class="headerlink" href="#date_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when validating JSON where the input value is string that cannot be parsed for a <code>date</code> field:</p>
+<!-- This error is raised when validating JSON where the input value is string that cannot be parsed for a `date` field: -->
+<p>このエラーは、入力値が<code>date</code>フィールド用に解析できない文字列であるJSONを検証するときに発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 
@@ -4717,7 +4742,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;date_parsing&#39;</span>
 </code></pre></div>
 <h2 id="date_past"><code>date_past</code><a class="headerlink" href="#date_past" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>PastDate</code> field is not in the past:</p>
+<!-- This error is raised when the value provided for a `PastDate` field is not in the past: -->
+<p>このエラーは、<code>PastDate</code>フィールドに指定された値が過去のものでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">PastDate</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4734,7 +4760,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;date_past&#39;</span>
 </code></pre></div>
 <h2 id="date_type"><code>date_type</code><a class="headerlink" href="#date_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>date</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `date` field: -->
+<p>このエラーは、入力値の型が<code>date</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4750,13 +4777,16 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;date_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>date</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `date`. -->
+<p>このエラーは、入力値が<code>date</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="datetime_from_date_parsing"><code>datetime_from_date_parsing</code><a class="headerlink" href="#datetime_from_date_parsing" title="Permanent link">&para;</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Support for this error, along with support for parsing datetimes from <code>yyyy-MM-DD</code> dates will be added in <code>v2.6.0</code></p>
+<p><!-- Support for this error, along with support for parsing datetimes from <code>yyyy-MM-DD</code> dates will be added in <code>v2.6.0</code> -->
+このエラーのサポートと、<code>yyyy-MM-DD</code>日付からの日時の解析のサポートが<code>v2.6.0</code>に追加されます。</p>
 </div>
-<p>This error is raised when the input value is a string that cannot be parsed for a <code>datetime</code> field:</p>
+<!-- This error is raised when the input value is a string that cannot be parsed for a `datetime` field: -->
+<p>このエラーは、入力値が<code>datetime</code>フィールド用に解析できない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4774,7 +4804,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;datetime_from_date_parsing&#39;</span>
 </code></pre></div>
 <h2 id="datetime_future"><code>datetime_future</code><a class="headerlink" href="#datetime_future" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>FutureDatetime</code> field is not in the future:</p>
+<!-- This error is raised when the value provided for a `FutureDatetime` field is not in the future: -->
+<p>このエラーは、<code>FutureDatetime</code>フィールドに指定された値が将来のものでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">FutureDatetime</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4791,7 +4822,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;datetime_future&#39;</span>
 </code></pre></div>
 <h2 id="datetime_object_invalid"><code>datetime_object_invalid</code><a class="headerlink" href="#datetime_object_invalid" title="Permanent link">&para;</a></h2>
-<p>This error is raised when something about the <code>datetime</code> object is not valid:</p>
+<!-- This error is raised when something about the `datetime` object is not valid: -->
+<p>このエラーは、<code>datetime</code>オブジェクトに関する何かが有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">tzinfo</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AwareDatetime</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4815,7 +4847,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;datetime_object_invalid&#39;</span>
 </code></pre></div>
 <h2 id="datetime_parsing"><code>datetime_parsing</code><a class="headerlink" href="#datetime_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is a string that cannot be parsed for a <code>datetime</code> field:</p>
+<!-- This error is raised when the value is a string that cannot be parsed for a `datetime` field: -->
+<p>このエラーは、値が<code>datetime</code>フィールド用に解析できない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
@@ -4833,7 +4866,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;datetime_parsing&#39;</span>
 </code></pre></div>
 <h2 id="datetime_past"><code>datetime_past</code><a class="headerlink" href="#datetime_past" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>PastDatetime</code> field is not in the past:</p>
+<!-- This error is raised when the value provided for a `PastDatetime` field is not in the past: -->
+<p>このエラーは、<code>PastDatetime</code>フィールドに指定された値が過去のものでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">PastDatetime</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4850,7 +4884,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;datetime_past&#39;</span>
 </code></pre></div>
 <h2 id="datetime_type"><code>datetime_type</code><a class="headerlink" href="#datetime_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>datetime</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `datetime` field: -->
+<p>このエラーは、入力値の型が<code>datetime</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4866,9 +4901,11 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;datetime_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>datetime</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `datetime`. -->
+<p>このエラーは、入力値が<code>datetime</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="decimal_max_digits"><code>decimal_max_digits</code><a class="headerlink" href="#decimal_max_digits" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>Decimal</code> has too many digits:</p>
+<!-- This error is raised when the value provided for a `Decimal` has too many digits: -->
+<p>このエラーは、<code>Decimal</code>に指定された値の桁数が多すぎる場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4885,7 +4922,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;decimal_max_digits&#39;</span>
 </code></pre></div>
 <h2 id="decimal_max_places"><code>decimal_max_places</code><a class="headerlink" href="#decimal_max_places" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>Decimal</code> has too many digits after the decimal point:</p>
+<!-- This error is raised when the value provided for a `Decimal` has too many digits after the decimal point: -->
+<p>このエラーは、<code>Decimal</code>に指定された値の小数点以下の桁数が多すぎる場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4902,7 +4940,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;decimal_max_places&#39;</span>
 </code></pre></div>
 <h2 id="decimal_parsing"><code>decimal_parsing</code><a class="headerlink" href="#decimal_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>Decimal</code> could not be parsed as a decimal number:</p>
+<!-- This error is raised when the value provided for a `Decimal` could not be parsed as a decimal number: -->
+<p>このエラーは、<code>Decimal</code>に指定された値を10進数として解析できなかった場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4919,7 +4958,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;decimal_parsing&#39;</span>
 </code></pre></div>
 <h2 id="decimal_type"><code>decimal_type</code><a class="headerlink" href="#decimal_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>Decimal</code> is of the wrong type:</p>
+<!-- This error is raised when the value provided for a `Decimal` is of the wrong type: -->
+<p>このエラーは、<code>Decimal</code>に指定された値のタイプが間違っている場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4935,9 +4975,11 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;decimal_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>Decimal</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `Decimal`. -->
+<p>このエラーは、入力値が<code>Decimal</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="decimal_whole_digits"><code>decimal_whole_digits</code><a class="headerlink" href="#decimal_whole_digits" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value provided for a <code>Decimal</code> has more digits before the decimal point than <code>max_digits</code> - <code>decimal_places</code> (as long as both are specified):</p>
+<!-- This error is raised when the value provided for a `Decimal` has more digits before the decimal point than `max_digits` - `decimal_places` (as long as both are specified): -->
+<p>このエラーは、<code>Decimal</code>に指定された値の小数点以下の桁数が<code>max_digits</code>-<code>decimal_places</code>(両方が指定されている場合)よりも多い場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4953,9 +4995,11 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;decimal_whole_digits&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>Decimal</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `Decimal`. -->
+<p>このエラーは、入力値が<code>Decimal</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="dict_type"><code>dict_type</code><a class="headerlink" href="#dict_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not <code>dict</code> for a <code>dict</code> field:</p>
+<!-- This error is raised when the input value's type is not `dict` for a `dict` field: -->
+<p>このエラーは、入力値の型が<code>dict</code>フィールドの<code>dict</code>でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4970,7 +5014,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;dict_type&#39;</span>
 </code></pre></div>
 <h2 id="enum"><code>enum</code><a class="headerlink" href="#enum" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value does not exist in an <code>enum</code> field members:</p>
+<!-- This error is raised when the input value does not exist in an `enum` field members: -->
+<p>このエラーは、入力値が<code>enum</code>フィールドメンバーに存在しない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4991,7 +5036,8 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="c1">#&gt; &#39;enum&#39;</span>
 </code></pre></div>
 <h2 id="extra_forbidden"><code>extra_forbidden</code><a class="headerlink" href="#extra_forbidden" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value contains extra fields, but <code>model_config['extra'] == 'forbid'</code>:</p>
+<!-- This error is raised when the input value contains extra fields, but `model_config['extra'] == 'forbid'`: -->
+<p>このエラーは、入力値に余分なフィールドが含まれている場合に発生しますが、<code>model_config['extra']=='forbid'</code>:</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5007,10 +5053,11 @@ For a timestamp to parse into a field of type <code>date</code>, the time compon
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;extra_forbidden&#39;</span>
 </code></pre></div>
-<p>You can read more about the <code>extra</code> configuration in the <a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.extra">Extra Attributes</a> section.</p>
+<!-- You can read more about the `extra` configuration in the [Extra Attributes][pydantic.config.ConfigDict.extra] section. -->
+<p><code>extra</code>設定の詳細については、<a class="autorefs autorefs-internal" href="../../api/config/#pydantic.config.ConfigDict.extra">Extra Attributes</a>セクションを参照してください。</p>
 <h2 id="finite_number"><code>finite_number</code><a class="headerlink" href="#finite_number" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is infinite, or too large to be represented as a 64-bit floating point number
-during validation:</p>
+<!-- This error is raised when the value is infinite, or too large to be represented as a 64-bit floating point number during validation: -->
+<p>このエラーは、値が無限であるか、検証中に64ビットの浮動小数点数として表現するには大きすぎる場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5025,7 +5072,8 @@ during validation:</p>
     <span class="c1">#&gt; &#39;finite_number&#39;</span>
 </code></pre></div>
 <h2 id="float_parsing"><code>float_parsing</code><a class="headerlink" href="#float_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is a string that can't be parsed as a <code>float</code>:</p>
+<!-- This error is raised when the value is a string that can't be parsed as a `float`: -->
+<p>このエラーは、値が<code>float</code>として解析できない文字列の場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5040,7 +5088,8 @@ during validation:</p>
     <span class="c1">#&gt; &#39;float_parsing&#39;</span>
 </code></pre></div>
 <h2 id="float_type"><code>float_type</code><a class="headerlink" href="#float_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>float</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `float` field: -->
+<p>このエラーは、入力値の型が<code>float</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5055,7 +5104,8 @@ during validation:</p>
     <span class="c1">#&gt; &#39;float_type&#39;</span>
 </code></pre></div>
 <h2 id="frozen_field"><code>frozen_field</code><a class="headerlink" href="#frozen_field" title="Permanent link">&para;</a></h2>
-<p>This error is raised when you attempt to assign a value to a field with <code>frozen=True</code>, or to delete such a field:</p>
+<!-- This error is raised when you attempt to assign a value to a field with `frozen=True`, or to delete such a field: -->
+<p>このエラーは、<code>frozen=True</code>のフィールドに値を代入しようとした場合、またはそのようなフィールドを削除しようとした場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5078,8 +5128,8 @@ during validation:</p>
     <span class="c1">#&gt; &#39;frozen_field&#39;</span>
 </code></pre></div>
 <h2 id="frozen_instance"><code>frozen_instance</code><a class="headerlink" href="#frozen_instance" title="Permanent link">&para;</a></h2>
-<p>This error is raised when <code>model_config['frozen] == True</code> and you attempt to delete or assign a new value to
-any of the fields:</p>
+<!-- This error is raised when `model_config['frozen] == True` and you attempt to delete or assign a new value to any of the fields: -->
+<p>このエラーは、<code>model_config['frozen]==True</code>で、次のいずれかのフィールドを削除または新しい値を割り当てようとした場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5104,7 +5154,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;frozen_instance&#39;</span>
 </code></pre></div>
 <h2 id="frozen_set_type"><code>frozen_set_type</code><a class="headerlink" href="#frozen_set_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>frozenset</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `frozenset` field: -->
+<p>このエラーは、入力値の型が<code>frozenset</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5119,7 +5170,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;frozen_set_type&#39;</span>
 </code></pre></div>
 <h2 id="get_attribute_error"><code>get_attribute_error</code><a class="headerlink" href="#get_attribute_error" title="Permanent link">&para;</a></h2>
-<p>This error is raised when <code>model_config['from_attributes'] == True</code> and an error is raised while reading the attributes:</p>
+<!-- This error is raised when `model_config['from_attributes'] == True` and an error is raised while reading the attributes: -->
+<p>このエラーは、<code>model_config['from_attributes']==True</code>の場合に発生し、属性の読み取り中にエラーが発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5146,7 +5198,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;get_attribute_error&#39;</span>
 </code></pre></div>
 <h2 id="greater_than"><code>greater_than</code><a class="headerlink" href="#greater_than" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is not greater than the field's <code>gt</code> constraint:</p>
+<!-- This error is raised when the value is not greater than the field's `gt` constraint: -->
+<p>このエラーは、値がフィールドの<code>gt</code>制約より大きくない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5161,7 +5214,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;greater_than&#39;</span>
 </code></pre></div>
 <h2 id="greater_than_equal"><code>greater_than_equal</code><a class="headerlink" href="#greater_than_equal" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is not greater than or equal to the field's <code>ge</code> constraint:</p>
+<!-- This error is raised when the value is not greater than or equal to the field's `ge` constraint: -->
+<p>このエラーは、値がフィールドの<code>ge</code>制約以上でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5176,7 +5230,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;greater_than_equal&#39;</span>
 </code></pre></div>
 <h2 id="int_from_float"><code>int_from_float</code><a class="headerlink" href="#int_from_float" title="Permanent link">&para;</a></h2>
-<p>This error is raised when you provide a <code>float</code> value for an <code>int</code> field:</p>
+<!-- This error is raised when you provide a `float` value for an `int` field: -->
+<p>このエラーは、<code>int</code>フィールドに<code>float</code>値を指定すると発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5191,7 +5246,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;int_from_float&#39;</span>
 </code></pre></div>
 <h2 id="int_parsing"><code>int_parsing</code><a class="headerlink" href="#int_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value can't be parsed as <code>int</code>:</p>
+<!-- This error is raised when the value can't be parsed as `int`: -->
+<p>このエラーは、値が<code>int</code>として解析できない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5206,8 +5262,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;int_parsing&#39;</span>
 </code></pre></div>
 <h2 id="int_parsing_size"><code>int_parsing_size</code><a class="headerlink" href="#int_parsing_size" title="Permanent link">&para;</a></h2>
-<p>This error is raised when attempting to parse a python or JSON value from a string outside the maximum range that Python
-<code>str</code> to <code>int</code> parsing permits:</p>
+<!-- This error is raised when attempting to parse a python or JSON value from a string outside the maximum range that Python `str` to `int` parsing permits: -->
+<p>このエラーは、Pythonの<code>str</code>から<code>int</code>の解析で許可されている最大範囲外の文字列からPythonまたはJSONの値を解析しようとしたときに発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5235,7 +5291,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;int_parsing_size&#39;</span>
 </code></pre></div>
 <h2 id="int_type"><code>int_type</code><a class="headerlink" href="#int_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for an <code>int</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for an `int` field: -->
+<p>このエラーは、入力値の型が<code>int</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5250,7 +5307,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;int_type&#39;</span>
 </code></pre></div>
 <h2 id="invalid_key"><code>invalid_key</code><a class="headerlink" href="#invalid_key" title="Permanent link">&para;</a></h2>
-<p>This error is raised when attempting to validate a <code>dict</code> that has a key that is not an instance of <code>str</code>:</p>
+<!-- This error is raised when attempting to validate a `dict` that has a key that is not an instance of `str`: -->
+<p>このエラーは、<code>str</code>のインスタンスではないキーを持つ<code>dict</code>を検証しようとしたときに発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5267,7 +5325,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;invalid_key&#39;</span>
 </code></pre></div>
 <h2 id="is_instance_of"><code>is_instance_of</code><a class="headerlink" href="#is_instance_of" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not an instance of the expected type:</p>
+<!-- This error is raised when the input value is not an instance of the expected type: -->
+<p>このエラーは、入力値が予期されたタイプのインスタンスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5288,7 +5347,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;is_instance_of&#39;</span>
 </code></pre></div>
 <h2 id="is_subclass_of"><code>is_subclass_of</code><a class="headerlink" href="#is_subclass_of" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not a subclass of the expected type:</p>
+<!-- This error is raised when the input value is not a subclass of the expected type: -->
+<p>このエラーは、入力値が予期したタイプのサブクラスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5309,7 +5369,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;is_subclass_of&#39;</span>
 </code></pre></div>
 <h2 id="iterable_type"><code>iterable_type</code><a class="headerlink" href="#iterable_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not valid as an <code>Iterable</code>:</p>
+<!-- This error is raised when the input value is not valid as an `Iterable`: -->
+<p>このエラーは、入力値が<code>Iterable</code>として有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5326,7 +5387,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;iterable_type&#39;</span>
 </code></pre></div>
 <h2 id="iteration_error"><code>iteration_error</code><a class="headerlink" href="#iteration_error" title="Permanent link">&para;</a></h2>
-<p>This error is raised when an error occurs during iteration:</p>
+<!-- This error is raised when an error occurs during iteration: -->
+<p>このエラーは、反復中にエラーが発生した場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5348,7 +5410,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;iteration_error&#39;</span>
 </code></pre></div>
 <h2 id="json_invalid"><code>json_invalid</code><a class="headerlink" href="#json_invalid" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not a valid JSON string:</p>
+<!-- This error is raised when the input value is not a valid JSON string: -->
+<p>このエラーは、入力値が有効なJSON文字列でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Json</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5363,7 +5426,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;json_invalid&#39;</span>
 </code></pre></div>
 <h2 id="json_type"><code>json_type</code><a class="headerlink" href="#json_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is of a type that cannot be parsed as JSON:</p>
+<!-- This error is raised when the input value is of a type that cannot be parsed as JSON: -->
+<p>このエラーは、入力値の型がJSONとして解析できない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Json</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5378,7 +5442,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;json_type&#39;</span>
 </code></pre></div>
 <h2 id="less_than"><code>less_than</code><a class="headerlink" href="#less_than" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not less than the field's <code>lt</code> constraint:</p>
+<!-- This error is raised when the input value is not less than the field's `lt` constraint: -->
+<p>このエラーは、入力値がフィールドの<code>lt</code>制約以上である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5393,7 +5458,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;less_than&#39;</span>
 </code></pre></div>
 <h2 id="less_than_equal"><code>less_than_equal</code><a class="headerlink" href="#less_than_equal" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not less than or equal to the field's <code>le</code> constraint:</p>
+<!-- This error is raised when the input value is not less than or equal to the field's `le` constraint: -->
+<p>このエラーは、入力値がフィールドの<code>le</code>制約以下でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5408,7 +5474,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;less_than_equal&#39;</span>
 </code></pre></div>
 <h2 id="list_type"><code>list_type</code><a class="headerlink" href="#list_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>list</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `list` field: -->
+<p>このエラーは、入力値の型が<code>list</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5425,7 +5492,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;list_type&#39;</span>
 </code></pre></div>
 <h2 id="literal_error"><code>literal_error</code><a class="headerlink" href="#literal_error" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not one of the expected literal values:</p>
+<!-- This error is raised when the input value is not one of the expected literal values: -->
+<p>このエラーは、入力値が期待されるリテラル値ではない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5444,8 +5512,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;literal_error&#39;</span>
 </code></pre></div>
 <h2 id="mapping_type"><code>mapping_type</code><a class="headerlink" href="#mapping_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a problem occurs during validation due to a failure in a call to the methods from the
-<code>Mapping</code> protocol, such as <code>.items()</code>:</p>
+<!-- This error is raised when a problem occurs during validation due to a failure in a call to the methods from the `Mapping` protocol, such as `.items()`: -->
+<p>このエラーは、<code>.items()</code>などの<code>Mapping</code>プロトコルからのメソッドの呼び出しに失敗したために、検証中に問題が発生した場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections.abc</span> <span class="kn">import</span> <span class="n">Mapping</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
 
@@ -5477,7 +5545,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;mapping_type&#39;</span>
 </code></pre></div>
 <h2 id="missing"><code>missing</code><a class="headerlink" href="#missing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when there are required fields missing from the input value:</p>
+<!-- This error is raised when there are required fields missing from the input value: -->
+<p>このエラーは、入力値に必須フィールドがない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5492,8 +5561,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;missing&#39;</span>
 </code></pre></div>
 <h2 id="missing_argument"><code>missing_argument</code><a class="headerlink" href="#missing_argument" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a required positional-or-keyword argument is not passed to a function decorated with
-<code>validate_call</code>:</p>
+<!-- This error is raised when a required positional-or-keyword argument is not passed to a function decorated with `validate_call`: -->
+<p>このエラーは、必要な位置またはキーワード引数が<code>validate_call</code>で修飾された関数に渡されなかった場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -5509,7 +5578,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;missing_argument&#39;</span>
 </code></pre></div>
 <h2 id="missing_keyword_only_argument"><code>missing_keyword_only_argument</code><a class="headerlink" href="#missing_keyword_only_argument" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a required keyword-only argument is not passed to a function decorated with <code>validate_call</code>:</p>
+<!-- This error is raised when a required keyword-only argument is not passed to a function decorated with `validate_call`: -->
+<p>このエラーは、必要なキーワードのみの引数が<code>validate_call</code>で修飾された関数に渡されなかった場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -5525,8 +5595,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;missing_keyword_only_argument&#39;</span>
 </code></pre></div>
 <h2 id="missing_positional_only_argument"><code>missing_positional_only_argument</code><a class="headerlink" href="#missing_positional_only_argument" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a required positional-only argument is not passed to a function decorated with
-<code>validate_call</code>:</p>
+<!-- This error is raised when a required positional-only argument is not passed to a function decorated with `validate_call`: -->
+<p>このエラーは、必要な位置のみの引数が<code>validate_call</code>で修飾された関数に渡されなかった場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -5542,7 +5612,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;missing_positional_only_argument&#39;</span>
 </code></pre></div>
 <h2 id="model_attributes_type"><code>model_attributes_type</code><a class="headerlink" href="#model_attributes_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not a valid dictionary, model instance, or instance that fields can be extracted from:</p>
+<!-- This error is raised when the input value is not a valid dictionary, model instance, or instance that fields can be extracted from: -->
+<p>このエラーは、入力値が有効な辞書、モデルインスタンス、またはフィールドを抽出できるインスタンスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5573,7 +5644,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;model_attributes_type&#39;</span>
 </code></pre></div>
 <h2 id="model_type"><code>model_type</code><a class="headerlink" href="#model_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input to a model is not an instance of the model or dict:</p>
+<!-- This error is raised when the input to a model is not an instance of the model or dict: -->
+<p>このエラーは、モデルへの入力がモデルまたはdictのインスタンスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5598,8 +5670,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;model_type&#39;</span>
 </code></pre></div>
 <h2 id="multiple_argument_values"><code>multiple_argument_values</code><a class="headerlink" href="#multiple_argument_values" title="Permanent link">&para;</a></h2>
-<p>This error is raised when you provide multiple values for a single argument while calling a function decorated with
-<code>validate_call</code>:</p>
+<!-- This error is raised when you provide multiple values for a single argument while calling a function decorated with `validate_call`: -->
+<p>このエラーは、<code>validate_call</code>で修飾された関数を呼び出しているときに、1つの引数に複数の値を指定すると発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -5615,7 +5687,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;multiple_argument_values&#39;</span>
 </code></pre></div>
 <h2 id="multiple_of"><code>multiple_of</code><a class="headerlink" href="#multiple_of" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input is not a multiple of a field's <code>multiple_of</code> constraint:</p>
+<!-- This error is raised when the input is not a multiple of a field's `multiple_of` constraint: -->
+<p>このエラーは、入力がフィールドの<code>multiple_of</code>制約の倍数でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5630,8 +5703,8 @@ any of the fields:</p>
     <span class="c1">#&gt; &#39;multiple_of&#39;</span>
 </code></pre></div>
 <h2 id="no_such_attribute"><code>no_such_attribute</code><a class="headerlink" href="#no_such_attribute" title="Permanent link">&para;</a></h2>
-<p>This error is raised when <code>validate_assignment=True</code> in the config, and you attempt to assign a value to an attribute
-that is not an existing field:</p>
+<!-- This error is raised when `validate_assignment=True` in the config, and you attempt to assign a value to an attribute that is not an existing field: -->
+<p>このエラーは、configの<code>validate_assignment=True</code>で、既存のフィールドではない属性に値を割り当てようとした場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">dataclasses</span>
 
 
@@ -5648,7 +5721,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;no_such_attribute&#39;</span>
 </code></pre></div>
 <h2 id="none_required"><code>none_required</code><a class="headerlink" href="#none_required" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is not <code>None</code> for a field that requires <code>None</code>:</p>
+<!-- This error is raised when the input value is not `None` for a field that requires `None`: -->
+<p>このエラーは、<code>None</code>を必要とするフィールドの入力値が<code>None</code>でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5664,8 +5738,10 @@ that is not an existing field:</p>
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You may encounter this error when there is a naming collision in your model between a field name and its type. More specifically, this error is likely to be thrown when the default value of that field is <code>None</code>.</p>
-<p>For example, the following would yield the <code>none_required</code> validation error since the field <code>int</code> is set to a default value of <code>None</code> and has the exact same name as its type, which causes problems with validation.
+<p><!-- You may encounter this error when there is a naming collision in your model between a field name and its type. More specifically, this error is likely to be thrown when the default value of that field is <code>None</code>. -->
+このエラーは、モデル内でフィールド名とその型の間に名前の競合がある場合に発生することがあります。具体的には、このフィールドのデフォルト値が<code>None</code>の場合にこのエラーがスローされる可能性があります。</p>
+<p><!-- For example, the following would yield the <code>none_required</code> validation error since the field <code>int</code> is set to a default value of <code>None</code> and has the exact same name as its type, which causes problems with validation. -->
+例えば、フィールド<code>int</code>がデフォルト値<code>None</code>に設定されていて、その型とまったく同じ名前を持っているため、検証で問題が発生するため、次の例では<code>none_required</code>検証エラーが発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -5676,10 +5752,11 @@ that is not an existing field:</p>
 
 
 <span class="n">m</span> <span class="o">=</span> <span class="n">M1</span><span class="p">(</span><span class="nb">int</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>  <span class="c1"># errors</span>
-</code></pre></div></p>
+</code></pre></div>
 </div>
 <h2 id="recursion_loop"><code>recursion_loop</code><a class="headerlink" href="#recursion_loop" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a cyclic reference is detected:</p>
+<!-- This error is raised when a cyclic reference is detected: -->
+<p>このエラーは、循環参照が検出された場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5698,7 +5775,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;recursion_loop&#39;</span>
 </code></pre></div>
 <h2 id="set_type"><code>set_type</code><a class="headerlink" href="#set_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value type is not valid for a <code>set</code> field:</p>
+<!-- This error is raised when the value type is not valid for a `set` field: -->
+<p>このエラーは、値の型が<code>set</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Set</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5715,7 +5793,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;set_type&#39;</span>
 </code></pre></div>
 <h2 id="string_pattern_mismatch"><code>string_pattern_mismatch</code><a class="headerlink" href="#string_pattern_mismatch" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value doesn't match the field's <code>pattern</code> constraint:</p>
+<!-- This error is raised when the input value doesn't match the field's `pattern` constraint: -->
+<p>このエラーは、入力値がフィールドの<code>pattern</code>制約と一致しない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5730,7 +5809,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;string_pattern_mismatch&#39;</span>
 </code></pre></div>
 <h2 id="string_sub_type"><code>string_sub_type</code><a class="headerlink" href="#string_sub_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value is an instance of a strict subtype of <code>str</code> when the field is strict:</p>
+<!-- This error is raised when the value is an instance of a strict subtype of `str` when the field is strict: -->
+<p>このエラーは、値が<code>str</code>のstrictサブタイプのインスタンスであり、フィールドがstrictの場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5751,7 +5831,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;string_sub_type&#39;</span>
 </code></pre></div>
 <h2 id="string_too_long"><code>string_too_long</code><a class="headerlink" href="#string_too_long" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string whose length is greater than the field's <code>max_length</code> constraint:</p>
+<!-- This error is raised when the input value is a string whose length is greater than the field's `max_length` constraint: -->
+<p>このエラーは、入力値がフィールドの<code>max_length</code>制約よりも長い文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5766,7 +5847,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;string_too_long&#39;</span>
 </code></pre></div>
 <h2 id="string_too_short"><code>string_too_short</code><a class="headerlink" href="#string_too_short" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string whose length is less than the field's <code>min_length</code> constraint:</p>
+<!-- This error is raised when the input value is a string whose length is less than the field's `min_length` constraint: -->
+<p>このエラーは、入力値がフィールドの<code>min_length</code>制約より短い文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5781,7 +5863,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;string_too_short&#39;</span>
 </code></pre></div>
 <h2 id="string_type"><code>string_type</code><a class="headerlink" href="#string_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>str</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `str` field: -->
+<p>このエラーは、入力値の型が<code>str</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5795,9 +5878,11 @@ that is not an existing field:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;string_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>str</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `str`. -->
+<p>このエラーは、入力値が<code>str</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="string_unicode"><code>string_unicode</code><a class="headerlink" href="#string_unicode" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value cannot be parsed as a Unicode string:</p>
+<!-- This error is raised when the value cannot be parsed as a Unicode string: -->
+<p>このエラーは、値をUnicode文字列として解析できない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -5812,7 +5897,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;string_unicode&#39;</span>
 </code></pre></div>
 <h2 id="time_delta_parsing"><code>time_delta_parsing</code><a class="headerlink" href="#time_delta_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string that cannot be parsed for a <code>timedelta</code> field:</p>
+<!-- This error is raised when the input value is a string that cannot be parsed for a `timedelta` field: -->
+<p>このエラーは、入力値が<code>timedelta</code>フィールド用に解析できない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5829,7 +5915,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;time_delta_parsing&#39;</span>
 </code></pre></div>
 <h2 id="time_delta_type"><code>time_delta_type</code><a class="headerlink" href="#time_delta_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>timedelta</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `timedelta` field: -->
+<p>このエラーは、入力値の型が<code>timedelta</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5845,9 +5932,11 @@ that is not an existing field:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;time_delta_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>timedelta</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `timedelta`. -->
+<p>このエラーは、入力値が<code>timedelta</code>のインスタンスでないstrictフィールドに対しても発生します。</p>
 <h2 id="time_parsing"><code>time_parsing</code><a class="headerlink" href="#time_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value is a string that cannot be parsed for a <code>time</code> field:</p>
+<!-- This error is raised when the input value is a string that cannot be parsed for a `time` field: -->
+<p>このエラーは、入力値が<code>time</code>フィールドで解析できない文字列である場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">time</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5864,7 +5953,8 @@ that is not an existing field:</p>
     <span class="c1">#&gt; &#39;time_parsing&#39;</span>
 </code></pre></div>
 <h2 id="time_type"><code>time_type</code><a class="headerlink" href="#time_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value type is not valid for a <code>time</code> field:</p>
+<!-- This error is raised when the value type is not valid for a `time` field: -->
+<p>このエラーは、値の型が<code>time</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">time</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5880,10 +5970,11 @@ that is not an existing field:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;time_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>time</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `time`. -->
+<p>このエラーは、入力値が<code>time</code>のインスタンスでないstrictフィールドに対しても発生します。</p>
 <h2 id="timezone_aware"><code>timezone_aware</code><a class="headerlink" href="#timezone_aware" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the <code>datetime</code> value provided for a timezone-aware <code>datetime</code> field
-doesn't have timezone information:</p>
+<!-- This error is raised when the `datetime` value provided for a timezone-aware `datetime` field doesn't have timezone information: -->
+<p>このエラーは、タイムゾーン対応の<code>datetime</code>フィールドに指定された<code>datetime</code>値にタイムゾーン情報が含まれていない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AwareDatetime</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5900,8 +5991,8 @@ doesn't have timezone information:</p>
     <span class="c1">#&gt; &#39;timezone_aware&#39;</span>
 </code></pre></div>
 <h2 id="timezone_naive"><code>timezone_naive</code><a class="headerlink" href="#timezone_naive" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the <code>datetime</code> value provided for a timezone-naive <code>datetime</code> field
-has timezone info:</p>
+<!-- This error is raised when the `datetime` value provided for a timezone-naive `datetime` field has timezone info: -->
+<p>このエラーは、timezone-naive<code>datetime</code>フィールドに指定された<code>datetime</code>値にtimezone infoが含まれている場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">NaiveDatetime</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5918,7 +6009,8 @@ has timezone info:</p>
     <span class="c1">#&gt; &#39;timezone_naive&#39;</span>
 </code></pre></div>
 <h2 id="too_long"><code>too_long</code><a class="headerlink" href="#too_long" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's length is greater than the field's <code>max_length</code> constraint:</p>
+<!-- This error is raised when the input value's length is greater than the field's `max_length` constraint: -->
+<p>このエラーは、入力値の長さがフィールドの<code>max_length</code>制約より大きい場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5935,7 +6027,8 @@ has timezone info:</p>
     <span class="c1">#&gt; &#39;too_long&#39;</span>
 </code></pre></div>
 <h2 id="too_short"><code>too_short</code><a class="headerlink" href="#too_short" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the value length is less than the field's <code>min_length</code> constraint:</p>
+<!-- This error is raised when the value length is less than the field's `min_length` constraint: -->
+<p>このエラーは、値の長さがフィールドの<code>min_length</code>制約より小さい場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5952,7 +6045,8 @@ has timezone info:</p>
     <span class="c1">#&gt; &#39;too_short&#39;</span>
 </code></pre></div>
 <h2 id="tuple_type"><code>tuple_type</code><a class="headerlink" href="#tuple_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a <code>tuple</code> field:</p>
+<!-- This error is raised when the input value's type is not valid for a `tuple` field: -->
+<p>このエラーは、入力値の型が<code>tuple</code>フィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5968,10 +6062,11 @@ has timezone info:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">exc</span><span class="o">.</span><span class="n">errors</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]))</span>
     <span class="c1">#&gt; &#39;tuple_type&#39;</span>
 </code></pre></div>
-<p>This error is also raised for strict fields when the input value is not an instance of <code>tuple</code>.</p>
+<!-- This error is also raised for strict fields when the input value is not an instance of `tuple`. -->
+<p>このエラーは、入力値が<code>tuple</code>のインスタンスではないstrictフィールドでも発生します。</p>
 <h2 id="unexpected_keyword_argument"><code>unexpected_keyword_argument</code><a class="headerlink" href="#unexpected_keyword_argument" title="Permanent link">&para;</a></h2>
-<p>This error is raised when you provide a value by keyword for a positional-only
-argument while calling a function decorated with <code>validate_call</code>:</p>
+<!-- This error is raised when you provide a value by keyword for a positional-only argument while calling a function decorated with `validate_call`: -->
+<p>このエラーは、<code>validate_call</code>でデコレートされた関数を呼び出しているときに、位置のみの引数にキーワードで値を指定すると発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -6003,8 +6098,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;unexpected_keyword_argument&#39;</span>
 </code></pre></div>
 <h2 id="unexpected_positional_argument"><code>unexpected_positional_argument</code><a class="headerlink" href="#unexpected_positional_argument" title="Permanent link">&para;</a></h2>
-<p>This error is raised when you provide a positional value for a keyword-only
-argument while calling a function decorated with <code>validate_call</code>:</p>
+<!-- This error is raised when you provide a positional value for a keyword-only argument while calling a function decorated with `validate_call`: -->
+<p>このエラーは、<code>validate_call</code>で修飾された関数を呼び出しているときに、キーワードのみの引数に位置の値を指定すると発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">validate_call</span>
 
 
@@ -6020,7 +6115,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;unexpected_positional_argument&#39;</span>
 </code></pre></div>
 <h2 id="union_tag_invalid"><code>union_tag_invalid</code><a class="headerlink" href="#union_tag_invalid" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input's discriminator is not one of the expected values:</p>
+<!-- This error is raised when the input's discriminator is not one of the expected values: -->
+<p>このエラーは、入力の識別子が期待値の1つでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
@@ -6047,7 +6143,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;union_tag_invalid&#39;</span>
 </code></pre></div>
 <h2 id="union_tag_not_found"><code>union_tag_not_found</code><a class="headerlink" href="#union_tag_not_found" title="Permanent link">&para;</a></h2>
-<p>This error is raised when it is not possible to extract a discriminator value from the input:</p>
+<!-- This error is raised when it is not possible to extract a discriminator value from the input: -->
+<p>このエラーは、入力から識別子の値を抽出できない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
@@ -6074,7 +6171,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;union_tag_not_found&#39;</span>
 </code></pre></div>
 <h2 id="url_parsing"><code>url_parsing</code><a class="headerlink" href="#url_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value cannot be parsed as a URL:</p>
+<!-- This error is raised when the input value cannot be parsed as a URL: -->
+<p>このエラーは、入力値をURLとして解析できない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AnyUrl</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6089,7 +6187,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;url_parsing&#39;</span>
 </code></pre></div>
 <h2 id="url_scheme"><code>url_scheme</code><a class="headerlink" href="#url_scheme" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the URL scheme is not valid for the URL type of the field:</p>
+<!-- This error is raised when the URL scheme is not valid for the URL type of the field: -->
+<p>このエラーは、URLスキームがフィールドのURLタイプに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">HttpUrl</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6104,7 +6203,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;url_scheme&#39;</span>
 </code></pre></div>
 <h2 id="url_syntax_violation"><code>url_syntax_violation</code><a class="headerlink" href="#url_syntax_violation" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the URL syntax is not valid:</p>
+<!-- This error is raised when the URL syntax is not valid: -->
+<p>このエラーは、URL構文が有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">HttpUrl</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6119,7 +6219,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;url_syntax_violation&#39;</span>
 </code></pre></div>
 <h2 id="url_too_long"><code>url_too_long</code><a class="headerlink" href="#url_too_long" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the URL length is greater than 2083:</p>
+<!-- This error is raised when the URL length is greater than 2083: -->
+<p>このエラーは、URLの長さが2083を超える場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">HttpUrl</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6134,7 +6235,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;url_too_long&#39;</span>
 </code></pre></div>
 <h2 id="url_type"><code>url_type</code><a class="headerlink" href="#url_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a URL field:</p>
+<!-- This error is raised when the input value's type is not valid for a URL field: -->
+<p>このエラーは、入力値のタイプがURLフィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">HttpUrl</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6149,7 +6251,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;url_type&#39;</span>
 </code></pre></div>
 <h2 id="uuid_parsing"><code>uuid_parsing</code><a class="headerlink" href="#uuid_parsing" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid for a UUID field:</p>
+<!-- This error is raised when the input value's type is not valid for a UUID field: -->
+<p>このエラーは、入力値のタイプがUUIDフィールドに対して有効でない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">UUID</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -6166,7 +6269,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;uuid_parsing&#39;</span>
 </code></pre></div>
 <h2 id="uuid_type"><code>uuid_type</code><a class="headerlink" href="#uuid_type" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not valid instance for a UUID field (str, bytes or UUID):</p>
+<!-- This error is raised when the input value's type is not valid instance for a UUID field (str, bytes or UUID): -->
+<p>このエラーは、入力値のタイプがUUIDフィールド(str、bytes、またはUUID)の有効なインスタンスでない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">uuid</span> <span class="kn">import</span> <span class="n">UUID</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -6183,7 +6287,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;uuid_type&#39;</span>
 </code></pre></div>
 <h2 id="uuid_version"><code>uuid_version</code><a class="headerlink" href="#uuid_version" title="Permanent link">&para;</a></h2>
-<p>This error is raised when the input value's type is not match UUID version:</p>
+<!-- This error is raised when the input value's type is not match UUID version: -->
+<p>このエラーは、入力値のタイプがUUIDバージョンと一致しない場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">UUID5</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -6198,7 +6303,8 @@ argument while calling a function decorated with <code>validate_call</code>:</p>
     <span class="c1">#&gt; &#39;uuid_version&#39;</span>
 </code></pre></div>
 <h2 id="value_error"><code>value_error</code><a class="headerlink" href="#value_error" title="Permanent link">&para;</a></h2>
-<p>This error is raised when a <code>ValueError</code> is raised during validation:</p>
+<!-- This error is raised when a `ValueError` is raised during validation: -->
+<p>このエラーは、検証中に<code>ValueError</code>が発生した場合に発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span><span class="p">,</span> <span class="n">field_validator</span>
 
 
