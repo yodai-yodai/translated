@@ -3661,6 +3661,18 @@
 
   <h1>Configuration</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -3668,7 +3680,7 @@
 <a id="pydantic.config"></a>
     <div class="doc doc-contents first">
 
-      <p>Configuration for Pydantic models.</p>
+      <p>Pydanticモデルの設定</p>
 
 
 
@@ -3696,7 +3708,7 @@
               Bases: <code><span title="typing_extensions.TypedDict">TypedDict</span></code></p>
 
 
-      <p>A TypedDict for configuring Pydantic behaviour.</p>
+      <p>Pydanticの動作を設定するためのTypedDict</p>
 
 
 
@@ -3727,7 +3739,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>The title for the generated JSON schema, defaults to the model's name</p>
+      <p>生成されたJSONスキーマのタイトル。デフォルトはモデルの名前です</p>
     </div>
 
 </div>
@@ -3755,7 +3767,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>A callable that takes a model class and returns the title for it. Defaults to <code>None</code>.</p>
+      <p>モデルクラスを受け取り、そのタイトルを返す呼び出し可能オブジェクト。デフォルトは<code>None</code>です。</p>
     </div>
 
 </div>
@@ -3786,7 +3798,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>A callable that takes a field's name and info and returns title for it. Defaults to <code>None</code>.</p>
+      <p>フィールドの名前と情報を受け取り、そのタイトルを返す呼び出し可能オブジェクト。デフォルトは<code>None</code>です。</p>
     </div>
 
 </div>
@@ -3814,7 +3826,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Whether to convert all characters to lowercase for str types. Defaults to <code>False</code>.</p>
+      <p>str型のすべての文字を小文字に変換するかどうか。デフォルトは<code>False</code>です。</p>
     </div>
 
 </div>
@@ -3842,7 +3854,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Whether to convert all characters to uppercase for str types. Defaults to <code>False</code>.</p>
+      <p>str型のすべての文字を大文字に変換するかどうか。デフォルトは<code>False</code>です。</p>
     </div>
 
 </div>
@@ -3870,7 +3882,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Whether to strip leading and trailing whitespace for str types.</p>
+      <p>str型の先頭と末尾の空白を削除するかどうか。</p>
     </div>
 
 </div>
@@ -3898,7 +3910,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>The minimum length for str types. Defaults to <code>None</code>.</p>
+      <p>str型の最小長。デフォルトは<code>None</code>です。</p>
     </div>
 
 </div>
@@ -3926,7 +3938,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>The maximum length for str types. Defaults to <code>None</code>.</p>
+      <p>str型の最大長。デフォルトは<code>None</code>です。</p>
     </div>
 
 </div>
@@ -3954,12 +3966,12 @@
 
     <div class="doc doc-contents ">
 
-      <p>Whether to ignore, allow, or forbid extra attributes during model initialization. Defaults to <code>'ignore'</code>.</p>
-<p>You can configure how pydantic handles the attributes that are not defined in the model:</p>
+      <p>モデルの初期化中に追加属性を無視するか、許可するか、禁止するか。デフォルトは<code>'ignore'</code>です。</p>
+<p>モデルで定義されていない属性をpydanticが処理する方法を設定できます。</p>
 <ul>
-<li><code>allow</code> - Allow any extra attributes.</li>
-<li><code>forbid</code> - Forbid any extra attributes.</li>
-<li><code>ignore</code> - Ignore any extra attributes.</li>
+<li><code>allow</code> - 追加の属性を許可します。</li>
+<li><code>forbid</code> - 余分な属性を禁止します。</li>
+<li><code>ignore</code> - 余分な属性を無視します。</li>
 </ul>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
@@ -3975,10 +3987,10 @@
 <span class="c1">#&gt; name=&#39;John Doe&#39;</span>
 </code></pre></div>
 <ol>
-<li>This is the default behaviour.</li>
-<li>The <code>age</code> argument is ignored.</li>
+<li>これがデフォルトの動作です。</li>
+<li><code>age</code>引数は無視されます。</li>
 </ol>
-<p>Instead, with <code>extra='allow'</code>, the <code>age</code> argument is included:</p>
+<p>代わりに、<code>extra='allow'</code>を指定すると<code>age</code>引数が含まれます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 
@@ -3993,9 +4005,9 @@
 <span class="c1">#&gt; name=&#39;John Doe&#39; age=20</span>
 </code></pre></div>
 <ol>
-<li>The <code>age</code> argument is included.</li>
+<li><code>age</code>引数が含まれます。</li>
 </ol>
-<p>With <code>extra='forbid'</code>, an error is raised:</p>
+<p><code>extra='forbid'</code>を指定すると、エラーが発生します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 
@@ -4042,14 +4054,12 @@
 
     <div class="doc doc-contents ">
 
-      <p>Whether models are faux-immutable, i.e. whether <code>__setattr__</code> is allowed, and also generates
-a <code>__hash__()</code> method for the model. This makes instances of the model potentially hashable if all the
-attributes are hashable. Defaults to <code>False</code>.</p>
+      <p>モデルが疑似不変かどうか、つまり<code>__setattr__</code>が許可されているかどうか。また、モデルの<code>__hash__()</code>メソッドを生成します。これにより、すべての属性がハッシュ可能であれば、モデルのインスタンスがハッシュ可能になります。デフォルトは<code>False</code>です。</p>
 
 
 <details class="note" open>
   <summary>Note</summary>
-  <p>On V1, the inverse of this setting was called <code>allow_mutation</code>, and was <code>True</code> by default.</p>
+  <p>V1では、この設定の逆は<code>allow_mutation</code>と呼ばれ、デフォルトでは<code>True</code>でした。</p>
 </details>    </div>
 
 </div>
@@ -4077,14 +4087,12 @@ attributes are hashable. Defaults to <code>False</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether an aliased field may be populated by its name as given by the model
-attribute, as well as the alias. Defaults to <code>False</code>.</p>
+      <p>別名フィールドに、モデル属性で指定された名前と別名を入力できるかどうかを指定します。既定値は<code>False</code>です。</p>
 
 
 <details class="note" open>
   <summary>Note</summary>
-  <p>The name of this configuration setting was changed in <strong>v2.0</strong> from
-<code>allow_population_by_field_name</code> to <code>populate_by_name</code>.</p>
+  <p>この構成設定の名前は、<strong>v2.0</strong>で<code>allow_population_by_field_name</code>から<code>populate_by_name</code>に変更されました。</p>
 </details>      <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span>
 
 
@@ -4103,9 +4111,9 @@ attribute, as well as the alias. Defaults to <code>False</code>.</p>
 <span class="c1">#&gt; name=&#39;John Doe&#39; age=20</span>
 </code></pre></div>
 <ol>
-<li>The field <code>'name'</code> has an alias <code>'full_name'</code>.</li>
-<li>The model is populated by the alias <code>'full_name'</code>.</li>
-<li>The model is populated by the field name <code>'name'</code>.</li>
+<li>フィールド"name"にはエイリアス"full_name"があります。</li>
+<li>モデルは、エイリアス<code>'full_name'</code>によって作成されます。</li>
+<li>モデルには、フィールド名"name"が入力されます。</li>
 </ol>
     </div>
 
@@ -4134,13 +4142,11 @@ attribute, as well as the alias. Defaults to <code>False</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to populate models with the <code>value</code> property of enums, rather than the raw enum.
-This may be useful if you want to serialize <code>model.model_dump()</code> later. Defaults to <code>False</code>.</p>
+      <p>生の列挙型ではなく、列挙型の<code>value</code>プロパティをモデルに設定するかどうか。
+これは<code>model.model_dump()</code>を後でシリアライズしたい場合に便利です。デフォルトは<code>False</code>です。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you have an <code>Optional[Enum]</code> value that you set a default for, you need to use <code>validate_default=True</code>
-for said Field to ensure that the <code>use_enum_values</code> flag takes effect on the default, as extracting an
-enum's value occurs during validation, not serialization.</p>
+<p>デフォルトを設定する<code>Optional[Enum]</code>値がある場合は、そのフィールドに<code>validate_default=True</code>を使用して、<code>use_enum_values</code>フラグがデフォルトに対して有効になるようにする必要があります。これは、列挙型の値の抽出はシリアライゼーションではなく検証中に行われるためです。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
@@ -4196,9 +4202,9 @@ enum's value occurs during validation, not serialization.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to validate the data when the model is changed. Defaults to <code>False</code>.</p>
-<p>The default behavior of Pydantic is to validate the data when the model is created.</p>
-<p>In case the user changes the data after the model is created, the model is <em>not</em> revalidated.</p>
+      <p>モデルが変更されたときにデータを検証するかどうか。デフォルトは<code>False</code>です。</p>
+<p>Pydanticのデフォルトの動作は、モデルの作成時にデータを検証することです。</p>
+<p>モデルの作成後にユーザーがデータを変更した場合、モデルは再検証されません。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -4212,10 +4218,10 @@ enum's value occurs during validation, not serialization.</p>
 <span class="c1">#&gt; name=123</span>
 </code></pre></div>
 <ol>
-<li>The validation happens only when the model is created.</li>
-<li>The validation does not happen when the data is changed.</li>
+<li>検証は、モデルの作成時にのみ行われます。</li>
+<li>データが変更されても、検証は行われません。</li>
 </ol>
-<p>In case you want to revalidate the model when the data is changed, you can use <code>validate_assignment=True</code>:</p>
+<p>データが変更されたときにモデルを再検証したい場合は、<code>validate_assignment=True</code>を使用します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">validate_assignment</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>  <span class="c1"># (1)!</span>
@@ -4235,9 +4241,9 @@ enum's value occurs during validation, not serialization.</p>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div>
 <ol>
-<li>You can either use class keyword arguments, or <code>model_config</code> to set <code>validate_assignment=True</code>.</li>
-<li>The validation happens when the model is created.</li>
-<li>The validation <em>also</em> happens when the data is changed.</li>
+<li>クラスキーワード引数を使用するか、<code>model_config</code>を使用して<code>validate_assignment=True</code>を設定できます。</li>
+<li>モデルの作成時に検証が行われます。</li>
+<li>データが変更されると、validation_also_が発生します。</li>
 </ol>
     </div>
 
@@ -4266,7 +4272,7 @@ enum's value occurs during validation, not serialization.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether arbitrary types are allowed for field types. Defaults to <code>False</code>.</p>
+      <p>フィールド型に任意の型を許可するかどうか。デフォルトは<code>False</code>です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 <span class="c1"># This is not a pydantic model, it&#39;s an arbitrary class</span>
@@ -4342,7 +4348,7 @@ enum's value occurs during validation, not serialization.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to build models and look up discriminators of tagged unions using python object attributes.</p>
+      <p>モデルを構築し、Pythonオブジェクトアトリビュートを使用してタグ付き共用体の識別子を検索するかどうかを指定します。</p>
     </div>
 
 </div>
@@ -4370,7 +4376,7 @@ enum's value occurs during validation, not serialization.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to use the actual key provided in the data (e.g. alias) for error <code>loc</code>s rather than the field's name. Defaults to <code>True</code>.</p>
+      <p>エラー<code>loc</code>に対して、フィールド名ではなく、データ内で提供された実際のキー(エイリアスなど)を使用するかどうか。デフォルトは<code>True</code>です。</p>
     </div>
 
 </div>
@@ -4400,14 +4406,12 @@ enum's value occurs during validation, not serialization.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A callable that takes a field name and returns an alias for it
-or an instance of <a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>. Defaults to <code>None</code>.</p>
-<p>When using a callable, the alias generator is used for both validation and serialization.
-If you want to use different alias generators for validation and serialization, you can use
-<a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a> instead.</p>
-<p>If data source field names do not match your code style (e. g. CamelCase fields),
-you can automatically generate aliases using <code>alias_generator</code>. Here's an example with
-a basic callable:</p>
+      <p>フィールド名を受け取り、そのエイリアスを返す呼び出し可能オブジェクト
+または<a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>のインスタンスです。デフォルトは<code>None</code>です。</p>
+<p>呼び出し可能オブジェクトを使用する場合、検証とシリアライゼーションの両方にエイリアスジェネレータが使用されます。
+検証とシリアライゼーションに異なるエイリアスジェネレータを使用したい場合は、代わりに<a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>を使用できます。</p>
+<p>データソースのフィールド名がコードスタイルと一致しない場合(CamelCaseフィールドなど)、<code>alias_generator</code>を使用してエイリアスを自動的に生成できます。
+基本的な呼び出し方:</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 <span class="kn">from</span> <span class="nn">pydantic.alias_generators</span> <span class="kn">import</span> <span class="n">to_pascal</span>
 
@@ -4423,8 +4427,7 @@ a basic callable:</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">voice</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">by_alias</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="c1">#&gt; {&#39;Name&#39;: &#39;Filiz&#39;, &#39;LanguageCode&#39;: &#39;tr-TR&#39;}</span>
 </code></pre></div>
-<p>If you want to use different alias generators for validation and serialization, you can use
-<a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>.</p>
+<p>検証とシリアライゼーションに別のエイリアスジェネレータを使用する場合は、<a class="autorefs autorefs-internal" href="../aliases/#pydantic.aliases.AliasGenerator"><code>AliasGenerator</code></a>を使用します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">AliasGenerator</span><span class="p">,</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 <span class="kn">from</span> <span class="nn">pydantic.alias_generators</span> <span class="kn">import</span> <span class="n">to_camel</span><span class="p">,</span> <span class="n">to_pascal</span>
 
@@ -4448,8 +4451,7 @@ a basic callable:</p>
 
 <details class="note" open>
   <summary>Note</summary>
-  <p>Pydantic offers three built-in alias generators: <a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_pascal"><code>to_pascal</code></a>,
-<a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_camel"><code>to_camel</code></a>, and <a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_snake"><code>to_snake</code></a>.</p>
+  <p>Pydanticには、<a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_pascal"><code>to_pascal</code></a>、<a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_camel"><code>to_camel</code></a>、<a class="autorefs autorefs-internal" href="#pydantic.alias_generators.to_snake"><code>to_snake</code></a>という3つのエイリアスジェネレータが組み込まれています。</p>
 </details>    </div>
 
 </div>
@@ -4477,10 +4479,9 @@ a basic callable:</p>
 
     <div class="doc doc-contents ">
 
-      <p>A tuple of types that may occur as values of class attributes without annotations. This is
-typically used for custom descriptors (classes that behave like <code>property</code>). If an attribute is set on a
-class without an annotation and has a type that is not in this tuple (or otherwise recognized by
-<em>pydantic</em>), an error will be raised. Defaults to <code>()</code>.</p>
+      <p>注釈なしでクラス属性の値として発生する可能性のある型のタプル。
+これは通常、カスタム記述子(<code>property</code>のように動作するクラス)に使用されます。
+属性がアノテーションなしでクラスに設定され、その型がこのタプルにない(または_pydantic_で認識されない)場合、エラーが発生します。デフォルトは<code>()</code>です。</p>
     </div>
 
 </div>
@@ -4508,7 +4509,7 @@ class without an annotation and has a type that is not in this tuple (or otherwi
 
     <div class="doc doc-contents ">
 
-      <p>Whether to allow infinity (<code>+inf</code> an <code>-inf</code>) and NaN values to float and decimal fields. Defaults to <code>True</code>.</p>
+      <p>無限値(<code>+inf</code>an<code>-inf</code>)とNaN値を浮動小数点フィールドと小数フィールドに許可するかどうか。デフォルトは<code>True</code>。</p>
     </div>
 
 </div>
@@ -4536,7 +4537,7 @@ class without an annotation and has a type that is not in this tuple (or otherwi
 
     <div class="doc doc-contents ">
 
-      <p>A dict or callable to provide extra JSON schema properties. Defaults to <code>None</code>.</p>
+      <p>追加のJSONスキーマプロパティを提供するためのdictまたはcallable。デフォルトは<code>None</code>です。</p>
     </div>
 
 </div>
@@ -4564,12 +4565,12 @@ class without an annotation and has a type that is not in this tuple (or otherwi
 
     <div class="doc doc-contents ">
 
-      <p>A <code>dict</code> of custom JSON encoders for specific types. Defaults to <code>None</code>.</p>
+      <p>特定の型用のカスタムJSONエンコーダの<code>dict</code>です。デフォルトは<code>None</code>です。</p>
 <div class="admonition warning">
 <p class="admonition-title">Deprecated</p>
-<p>This config option is a carryover from v1.
-We originally planned to remove it in v2 but didn't have a 1:1 replacement so we are keeping it for now.
-It is still deprecated and will likely be removed in the future.</p>
+<p>このconfigオプションはv1からの繰り越しです。
+当初はv2で削除する予定でしたが、1:1の置き換えがなかったので、今のところそのままにしています。
+これはまだ推奨されておらず、将来削除される可能性があります。</p>
 </div>
     </div>
 
@@ -4598,11 +4599,10 @@ It is still deprecated and will likely be removed in the future.</p>
 
     <div class="doc doc-contents ">
 
-      <p><em>(new in V2)</em> If <code>True</code>, strict validation is applied to all fields on the model.</p>
-<p>By default, Pydantic attempts to coerce values to the correct type, when possible.</p>
-<p>There are situations in which you may want to disable this behavior, and instead raise an error if a value's type
-does not match the field's type annotation.</p>
-<p>To configure strict mode for all fields on a model, you can set <code>strict=True</code> on the model.</p>
+      <p><em>(V2の新機能)</em><code>True</code>の場合、モデルのすべてのフィールドに厳密な検証が適用されます。</p>
+<p>デフォルトでは、Pydanticは可能であれば値を正しい型に強制しようとします。</p>
+<p>場合によっては、この動作を無効にして、値の型がフィールドの型注釈と一致しない場合にエラーを発生させることができます。</p>
+<p>モデルのすべてのフィールドにstrictモードを設定するには、モデルに<code>strict=True</code>を設定します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -4611,9 +4611,8 @@ does not match the field's type annotation.</p>
     <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
     <span class="n">age</span><span class="p">:</span> <span class="nb">int</span>
 </code></pre></div>
-<p>See <a href="../../concepts/strict_mode/">Strict Mode</a> for more details.</p>
-<p>See the <a href="../../concepts/conversion_table/">Conversion Table</a> for more details on how Pydantic converts data in both
-strict and lax modes.</p>
+<p>詳細については、<a href="../../concepts/strict_mode/">Strict Mode</a>を参照してください。</p>
+<p>Pydanticがstrictモードとlaxモードの両方でデータを変換する方法の詳細については、<a href="../../concepts/conversion_table/">Conversion Table</a>を参照してください。</p>
     </div>
 
 </div>
@@ -4643,15 +4642,13 @@ strict and lax modes.</p>
 
     <div class="doc doc-contents ">
 
-      <p>When and how to revalidate models and dataclasses during validation. Accepts the string
-values of <code>'never'</code>, <code>'always'</code> and <code>'subclass-instances'</code>. Defaults to <code>'never'</code>.</p>
+      <p>検証中にモデルとデータクラスをいつ、どのように再検証するか。"never"、"always"、"subclass-instances"の文字列値を受け入れます。デフォルトは"never"です。</p>
 <ul>
-<li><code>'never'</code> will not revalidate models and dataclasses during validation</li>
-<li><code>'always'</code> will revalidate models and dataclasses during validation</li>
-<li><code>'subclass-instances'</code> will revalidate models and dataclasses during validation if the instance is a
-    subclass of the model or dataclass</li>
+<li><code>'never'</code>は、検証中にモデルとデータクラスを再検証しません。</li>
+<li>"always"は、検証中にモデルとデータクラスを再検証します。</li>
+<li><code>'subclass-instances'</code>は、インスタンスがモデルまたはデータクラスのサブクラスである場合、検証中にモデルとデータクラスを再検証します。</li>
 </ul>
-<p>By default, model and dataclass instances are not revalidated during validation.</p>
+<p>デフォルトでは、モデルとデータクラスのインスタンスは検証中に再検証されません。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -4681,12 +4678,11 @@ values of <code>'never'</code>, <code>'always'</code> and <code>'subclass-instan
 <span class="c1">#&gt; user=SubUser(hobbies=[&#39;scuba diving&#39;], sins=[&#39;lying&#39;])</span>
 </code></pre></div>
 <ol>
-<li><code>revalidate_instances</code> is set to <code>'never'</code> by **default.</li>
-<li>The assignment is not validated, unless you set <code>validate_assignment</code> to <code>True</code> in the model's config.</li>
-<li>Since <code>revalidate_instances</code> is set to <code>never</code>, this is not revalidated.</li>
+<li><code>revalidate_instances</code>は**デフォルトで<code>'never'</code>に設定されています。</li>
+<li>モデルの設定で<code>validate_assignment</code>を<code>True</code>に設定しない限り、割り当ては検証されません。</li>
+<li><code>revalidate_instances</code>は<code>never</code>に設定されているので、これは再検証されません。</li>
 </ol>
-<p>If you want to revalidate instances during validation, you can set <code>revalidate_instances</code> to <code>'always'</code>
-in the model's config.</p>
+<p>検証中にインスタンスを再検証したい場合は、モデルの設定で<code>revalidate_instances</code>を<code>'always'</code>に設定します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -4722,12 +4718,11 @@ in the model's config.</p>
 <span class="c1">#&gt; user=User(hobbies=[&#39;scuba diving&#39;])</span>
 </code></pre></div>
 <ol>
-<li><code>revalidate_instances</code> is set to <code>'always'</code>.</li>
-<li>The model is revalidated, since <code>revalidate_instances</code> is set to <code>'always'</code>.</li>
-<li>Using <code>'never'</code> we would have gotten <code>user=SubUser(hobbies=['scuba diving'], sins=['lying'])</code>.</li>
+<li><code>revalidate_instances</code>が<code>'always'</code>に設定されている。</li>
+<li><code>revalidate_instances</code>が<code>'always'</code>に設定されているので、モデルは再検証されます。</li>
+<li>"never"を使用すると、"user=SubUser(hobbies=['scuba diving'],sins=['lying'])"が得られます。</li>
 </ol>
-<p>It's also possible to set <code>revalidate_instances</code> to <code>'subclass-instances'</code> to only revalidate instances
-of subclasses of the model.</p>
+<p><code>revalidate_instances</code>を<code>'subclass-instances'</code>に設定して、モデルのサブクラスのインスタンスのみを再検証することもできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -4757,9 +4752,9 @@ of subclasses of the model.</p>
 <span class="c1">#&gt; user=User(hobbies=[&#39;scuba diving&#39;])</span>
 </code></pre></div>
 <ol>
-<li><code>revalidate_instances</code> is set to <code>'subclass-instances'</code>.</li>
-<li>This is not revalidated, since <code>my_user</code> is not a subclass of <code>User</code>.</li>
-<li>Using <code>'never'</code> we would have gotten <code>user=SubUser(hobbies=['scuba diving'], sins=['lying'])</code>.</li>
+<li><code>revalidate_instances</code>は<code>'subclass-instances'</code>に設定されます。</li>
+<li><code>my_user</code>は<code>User</code>のサブクラスではないので、これは再検証されません。</li>
+<li>"never"を使用すると、"user=SubUser(hobbies=['scuba diving'],sins=['lying'])"が得られます。</li>
 </ol>
     </div>
 
@@ -4788,11 +4783,10 @@ of subclasses of the model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The format of JSON serialized timedeltas. Accepts the string values of <code>'iso8601'</code> and
-<code>'float'</code>. Defaults to <code>'iso8601'</code>.</p>
+      <p>JSONシリアライズされたタイムデルタのフォーマット。<code>'iso8601'</code>および<code>'float'</code>の文字列値を受け入れます。デフォルトは<code>'iso8601'</code>です。</p>
 <ul>
-<li><code>'iso8601'</code> will serialize timedeltas to ISO 8601 durations.</li>
-<li><code>'float'</code> will serialize timedeltas to the total number of seconds.</li>
+<li><code>'iso8601'</code>はtimedeltasをiso8601 durationにシリアライズします。</li>
+<li><code>'float'</code>はtimedeltaを合計秒数にシリアライズします。</li>
 </ul>
     </div>
 
@@ -4821,11 +4815,11 @@ of subclasses of the model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The encoding of JSON serialized bytes. Accepts the string values of <code>'utf8'</code> and <code>'base64'</code>.
-Defaults to <code>'utf8'</code>.</p>
+      <p>JSONシリアライズされたバイトのエンコーディング。<code>'utf8'</code>と<code>'base64'</code>の文字列値を受け入れます。
+デフォルトは<code>'utf8'</code>です。</p>
 <ul>
-<li><code>'utf8'</code> will serialize bytes to UTF-8 strings.</li>
-<li><code>'base64'</code> will serialize bytes to URL safe base64 strings.</li>
+<li><code>'utf8'</code>はバイトをUTF-8文字列にシリアライズします。</li>
+<li><code>'base64'</code>はバイトをURLセーフなbase64文字列にシリアライズします。</li>
 </ul>
     </div>
 
@@ -4854,11 +4848,11 @@ Defaults to <code>'utf8'</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The encoding of JSON serialized infinity and NaN float values. Defaults to <code>'null'</code>.</p>
+      <p>JSONシリアライズされたinfinityおよびNaN float値のエンコーディング。デフォルトは<code>'null'</code>です。</p>
 <ul>
-<li><code>'null'</code> will serialize infinity and NaN values as <code>null</code>.</li>
-<li><code>'constants'</code> will serialize infinity and NaN values as <code>Infinity</code> and <code>NaN</code>.</li>
-<li><code>'strings'</code> will serialize infinity as string <code>"Infinity"</code> and NaN as string <code>"NaN"</code>.</li>
+<li><code>'null'</code>は無限大とNaNの値を<code>null</code>としてシリアライズします。</li>
+<li><code>'constants'</code>は無限大とNaNの値を<code>Infinity</code>と<code>NaN</code>としてシリアライズします。</li>
+<li><code>'strings'</code>は無限を文字列<code>"Infinity"</code>として、NaNを文字列<code>"NaN"</code>としてシリアライズします。</li>
 </ul>
     </div>
 
@@ -4887,7 +4881,7 @@ Defaults to <code>'utf8'</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to validate default values during validation. Defaults to <code>False</code>.</p>
+      <p>検証中にデフォルト値を検証するかどうか。デフォルトは<code>False</code>です。</p>
     </div>
 
 </div>
@@ -4915,7 +4909,7 @@ Defaults to <code>'utf8'</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>whether to validate the return value from call validators. Defaults to <code>False</code>.</p>
+      <p>呼び出しバリデータからの戻り値を検証するかどうか。デフォルトは<code>False</code>です。</p>
     </div>
 
 </div>
@@ -4943,10 +4937,9 @@ Defaults to <code>'utf8'</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A <code>tuple</code> of strings that prevent model to have field which conflict with them.
-Defaults to <code>('model_', )</code>).</p>
-<p>Pydantic prevents collisions between model attributes and <code>BaseModel</code>'s own methods by
-namespacing them with the prefix <code>model_</code>.</p>
+      <p>モデルが競合するフィールドを持たないようにする文字列の"タプル"。
+デフォルトは<code>('model_',)</code>)です。</p>
+<p>Pydanticは、モデル属性と<code>BaseModel</code>自身のメソッドの間の衝突を、それらに接頭辞<code>model_</code>を付けて名前空間を設定することで防止します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -4966,7 +4959,7 @@ namespacing them with the prefix <code>model_</code>.</p>
 <span class="sd">    You may be able to resolve this warning by setting `model_config[&#39;protected_namespaces&#39;] = ()`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div>
-<p>You can customize this behavior using the <code>protected_namespaces</code> setting:</p>
+<p>この動作は、<code>protected_namespaces</code>設定を使用してカスタマイズできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
@@ -4991,8 +4984,7 @@ namespacing them with the prefix <code>model_</code>.</p>
 <span class="sd">    You may be able to resolve this warning by setting `model_config[&#39;protected_namespaces&#39;] = (&#39;protect_me_&#39;,)`.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div>
-<p>While Pydantic will only emit a warning when an item is in a protected namespace but does not actually have a collision,
-an error <em>is</em> raised if there is an actual collision with an existing attribute:</p>
+<p>Pydanticは、項目が保護された名前空間にあり、実際に衝突がない場合にのみ警告を発するが、既存の属性と実際に衝突がある場合にはerror_is_raisedが発生する。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -5033,8 +5025,8 @@ an error <em>is</em> raised if there is an actual collision with an existing att
 
     <div class="doc doc-contents ">
 
-      <p>Whether to hide inputs when printing errors. Defaults to <code>False</code>.</p>
-<p>Pydantic shows the input value and type when it raises <code>ValidationError</code> during the validation.</p>
+      <p>エラーを印刷するときに入力を非表示にするかどうかを指定します。既定値は<code>False</code>です。</p>
+<p>Pydanticは、検証中に<code>ValidationError</code>が発生した場合、入力値とタイプを表示します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -5050,7 +5042,7 @@ an error <em>is</em> raised if there is an actual collision with an existing att
 <span class="sd">      Input should be a valid string [type=string_type, input_value=123, input_type=int]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div>
-<p>You can hide the input value and type by setting the <code>hide_input_in_errors</code> config to <code>True</code>.</p>
+<p><code>hide_input_in_errors</code>構成を<code>True</code>に設定すると、入力値とタイプを非表示にできます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -5094,18 +5086,15 @@ an error <em>is</em> raised if there is an actual collision with an existing att
 
     <div class="doc doc-contents ">
 
-      <p>Whether to defer model validator and serializer construction until the first model validation. Defaults to False.</p>
-<p>This can be useful to avoid the overhead of building models which are only
-used nested within other models, or when you want to manually define type namespace via
-<a class="autorefs autorefs-internal" href="../base_model/#pydantic.BaseModel.model_rebuild"><code>Model.model_rebuild(_types_namespace=...)</code></a>.</p>
-<p>See also <a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.experimental_defer_build_mode"><code>experimental_defer_build_mode</code></a>.</p>
+      <p>モデルバリデータとシリアライザの構築を、最初のモデル検証まで延期するかどうかを指定します。既定値はFalseです。</p>
+<p>これは、他のモデル内でネストされてのみ使用されるモデルを構築するオーバーヘッドを回避する場合や、<a class="autorefs autorefs-internal" href="../base_model/#pydantic.BaseModel.model_rebuild"><code>Model.model_rebuild(_types_namespace=.)</code></a>を使用して型の名前空間を手動で定義する場合に便利です。</p>
+<p><a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.experimental_defer_build_mode"><code>experimental_defer_build_mode</code></a>も参照してください。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>defer_build</code> does not work by default with FastAPI Pydantic models. By default, the validator and serializer
-for said models is constructed immediately for FastAPI routes. You also need to define
-<a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.experimental_defer_build_mode"><code>experimental_defer_build_mode=('model', 'type_adapter')</code></a> with FastAPI
-models in order for <code>defer_build=True</code> to take effect. This additional (experimental) parameter is required for
-the deferred building due to FastAPI relying on <code>TypeAdapter</code>s.</p>
+<p><code>defer_build</code>は、FastAPI Pydanticモデルではデフォルトで動作しません。
+デフォルトでは、このモデルのバリデータとシリアライザは、FastAPIルートに対して即座に構築されます。
+また、<code>defer_build=True</code>を有効にするには、FastAPIモデルで<a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.experimental_defer_build_mode"><code>experimental_defer_build_mode=('model','type_adapter')</code></a>を定義する必要があります。
+この追加の(実験的な)パラメータは、FastAPIが<code>TypeAdapter</code>に依存しているため、遅延ビルドに必要です。</p>
 </div>
     </div>
 
@@ -5136,16 +5125,14 @@ the deferred building due to FastAPI relying on <code>TypeAdapter</code>s.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Controls when <a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.defer_build"><code>defer_build</code></a> is applicable. Defaults to <code>('model',)</code>.</p>
-<p>Due to backwards compatibility reasons <a class="autorefs autorefs-internal" href="../type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a> does not by default
-respect <code>defer_build</code>. Meaning when <code>defer_build</code> is <code>True</code> and <code>experimental_defer_build_mode</code> is the default <code>('model',)</code>
-then <code>TypeAdapter</code> immediately constructs its validator and serializer instead of postponing said construction until
-the first model validation. Set this to <code>('model', 'type_adapter')</code> to make <code>TypeAdapter</code> respect the <code>defer_build</code>
-so it postpones validator and serializer construction until the first validation or serialization.</p>
+      <p><a class="autorefs autorefs-internal" href="#pydantic.config.ConfigDict.defer_build"><code>defer_build</code></a>が適用される場合を制御します。デフォルトは<code>('model',)</code>です。</p>
+<p>下位互換性の理由から、<a class="autorefs autorefs-internal" href="../type_adapter/#pydantic.type_adapter.TypeAdapter"><code>TypeAdapter</code></a>はデフォルトでは<code>defer_build</code>を考慮しません。
+つまり、<code>defer_build</code>が<code>True</code>で<code>experimental_defer_build_mode</code>がデフォルトの<code>('model',)</code>の場合、<code>TypeAdapter</code>は最初のモデル検証までその構築を延期するのではなく、すぐにバリデータとシリアライザを構築します。
+これを<code>('model','type_adapter')</code>に設定すると、<code>TypeAdapter</code>は<code>defer_build</code>を尊重し、バリデータとシリアライザの構築を最初の検証またはシリアライゼーションまで延期します。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code>experimental_defer_build_mode</code> parameter is named with an underscore to suggest this is an experimental feature. It may
-be removed or changed in the future in a minor release.</p>
+<p><code>experimental_defer_build_mode</code>パラメータには、これが実験的な機能であることを示すアンダースコアが付いています。
+将来のマイナーリリースで削除または変更される可能性があります。</p>
 </div>
     </div>
 
@@ -5174,8 +5161,8 @@ be removed or changed in the future in a minor release.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A <code>dict</code> of settings for plugins. Defaults to <code>None</code>.</p>
-<p>See <a href="../../concepts/plugins/">Pydantic Plugins</a> for details.</p>
+      <p>プラグインの設定の<code>dict</code>です。デフォルトは<code>None</code>です。</p>
+<p>詳細については、<a href="../../concepts/plugins/">Pydantic Plugins</a>を参照してください。</p>
     </div>
 
 </div>
@@ -5203,10 +5190,10 @@ be removed or changed in the future in a minor release.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A custom core schema generator class to use when generating JSON schemas.
-Useful if you want to change the way types are validated across an entire model/schema. Defaults to <code>None</code>.</p>
-<p>The <code>GenerateSchema</code> interface is subject to change, currently only the <code>string_schema</code> method is public.</p>
-<p>See <a href="https://github.com/pydantic/pydantic/pull/6737">#6737</a> for details.</p>
+      <p>JSONスキーマを生成するときに使用するカスタムコアスキーマジェネレータクラス。
+モデル/スキーマ全体で型を検証する方法を変更したい場合に便利です。デフォルトは<code>None</code>です。</p>
+<p><code>GenerateSchema</code>インターフェースは変更される可能性がありますが、現在は<code>string_schema</code>メソッドのみが公開されています。</p>
+<p>詳細については、<a href="https://github.com/pydantic/pydantic/pull/6737">#6737</a>を参照してください。</p>
     </div>
 
 </div>
@@ -5234,12 +5221,9 @@ Useful if you want to change the way types are validated across an entire model/
 
     <div class="doc doc-contents ">
 
-      <p>Whether fields with default values should be marked as required in the serialization schema. Defaults to <code>False</code>.</p>
-<p>This ensures that the serialization schema will reflect the fact a field with a default will always be present
-when serializing the model, even though it is not required for validation.</p>
-<p>However, there are scenarios where this may be undesirable — in particular, if you want to share the schema
-between validation and serialization, and don't mind fields with defaults being marked as not required during
-serialization. See <a href="https://github.com/pydantic/pydantic/issues/7209">#7209</a> for more details.</p>
+      <p>デフォルト値を持つフィールドがシリアライゼーションスキーマで必要とマークされるかどうか。デフォルトは<code>False</code>です。</p>
+<p>これにより、検証に必要でなくても、モデルを直列化するときにデフォルトのフィールドが常に存在するという事実が、直列化スキーマに反映されます。</p>
+<p>ただし、これが望ましくないシナリオもあります。特に、検証とシリアライゼーションの間でスキーマを共有したい場合や、シリアライゼーション中にデフォルトのフィールドが不要とマークされても気にしない場合です。詳細については、<a href="https://github.com/pydantic/pydantic/issues/7209">#7209</a>を参照してください。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -5294,16 +5278,11 @@ serialization. See <a href="https://github.com/pydantic/pydantic/issues/7209">#7
 
     <div class="doc doc-contents ">
 
-      <p>If not <code>None</code>, the specified mode will be used to generate the JSON schema regardless of what <code>mode</code> was passed to
-the function call. Defaults to <code>None</code>.</p>
-<p>This provides a way to force the JSON schema generation to reflect a specific mode, e.g., to always use the
-validation schema.</p>
-<p>It can be useful when using frameworks (such as FastAPI) that may generate different schemas for validation
-and serialization that must both be referenced from the same schema; when this happens, we automatically append
-<code>-Input</code> to the definition reference for the validation schema and <code>-Output</code> to the definition reference for the
-serialization schema. By specifying a <code>json_schema_mode_override</code> though, this prevents the conflict between
-the validation and serialization schemas (since both will use the specified schema), and so prevents the suffixes
-from being added to the definition references.</p>
+      <p><code>None</code>でない場合、関数呼び出しに渡された<code>mode</code>に関係なく、指定されたモードがJSONスキーマの生成に使用されます。デフォルトは<code>None</code>です。</p>
+<p>これは、JSONスキーマ生成に特定のモードを強制的に反映させる方法を提供します。</p>
+<p>これは、検証とシリアライゼーションのために異なるスキーマを生成する可能性があり、両方とも同じスキーマから参照されなければならないフレームワーク(FastAPIなど)を使用する場合に便利です。
+この場合、検証スキーマの定義参照には自動的に<code>-Input</code>が追加され、直列化スキーマの定義参照には<code>-Output</code>が追加されます。
+ただし、<code>json_schema_mode_override</code>を指定することで、検証スキーマとシリアライゼーションスキーマの間の競合を防ぎ(どちらも指定されたスキーマを使用するため)、接尾辞が定義参照に追加されないようにします。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Json</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -5368,8 +5347,8 @@ from being added to the definition references.</p>
 
     <div class="doc doc-contents ">
 
-      <p>If <code>True</code>, enables automatic coercion of any <code>Number</code> type to <code>str</code> in "lax" (non-strict) mode. Defaults to <code>False</code>.</p>
-<p>Pydantic doesn't allow number types (<code>int</code>, <code>float</code>, <code>Decimal</code>) to be coerced as type <code>str</code> by default.</p>
+      <p><code>True</code>の場合、任意の<code>Number</code>型を<code>str</code>に"lax"(非strict)モードで自動的に強制します。デフォルトは<code>False</code>です。</p>
+<p>Pydanticでは、デフォルトで数値型(<code>int</code>、<code>float</code>、<code>Decimal</code>)を<code>str</code>型として強制することはできません。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">ValidationError</span>
@@ -5426,18 +5405,16 @@ from being added to the definition references.</p>
 
     <div class="doc doc-contents ">
 
-      <p>The regex engine to be used for pattern validation.
-Defaults to <code>'rust-regex'</code>.</p>
+      <p>パターン検証に使用される正規表現エンジン。
+デフォルトは<code>'rust-regex'</code>です。</p>
 <ul>
-<li><code>rust-regex</code> uses the <a href="https://docs.rs/regex"><code>regex</code></a> Rust crate,
-  which is non-backtracking and therefore more DDoS resistant, but does not support all regex features.</li>
-<li><code>python-re</code> use the <a href="https://docs.python.org/3/library/re.html"><code>re</code></a> module,
-  which supports all regex features, but may be slower.</li>
+<li><code>rust-regex</code>は<a href="https://docs.rs/regex"><code>regex</code></a>Rustクレートを使用します。これは非バックトラックであり、したがってよりDDoS耐性がありますが、すべてのregex機能をサポートしているわけではありません。</li>
+<li><code>python-re</code>は<a href="https://docs.python.org/3/library/re.html"><code>re</code></a>モジュールを使用します。このモジュールはすべての正規表現機能をサポートしていますが、速度が遅くなる可能性があります。</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you use a compiled regex pattern, the python-re engine will be used regardless of this setting.
-This is so that flags such as <code>re.IGNORECASE</code> are respected.</p>
+<p>コンパイルされたregexパターンを使用する場合は、この設定に関係なくpython-reエンジンが使用されます。
+これは、<code>re.IGNORECASE</code>のようなフラグが尊重されるようにするためです。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">ValidationError</span>
 
@@ -5486,17 +5463,17 @@ This is so that flags such as <code>re.IGNORECASE</code> are respected.</p>
 
     <div class="doc doc-contents ">
 
-      <p>If <code>True</code>, Python exceptions that were part of a validation failure will be shown as an exception group as a cause. Can be useful for debugging. Defaults to <code>False</code>.</p>
+      <p><code>True</code>の場合、検証エラーの一部であったPython例外は、原因として例外グループとして表示されます。デバッグに役立ちます。デフォルトは<code>False</code>です。</p>
 
 
 <details class="note" open>
   <summary>Note</summary>
-  <p>Python 3.10 and older don't support exception groups natively. &lt;=3.10, backport must be installed: <code>pip install exceptiongroup</code>.</p>
+  <p>Python 3.10以前は、例外グループをネイティブにサポートしていません。&lt;=3.10、backportをインストールする必要があります:<code>pip install exceptiongroup</code>。</p>
 </details>
 
 <details class="note" open>
   <summary>Note</summary>
-  <p>The structure of validation errors are likely to change in future Pydantic versions. Pydantic offers no guarantees about their structure. Should be used for visual traceback debugging only.</p>
+  <p>検証エラーの構造は、将来のPydanticバージョンで変更される可能性があります。Pydanticはその構造について保証していません。視覚的なトレースバックデバッグにのみ使用する必要があります。</p>
 </details>    </div>
 
 </div>
@@ -5524,9 +5501,8 @@ This is so that flags such as <code>re.IGNORECASE</code> are respected.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether docstrings of attributes (bare string literals immediately following the attribute declaration)
-should be used for field descriptions. Defaults to <code>False</code>.</p>
-<p>Available in Pydantic v2.7+.</p>
+      <p>属性のdocstring(属性宣言の直後の空の文字列リテラル)をフィールドの説明に使用するかどうか。デフォルトは<code>False</code>です。</p>
+<p>Pydantic v2.7+で利用可能。</p>
 <p><div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">ConfigDict</span><span class="p">,</span> <span class="n">Field</span>
 
 
@@ -5549,12 +5525,11 @@ should be used for field descriptions. Defaults to <code>False</code>.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">Model</span><span class="o">.</span><span class="n">model_fields</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
 <span class="c1"># &gt; Description in Field</span>
 </code></pre></div>
-This requires the source code of the class to be available at runtime.</p>
+そのためには、クラスのソースコードが実行時に使用可能である必要があります。</p>
 <div class="admonition warning">
 <p class="admonition-title">Usage with <code>TypedDict</code></p>
-<p>Due to current limitations, attribute docstrings detection may not work as expected when using <code>TypedDict</code>
-(in particular when multiple <code>TypedDict</code> classes have the same name in the same source file). The behavior
-can be different depending on the Python version used.</p>
+<p>現在の制限により、<code>TypedDict</code>を使用すると、属性のドキュメント文字列の検出が期待通りに動作しない可能性があります(特に、同じソースファイル内で複数の<code>TypedDict</code>クラスが同じ名前を持つ場合)。
+この動作は、使用するPythonのバージョンによって異なります。</p>
 </div>
     </div>
 
@@ -5583,22 +5558,20 @@ can be different depending on the Python version used.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether to cache strings to avoid constructing new Python objects. Defaults to True.</p>
-<p>Enabling this setting should significantly improve validation performance while increasing memory usage slightly.</p>
+      <p>新しいPythonオブジェクトの構築を回避するために文字列をキャッシュするかどうかを指定します。既定値はTrueです。</p>
+<p>この設定を有効にすると、検証のパフォーマンスが大幅に向上し、メモリ使用量がわずかに増加します。</p>
 <ul>
-<li><code>True</code> or <code>'all'</code> (the default): cache all strings</li>
-<li><code>'keys'</code>: cache only dictionary keys</li>
-<li><code>False</code> or <code>'none'</code>: no caching</li>
+<li><code>True</code>または<code>'all'</code>(デフォルト): すべての文字列をキャッシュします。</li>
+<li><code>'keys'</code>: ディクショナリキーのみをキャッシュします。</li>
+<li><code>False</code>または<code>'none'</code>: キャッシュしません。</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>True</code> or <code>'all'</code> is required to cache strings during general validation because
-validators don't know if they're in a key or a value.</p>
+<p><code>True</code>または<code>'all'</code>は、一般的な検証中に文字列をキャッシュするために必要です。なぜなら、バリデータはそれらがキー内にあるのか値内にあるのかを知らないからです。</p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If repeated strings are rare, it's recommended to use <code>'keys'</code> or <code>'none'</code> to reduce memory usage,
-as the performance difference is minimal if repeated strings are rare.</p>
+<p>文字列の繰り返しが少ない場合は、メモリー使用量を減らすために"keys"または"none"を使用することをお勧めします。</p>
 </div>
     </div>
 
@@ -5633,13 +5606,9 @@ as the performance difference is minimal if repeated strings are rare.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/config/#configuration-with-dataclass-from-the-standard-library-or-typeddict">Configuration with <code>dataclass</code> from the standard library or <code>TypedDict</code></a></p>
-</div>
-<p>A convenience decorator to set a <a href="./">Pydantic configuration</a> on a <code>TypedDict</code> or a <code>dataclass</code> from the standard library.</p>
-<p>Although the configuration can be set using the <code>__pydantic_config__</code> attribute, it does not play well with type checkers,
-especially with <code>TypedDict</code>.</p>
+      <p>Usage docs: ../concepts/config/#configuration-with-dataclass-from-the-standard-library-or-typeddict</p>
+<p>標準ライブラリの<code>TypedDict</code>または<code>dataclass</code>に<a href="./">Pydantic configuration</a>を設定するための便利なデコレータです。</p>
+<p>この設定は<code>__pydantic_config__</code>属性を使って設定できますが、型チェッカー、特に<code>TypedDict</code>ではうまく動作しません。</p>
 <div class="admonition example">
 <p class="admonition-title">Usage</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypedDict</span>
@@ -5659,53 +5628,51 @@ especially with <code>TypedDict</code>.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/config.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1010</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 978</span>
+<span class="normal"> 979</span>
+<span class="normal"> 980</span>
+<span class="normal"> 981</span>
+<span class="normal"> 982</span>
+<span class="normal"> 983</span>
+<span class="normal"> 984</span>
+<span class="normal"> 985</span>
+<span class="normal"> 986</span>
+<span class="normal"> 987</span>
+<span class="normal"> 988</span>
+<span class="normal"> 989</span>
+<span class="normal"> 990</span>
+<span class="normal"> 991</span>
+<span class="normal"> 992</span>
+<span class="normal"> 993</span>
+<span class="normal"> 994</span>
+<span class="normal"> 995</span>
+<span class="normal"> 996</span>
+<span class="normal"> 997</span>
+<span class="normal"> 998</span>
+<span class="normal"> 999</span>
+<span class="normal">1000</span>
+<span class="normal">1001</span>
+<span class="normal">1002</span>
+<span class="normal">1003</span>
+<span class="normal">1004</span>
+<span class="normal">1005</span>
+<span class="normal">1006</span>
+<span class="normal">1007</span>
+<span class="normal">1008</span>
+<span class="normal">1009</span>
+<span class="normal">1010</span>
 <span class="normal">1011</span>
 <span class="normal">1012</span>
 <span class="normal">1013</span>
 <span class="normal">1014</span>
 <span class="normal">1015</span>
 <span class="normal">1016</span>
-<span class="normal">1017</span>
-<span class="normal">1018</span>
-<span class="normal">1019</span>
-<span class="normal">1020</span>
-<span class="normal">1021</span>
-<span class="normal">1022</span>
-<span class="normal">1023</span>
-<span class="normal">1024</span>
-<span class="normal">1025</span>
-<span class="normal">1026</span>
-<span class="normal">1027</span>
-<span class="normal">1028</span>
-<span class="normal">1029</span>
-<span class="normal">1030</span>
-<span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">with_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">_TypeT</span><span class="p">],</span> <span class="n">_TypeT</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/config/#configuration-with-dataclass-from-the-standard-library-or-typeddict</span>
+<span class="normal">1017</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">with_config</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">_TypeT</span><span class="p">],</span> <span class="n">_TypeT</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/config/#configuration-with-dataclass-from-the-standard-library-or-typeddict</span>
 
-<span class="sd">    A convenience decorator to set a [Pydantic configuration](config.md) on a `TypedDict` or a `dataclass` from the standard library.</span>
+<span class="sd">    標準ライブラリの`TypedDict`または`dataclass`に[Pydantic configuration](config.md)を設定するための便利なデコレータです。</span>
 
-<span class="sd">    Although the configuration can be set using the `__pydantic_config__` attribute, it does not play well with type checkers,</span>
-<span class="sd">    especially with `TypedDict`.</span>
+<span class="sd">    この設定は`__pydantic_config__`属性を使って設定できますが、型チェッカー、特に`TypedDict`ではうまく動作しません。</span>
 
 <span class="sd">    !!! example &quot;Usage&quot;</span>
 
@@ -5733,8 +5700,8 @@ especially with <code>TypedDict</code>.</p>
 
         <span class="k">if</span> <span class="n">is_model_class</span><span class="p">(</span><span class="n">class_</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">PydanticUserError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Cannot use `with_config` on </span><span class="si">{</span><span class="n">class_</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> as it is a Pydantic model&#39;</span><span class="p">,</span>
-                <span class="n">code</span><span class="o">=</span><span class="s1">&#39;with-config-on-model&#39;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot use `with_config` on </span><span class="si">{</span><span class="n">class_</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> as it is a Pydantic model&quot;</span><span class="p">,</span>
+                <span class="n">code</span><span class="o">=</span><span class="s2">&quot;with-config-on-model&quot;</span><span class="p">,</span>
             <span class="p">)</span>
         <span class="n">class_</span><span class="o">.</span><span class="n">__pydantic_config__</span> <span class="o">=</span> <span class="n">config</span>
         <span class="k">return</span> <span class="n">class_</span>
@@ -5820,7 +5787,7 @@ especially with <code>TypedDict</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Convert a snake_case string to PascalCase.</p>
+      <p>snake_case文字列をPascalCaseに変換します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5841,7 +5808,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The string to convert.</p>
+                <p>変換する文字列。</p>
               </div>
             </td>
             <td>
@@ -5867,7 +5834,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The PascalCase string.</p>
+                <p>PascalCase文字列。</p>
               </div>
             </td>
           </tr>
@@ -5887,16 +5854,16 @@ especially with <code>TypedDict</code>.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_pascal</span><span class="p">(</span><span class="n">snake</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a snake_case string to PascalCase.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;snake_case文字列をPascalCaseに変換します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        snake: The string to convert.</span>
+<span class="sd">        snake: 変換する文字列。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The PascalCase string.</span>
+<span class="sd">        PascalCase文字列。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">camel</span> <span class="o">=</span> <span class="n">snake</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;([0-9A-Za-z])_(?=[0-9A-Z])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">camel</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;([0-9A-Za-z])_(?=[0-9A-Z])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">camel</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5916,7 +5883,7 @@ especially with <code>TypedDict</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Convert a snake_case string to camelCase.</p>
+      <p>snake_case文字列をcamelCaseに変換します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5937,7 +5904,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The string to convert.</p>
+                <p>変換する文字列。</p>
               </div>
             </td>
             <td>
@@ -5963,7 +5930,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The converted camelCase string.</p>
+                <p>変換されたcamelCase文字列。</p>
               </div>
             </td>
           </tr>
@@ -5988,21 +5955,21 @@ especially with <code>TypedDict</code>.</p>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_camel</span><span class="p">(</span><span class="n">snake</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a snake_case string to camelCase.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;snake_case文字列をcamelCaseに変換します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        snake: The string to convert.</span>
+<span class="sd">        snake: 変換する文字列。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The converted camelCase string.</span>
+<span class="sd">        変換されたcamelCase文字列。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># If the string is already in camelCase and does not contain a digit followed</span>
     <span class="c1"># by a lowercase letter, return it as it is</span>
-    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^[a-z]+[A-Za-z0-9]*$&#39;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d[a-z]&#39;</span><span class="p">,</span> <span class="n">snake</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s2">&quot;^[a-z]+[A-Za-z0-9]*$&quot;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\d[a-z]&quot;</span><span class="p">,</span> <span class="n">snake</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">snake</span>
 
     <span class="n">camel</span> <span class="o">=</span> <span class="n">to_pascal</span><span class="p">(</span><span class="n">snake</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">&#39;(^_*[A-Z])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">camel</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;(^_*[A-Z])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">camel</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -6022,7 +5989,7 @@ especially with <code>TypedDict</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Convert a PascalCase, camelCase, or kebab-case string to snake_case.</p>
+      <p>PascalCase、camelCase、またはkebab-case文字列をsnake_caseに変換します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6043,7 +6010,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The string to convert.</p>
+                <p>変換する文字列。</p>
               </div>
             </td>
             <td>
@@ -6069,7 +6036,7 @@ especially with <code>TypedDict</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The converted string in snake_case.</p>
+                <p>snake_caseで変換された文字列。</p>
               </div>
             </td>
           </tr>
@@ -6097,25 +6064,29 @@ especially with <code>TypedDict</code>.</p>
 <span class="normal">59</span>
 <span class="normal">60</span>
 <span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_snake</span><span class="p">(</span><span class="n">camel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a PascalCase, camelCase, or kebab-case string to snake_case.</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">to_snake</span><span class="p">(</span><span class="n">camel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;PascalCase、camelCase、またはkebab-case文字列をsnake_caseに変換します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        camel: The string to convert.</span>
+<span class="sd">        camel: 変換する文字列。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The converted string in snake_case.</span>
+<span class="sd">        snake_caseで変換された文字列。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Handle the sequence of uppercase letters followed by a lowercase letter</span>
-    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([A-Z]+)([A-Z][a-z])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">camel</span><span class="p">)</span>
+    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span>
+        <span class="sa">r</span><span class="s2">&quot;([A-Z]+)([A-Z][a-z])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">camel</span>
+    <span class="p">)</span>
     <span class="c1"># Insert an underscore between a lowercase letter and an uppercase letter</span>
-    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([a-z])([A-Z])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
+    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([a-z])([A-Z])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
     <span class="c1"># Insert an underscore between a digit and an uppercase letter</span>
-    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([0-9])([A-Z])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
+    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([0-9])([A-Z])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
     <span class="c1"># Insert an underscore between a lowercase letter and a digit</span>
-    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;([a-z])([0-9])&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
+    <span class="n">snake</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([a-z])([0-9])&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">snake</span><span class="p">)</span>
     <span class="c1"># Replace hyphens with underscores to handle kebab-case</span>
-    <span class="n">snake</span> <span class="o">=</span> <span class="n">snake</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+    <span class="n">snake</span> <span class="o">=</span> <span class="n">snake</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">snake</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
             </details>

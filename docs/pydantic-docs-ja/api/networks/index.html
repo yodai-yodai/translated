@@ -3223,6 +3223,18 @@
 
   <h1>Network Types</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -3230,7 +3242,7 @@
 <a id="pydantic.networks"></a>
     <div class="doc doc-contents first">
 
-      <p>The networks module contains types for common network-related fields.</p>
+      <p>ネットワークモジュールには、一般的なネットワーク関連フィールドのタイプが含まれています。</p>
 
 
 
@@ -3260,24 +3272,21 @@
 
     <div class="doc doc-contents ">
 
-      <p>Base type for all URLs.</p>
+      <p>すべてのURLの基本タイプ。</p>
 <ul>
-<li>Any scheme allowed</li>
-<li>Top-level domain (TLD) not required</li>
-<li>Host required</li>
+<li>任意のスキームを使用可能です。</li>
+<li>トップレベルドメイン(TLD)は不要です。</li>
+<li>ホストは必要です。</li>
 </ul>
-<p>Assuming an input URL of <code>http://samuel:pass@example.com:8000/the/path/?query=here#fragment=is;this=bit</code>,
-the types export the following properties:</p>
-<ul>
-<li><code>scheme</code>: the URL scheme (<code>http</code>), always set.</li>
-<li><code>host</code>: the URL host (<code>example.com</code>), always set.</li>
-<li><code>username</code>: optional username if included (<code>samuel</code>).</li>
-<li><code>password</code>: optional password if included (<code>pass</code>).</li>
-<li><code>port</code>: optional port (<code>8000</code>).</li>
-<li><code>path</code>: optional path (<code>/the/path/</code>).</li>
-<li><code>query</code>: optional URL query (for example, <code>GET</code> arguments or "search string", such as <code>query=here</code>).</li>
-<li><code>fragment</code>: optional fragment (<code>fragment=is;this=bit</code>).</li>
-</ul>
+<p>入力URLが<code>http://samuel:pass@example.com:8000/the/path/?query=here#fragment=is;this=bit</code>の場合、型は次のプロパティをエクスポートします。</p>
+<p>-<code>scheme</code>: URLスキーム(<code>http</code>)が常に設定されます。
+-<code>host</code>: URLホスト(<code>example.com</code>)で、常に設定されます。
+-<code>username</code>: オプションのユーザ名(<code>samuel</code>)がある場合。
+-<code>password</code>: オプションのパスワード(<code>pass</code>)がある場合。
+-<code>port</code>: オプションのポート(<code>8000</code>)です。
+-<code>path</code>: オプションのパス(<code>/the/path/</code>)。
+-<code>query</code>: オプションのURLクエリ(例えば<code>GET</code>引数や<code>query=here</code>のような"search string")。
+-<code>fragment</code>: オプションのfragment(<code>fragment=is;this=bit</code>)。</p>
     </div>
 
 </div>
@@ -3302,10 +3311,10 @@ the types export the following properties:</p>
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any http or https URL.</p>
+      <p>任意のhttpまたはhttps URLを受け入れるタイプ。</p>
 <ul>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3334,11 +3343,11 @@ the types export the following properties:</p>
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any http or https URL.</p>
+      <p>任意のhttpまたはhttps URLを受け入れるタイプ。</p>
 <ul>
-<li>TLD not required</li>
-<li>Host required</li>
-<li>Max length 2083</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
+<li>最大長2083です。</li>
 </ul>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">HttpUrl</span><span class="p">,</span> <span class="n">ValidationError</span>
 
@@ -3370,11 +3379,9 @@ the types export the following properties:</p>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div>
 <ol>
-<li>Note: mypy would prefer <code>m = MyModel(url=HttpUrl('http://www.example.com'))</code>, but Pydantic will convert the string to an HttpUrl instance anyway.</li>
+<li>注意:mypyは<code>m=MyModel(url=HttpUrl('http://www.example.com'))</code>を好みますが、いずれにせよPydanticは文字列をHttpUrlインスタンスに変換します。</li>
 </ol>
-<p>"International domains" (e.g. a URL where the host or TLD includes non-ascii characters) will be encoded via
-<a href="https://en.wikipedia.org/wiki/Punycode">punycode</a> (see
-<a href="https://www.xudongz.com/blog/2017/idn-phishing/">this article</a> for a good description of why this is important):</p>
+<p>「International domains」(たとえば、ホストまたはTLDに非ASCII文字が含まれるURL)は、<a href="https://en.wikipedia.org/wiki/Punycode">punycode</a>によってエンコードされます(これが重要である理由の適切な説明については、<a href="https://www.xudongz.com/blog/2017/idn-phishing/">this article</a>を参照してください)。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">HttpUrl</span>
 
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -3392,17 +3399,15 @@ the types export the following properties:</p>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Underscores in Hostnames</p>
-<p>In Pydantic, underscores are allowed in all parts of a domain except the TLD.
-Technically this might be wrong - in theory the hostname cannot have underscores, but subdomains can.</p>
-<p>To explain this; consider the following two cases:</p>
+<p>Pydanticでは、TLDを除くドメインのすべての部分でアンダースコアを使用できます。
+技術的には、これは間違っている可能性があります。理論的には、ホスト名にアンダースコアを付けることはできませんが、サブドメインにはアンダースコアを付けることができます。</p>
+<p>これを説明するために、次の2つのケースを考えてみましょう。</p>
 <ul>
-<li><code>exam_ple.co.uk</code>: the hostname is <code>exam_ple</code>, which should not be allowed since it contains an underscore.</li>
-<li><code>foo_bar.example.com</code> the hostname is <code>example</code>, which should be allowed since the underscore is in the subdomain.</li>
+<li><code>exam_ple.co.uk</code>:ホスト名は<code>exam_ple</code>ですが、アンダースコアが含まれているため許可されません。</li>
+<li><code>foo_bar.example.com</code>ホスト名は<code>example</code>です。アンダースコアはサブドメインにあるので、これは許可されるべきです。</li>
 </ul>
-<p>Without having an exhaustive list of TLDs, it would be impossible to differentiate between these two. Therefore
-underscores are allowed, but you can always do further validation in a validator if desired.</p>
-<p>Also, Chrome, Firefox, and Safari all currently accept <code>http://exam_ple.com</code> as a URL, so we're in good
-(or at least big) company.</p>
+<p>TLDの網羅的なリストがなければ、これら2つを区別することは不可能であろう。したがって、アンダースコアは使用できますが、必要に応じていつでもバリデータでさらに検証を行うことができます。</p>
+<p>また、Chrome、Firefox、Safariは現在、URLとして<code>http://exam_ple.com</code>を受け入れているので、私たちは良い(あるいは少なくとも大きな)会社にいます。</p>
 </div>
     </div>
 
@@ -3428,10 +3433,10 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any ws or wss URL.</p>
+      <p>任意のwsまたはwss URLを受け入れるタイプ。</p>
 <ul>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3460,11 +3465,11 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any ws or wss URL.</p>
+      <p>任意のwsまたはwss URLを受け入れるタイプ。</p>
 <ul>
-<li>TLD not required</li>
-<li>Host required</li>
-<li>Max length 2083</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
+<li>最大長2083です。</li>
 </ul>
     </div>
 
@@ -3490,9 +3495,9 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any file URL.</p>
+      <p>任意のファイルURLを受け入れるタイプ。</p>
 <ul>
-<li>Host not required</li>
+<li>ホストは不要です。</li>
 </ul>
     </div>
 
@@ -3518,10 +3523,10 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept ftp URL.</p>
+      <p>ftp URLを受け入れるタイプ。</p>
 <ul>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3561,14 +3566,14 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any Postgres DSN.</p>
+      <p>任意のPostgres DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
-<li>Supports multiple hosts</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
+<li>複数のホストをサポート</li>
 </ul>
-<p>If further validation is required, these properties can be used by validators to enforce specific behaviour:</p>
+<p>さらに検証が必要な場合は、これらのプロパティをバリデータで使用して、特定の動作を強制できます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BaseModel</span><span class="p">,</span>
     <span class="n">HttpUrl</span><span class="p">,</span>
@@ -3648,11 +3653,11 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any Cockroach DSN.</p>
+      <p>任意のCockroach DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3678,11 +3683,11 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any AMQP DSN.</p>
+      <p>任意のAMQP DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3714,11 +3719,11 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any Redis DSN.</p>
+      <p>任意のRedis DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required (e.g., <code>rediss://:pass@localhost</code>)</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。(例:<code>rediss://:pass@localhost</code>)</li>
 </ul>
     </div>
 
@@ -3748,12 +3753,12 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any MongoDB DSN.</p>
+      <p>任意のMongoDB DSNを受け入れる型。</p>
 <ul>
-<li>User info not required</li>
-<li>Database name not required</li>
-<li>Port not required</li>
-<li>User info may be passed without user part (e.g., <code>mongodb://mongodb0.example.com:27017</code>).</li>
+<li>ユーザー情報は必要ありません</li>
+<li>データベース名は必要ありません</li>
+<li>ポートは不要です。</li>
+<li>ユーザ情報はユーザパートなしで渡すことができます(例:<code>mongodb://mongodb0.example.com:27017</code>)。</li>
 </ul>
     </div>
 
@@ -3784,11 +3789,11 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any Kafka DSN.</p>
+      <p>任意のKafka DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3819,11 +3824,10 @@ underscores are allowed, but you can always do further validation in a validator
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any NATS DSN.</p>
-<p>NATS is a connective technology built for the ever increasingly hyper-connected world.
-It is a single technology that enables applications to securely communicate across
-any combination of cloud vendors, on-premise, edge, web and mobile, and devices.
-More: https://nats.io</p>
+      <p>任意のNATS DSNを受け入れるタイプ。</p>
+<p>NATSは、ますます高度に接続される世界のために構築された接続技術です。
+これは、オンプレミス、エッジ、ウェブとモバイル、デバイスなど、クラウドベンダーのあらゆる組み合わせにわたって、アプリケーションが安全に通信できるようにする単一のテクノロジーです。
+詳細:https://nats.io</p>
     </div>
 
 </div>
@@ -3861,11 +3865,11 @@ More: https://nats.io</p>
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any MySQL DSN.</p>
+      <p>任意のMySQL DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3899,11 +3903,11 @@ More: https://nats.io</p>
 
     <div class="doc doc-contents ">
 
-      <p>A type that will accept any MariaDB DSN.</p>
+      <p>任意のMariaDB DSNを受け入れるタイプ。</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3939,9 +3943,9 @@ More: https://nats.io</p>
 
       <p>A type that will accept any ClickHouse DSN.</p>
 <ul>
-<li>User info required</li>
-<li>TLD not required</li>
-<li>Host required</li>
+<li>ユーザー情報が必要です。</li>
+<li>TLDは不要です。</li>
+<li>ホストが必要です。</li>
 </ul>
     </div>
 
@@ -3965,8 +3969,8 @@ More: https://nats.io</p>
 
     <div class="doc doc-contents ">
 
-      <p>Maximum length for an email.
-A somewhat arbitrary but very generous number compared to what is allowed by most implementations.</p>
+      <p>電子メールの最大長。
+ほとんどの実装で許可されている数と比較して、多少任意ですが非常に寛大な数です。</p>
     </div>
 
 </div>
@@ -4000,7 +4004,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
               Bases: <code><span title="pydantic._internal._fields.PydanticMetadata">PydanticMetadata</span></code></p>
 
 
-      <p>Url constraints.</p>
+      <p>URLの制約。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -4020,7 +4024,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The maximum length of the url. Defaults to <code>None</code>.</p>
+                <p>URLの最大長。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4031,7 +4035,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The allowed schemes. Defaults to <code>None</code>.</p>
+                <p>許可されたスキーマ。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4042,7 +4046,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the host is required. Defaults to <code>None</code>.</p>
+                <p>ホストが必要です。かどうか。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4053,7 +4057,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default host. Defaults to <code>None</code>.</p>
+                <p>デフォルトのホスト。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4064,7 +4068,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default port. Defaults to <code>None</code>.</p>
+                <p>デフォルトのポート。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4075,7 +4079,7 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default path. Defaults to <code>None</code>.</p>
+                <p>デフォルトのパス。デフォルトは<code>None</code>です。</p>
               </div>
             </td>
           </tr>
@@ -4121,11 +4125,10 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
 
 <details class="info" open>
   <summary>Info</summary>
-  <p>To use this type, you need to install the optional
-<a href="https://github.com/JoshData/python-email-validator"><code>email-validator</code></a> package:</p>
+  <p>このタイプを使用するには、オプションの<a href="https://github.com/JoshData/python-email-validator"><code>email-validator</code></a>パッケージをインストールする必要があります。</p>
 <div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>email-validator
 </code></pre></div>
-</details>      <p>Validate email addresses.</p>
+</details>      <p>電子メールアドレスを検証します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">EmailStr</span>
 
 <span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -4177,14 +4180,12 @@ A somewhat arbitrary but very generous number compared to what is allowed by mos
 
 <details class="info" open>
   <summary>Info</summary>
-  <p>To use this type, you need to install the optional
-<a href="https://github.com/JoshData/python-email-validator"><code>email-validator</code></a> package:</p>
+  <p>このタイプを使用するには、オプションの<a href="https://github.com/JoshData/python-email-validator"><code>email-validator</code></a>パッケージをインストールする必要があります。</p>
 <div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>email-validator
 </code></pre></div>
-</details>      <p>Validate a name and email address combination, as specified by
-<a href="https://datatracker.ietf.org/doc/html/rfc5322#section-3.4">RFC 5322</a>.</p>
-<p>The <code>NameEmail</code> has two properties: <code>name</code> and <code>email</code>.
-In case the <code>name</code> is not provided, it's inferred from the email address.</p>
+</details>      <p><a href="https://datatracker.ietf.org/doc/html/rfc5322#section-3.4">RFC 5322</a>で指定されているように、名前と電子メールアドレスの組み合わせを検証します。</p>
+<p><code>NameEmail</code>には<code>name</code>と<code>email</code>という2つの属性があります。
+<code>name</code>が指定されていない場合は、メールアドレスから推測されます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">NameEmail</span>
 
 <span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -4205,9 +4206,9 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
 
                   <details class="quote">
                     <summary>Source code in <code>pydantic/networks.py</code></summary>
-                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">498</span>
-<span class="normal">499</span>
-<span class="normal">500</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="n">email</span>
 </code></pre></div></td></tr></table></div>
@@ -4247,7 +4248,7 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
     <div class="doc doc-contents ">
 
 
-      <p>Validate an IPv4 or IPv6 address.</p>
+      <p>IPv4またはIPv6アドレスを検証します。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
 <span class="kn">from</span> <span class="nn">pydantic.networks</span> <span class="kn">import</span> <span class="n">IPvAnyAddress</span>
 
@@ -4308,7 +4309,7 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
     <div class="doc doc-contents ">
 
 
-      <p>Validate an IPv4 or IPv6 interface.</p>
+      <p>IPv4またはIPv6インターフェイスを検証します。</p>
 
 
 
@@ -4345,7 +4346,7 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
     <div class="doc doc-contents ">
 
 
-      <p>Validate an IPv4 or IPv6 network.</p>
+      <p>IPv4またはIPv6ネットワークを検証します。</p>
 
 
 
@@ -4382,21 +4383,33 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
 
     <div class="doc doc-contents ">
 
-      <p>Email address validation using <a href="https://pypi.org/project/email-validator/">email-validator</a>.</p>
+      <p><a href="https://pypi.org/project/email-validator/">email-validator</a>を使用した電子メールアドレスの検証。</p>
 
 
 <details class="note" open>
   <summary>Note</summary>
   <p>Note that:</p>
 <ul>
-<li>Raw IP address (literal) domain parts are not allowed.</li>
-<li><code>"John Doe &lt;local_part@domain.com&gt;"</code> style "pretty" email addresses are processed.</li>
-<li>Spaces are striped from the beginning and end of addresses, but no error is raised.</li>
+<li>生のIPアドレス(リテラル)ドメイン部分は許可されません。</li>
+<li><code>"John Doe&lt;local_part@domain.com&gt;"</code>スタイルの"pretty"電子メールアドレスが処理されます。</li>
+<li>スペースはアドレスの先頭と末尾からストライプされますが、エラーは発生しません。</li>
 </ul>
 </details>
             <details class="quote">
               <summary>Source code in <code>pydantic/networks.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">720</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">708</span>
+<span class="normal">709</span>
+<span class="normal">710</span>
+<span class="normal">711</span>
+<span class="normal">712</span>
+<span class="normal">713</span>
+<span class="normal">714</span>
+<span class="normal">715</span>
+<span class="normal">716</span>
+<span class="normal">717</span>
+<span class="normal">718</span>
+<span class="normal">719</span>
+<span class="normal">720</span>
 <span class="normal">721</span>
 <span class="normal">722</span>
 <span class="normal">723</span>
@@ -4424,25 +4437,17 @@ In case the <code>name</code> is not provided, it's inferred from the email addr
 <span class="normal">745</span>
 <span class="normal">746</span>
 <span class="normal">747</span>
-<span class="normal">748</span>
-<span class="normal">749</span>
-<span class="normal">750</span>
-<span class="normal">751</span>
-<span class="normal">752</span>
-<span class="normal">753</span>
-<span class="normal">754</span>
-<span class="normal">755</span>
-<span class="normal">756</span>
-<span class="normal">757</span>
-<span class="normal">758</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Email address validation using [email-validator](https://pypi.org/project/email-validator/).</span>
+<span class="normal">748</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;[email-validator](https://pypi.org/project/email-validator/)を使用した電子メールアドレスの検証。</span>
 
 <span class="sd">    Note:</span>
 <span class="sd">        Note that:</span>
 
-<span class="sd">        * Raw IP address (literal) domain parts are not allowed.</span>
-<span class="sd">        * `&quot;John Doe &lt;local_part@domain.com&gt;&quot;` style &quot;pretty&quot; email addresses are processed.</span>
-<span class="sd">        * Spaces are striped from the beginning and end of addresses, but no error is raised.</span>
+<span class="sd">        * 生のIPアドレス(リテラル)ドメイン部分は許可されません。</span>
+<span class="sd">        * `&quot;John Doe&lt;local_part@domain.com&gt;&quot;`スタイルの&quot;pretty&quot;電子メールアドレスが処理されます。</span>
+<span class="sd">        * スペースはアドレスの先頭と末尾からストライプされますが、エラーは発生しません。</span>
+
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">email_validator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">import_email_validator</span><span class="p">()</span>

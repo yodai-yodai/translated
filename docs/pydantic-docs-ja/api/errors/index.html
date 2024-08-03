@@ -2911,6 +2911,18 @@
 
   <h1>Errors</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -2918,7 +2930,7 @@
 <a id="pydantic.errors"></a>
     <div class="doc doc-contents first">
 
-      <p>Pydantic-specific errors.</p>
+      <p>Pydantic固有のエラー</p>
 
 
 
@@ -2948,7 +2960,7 @@
     <div class="doc doc-contents ">
 
 
-      <p>A mixin class for common functionality shared by all Pydantic-specific errors.</p>
+      <p>すべてのPydantic固有のエラーによって共有される共通機能のためのミックスインクラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -2967,7 +2979,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A message describing the error.</p>
+                <p>エラーを説明するメッセージ。</p>
               </div>
             </td>
           </tr>
@@ -2977,7 +2989,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An optional error code from PydanticErrorCodes enum.</p>
+                <p>PydanticErrorCodes列挙型からのオプションのエラーコード。</p>
               </div>
             </td>
           </tr>
@@ -3033,7 +3045,7 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticErrorMixin" href="#pydantic.errors.PydanticErrorMixin">PydanticErrorMixin</a></code>, <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#TypeError">TypeError</a></code></p>
 
 
-      <p>An error raised due to incorrect use of Pydantic.</p>
+      <p>Pydanticの使用が正しくないために発生したエラーです。</p>
 
                   <details class="quote">
                     <summary>Source code in <code>pydantic/errors.py</code></summary>
@@ -3066,7 +3078,7 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticErrorMixin" href="#pydantic.errors.PydanticErrorMixin">PydanticErrorMixin</a></code>, <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#NameError">NameError</a></code></p>
 
 
-      <p>A subclass of <code>NameError</code> raised when handling undefined annotations during <code>CoreSchema</code> generation.</p>
+      <p><code>CoreSchema</code>の生成中に未定義の注釈を処理すると、<code>NameError</code>のサブクラスが発生します。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3085,7 +3097,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Name of the error.</p>
+                <p>エラーの名前。</p>
               </div>
             </td>
           </tr>
@@ -3095,7 +3107,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the error.</p>
+                <p>エラーの説明。</p>
               </div>
             </td>
           </tr>
@@ -3141,7 +3153,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Convert a <code>NameError</code> to a <code>PydanticUndefinedAnnotation</code> error.</p>
+      <p><code>NameError</code>を<code>PydanticUndefinedAnnotation</code>エラーに変換します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3162,7 +3174,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p><code>NameError</code> to be converted.</p>
+                <p><code>NameError</code>を変換します。</p>
               </div>
             </td>
             <td>
@@ -3188,7 +3200,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Converted <code>PydanticUndefinedAnnotation</code> error.</p>
+                <p><code>PydanticUndefinedAnnotation</code>エラーを変換しました。</p>
               </div>
             </td>
           </tr>
@@ -3213,13 +3225,13 @@
 <span class="normal">119</span>
 <span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">from_name_error</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name_error</span><span class="p">:</span> <span class="ne">NameError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a `NameError` to a `PydanticUndefinedAnnotation` error.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;`NameError`を`PydanticUndefinedAnnotation`エラーに変換します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        name_error: `NameError` to be converted.</span>
+<span class="sd">        name_error: `NameError`を変換します。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Converted `PydanticUndefinedAnnotation` error.</span>
+<span class="sd">        `PydanticUndefinedAnnotation`エラーを変換しました。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">name_error</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># type: ignore  # python &gt; 3.10</span>
@@ -3257,7 +3269,7 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticErrorMixin" href="#pydantic.errors.PydanticErrorMixin">PydanticErrorMixin</a></code>, <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/exceptions.html#ImportError">ImportError</a></code></p>
 
 
-      <p>An error raised when an import fails due to module changes between V1 and V2.</p>
+      <p>V1とV2の間でモジュールが変更されたためにインポートが失敗した場合に発生するエラー。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3276,7 +3288,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the error.</p>
+                <p>エラーの説明。</p>
               </div>
             </td>
           </tr>
@@ -3328,7 +3340,7 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticUserError" href="#pydantic.errors.PydanticUserError">PydanticUserError</a></code></p>
 
 
-      <p>An error raised during failures to generate a <code>CoreSchema</code> for some type.</p>
+      <p>あるタイプの<code>CoreSchema</code>の生成に失敗したときに発生したエラー。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3347,7 +3359,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the error.</p>
+                <p>エラーの説明。</p>
               </div>
             </td>
           </tr>
@@ -3399,7 +3411,7 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticUserError" href="#pydantic.errors.PydanticUserError">PydanticUserError</a></code></p>
 
 
-      <p>An error raised during failures to generate a JSON schema for some <code>CoreSchema</code>.</p>
+      <p>一部の<code>CoreSchema</code>のJSONスキーマの生成に失敗したときに発生したエラー。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3418,7 +3430,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the error.</p>
+                <p>エラーの説明。</p>
               </div>
             </td>
           </tr>

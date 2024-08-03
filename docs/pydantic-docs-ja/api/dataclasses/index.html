@@ -2827,6 +2827,18 @@
 
   <h1>Pydantic Dataclasses</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -2877,13 +2889,9 @@
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/dataclasses/">Dataclasses</a></p>
-</div>
-<p>A decorator used to create a Pydantic-enhanced dataclass, similar to the standard Python <code>dataclass</code>,
-but with added validation.</p>
-<p>This function should be used similarly to <code>dataclasses.dataclass</code>.</p>
+      <p>Usage docs: ../concepts/dataclasses/</p>
+<p>Pydanticで強化されたデータクラスを作成するために使用されるデコレータで、標準のPython<code>dataclass</code>に似ていますが、検証が追加されています。</p>
+<p>この関数は<code>dataclasses.dataclass</code>と同じように使用してください。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2904,7 +2912,7 @@ but with added validation.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The target <code>dataclass</code>.</p>
+                <p>ターゲットの<code>dataclass</code>です。</p>
               </div>
             </td>
             <td>
@@ -2918,9 +2926,7 @@ but with added validation.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Included for signature compatibility with <code>dataclasses.dataclass</code>, and is passed through to
-<code>dataclasses.dataclass</code> when appropriate. If specified, must be set to <code>False</code>, as pydantic inserts its
-own  <code>__init__</code> function.</p>
+                <p><code>dataclasses.dataclass</code>を参照してください。</p>
               </div>
             </td>
             <td>
@@ -2934,7 +2940,7 @@ own  <code>__init__</code> function.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A boolean indicating whether to include the field in the <code>__repr__</code> output.</p>
+                <p>フィールドを<code>__repr__</code>出力に含めるかどうかを示すブール値です。</p>
               </div>
             </td>
             <td>
@@ -2948,7 +2954,7 @@ own  <code>__init__</code> function.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if a <code>__eq__</code> method should be generated for the class.</p>
+                <p>クラスに対して<code>__eq__</code>メソッドを生成するかどうかを決定します。</p>
               </div>
             </td>
             <td>
@@ -2962,7 +2968,7 @@ own  <code>__init__</code> function.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if comparison magic methods should be generated, such as <code>__lt__</code>, but not <code>__eq__</code>.</p>
+                <p><code>__lt__</code>のような比較マジック・メソッドを生成すべきかどうかを決定します。</p>
               </div>
             </td>
             <td>
@@ -2976,7 +2982,7 @@ own  <code>__init__</code> function.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if a <code>__hash__</code> method should be included in the class, as in <code>dataclasses.dataclass</code>.</p>
+                <p><code>dataclasses.dataclass</code>のように、クラスに<code>__hash__</code>メソッドを含めるかどうかを決定します。</p>
               </div>
             </td>
             <td>
@@ -2990,8 +2996,7 @@ own  <code>__init__</code> function.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if the generated class should be a 'frozen' <code>dataclass</code>, which does not allow its
-attributes to be modified after it has been initialized.</p>
+                <p>生成されたクラスが'frozen'な<code>dataclass</code>であるべきかどうかを決定します。これは、初期化された後に属性を変更できないようにします。</p>
               </div>
             </td>
             <td>
@@ -3005,7 +3010,7 @@ attributes to be modified after it has been initialized.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The Pydantic config to use for the <code>dataclass</code>.</p>
+                <p><code>dataclass</code>に使用するPydanticの設定です。</p>
               </div>
             </td>
             <td>
@@ -3019,8 +3024,7 @@ attributes to be modified after it has been initialized.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A deprecated parameter included for backwards compatibility; in V2, all Pydantic dataclasses
-are validated on init.</p>
+                <p>後方互換性のために廃止されたパラメーターです。V2では、すべてのPydanticデータクラスがinitで検証されます。</p>
               </div>
             </td>
             <td>
@@ -3034,7 +3038,7 @@ are validated on init.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if <code>__init__</code> method parameters must be specified by keyword only. Defaults to <code>False</code>.</p>
+                <p><code>__init__</code>メソッドのパラメータをキーワードのみで指定する必要があるかどうかを決定します。デフォルトは<code>False</code>です。</p>
               </div>
             </td>
             <td>
@@ -3048,8 +3052,7 @@ are validated on init.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Determines if the generated class should be a 'slots' <code>dataclass</code>, which does not allow the addition of
-new attributes after instantiation.</p>
+                <p>生成されたクラスが、インスタンス化後に新しい属性を追加できない'slots'<code>dataclass</code>であるかどうかを決定します。</p>
               </div>
             </td>
             <td>
@@ -3075,7 +3078,7 @@ new attributes after instantiation.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A decorator that accepts a class as its argument and returns a Pydantic <code>dataclass</code>.</p>
+                <p>引数としてクラスを受け入れ、Pydanticの<code>dataclass</code>を返すデコレータ。</p>
               </div>
             </td>
           </tr>
@@ -3098,7 +3101,7 @@ new attributes after instantiation.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Raised if <code>init</code> is not <code>False</code> or <code>validate_on_init</code> is <code>False</code>.</p>
+                <p><code>init</code>が<code>False</code>でない場合、または<code>validate_on_init</code>が<code>False</code>の場合に発生します。</p>
               </div>
             </td>
           </tr>
@@ -3257,13 +3260,7 @@ new attributes after instantiation.</p>
 <span class="normal">242</span>
 <span class="normal">243</span>
 <span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass_transform</span><span class="p">(</span><span class="n">field_specifiers</span><span class="o">=</span><span class="p">(</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">PrivateAttr</span><span class="p">))</span>
+<span class="normal">245</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@dataclass_transform</span><span class="p">(</span><span class="n">field_specifiers</span><span class="o">=</span><span class="p">(</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">PrivateAttr</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">dataclass</span><span class="p">(</span>
     <span class="n">_cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3278,39 +3275,35 @@ new attributes after instantiation.</p>
     <span class="n">kw_only</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">slots</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">type</span><span class="p">[</span><span class="n">_T</span><span class="p">]],</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticDataclass</span><span class="p">]]</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticDataclass</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/dataclasses/</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/dataclasses/</span>
 
-<span class="sd">    A decorator used to create a Pydantic-enhanced dataclass, similar to the standard Python `dataclass`,</span>
-<span class="sd">    but with added validation.</span>
+<span class="sd">    Pydanticで強化されたデータクラスを作成するために使用されるデコレータで、標準のPython`dataclass`に似ていますが、検証が追加されています。</span>
 
-<span class="sd">    This function should be used similarly to `dataclasses.dataclass`.</span>
+<span class="sd">    この関数は`dataclasses.dataclass`と同じように使用してください。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        _cls: The target `dataclass`.</span>
-<span class="sd">        init: Included for signature compatibility with `dataclasses.dataclass`, and is passed through to</span>
-<span class="sd">            `dataclasses.dataclass` when appropriate. If specified, must be set to `False`, as pydantic inserts its</span>
-<span class="sd">            own  `__init__` function.</span>
-<span class="sd">        repr: A boolean indicating whether to include the field in the `__repr__` output.</span>
-<span class="sd">        eq: Determines if a `__eq__` method should be generated for the class.</span>
-<span class="sd">        order: Determines if comparison magic methods should be generated, such as `__lt__`, but not `__eq__`.</span>
-<span class="sd">        unsafe_hash: Determines if a `__hash__` method should be included in the class, as in `dataclasses.dataclass`.</span>
-<span class="sd">        frozen: Determines if the generated class should be a &#39;frozen&#39; `dataclass`, which does not allow its</span>
-<span class="sd">            attributes to be modified after it has been initialized.</span>
-<span class="sd">        config: The Pydantic config to use for the `dataclass`.</span>
-<span class="sd">        validate_on_init: A deprecated parameter included for backwards compatibility; in V2, all Pydantic dataclasses</span>
-<span class="sd">            are validated on init.</span>
-<span class="sd">        kw_only: Determines if `__init__` method parameters must be specified by keyword only. Defaults to `False`.</span>
-<span class="sd">        slots: Determines if the generated class should be a &#39;slots&#39; `dataclass`, which does not allow the addition of</span>
-<span class="sd">            new attributes after instantiation.</span>
+<span class="sd">        _cls:ターゲットの`dataclass`です。</span>
+<span class="sd">        init: `dataclasses.dataclass`を参照してください。</span>
+<span class="sd">        repr: フィールドを`__repr__`出力に含めるかどうかを示すブール値です。</span>
+<span class="sd">        eq: クラスに対して`__eq__`メソッドを生成するかどうかを決定します。</span>
+<span class="sd">        order: `__lt__`のような比較マジック・メソッドを生成すべきかどうかを決定します。</span>
+<span class="sd">        unsafe_hash: `dataclasses.dataclass`のように、クラスに`__hash__`メソッドを含めるかどうかを決定します。</span>
+<span class="sd">        frozen: 生成されたクラスが&#39;frozen&#39;な`dataclass`であるべきかどうかを決定します。これは、初期化された後に属性を変更できないようにします。</span>
+<span class="sd">        config: `dataclass`に使用するPydanticの設定です。</span>
+<span class="sd">        validate_on_init: 後方互換性のために廃止されたパラメーターです。V2では、すべてのPydanticデータクラスがinitで検証されます。</span>
+<span class="sd">        kw_only: `__init__`メソッドのパラメータをキーワードのみで指定する必要があるかどうかを決定します。デフォルトは`False`です。</span>
+<span class="sd">        slots: 生成されたクラスが、インスタンス化後に新しい属性を追加できない&#39;slots&#39;`dataclass`であるかどうかを決定します。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A decorator that accepts a class as its argument and returns a Pydantic `dataclass`.</span>
+<span class="sd">        引数としてクラスを受け入れ、Pydanticの`dataclass`を返すデコレータ。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        AssertionError: Raised if `init` is not `False` or `validate_on_init` is `False`.</span>
+<span class="sd">        AssertionError: `init`が`False`でない場合、または`validate_on_init`が`False`の場合に発生します。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;pydantic.dataclasses.dataclass only supports init=False&#39;</span>
-    <span class="k">assert</span> <span class="n">validate_on_init</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;validate_on_init=False is no longer supported&#39;</span>
+    <span class="k">assert</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;pydantic.dataclasses.dataclass only supports init=False&quot;</span>
+    <span class="k">assert</span> <span class="p">(</span>
+        <span class="n">validate_on_init</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span>
+    <span class="p">),</span> <span class="s2">&quot;validate_on_init=False is no longer supported&quot;</span>
 
     <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">kw_only</span><span class="o">=</span><span class="n">kw_only</span><span class="p">,</span> <span class="n">slots</span><span class="o">=</span><span class="n">slots</span><span class="p">)</span>
@@ -3318,16 +3311,12 @@ new attributes after instantiation.</p>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="nf">make_pydantic_fields_compatible</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Make sure that stdlib `dataclasses` understands `Field` kwargs like `kw_only`</span>
-<span class="sd">        To do that, we simply change</span>
-<span class="sd">          `x: int = pydantic.Field(..., kw_only=True)`</span>
-<span class="sd">        into</span>
-<span class="sd">          `x: int = dataclasses.field(default=pydantic.Field(..., kw_only=True), kw_only=True)`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;stdlib`dataclasses`が`kw_only`のような`Field`kwargsを処理することを確認してください。そのためには、単に`x:int=pydantic.Field(.,kw_only=True)`を`x:int=dataclasses.field(default=pydantic.Field(.,kw_only=True),kw_only=True)`に変更します。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">annotation_cls</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__mro__</span><span class="p">:</span>
             <span class="c1"># In Python &lt; 3.9, `__annotations__` might not be present if there are no fields.</span>
             <span class="c1"># we therefore need to use `getattr` to avoid an `AttributeError`.</span>
-            <span class="n">annotations</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">annotation_cls</span><span class="p">,</span> <span class="s1">&#39;__annotations__&#39;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">annotations</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">annotation_cls</span><span class="p">,</span> <span class="s2">&quot;__annotations__&quot;</span><span class="p">,</span> <span class="p">[])</span>
             <span class="k">for</span> <span class="n">field_name</span> <span class="ow">in</span> <span class="n">annotations</span><span class="p">:</span>
                 <span class="n">field_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
                 <span class="c1"># Process only if this is an instance of `FieldInfo`.</span>
@@ -3335,44 +3324,46 @@ new attributes after instantiation.</p>
                     <span class="k">continue</span>
 
                 <span class="c1"># Initialize arguments for the standard `dataclasses.field`.</span>
-                <span class="n">field_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">field_value</span><span class="p">}</span>
+                <span class="n">field_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">field_value</span><span class="p">}</span>
 
                 <span class="c1"># Handle `kw_only` for Python 3.10+</span>
                 <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="ow">and</span> <span class="n">field_value</span><span class="o">.</span><span class="n">kw_only</span><span class="p">:</span>
-                    <span class="n">field_args</span><span class="p">[</span><span class="s1">&#39;kw_only&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="n">field_args</span><span class="p">[</span><span class="s2">&quot;kw_only&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 
                 <span class="c1"># Set `repr` attribute if it&#39;s explicitly specified to be not `True`.</span>
                 <span class="k">if</span> <span class="n">field_value</span><span class="o">.</span><span class="n">repr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">True</span><span class="p">:</span>
-                    <span class="n">field_args</span><span class="p">[</span><span class="s1">&#39;repr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span><span class="o">.</span><span class="n">repr</span>
+                    <span class="n">field_args</span><span class="p">[</span><span class="s2">&quot;repr&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">field_value</span><span class="o">.</span><span class="n">repr</span>
 
                 <span class="nb">setattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="o">**</span><span class="n">field_args</span><span class="p">))</span>
                 <span class="c1"># In Python 3.8, dataclasses checks cls.__dict__[&#39;__annotations__&#39;] for annotations,</span>
                 <span class="c1"># so we must make sure it&#39;s initialized before we add to it.</span>
-                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;__annotations__&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;__annotations__&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
                     <span class="bp">cls</span><span class="o">.</span><span class="vm">__annotations__</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="bp">cls</span><span class="o">.</span><span class="vm">__annotations__</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotations</span><span class="p">[</span><span class="n">field_name</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">create_dataclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticDataclass</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Pydantic dataclass from a regular dataclass.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;通常のデータクラスからPydanticデータクラスを作成します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            cls: The class to create the Pydantic dataclass from.</span>
+<span class="sd">            cls: Pydanticデータ・クラスの作成元のクラス。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A Pydantic dataclass.</span>
+<span class="sd">            Pydanticデータクラス。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">._internal._utils</span> <span class="kn">import</span> <span class="n">is_model_class</span>
 
         <span class="k">if</span> <span class="n">is_model_class</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">PydanticUserError</span><span class="p">(</span>
-                <span class="sa">f</span><span class="s1">&#39;Cannot create a Pydantic dataclass from </span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> as it is already a Pydantic model&#39;</span><span class="p">,</span>
-                <span class="n">code</span><span class="o">=</span><span class="s1">&#39;dataclass-on-model&#39;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot create a Pydantic dataclass from </span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> as it is already a Pydantic model&quot;</span><span class="p">,</span>
+                <span class="n">code</span><span class="o">=</span><span class="s2">&quot;dataclass-on-model&quot;</span><span class="p">,</span>
             <span class="p">)</span>
 
         <span class="n">original_cls</span> <span class="o">=</span> <span class="bp">cls</span>
 
         <span class="c1"># if config is not explicitly provided, try to read it from the type</span>
-        <span class="n">config_dict</span> <span class="o">=</span> <span class="n">config</span> <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s1">&#39;__pydantic_config__&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">config_dict</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">config</span> <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s2">&quot;__pydantic_config__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="p">)</span>
         <span class="n">config_wrapper</span> <span class="o">=</span> <span class="n">_config</span><span class="o">.</span><span class="n">ConfigWrapper</span><span class="p">(</span><span class="n">config_dict</span><span class="p">)</span>
         <span class="n">decorators</span> <span class="o">=</span> <span class="n">_decorators</span><span class="o">.</span><span class="n">DecoratorInfos</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
 
@@ -3446,10 +3437,9 @@ new attributes after instantiation.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Try to rebuild the pydantic-core schema for the dataclass.</p>
-<p>This may be necessary when one of the annotations is a ForwardRef which could not be resolved during
-the initial attempt to build the schema, and automatic rebuilding fails.</p>
-<p>This is analogous to <code>BaseModel.model_rebuild</code>.</p>
+      <p>データクラスのpydantic-coreスキーマを再構築してみてください。</p>
+<p>これは、最初にスキーマを構築しようとしたときに解決できなかったForwardRefが注釈の1つであり、自動再構築が失敗した場合に必要になることがあります。</p>
+<p>これは<code>BaseModel.model_rebuild</code>と似ています。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3470,7 +3460,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The class to rebuild the pydantic-core schema for.</p>
+                <p>pydantic-coreスキーマを再構築するクラス。</p>
               </div>
             </td>
             <td>
@@ -3484,7 +3474,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to force the rebuilding of the schema, defaults to <code>False</code>.</p>
+                <p>スキーマの再構築を強制するかどうか。デフォルトは<code>False</code>です。</p>
               </div>
             </td>
             <td>
@@ -3498,7 +3488,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to raise errors, defaults to <code>True</code>.</p>
+                <p>エラーを発生させるかどうか。デフォルトは<code>True</code>です。</p>
               </div>
             </td>
             <td>
@@ -3512,7 +3502,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The depth level of the parent namespace, defaults to 2.</p>
+                <p>親ネームスペースのデプスレベル。デフォルトは2です。</p>
               </div>
             </td>
             <td>
@@ -3526,7 +3516,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The types namespace, defaults to <code>None</code>.</p>
+                <p>タイプの名前空間で、デフォルトは<code>None</code>です。</p>
               </div>
             </td>
             <td>
@@ -3552,7 +3542,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns <code>None</code> if the schema is already "complete" and rebuilding was not required.</p>
+                <p>スキーマが既に"完了"していて、再構築が必要なかった場合は<code>None</code>を返します。</p>
               </div>
             </td>
           </tr>
@@ -3562,7 +3552,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If rebuilding <em>was</em> required, returns <code>True</code> if rebuilding was successful, otherwise <code>False</code>.</p>
+                <p>rebuilding_was_requiredの場合、再構築が成功した場合は<code>True</code>を返し、それ以外の場合は<code>False</code>を返します。</p>
               </div>
             </td>
           </tr>
@@ -3571,7 +3561,15 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/dataclasses.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">270</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
@@ -3615,9 +3613,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">311</span>
 <span class="normal">312</span>
 <span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rebuild_dataclass</span><span class="p">(</span>
+<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rebuild_dataclass</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">PydanticDataclass</span><span class="p">],</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">force</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -3625,23 +3621,22 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">_parent_namespace_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">_types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Try to rebuild the pydantic-core schema for the dataclass.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;データクラスのpydantic-coreスキーマを再構築してみてください。</span>
 
-<span class="sd">    This may be necessary when one of the annotations is a ForwardRef which could not be resolved during</span>
-<span class="sd">    the initial attempt to build the schema, and automatic rebuilding fails.</span>
+<span class="sd">    これは、最初にスキーマを構築しようとしたときに解決できなかったForwardRefが注釈の1つであり、自動再構築が失敗した場合に必要になることがあります。</span>
 
-<span class="sd">    This is analogous to `BaseModel.model_rebuild`.</span>
+<span class="sd">    これは`BaseModel.model_rebuild`と似ています。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        cls: The class to rebuild the pydantic-core schema for.</span>
-<span class="sd">        force: Whether to force the rebuilding of the schema, defaults to `False`.</span>
-<span class="sd">        raise_errors: Whether to raise errors, defaults to `True`.</span>
-<span class="sd">        _parent_namespace_depth: The depth level of the parent namespace, defaults to 2.</span>
-<span class="sd">        _types_namespace: The types namespace, defaults to `None`.</span>
+<span class="sd">        cls: pydantic-coreスキーマを再構築するクラス。</span>
+<span class="sd">        force: スキーマの再構築を強制するかどうか。デフォルトは`False`です。</span>
+<span class="sd">        raise_errors: エラーを発生させるかどうか。デフォルトは`True`です。</span>
+<span class="sd">        _parent_namespace_depth: 親ネームスペースのデプスレベル。デフォルトは2です。</span>
+<span class="sd">        _types_namespace: タイプの名前空間で、デフォルトは`None`です。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Returns `None` if the schema is already &quot;complete&quot; and rebuilding was not required.</span>
-<span class="sd">        If rebuilding _was_ required, returns `True` if rebuilding was successful, otherwise `False`.</span>
+<span class="sd">        スキーマが既に&quot;完了&quot;していて、再構築が必要なかった場合は`None`を返します。</span>
+<span class="sd">        rebuilding_was_requiredの場合、再構築が成功した場合は`True`を返し、それ以外の場合は`False`を返します。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__pydantic_complete__</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -3650,14 +3645,21 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             <span class="n">types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_types_namespace</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">_parent_namespace_depth</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">frame_parent_ns</span> <span class="o">=</span> <span class="n">_typing_extra</span><span class="o">.</span><span class="n">parent_frame_namespace</span><span class="p">(</span><span class="n">parent_depth</span><span class="o">=</span><span class="n">_parent_namespace_depth</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+                <span class="n">frame_parent_ns</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">_typing_extra</span><span class="o">.</span><span class="n">parent_frame_namespace</span><span class="p">(</span>
+                        <span class="n">parent_depth</span><span class="o">=</span><span class="n">_parent_namespace_depth</span>
+                    <span class="p">)</span>
+                    <span class="ow">or</span> <span class="p">{}</span>
+                <span class="p">)</span>
                 <span class="c1"># Note: we may need to add something similar to cls.__pydantic_parent_namespace__ from BaseModel</span>
                 <span class="c1">#   here when implementing handling of recursive generics. See BaseModel.model_rebuild for reference.</span>
                 <span class="n">types_namespace</span> <span class="o">=</span> <span class="n">frame_parent_ns</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">types_namespace</span> <span class="o">=</span> <span class="p">{}</span>
 
-            <span class="n">types_namespace</span> <span class="o">=</span> <span class="n">_typing_extra</span><span class="o">.</span><span class="n">get_cls_types_namespace</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">types_namespace</span><span class="p">)</span>
+            <span class="n">types_namespace</span> <span class="o">=</span> <span class="n">_typing_extra</span><span class="o">.</span><span class="n">get_cls_types_namespace</span><span class="p">(</span>
+                <span class="bp">cls</span><span class="p">,</span> <span class="n">types_namespace</span>
+            <span class="p">)</span>
         <span class="k">return</span> <span class="n">_pydantic_dataclasses</span><span class="o">.</span><span class="n">complete_dataclass</span><span class="p">(</span>
             <span class="bp">cls</span><span class="p">,</span>
             <span class="n">_config</span><span class="o">.</span><span class="n">ConfigWrapper</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">__pydantic_config__</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
@@ -3685,7 +3687,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Whether a class is a pydantic dataclass.</p>
+      <p>クラスが暗号化されたデータクラスかどうか。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3706,7 +3708,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The class.</p>
+                <p>クラス。</p>
               </div>
             </td>
             <td>
@@ -3732,7 +3734,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p><code>True</code> if the class is a pydantic dataclass, <code>False</code> otherwise.</p>
+                <p>クラスがpydanticデータクラスであれば<code>True</code>、そうでなければ<code>False</code>です。</p>
               </div>
             </td>
           </tr>
@@ -3741,7 +3743,9 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/dataclasses.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">319</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
 <span class="normal">322</span>
@@ -3754,16 +3758,18 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">329</span>
 <span class="normal">330</span>
 <span class="normal">331</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_pydantic_dataclass</span><span class="p">(</span><span class="n">class_</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TypeGuard</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">PydanticDataclass</span><span class="p">]]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether a class is a pydantic dataclass.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;クラスが暗号化されたデータクラスかどうか。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        class_: The class.</span>
+<span class="sd">        class_: クラス。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        `True` if the class is a pydantic dataclass, `False` otherwise.</span>
+<span class="sd">        クラスがpydanticデータクラスであれば`True`、そうでなければ`False`です。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s1">&#39;__pydantic_validator__&#39;</span> <span class="ow">in</span> <span class="n">class_</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">is_dataclass</span><span class="p">(</span><span class="n">class_</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s2">&quot;__pydantic_validator__&quot;</span> <span class="ow">in</span> <span class="n">class_</span><span class="o">.</span><span class="vm">__dict__</span> <span class="ow">and</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">is_dataclass</span><span class="p">(</span>
+            <span class="n">class_</span>
+        <span class="p">)</span>
     <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 </code></pre></div></td></tr></table></div>

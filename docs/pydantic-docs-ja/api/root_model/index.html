@@ -2839,6 +2839,18 @@
 
   <h1>RootModel</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -2846,7 +2858,7 @@
 <a id="pydantic.root_model"></a>
     <div class="doc doc-contents first">
 
-      <p>RootModel class and type definitions.</p>
+      <p>RootModelクラスとタイプの定義。</p>
 
 
 
@@ -2878,11 +2890,8 @@
               Bases: <code><a class="autorefs autorefs-internal" title="pydantic.main.BaseModel" href="../base_model/#pydantic.BaseModel">BaseModel</a></code>, <code><a class="autorefs autorefs-external" title="typing.Generic" href="https://docs.python.org/3/library/typing.html#typing.Generic">Generic</a>[<span title="pydantic.root_model.RootModelRootType">RootModelRootType</span>]</code></p>
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/models/#rootmodel-and-custom-root-types"><code>RootModel</code> and custom root types</a></p>
-</div>
-<p>A Pydantic <code>BaseModel</code> for the root object of the model.</p>
+      <p>Usage docs: ../concepts/models/#rootmodel-and-custom-root-types</p>
+<p>モデルのルートオブジェクト用のPydantic<code>BaseModel</code>です。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -2902,7 +2911,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The root object of the model.</p>
+                <p>モデルのルートオブジェクト。</p>
               </div>
             </td>
           </tr>
@@ -2912,7 +2921,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the model is a RootModel.</p>
+                <p>モデルがRootModelであるかどうか。</p>
               </div>
             </td>
           </tr>
@@ -2922,7 +2931,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Private fields in the model.</p>
+                <p>モデル内のprivateフィールド。</p>
               </div>
             </td>
           </tr>
@@ -2932,7 +2941,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Extra fields in the model.</p>
+                <p>モデル内の追加フィールド。</p>
               </div>
             </td>
           </tr>
@@ -2941,15 +2950,15 @@
 
                   <details class="quote">
                     <summary>Source code in <code>pydantic/root_model.py</code></summary>
-                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">62</span>
-<span class="normal">63</span>
+                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
 <span class="normal">69</span>
-<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">RootModelRootType</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">RootModelRootType</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
     <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">PydanticUndefined</span><span class="p">:</span>
@@ -2993,7 +3002,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>Create a new model using the provided root object and update fields set.</p>
+      <p>指定されたルートオブジェクトを使用して新しいモデルを作成し、フィールドセットを更新します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -3014,7 +3023,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The root object of the model.</p>
+                <p>モデルのルートオブジェクト。</p>
               </div>
             </td>
             <td>
@@ -3028,7 +3037,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The set of fields to be updated.</p>
+                <p>更新されるフィールドのセット。</p>
               </div>
             </td>
             <td>
@@ -3054,7 +3063,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The new model.</p>
+                <p>新しいモデル。</p>
               </div>
             </td>
           </tr>
@@ -3077,7 +3086,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If the model is not a subclass of <code>RootModel</code>.</p>
+                <p>モデルが<code>RootModel</code>のサブクラスでない場合。</p>
               </div>
             </td>
           </tr>
@@ -3086,8 +3095,7 @@
 
             <details class="quote">
               <summary>Source code in <code>pydantic/root_model.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">74</span>
-<span class="normal">75</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">75</span>
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
@@ -3100,19 +3108,20 @@
 <span class="normal">85</span>
 <span class="normal">86</span>
 <span class="normal">87</span>
-<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">88</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_construct</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="n">RootModelRootType</span><span class="p">,</span> <span class="n">_fields_set</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new model using the provided root object and update fields set.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;指定されたルートオブジェクトを使用して新しいモデルを作成し、フィールドセットを更新します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        root: The root object of the model.</span>
-<span class="sd">        _fields_set: The set of fields to be updated.</span>
+<span class="sd">        root: モデルのルートオブジェクト。</span>
+<span class="sd">        _fields_set: 更新されるフィールドのセット。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The new model.</span>
+<span class="sd">        新しいモデル。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        NotImplemented: If the model is not a subclass of `RootModel`.</span>
+<span class="sd">        NotImplemented: モデルが`RootModel`のサブクラスでない場合。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">model_construct</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="n">root</span><span class="p">,</span> <span class="n">_fields_set</span><span class="o">=</span><span class="n">_fields_set</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -3149,19 +3158,15 @@
 
     <div class="doc doc-contents ">
 
-      <p>This method is included just to get a more accurate return type for type checkers.
-It is included in this <code>if TYPE_CHECKING:</code> block since no override is actually necessary.</p>
-<p>See the documentation of <code>BaseModel.model_dump</code> for more details about the arguments.</p>
-<p>Generally, this method will have a return type of <code>RootModelRootType</code>, assuming that <code>RootModelRootType</code> is
-not a <code>BaseModel</code> subclass. If <code>RootModelRootType</code> is a <code>BaseModel</code> subclass, then the return
-type will likely be <code>dict[str, Any]</code>, as <code>model_dump</code> calls are recursive. The return type could
-even be something different, in the case of a custom serializer.
-Thus, <code>Any</code> is used here to catch all of these cases.</p>
+      <p>このメソッドは、型チェッカーの戻り値の型をより正確に取得するためだけに含まれています。
+実際には上書きが必要ないので、この<code>if TYPE_CHECKING:</code>ブロックに含まれています。</p>
+<p>引数の詳細については、<code>BaseModel.model_dump</code>のドキュメントを参照してください。</p>
+<p>一般に、<code>RootModelRootType</code>が<code>BaseModel</code>サブクラスではないと仮定すると、このメソッドの戻り値の型は<code>RootModelRootType</code>になります。<code>RootModelRootType</code>が<code>BaseModel</code>サブクラスである場合、戻り値の型は<code>dict[str, Any]</code>になります。これは<code>model_dump</code>呼び出しが再帰的であるためです。カスタムシリアライザの場合、戻り値の型は別のものになることもあります。
+したがって、ここでは"Any"を使用して、これらのケースをすべてキャッチします。</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/root_model.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
-<span class="normal">121</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">121</span>
 <span class="normal">122</span>
 <span class="normal">123</span>
 <span class="normal">124</span>
@@ -3184,9 +3189,7 @@ Thus, <code>Any</code> is used here to catch all of these cases.</p>
 <span class="normal">141</span>
 <span class="normal">142</span>
 <span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span>
@@ -3201,16 +3204,13 @@ Thus, <code>Any</code> is used here to catch all of these cases.</p>
     <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This method is included just to get a more accurate return type for type checkers.</span>
-<span class="sd">    It is included in this `if TYPE_CHECKING:` block since no override is actually necessary.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;このメソッドは、型チェッカーの戻り値の型をより正確に取得するためだけに含まれています。</span>
+<span class="sd">    実際には上書きが必要ないので、この`if TYPE_CHECKING:`ブロックに含まれています。</span>
 
-<span class="sd">    See the documentation of `BaseModel.model_dump` for more details about the arguments.</span>
+<span class="sd">    引数の詳細については、`BaseModel.model_dump`のドキュメントを参照してください。</span>
 
-<span class="sd">    Generally, this method will have a return type of `RootModelRootType`, assuming that `RootModelRootType` is</span>
-<span class="sd">    not a `BaseModel` subclass. If `RootModelRootType` is a `BaseModel` subclass, then the return</span>
-<span class="sd">    type will likely be `dict[str, Any]`, as `model_dump` calls are recursive. The return type could</span>
-<span class="sd">    even be something different, in the case of a custom serializer.</span>
-<span class="sd">    Thus, `Any` is used here to catch all of these cases.</span>
+<span class="sd">    一般に、`RootModelRootType`が`BaseModel`サブクラスではないと仮定すると、このメソッドの戻り値の型は`RootModelRootType`になります。`RootModelRootType`が`BaseModel`サブクラスである場合、戻り値の型は`dict[str, Any]`になります。これは`model_dump`呼び出しが再帰的であるためです。カスタムシリアライザの場合、戻り値の型は別のものになることもあります。</span>
+<span class="sd">    したがって、ここでは&quot;Any&quot;を使用して、これらのケースをすべてキャッチします。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>

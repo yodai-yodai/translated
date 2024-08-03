@@ -1326,6 +1326,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="model_construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--model_construct-generally-respects-the-model_configextra-setting-on-the-provided-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      model_construct() generally respects the model_config.extra setting on the provided model.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--that-is-if-model_configextra-allow-then-all-extra-passed-values-are-added-to-the-model-instances-__dict__-and-__pydantic_extra__-fields-if-model_configextra-ignore-the-default-then-all-extra-passed-values-are-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      That is, if model_config.extra == 'allow', then all extra passed values are added to the model instance's __dict__ and __pydantic_extra__ fields. If model_config.extra == 'ignore' (the default), then all extra passed values are ignored.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--because-no-validation-is-performed-with-a-call-to-model_construct-having-model_configextra-forbid-does-not-result-in-an-error-if-extra-values-are-passed-but-they-will-be-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      Because no validation is performed with a call to model_construct(), having model_config.extra == 'forbid' does not result in an error if extra values are passed, but they will be ignored.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2991,6 +3024,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="model_construct">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--model_construct-generally-respects-the-model_configextra-setting-on-the-provided-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      model_construct() generally respects the model_config.extra setting on the provided model.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--that-is-if-model_configextra-allow-then-all-extra-passed-values-are-added-to-the-model-instances-__dict__-and-__pydantic_extra__-fields-if-model_configextra-ignore-the-default-then-all-extra-passed-values-are-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      That is, if model_config.extra == 'allow', then all extra passed values are added to the model instance's __dict__ and __pydantic_extra__ fields. If model_config.extra == 'ignore' (the default), then all extra passed values are ignored.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pydantic.BaseModel.model_construct--because-no-validation-is-performed-with-a-call-to-model_construct-having-model_configextra-forbid-does-not-result-in-an-error-if-extra-values-are-passed-but-they-will-be-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      Because no validation is performed with a call to model_construct(), having model_config.extra == 'forbid' does not result in an error if extra values are passed, but they will be ignored.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -3127,7 +3193,18 @@
 
   <h1>BaseModel</h1>
 
-<p>Pydantic models are simply classes which inherit from <code>BaseModel</code> and define fields as annotated attributes.</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- Pydantic models are simply classes which inherit from `BaseModel` and define fields as annotated attributes. -->
+<p>Pydanticモデルは、単に<code>BaseModel</code>から継承し、フィールドを注釈付き属性として定義するクラスです。</p>
 
 
 <div class="doc doc-object doc-class">
@@ -3144,11 +3221,8 @@
     <div class="doc doc-contents first">
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/models/">Models</a></p>
-</div>
-<p>A base class for creating Pydantic models.</p>
+      <p>Usage docs: ../concepts/models/</p>
+<p>Pydanticモデルを作成するための基本クラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3168,7 +3242,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The names of classvars defined on the model.</p>
+                <p>モデルに定義されているクラス変数の名前。</p>
               </div>
             </td>
           </tr>
@@ -3179,7 +3253,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Metadata about the private attributes of the model.</p>
+                <p>モデルのプライベート属性に関するメタデータ。</p>
               </div>
             </td>
           </tr>
@@ -3190,7 +3264,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The signature for instantiating the model.</p>
+                <p>モデルをインスタンス化するためのシグネチャ。</p>
               </div>
             </td>
           </tr>
@@ -3201,7 +3275,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether model building is completed, or if there are still undefined fields.</p>
+                <p>モデルの構築が完了したかどうか、またはまだ未定義のフィールドがあるかどうか。</p>
               </div>
             </td>
           </tr>
@@ -3212,7 +3286,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The pydantic-core schema used to build the SchemaValidator and SchemaSerializer.</p>
+                <p>SchemaValidatorとSchemaSerializerの構築に使用されたpydantic-coreスキーマ。</p>
               </div>
             </td>
           </tr>
@@ -3223,7 +3297,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the model has a custom <code>__init__</code> function.</p>
+                <p>モデルにカスタムの<code>__init__</code>関数があるかどうか。</p>
               </div>
             </td>
           </tr>
@@ -3234,8 +3308,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Metadata containing the decorators defined on the model.
-This replaces <code>Model.__validators__</code> and <code>Model.__root_validators__</code> from Pydantic V1.</p>
+                <p>モデルで定義されたデコレータを含むメタデータ。これは、Pydantic V1の<code>Model.__validators__</code>と<code>Model.__root_validators__</code>を置き換えます。</p>
               </div>
             </td>
           </tr>
@@ -3246,8 +3319,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Metadata for generic models; contains data used for a similar purpose to
-<strong>args</strong>, <strong>origin</strong>, <strong>parameters</strong> in typing-module generics. May eventually be replaced by these.</p>
+                <p>ジェネリックモデル用のメタデータ。型モジュールジェネリックの__args__、<strong>origin</strong>、__parameters__と同様の目的で使用されるデータが含まれています。最終的にはこれらに置き換えられる可能性があります。</p>
               </div>
             </td>
           </tr>
@@ -3258,7 +3330,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Parent namespace of the model, used for automatic rebuilding of models.</p>
+                <p>モデルの親ネームスペース。モデルの自動再構築に使用されます。</p>
               </div>
             </td>
           </tr>
@@ -3269,7 +3341,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The name of the post-init method for the model, if defined.</p>
+                <p>モデルの初期化後のメソッドの名前(定義されている場合)。</p>
               </div>
             </td>
           </tr>
@@ -3280,7 +3352,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the model is a <code>RootModel</code>.</p>
+                <p>モデルが<code>RootModel</code>かどうか。</p>
               </div>
             </td>
           </tr>
@@ -3291,7 +3363,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The pydantic-core SchemaSerializer used to dump instances of the model.</p>
+                <p>モデルのインスタンスをダンプするために使用されるpydantic-core SchemaSerializer。</p>
               </div>
             </td>
           </tr>
@@ -3302,7 +3374,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The pydantic-core SchemaValidator used to validate instances of the model.</p>
+                <p>モデルのインスタンスを検証するために使用されるpydantic-core SchemaValidator。</p>
               </div>
             </td>
           </tr>
@@ -3313,8 +3385,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An instance attribute with the values of extra fields from validation when
-<code>model_config['extra'] == 'allow'</code>.</p>
+                <p><code>model_config['extra']=='allow'</code>の場合に、検証からの追加フィールドの値を持つインスタンス属性。</p>
               </div>
             </td>
           </tr>
@@ -3325,7 +3396,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An instance attribute with the names of fields explicitly set.</p>
+                <p>フィールドの名前が明示的に設定されたインスタンス属性。</p>
               </div>
             </td>
           </tr>
@@ -3336,7 +3407,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Instance attribute with the values of private attributes set on the model instance.</p>
+                <p>モデルインスタンスに設定されたプライベート属性の値を持つインスタンス属性。</p>
               </div>
             </td>
           </tr>
@@ -4670,54 +4741,30 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 <span class="normal">1402</span>
 <span class="normal">1403</span>
 <span class="normal">1404</span>
-<span class="normal">1405</span>
-<span class="normal">1406</span>
-<span class="normal">1407</span>
-<span class="normal">1408</span>
-<span class="normal">1409</span>
-<span class="normal">1410</span>
-<span class="normal">1411</span>
-<span class="normal">1412</span>
-<span class="normal">1413</span>
-<span class="normal">1414</span>
-<span class="normal">1415</span>
-<span class="normal">1416</span>
-<span class="normal">1417</span>
-<span class="normal">1418</span>
-<span class="normal">1419</span>
-<span class="normal">1420</span>
-<span class="normal">1421</span>
-<span class="normal">1422</span>
-<span class="normal">1423</span>
-<span class="normal">1424</span>
-<span class="normal">1425</span>
-<span class="normal">1426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">_model_construction</span><span class="o">.</span><span class="n">ModelMetaclass</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/models/</span>
+<span class="normal">1405</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">BaseModel</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">_model_construction</span><span class="o">.</span><span class="n">ModelMetaclass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/models/</span>
 
-<span class="sd">    A base class for creating Pydantic models.</span>
+<span class="sd">    Pydanticモデルを作成するための基本クラス。</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        __class_vars__: The names of classvars defined on the model.</span>
-<span class="sd">        __private_attributes__: Metadata about the private attributes of the model.</span>
-<span class="sd">        __signature__: The signature for instantiating the model.</span>
+<span class="sd">        __class_vars__: モデルに定義されているクラス変数の名前。</span>
+<span class="sd">        __private_attributes__: モデルのプライベート属性に関するメタデータ。</span>
+<span class="sd">        __signature__: モデルをインスタンス化するためのシグネチャ。</span>
 
-<span class="sd">        __pydantic_complete__: Whether model building is completed, or if there are still undefined fields.</span>
-<span class="sd">        __pydantic_core_schema__: The pydantic-core schema used to build the SchemaValidator and SchemaSerializer.</span>
-<span class="sd">        __pydantic_custom_init__: Whether the model has a custom `__init__` function.</span>
-<span class="sd">        __pydantic_decorators__: Metadata containing the decorators defined on the model.</span>
-<span class="sd">            This replaces `Model.__validators__` and `Model.__root_validators__` from Pydantic V1.</span>
-<span class="sd">        __pydantic_generic_metadata__: Metadata for generic models; contains data used for a similar purpose to</span>
-<span class="sd">            __args__, __origin__, __parameters__ in typing-module generics. May eventually be replaced by these.</span>
-<span class="sd">        __pydantic_parent_namespace__: Parent namespace of the model, used for automatic rebuilding of models.</span>
-<span class="sd">        __pydantic_post_init__: The name of the post-init method for the model, if defined.</span>
-<span class="sd">        __pydantic_root_model__: Whether the model is a `RootModel`.</span>
-<span class="sd">        __pydantic_serializer__: The pydantic-core SchemaSerializer used to dump instances of the model.</span>
-<span class="sd">        __pydantic_validator__: The pydantic-core SchemaValidator used to validate instances of the model.</span>
+<span class="sd">        __pydantic_complete__: モデルの構築が完了したかどうか、またはまだ未定義のフィールドがあるかどうか。</span>
+<span class="sd">        __pydantic_core_schema__: SchemaValidatorとSchemaSerializerの構築に使用されたpydantic-coreスキーマ。</span>
+<span class="sd">        __pydantic_custom_init__: モデルにカスタムの`__init__`関数があるかどうか。</span>
+<span class="sd">        __pydantic_decorators__: モデルで定義されたデコレータを含むメタデータ。これは、Pydantic V1の`Model.__validators__`と`Model.__root_validators__`を置き換えます。</span>
+<span class="sd">        __pydantic_generic_metadata__: ジェネリックモデル用のメタデータ。型モジュールジェネリックの__args__、__origin__、__parameters__と同様の目的で使用されるデータが含まれています。最終的にはこれらに置き換えられる可能性があります。</span>
+<span class="sd">        __pydantic_parent_namespace__: モデルの親ネームスペース。モデルの自動再構築に使用されます。</span>
+<span class="sd">        __pydantic_post_init__: モデルの初期化後のメソッドの名前(定義されている場合)。</span>
+<span class="sd">        __pydantic_root_model__: モデルが`RootModel`かどうか。</span>
+<span class="sd">        __pydantic_serializer__: モデルのインスタンスをダンプするために使用されるpydantic-core SchemaSerializer。</span>
+<span class="sd">        __pydantic_validator__: モデルのインスタンスを検証するために使用されるpydantic-core SchemaValidator。</span>
 
-<span class="sd">        __pydantic_extra__: An instance attribute with the values of extra fields from validation when</span>
-<span class="sd">            `model_config[&#39;extra&#39;] == &#39;allow&#39;`.</span>
-<span class="sd">        __pydantic_fields_set__: An instance attribute with the names of fields explicitly set.</span>
-<span class="sd">        __pydantic_private__: Instance attribute with the values of private attributes set on the model instance.</span>
+<span class="sd">        __pydantic_extra__: `model_config[&#39;extra&#39;]==&#39;allow&#39;`の場合に、検証からの追加フィールドの値を持つインスタンス属性。</span>
+<span class="sd">        __pydantic_fields_set__: フィールドの名前が明示的に設定されたインスタンス属性。</span>
+<span class="sd">        __pydantic_private__: モデルインスタンスに設定されたプライベート属性の値を持つインスタンス属性。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
@@ -4729,19 +4776,20 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="c1"># Class attributes</span>
         <span class="n">model_config</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">ConfigDict</span><span class="p">]</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Configuration for the model, should be a dictionary conforming to [`ConfigDict`][pydantic.config.ConfigDict].</span>
+<span class="sd">        モデルの設定は、[`ConfigDict`][pydantic.config.ConfigDict]に準拠した辞書でなければなりません。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">model_fields</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">FieldInfo</span><span class="p">]]</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Metadata about the fields defined on the model,</span>
-<span class="sd">        mapping of field names to [`FieldInfo`][pydantic.fields.FieldInfo].</span>
+<span class="sd">        モデルで定義されたフィールドに関するメタデータ、[`FieldInfo`][pydantic.fields.FieldInfo]へのフィールド名のマッピング。</span>
 
-<span class="sd">        This replaces `Model.__fields__` from Pydantic V1.</span>
+<span class="sd">        これはPydantic V1の`Model.__fields__`を置き換えます。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">model_computed_fields</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ComputedFieldInfo</span><span class="p">]]</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;A dictionary of computed field names and their corresponding `ComputedFieldInfo` objects.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;計算されたフィールド名とそれに対応する`ComputedFieldInfo`オブジェクトの辞書。&quot;&quot;&quot;</span>
+
+
 
         <span class="n">__class_vars__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span>
         <span class="n">__private_attributes__</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModelPrivateAttr</span><span class="p">]]</span>
@@ -4794,12 +4842,11 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
     <span class="n">__pydantic_root_model__</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a new model by parsing and validating input data from keyword arguments.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;キーワード引数からの入力データを解析および検証して、新しいモデルを作成します。</span>
 
-<span class="sd">        Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be</span>
-<span class="sd">        validated to form a valid model.</span>
+<span class="sd">        入力データを検証して有効なモデルを作成できない場合は、[`ValidationError`][pydantic_core.ValidationError]が発生します。</span>
 
-<span class="sd">        `self` is explicitly positional-only to allow `self` as a field name.</span>
+<span class="sd">        `self`は、フィールド名として`self`を許可するために、明示的に定位置のみです。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
         <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -4810,43 +4857,43 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_extra</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get extra fields set during validation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;検証中に追加フィールドセットを取得します。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A dictionary of extra fields, or `None` if `config.extra` is not set to `&quot;allow&quot;`.</span>
+<span class="sd">            追加フィールドの辞書、または`config.extra`が`&quot;allow&quot;`に設定されていない場合は`None`。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_extra__</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">model_fields_set</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the set of fields that have been explicitly set on this model instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;このモデルインスタンスに明示的に設定されているフィールドのセットを返します。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A set of strings representing the fields that have been set,</span>
-<span class="sd">                i.e. that were not filled from defaults.</span>
+<span class="sd">            設定された(つまり、デフォルトから入力されなかった)フィールドを表す文字列のセット。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_fields_set__</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">model_construct</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">_fields_set</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>  <span class="c1"># noqa: C901</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new instance of the `Model` class with validated data.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;検証されたデータを持つ`Model`クラスの新しいインスタンスを作成します。</span>
 
-<span class="sd">        Creates a new model setting `__dict__` and `__pydantic_fields_set__` from trusted or pre-validated data.</span>
-<span class="sd">        Default values are respected, but no other validation is performed.</span>
+<span class="sd">        信頼できるデータまたは事前に検証されたデータから、新しいモデル設定`__dict__`および`__pydantic_fields_set__`を作成します。</span>
+<span class="sd">        デフォルト値が使用されますが、その他の検証は実行されません。</span>
 
 <span class="sd">        !!! note</span>
-<span class="sd">            `model_construct()` generally respects the `model_config.extra` setting on the provided model.</span>
-<span class="sd">            That is, if `model_config.extra == &#39;allow&#39;`, then all extra passed values are added to the model instance&#39;s `__dict__`</span>
-<span class="sd">            and `__pydantic_extra__` fields. If `model_config.extra == &#39;ignore&#39;` (the default), then all extra passed values are ignored.</span>
-<span class="sd">            Because no validation is performed with a call to `model_construct()`, having `model_config.extra == &#39;forbid&#39;` does not result in</span>
-<span class="sd">            an error if extra values are passed, but they will be ignored.</span>
+<span class="sd">            # `model_construct()` generally respects the `model_config.extra` setting on the provided model.</span>
+<span class="sd">            # That is, if `model_config.extra == &#39;allow&#39;`, then all extra passed values are added to the model instance&#39;s `__dict__` and `__pydantic_extra__` fields. If `model_config.extra == &#39;ignore&#39;` (the default), then all extra passed values are ignored.</span>
+<span class="sd">            # Because no validation is performed with a call to `model_construct()`, having `model_config.extra == &#39;forbid&#39;` does not result in an error if extra values are passed, but they will be ignored.</span>
+<span class="sd">            `model_construct()`は一般に、提供されたモデルの`model_config.extra`設定を尊重します。</span>
+<span class="sd">            つまり、`model_config.extra==&#39;allow&#39;`の場合、余分に渡された値はすべてモデルインスタンスの`__dict__`フィールドと`__pydantic_extra__`フィールドに追加されます。`model_config.extra==&#39;ignore&#39;`(デフォルト)の場合、余分に渡された値はすべて無視されます。</span>
+<span class="sd">            `model_construct()`を呼び出しても検証は行われないので、`model_config.extra==&#39;forbid&#39;`を指定しても、余分な値が渡されてもエラーにはなりませんが、無視されます。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            _fields_set: The set of field names accepted for the Model instance.</span>
-<span class="sd">            values: Trusted or pre-validated data dictionary.</span>
+<span class="sd">            _fields_set: Modelインスタンスに受け入れられるフィールド名のセット。</span>
+<span class="sd">            values: 信頼できるデータ辞書または事前に検証されたデータ辞書。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A new instance of the `Model` class with validated data.</span>
+<span class="sd">            検証されたデータを持つ`Model`クラスの新しいインスタンス。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">m</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="n">fields_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -4909,17 +4956,16 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="k">return</span> <span class="n">m</span>
 
     <span class="k">def</span> <span class="nf">model_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">update</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">deep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#model_copy</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#model_copy</span>
 
-<span class="sd">        Returns a copy of the model.</span>
+<span class="sd">        モデルのコピーを返します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            update: Values to change/add in the new model. Note: the data is not validated</span>
-<span class="sd">                before creating the new model. You should trust this data.</span>
-<span class="sd">            deep: Set to `True` to make a deep copy of the model.</span>
+<span class="sd">            update: 新しいモデルで変更または追加する値です。注意:新しいモデルを作成する前にデータは検証されません。このデータは信頼してください。</span>
+<span class="sd">            deep: モデルのディープコピーを作成するには`True`に設定します。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            New model instance.</span>
+<span class="sd">            新しいモデルインスタンス。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">copied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__deepcopy__</span><span class="p">()</span> <span class="k">if</span> <span class="n">deep</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">__copy__</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">update</span><span class="p">:</span>
@@ -4951,28 +4997,27 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#modelmodel_dump</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#modelmodel_dump</span>
 
-<span class="sd">        Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.</span>
+<span class="sd">        モデルのディクショナリ表現を生成します。オプションで、含めるフィールドまたは除外するフィールドを指定します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            mode: The mode in which `to_python` should run.</span>
-<span class="sd">                If mode is &#39;json&#39;, the output will only contain JSON serializable types.</span>
-<span class="sd">                If mode is &#39;python&#39;, the output may contain non-JSON-serializable Python objects.</span>
-<span class="sd">            include: A set of fields to include in the output.</span>
-<span class="sd">            exclude: A set of fields to exclude from the output.</span>
-<span class="sd">            context: Additional context to pass to the serializer.</span>
-<span class="sd">            by_alias: Whether to use the field&#39;s alias in the dictionary key if defined.</span>
-<span class="sd">            exclude_unset: Whether to exclude fields that have not been explicitly set.</span>
-<span class="sd">            exclude_defaults: Whether to exclude fields that are set to their default value.</span>
-<span class="sd">            exclude_none: Whether to exclude fields that have a value of `None`.</span>
-<span class="sd">            round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].</span>
-<span class="sd">            warnings: How to handle serialization errors. False/&quot;none&quot; ignores them, True/&quot;warn&quot; logs errors,</span>
-<span class="sd">                &quot;error&quot; raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].</span>
-<span class="sd">            serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.</span>
+<span class="sd">            mode: `to_python`が実行されるモード。</span>
+<span class="sd">                modeが&#39;json&#39;の場合、出力にはJSONシリアライザブル型のみが含まれます。</span>
+<span class="sd">                modeが&#39;python&#39;の場合、出力にはJSONシリアライズできないPythonオブジェクトが含まれる可能性があります。</span>
+<span class="sd">            include: 出力に含めるフィールドのセット。</span>
+<span class="sd">            exclude: 出力から除外するフィールドのセット。</span>
+<span class="sd">            context: シリアライザに渡す追加のコンテキスト。</span>
+<span class="sd">            by_alias: 定義されている場合に、ディクショナリ・キーでフィールドの別名を使用するかどうか。</span>
+<span class="sd">            exclude_unset: 明示的に設定されていないフィールドを除外するかどうか。</span>
+<span class="sd">            exclude_defaults: デフォルト値に設定されているフィールドを除外するかどうか。</span>
+<span class="sd">            exclude_none: `None`の値を持つフィールドを除外するかどうか。</span>
+<span class="sd">            round_trip: Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</span>
+<span class="sd">            warnings: シリアライゼーションエラーの処理方法。False/&quot;none&quot;はエラーを無視します。True/&quot;warn&quot;はエラーをログに記録します。&quot;error&quot;は[`PydanticSerializationError`][pydantic_core.PydanticSerializationError]を発生させます。</span>
+<span class="sd">            serialize_as_any: ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A dictionary representation of the model.</span>
+<span class="sd">            モデルのディクショナリ表現。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_serializer__</span><span class="o">.</span><span class="n">to_python</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -5004,26 +5049,25 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#modelmodel_dump_json</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#modelmodel_dump_json</span>
 
-<span class="sd">        Generates a JSON representation of the model using Pydantic&#39;s `to_json` method.</span>
+<span class="sd">        Pydanticの`to_json`メソッドを使用してモデルのJSON表現を生成します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            indent: Indentation to use in the JSON output. If None is passed, the output will be compact.</span>
-<span class="sd">            include: Field(s) to include in the JSON output.</span>
-<span class="sd">            exclude: Field(s) to exclude from the JSON output.</span>
-<span class="sd">            context: Additional context to pass to the serializer.</span>
-<span class="sd">            by_alias: Whether to serialize using field aliases.</span>
-<span class="sd">            exclude_unset: Whether to exclude fields that have not been explicitly set.</span>
-<span class="sd">            exclude_defaults: Whether to exclude fields that are set to their default value.</span>
-<span class="sd">            exclude_none: Whether to exclude fields that have a value of `None`.</span>
-<span class="sd">            round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].</span>
-<span class="sd">            warnings: How to handle serialization errors. False/&quot;none&quot; ignores them, True/&quot;warn&quot; logs errors,</span>
-<span class="sd">                &quot;error&quot; raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].</span>
-<span class="sd">            serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.</span>
+<span class="sd">            indent: JSON出力で使用するインデント。Noneが渡された場合、出力はコンパクトになります。</span>
+<span class="sd">            include: JSON出力に含めるフィールド。</span>
+<span class="sd">            exclude: JSON出力から除外するフィールド。</span>
+<span class="sd">            context: シリアライザに渡す追加のコンテキスト。</span>
+<span class="sd">            by_alias: フィールドエイリアスを使用してシリアライズするかどうか。</span>
+<span class="sd">            exclude_unset: 明示的に設定されていないフィールドを除外するかどうか。</span>
+<span class="sd">            exclude_defaults: デフォルト値に設定されているフィールドを除外するかどうか。</span>
+<span class="sd">            exclude_none: `None`の値を持つフィールドを除外するかどうか。</span>
+<span class="sd">            round_trip: Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</span>
+<span class="sd">            warnings: シリアライゼーションエラーの処理方法。False/&quot;none&quot;はエラーを無視します。True/&quot;warn&quot;はエラーをログに記録します。&quot;error&quot;は[`PydanticSerializationError`][pydantic_core.PydanticSerializationError]を発生させます。</span>
+<span class="sd">            serialize_as_any: ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A JSON string representation of the model.</span>
+<span class="sd">            モデルのJSON文字列表現。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_serializer__</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span>
             <span class="bp">self</span><span class="p">,</span>
@@ -5048,17 +5092,17 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">schema_generator</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">GenerateJsonSchema</span><span class="p">]</span> <span class="o">=</span> <span class="n">GenerateJsonSchema</span><span class="p">,</span>
         <span class="n">mode</span><span class="p">:</span> <span class="n">JsonSchemaMode</span> <span class="o">=</span> <span class="s1">&#39;validation&#39;</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a JSON schema for a model class.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルクラスのJSONスキーマを生成します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            by_alias: Whether to use attribute aliases or not.</span>
-<span class="sd">            ref_template: The reference template.</span>
-<span class="sd">            schema_generator: To override the logic used to generate the JSON schema, as a subclass of</span>
-<span class="sd">                `GenerateJsonSchema` with your desired modifications</span>
-<span class="sd">            mode: The mode in which to generate the schema.</span>
+<span class="sd">            by_alias: 属性の別名を使用するかどうか。</span>
+<span class="sd">            ref_template:参照テンプレート。</span>
+<span class="sd">            schema_generator:JSONスキーマの生成に使用されるロジックを、`GenerateJsonSchema`のサブクラスとして、必要な変更を加えてオーバーライドします。</span>
+<span class="sd">            mode:スキーマを生成するモード。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            The JSON schema for the given model class.</span>
+<span class="sd">            指定されたモデルクラスのJSONスキーマ。</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">model_json_schema</span><span class="p">(</span>
             <span class="bp">cls</span><span class="p">,</span> <span class="n">by_alias</span><span class="o">=</span><span class="n">by_alias</span><span class="p">,</span> <span class="n">ref_template</span><span class="o">=</span><span class="n">ref_template</span><span class="p">,</span> <span class="n">schema_generator</span><span class="o">=</span><span class="n">schema_generator</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span>
@@ -5066,20 +5110,19 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">model_parametrized_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute the class name for parametrizations of generic classes.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;ジェネリッククラスのパラメータ化のクラス名を計算します。</span>
 
-<span class="sd">        This method can be overridden to achieve a custom naming scheme for generic BaseModels.</span>
+<span class="sd">        このメソッドをオーバーライドして、汎用BaseModelsのカスタム命名スキームを実現できます。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            params: Tuple of types of the class. Given a generic class</span>
-<span class="sd">                `Model` with 2 type variables and a concrete model `Model[str, int]`,</span>
-<span class="sd">                the value `(str, int)` would be passed to `params`.</span>
+<span class="sd">            params: クラスの型のタプルです。2つの型変数を持つジェネリッククラス`Model`と具象モデル`Model[str, int]`が与えられると、値`(str, int)`が`params`に渡されます。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            String representing the new class where `params` are passed to `cls` as type variables.</span>
+<span class="sd">            `params`が型変数として`cls`に渡される新しいクラスを表す文字列。</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            TypeError: Raised when trying to generate concrete names for non-generic models.</span>
+<span class="sd">            TypeError:非ジェネリックモデルの具象名を生成しようとしたときに発生します。</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Concrete names should only be generated for generic models.&#39;</span><span class="p">)</span>
@@ -5092,8 +5135,8 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">[</span><span class="si">{</span><span class="n">params_component</span><span class="si">}</span><span class="s1">]&#39;</span>
 
     <span class="k">def</span> <span class="nf">model_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__context</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Override this method to perform additional initialization after `__init__` and `model_construct`.</span>
-<span class="sd">        This is useful if you want to do some validation that requires the entire model to be initialized.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;このメソッドをオーバーライドして、`__init__`と`model_construct`の後に追加の初期化を実行します。</span>
+<span class="sd">        これは、モデル全体を初期化する必要がある検証を行う場合に便利です。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
@@ -5106,20 +5149,20 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">_parent_namespace_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
         <span class="n">_types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Try to rebuild the pydantic-core schema for the model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのpydantic-coreスキーマを再構築してみてください。</span>
 
-<span class="sd">        This may be necessary when one of the annotations is a ForwardRef which could not be resolved during</span>
-<span class="sd">        the initial attempt to build the schema, and automatic rebuilding fails.</span>
+<span class="sd">        これは、最初にスキーマを構築しようとしたときに解決できなかったForwardRefが注釈の1つであり、自動再構築が失敗した場合に必要になることがあります。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            force: Whether to force the rebuilding of the model schema, defaults to `False`.</span>
-<span class="sd">            raise_errors: Whether to raise errors, defaults to `True`.</span>
-<span class="sd">            _parent_namespace_depth: The depth level of the parent namespace, defaults to 2.</span>
-<span class="sd">            _types_namespace: The types namespace, defaults to `None`.</span>
+<span class="sd">            force: モデルスキーマの再構築を強制するかどうか。デフォルトは`False`です。</span>
+<span class="sd">            raise_errors: エラーを発生させるかどうか。デフォルトは`True`です。</span>
+<span class="sd">            _parent_namespace_depth: 親ネームスペースのデプスレベル。デフォルトは2です。</span>
+<span class="sd">            _types_namespace: タイプの名前空間で、デフォルトは`None`です。</span>
+
 
 <span class="sd">        Returns:</span>
-<span class="sd">            Returns `None` if the schema is already &quot;complete&quot; and rebuilding was not required.</span>
-<span class="sd">            If rebuilding _was_ required, returns `True` if rebuilding was successful, otherwise `False`.</span>
+<span class="sd">            スキーマが既に&quot;完了&quot;していて、再構築が必要なかった場合は`None`を返します。</span>
+<span class="sd">            rebuilding_was_requiredの場合、再構築が成功した場合は`True`を返し、それ以外の場合は`False`を返します。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__pydantic_complete__</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -5162,19 +5205,19 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">from_attributes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate a pydantic model instance.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;pydanticモデルインスタンスを検証します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            obj: The object to validate.</span>
-<span class="sd">            strict: Whether to enforce types strictly.</span>
-<span class="sd">            from_attributes: Whether to extract data from object attributes.</span>
-<span class="sd">            context: Additional context to pass to the validator.</span>
+<span class="sd">            obj: 検証するオブジェクト。</span>
+<span class="sd">            strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">            from_attributes: オブジェクト属性からデータを抽出するかどうか。</span>
+<span class="sd">            context: バリデータに渡す追加のコンテキスト。</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            ValidationError: If the object could not be validated.</span>
+<span class="sd">            ValidationError: オブジェクトを検証できなかった場合。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            The validated model instance.</span>
+<span class="sd">            検証されたモデルインスタンスです。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
         <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -5190,20 +5233,20 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/json/#json-parsing</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/json/#json-parsing</span>
 
-<span class="sd">        Validate the given JSON data against the Pydantic model.</span>
+<span class="sd">        指定されたJSONデータをPydanticモデルに対して検証します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            json_data: The JSON data to validate.</span>
-<span class="sd">            strict: Whether to enforce types strictly.</span>
-<span class="sd">            context: Extra variables to pass to the validator.</span>
+<span class="sd">            json_data: 検証するJSONデータ。</span>
+<span class="sd">            strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">            context: バリデータに渡す追加の変数。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            The validated Pydantic model.</span>
+<span class="sd">            検証されたPydanticモデル。</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            ValidationError: If `json_data` is not a JSON string or the object could not be validated.</span>
+<span class="sd">            ValidationError: `json_data`がJSON文字列でないか、オブジェクトを検証できなかった場合。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
         <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -5217,15 +5260,16 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate the given object with string data against the Pydantic model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;文字列データを持つ指定されたオブジェクトをPydanticモデルに対して検証します。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            obj: The object containing string data to validate.</span>
-<span class="sd">            strict: Whether to enforce types strictly.</span>
-<span class="sd">            context: Extra variables to pass to the validator.</span>
+<span class="sd">            obj: 検証するストリング・データを含むオブジェクト。</span>
+<span class="sd">            strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">            context: バリデータに渡す追加の変数。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            The validated Pydantic model.</span>
+<span class="sd">            検証されたPydanticモデル。</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
         <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -5233,15 +5277,15 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">__get_pydantic_core_schema__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">source</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModel</span><span class="p">],</span> <span class="n">handler</span><span class="p">:</span> <span class="n">GetCoreSchemaHandler</span><span class="p">,</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CoreSchema</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hook into generating the model&#39;s CoreSchema.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのCoreSchemaの生成にフックします。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            source: The class we are generating a schema for.</span>
-<span class="sd">                This will generally be the same as the `cls` argument if this is a classmethod.</span>
-<span class="sd">            handler: A callable that calls into Pydantic&#39;s internal CoreSchema generation logic.</span>
+<span class="sd">            source: スキーマを生成しているクラス。</span>
+<span class="sd">            クラスメソッドの場合、これは通常`cls`引数と同じになります。</span>
+<span class="sd">            handler: Pydanticの内部CoreSchema生成ロジックを呼び出す呼び出し可能オブジェクトです。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A `pydantic-core` `CoreSchema`.</span>
+<span class="sd">            `pydantic-core``CoreSchema`です。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Only use the cached value from this _exact_ class; we don&#39;t want one from a parent class</span>
         <span class="c1"># This is why we check `cls.__dict__` and don&#39;t use `cls.__pydantic_core_schema__` or similar.</span>
@@ -5262,41 +5306,30 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">handler</span><span class="p">:</span> <span class="n">GetJsonSchemaHandler</span><span class="p">,</span>
         <span class="o">/</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">JsonSchemaValue</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hook into generating the model&#39;s JSON schema.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのJSONスキーマの生成にフックします。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            core_schema: A `pydantic-core` CoreSchema.</span>
-<span class="sd">                You can ignore this argument and call the handler with a new CoreSchema,</span>
-<span class="sd">                wrap this CoreSchema (`{&#39;type&#39;: &#39;nullable&#39;, &#39;schema&#39;: current_schema}`),</span>
-<span class="sd">                or just call the handler with the original schema.</span>
-<span class="sd">            handler: Call into Pydantic&#39;s internal JSON schema generation.</span>
-<span class="sd">                This will raise a `pydantic.errors.PydanticInvalidForJsonSchema` if JSON schema</span>
-<span class="sd">                generation fails.</span>
-<span class="sd">                Since this gets called by `BaseModel.model_json_schema` you can override the</span>
-<span class="sd">                `schema_generator` argument to that function to change JSON schema generation globally</span>
-<span class="sd">                for a type.</span>
+<span class="sd">            core_schema: `pydantic-core`CoreSchemaです。</span>
+<span class="sd">                この引数を無視して、新しいCoreSchemaでハンドラを呼び出すか、このCoreSchemaをラップ(`{&#39;type&#39;:&#39;nullable&#39;,&#39;schema&#39;:current_schema}`)するか、あるいは単に元のスキーマでハンドラを呼び出すことができます。</span>
+<span class="sd">            handler: Pydanticの内部JSONスキーマ生成を呼び出します。</span>
+<span class="sd">                JSONスキーマの生成に失敗した場合、`pydantic.errors.PydanticInvalidForJsonSchema`が発生します。</span>
+<span class="sd">                これは`BaseModel.model_json_schema`によって呼び出されるので、その関数の`schema_generator`引数をオーバーライドして、型のJSONスキーマ生成をグローバルに変更できます。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A JSON schema, as a Python object.</span>
+<span class="sd">            PythonオブジェクトとしてのJSONスキーマ。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">handler</span><span class="p">(</span><span class="n">core_schema</span><span class="p">)</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">__pydantic_init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;This is intended to behave just like `__init_subclass__`, but is called by `ModelMetaclass`</span>
-<span class="sd">        only after the class is actually fully initialized. In particular, attributes like `model_fields` will</span>
-<span class="sd">        be present when this is called.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;これは`__init_subclass__`と同じように動作することを意図していますが、クラスが実際に完全に初期化された後にのみ`ModelMetaclass`によって呼び出されます。特に、`model_fields`のような属性は、これが呼び出されたときに存在します。</span>
 
-<span class="sd">        This is necessary because `__init_subclass__` will always be called by `type.__new__`,</span>
-<span class="sd">        and it would require a prohibitively large refactor to the `ModelMetaclass` to ensure that</span>
-<span class="sd">        `type.__new__` was called in such a manner that the class would already be sufficiently initialized.</span>
+<span class="sd">        これが必要なのは、`__init_subclass__`は常に`type.__new__`によって呼び出され、`type.__new__`がクラスがすでに十分に初期化されているような方法で呼び出されるようにするためには、`ModelMetaclass`に対して非常に大きなリファクタリングが必要になるからです。</span>
 
-<span class="sd">        This will receive the same `kwargs` that would be passed to the standard `__init_subclass__`, namely,</span>
-<span class="sd">        any kwargs passed to the class definition that aren&#39;t used internally by pydantic.</span>
+<span class="sd">        これは、標準の`__init_subclass__`に渡されるのと同じ`kwargs`、つまり、pydanticが内部的に使用していないクラス定義に渡されたkwargsを受け取ります。</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            **kwargs: Any keyword arguments passed to the class definition that aren&#39;t used internally</span>
-<span class="sd">                by pydantic.</span>
+<span class="sd">            **kwargs: クラス定義に渡されるキーワード引数で、pydanticが内部的に使用しないもの。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
@@ -5365,7 +5398,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="k">return</span> <span class="n">submodel</span>
 
     <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a shallow copy of the model.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのシャローコピーを返します。&quot;&quot;&quot;</span>
         <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">m</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="n">_object_setattr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">))</span>
@@ -5384,7 +5417,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="k">return</span> <span class="n">m</span>
 
     <span class="k">def</span> <span class="nf">__deepcopy__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">memo</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a deep copy of the model.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのディープコピーを返します。&quot;&quot;&quot;</span>
         <span class="bp">cls</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
         <span class="n">m</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
         <span class="n">_object_setattr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s1">&#39;__dict__&#39;</span><span class="p">,</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">,</span> <span class="n">memo</span><span class="o">=</span><span class="n">memo</span><span class="p">))</span>
@@ -5603,8 +5636,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="c1"># subclass initialization.</span>
 
         <span class="k">def</span> <span class="nf">__init_subclass__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">ConfigDict</span><span class="p">]):</span>
-<span class="w">            </span><span class="sd">&quot;&quot;&quot;This signature is included purely to help type-checkers check arguments to class declaration, which</span>
-<span class="sd">            provides a way to conveniently set model_config key/value pairs.</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;このシグネチャは、型チェッカーがクラス宣言の引数をチェックするのを助けるためだけに含まれており、model_configのキーと値のペアを簡単に設定する方法を提供します。</span>
 
 <span class="sd">            ```py</span>
 <span class="sd">            from pydantic import BaseModel</span>
@@ -5613,20 +5645,17 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 <span class="sd">                ...</span>
 <span class="sd">            ```</span>
 
-<span class="sd">            However, this may be deceiving, since the _actual_ calls to `__init_subclass__` will not receive any</span>
-<span class="sd">            of the config arguments, and will only receive any keyword arguments passed during class initialization</span>
-<span class="sd">            that are _not_ expected keys in ConfigDict. (This is due to the way `ModelMetaclass.__new__` works.)</span>
+<span class="sd">            しかし、`__init_subclass__`の_actual_callsはconfig引数を受け取らず、クラスの初期化中に渡されたConfigDictの_not_expectedキーであるキーワード引数のみを受け取るので、これはごまかしかもしれません(これは`ModelMetaclass.__new__`の動作によるものです)。</span>
 
 <span class="sd">            Args:</span>
-<span class="sd">                **kwargs: Keyword arguments passed to the class definition, which set model_config</span>
+<span class="sd">                **kwargs: クラス定義に渡されるキーワード引数で、model_config</span>
 
 <span class="sd">            Note:</span>
-<span class="sd">                You may want to override `__pydantic_init_subclass__` instead, which behaves similarly but is called</span>
-<span class="sd">                *after* the class is fully initialized.</span>
+<span class="sd">                代わりに`__pydantic_init_subclass__`をオーバーライドすることもできます。これは同様に動作しますが、クラスが完全に初期化された*後*に呼び出されます。</span>
 <span class="sd">            &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">TupleGenerator</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;So `dict(model)` works.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;dict(model)`は動作します。&quot;&quot;&quot;</span>
         <span class="k">yield from</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]</span>
         <span class="n">extra</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_extra__</span>
         <span class="k">if</span> <span class="n">extra</span><span class="p">:</span>
@@ -5870,12 +5899,12 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
         <span class="n">update</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa UP006</span>
         <span class="n">deep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a copy of the model.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;モデルのコピーを戻します。</span>
 
 <span class="sd">        !!! warning &quot;Deprecated&quot;</span>
-<span class="sd">            This method is now deprecated; use `model_copy` instead.</span>
+<span class="sd">            このメソッドは廃止されました。代わりに`model_copy`を使用してください。</span>
 
-<span class="sd">        If you need `include` or `exclude`, use:</span>
+<span class="sd">        `include`または`exclude`が必要な場合は、次のようにします。</span>
 
 <span class="sd">        ```py</span>
 <span class="sd">        data = self.model_dump(include=include, exclude=exclude, round_trip=True)</span>
@@ -5884,13 +5913,13 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 <span class="sd">        ```</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            include: Optional set or mapping specifying which fields to include in the copied model.</span>
-<span class="sd">            exclude: Optional set or mapping specifying which fields to exclude in the copied model.</span>
-<span class="sd">            update: Optional dictionary of field-value pairs to override field values in the copied model.</span>
-<span class="sd">            deep: If True, the values of fields that are Pydantic models will be deep-copied.</span>
+<span class="sd">            include: コピーされたモデルに含めるフィールドを指定するオプションのセットまたはマッピング。</span>
+<span class="sd">            exclude: コピーされたモデルで除外するフィールドを指定するオプションのセットまたはマッピング。</span>
+<span class="sd">            update: コピーされたモデルのフィールド値を上書きするためのフィールド値ペアのオプション辞書。</span>
+<span class="sd">            deep: Trueの場合、Pydanticモデルであるフィールドの値がディープコピーされます。</span>
 
 <span class="sd">        Returns:</span>
-<span class="sd">            A copy of the model with included, excluded and updated fields as specified.</span>
+<span class="sd">            指定されたフィールドが含まれ、除外され、更新されたモデルのコピー。</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
             <span class="s1">&#39;The `copy` method is deprecated; use `model_copy` instead. &#39;</span>
@@ -6064,29 +6093,26 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 
     <div class="doc doc-contents ">
 
-      <p>Raises <a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.ValidationError"><code>ValidationError</code></a> if the input data cannot be
-validated to form a valid model.</p>
-<p><code>self</code> is explicitly positional-only to allow <code>self</code> as a field name.</p>
+      <p>入力データを検証して有効なモデルを作成できない場合は、<a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.ValidationError"><code>ValidationError</code></a>が発生します。</p>
+<p><code>self</code>は、フィールド名として<code>self</code>を許可するために、明示的に定位置のみです。</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
 <span class="normal">186</span>
 <span class="normal">187</span>
 <span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new model by parsing and validating input data from keyword arguments.</span>
+<span class="normal">189</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">**</span><span class="n">data</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;キーワード引数からの入力データを解析および検証して、新しいモデルを作成します。</span>
 
-<span class="sd">    Raises [`ValidationError`][pydantic_core.ValidationError] if the input data cannot be</span>
-<span class="sd">    validated to form a valid model.</span>
+<span class="sd">    入力データを検証して有効なモデルを作成できない場合は、[`ValidationError`][pydantic_core.ValidationError]が発生します。</span>
 
-<span class="sd">    `self` is explicitly positional-only to allow `self` as a field name.</span>
+<span class="sd">    `self`は、フィールド名として`self`を許可するために、明示的に定位置のみです。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
     <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -6121,7 +6147,7 @@ validated to form a valid model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Configuration for the model, should be a dictionary conforming to <a class="autorefs autorefs-internal" href="../config/#pydantic.config.ConfigDict"><code>ConfigDict</code></a>.</p>
+      <p>モデルの設定は、<a class="autorefs autorefs-internal" href="../config/#pydantic.config.ConfigDict"><code>ConfigDict</code></a>に準拠した辞書でなければなりません。</p>
     </div>
 
 </div>
@@ -6149,7 +6175,7 @@ validated to form a valid model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A dictionary of computed field names and their corresponding <code>ComputedFieldInfo</code> objects.</p>
+      <p>計算されたフィールド名とそれに対応する<code>ComputedFieldInfo</code>オブジェクトの辞書。</p>
     </div>
 
 </div>
@@ -6177,7 +6203,7 @@ validated to form a valid model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Get extra fields set during validation.</p>
+      <p>検証中に追加フィールドセットを取得します。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -6195,7 +6221,7 @@ validated to form a valid model.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary of extra fields, or <code>None</code> if <code>config.extra</code> is not set to <code>"allow"</code>.</p>
+                <p>追加フィールドの辞書、または<code>config.extra</code>が<code>"allow"</code>に設定されていない場合は<code>None</code>。</p>
               </div>
             </td>
           </tr>
@@ -6228,9 +6254,8 @@ validated to form a valid model.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Metadata about the fields defined on the model,
-mapping of field names to <a class="autorefs autorefs-internal" href="../fields/#pydantic.fields.FieldInfo"><code>FieldInfo</code></a>.</p>
-<p>This replaces <code>Model.__fields__</code> from Pydantic V1.</p>
+      <p>モデルで定義されたフィールドに関するメタデータ、<a class="autorefs autorefs-internal" href="../fields/#pydantic.fields.FieldInfo"><code>FieldInfo</code></a>へのフィールド名のマッピング。</p>
+<p>これはPydantic V1の<code>Model.__fields__</code>を置き換えます。</p>
     </div>
 
 </div>
@@ -6258,7 +6283,7 @@ mapping of field names to <a class="autorefs autorefs-internal" href="../fields/
 
     <div class="doc doc-contents ">
 
-      <p>Returns the set of fields that have been explicitly set on this model instance.</p>
+      <p>このモデルインスタンスに明示的に設定されているフィールドのセットを返します。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -6276,8 +6301,7 @@ mapping of field names to <a class="autorefs autorefs-internal" href="../fields/
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A set of strings representing the fields that have been set,
-i.e. that were not filled from defaults.</p>
+                <p>設定された(つまり、デフォルトから入力されなかった)フィールドを表す文字列のセット。</p>
               </div>
             </td>
           </tr>
@@ -6311,16 +6335,17 @@ i.e. that were not filled from defaults.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Creates a new instance of the <code>Model</code> class with validated data.</p>
-<p>Creates a new model setting <code>__dict__</code> and <code>__pydantic_fields_set__</code> from trusted or pre-validated data.
-Default values are respected, but no other validation is performed.</p>
+      <p>検証されたデータを持つ<code>Model</code>クラスの新しいインスタンスを作成します。</p>
+<p>信頼できるデータまたは事前に検証されたデータから、新しいモデル設定<code>__dict__</code>および<code>__pydantic_fields_set__</code>を作成します。
+デフォルト値が使用されますが、その他の検証は実行されません。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>model_construct()</code> generally respects the <code>model_config.extra</code> setting on the provided model.
-That is, if <code>model_config.extra == 'allow'</code>, then all extra passed values are added to the model instance's <code>__dict__</code>
-and <code>__pydantic_extra__</code> fields. If <code>model_config.extra == 'ignore'</code> (the default), then all extra passed values are ignored.
-Because no validation is performed with a call to <code>model_construct()</code>, having <code>model_config.extra == 'forbid'</code> does not result in
-an error if extra values are passed, but they will be ignored.</p>
+<h4 id="pydantic.BaseModel.model_construct--model_construct-generally-respects-the-model_configextra-setting-on-the-provided-model"><code>model_construct()</code> generally respects the <code>model_config.extra</code> setting on the provided model.<a class="headerlink" href="#pydantic.BaseModel.model_construct--model_construct-generally-respects-the-model_configextra-setting-on-the-provided-model" title="Permanent link">&para;</a></h4>
+<h4 id="pydantic.BaseModel.model_construct--that-is-if-model_configextra-allow-then-all-extra-passed-values-are-added-to-the-model-instances-__dict__-and-__pydantic_extra__-fields-if-model_configextra-ignore-the-default-then-all-extra-passed-values-are-ignored">That is, if <code>model_config.extra == 'allow'</code>, then all extra passed values are added to the model instance's <code>__dict__</code> and <code>__pydantic_extra__</code> fields. If <code>model_config.extra == 'ignore'</code> (the default), then all extra passed values are ignored.<a class="headerlink" href="#pydantic.BaseModel.model_construct--that-is-if-model_configextra-allow-then-all-extra-passed-values-are-added-to-the-model-instances-__dict__-and-__pydantic_extra__-fields-if-model_configextra-ignore-the-default-then-all-extra-passed-values-are-ignored" title="Permanent link">&para;</a></h4>
+<h4 id="pydantic.BaseModel.model_construct--because-no-validation-is-performed-with-a-call-to-model_construct-having-model_configextra-forbid-does-not-result-in-an-error-if-extra-values-are-passed-but-they-will-be-ignored">Because no validation is performed with a call to <code>model_construct()</code>, having <code>model_config.extra == 'forbid'</code> does not result in an error if extra values are passed, but they will be ignored.<a class="headerlink" href="#pydantic.BaseModel.model_construct--because-no-validation-is-performed-with-a-call-to-model_construct-having-model_configextra-forbid-does-not-result-in-an-error-if-extra-values-are-passed-but-they-will-be-ignored" title="Permanent link">&para;</a></h4>
+<p><code>model_construct()</code>は一般に、提供されたモデルの<code>model_config.extra</code>設定を尊重します。
+つまり、<code>model_config.extra=='allow'</code>の場合、余分に渡された値はすべてモデルインスタンスの<code>__dict__</code>フィールドと<code>__pydantic_extra__</code>フィールドに追加されます。<code>model_config.extra=='ignore'</code>(デフォルト)の場合、余分に渡された値はすべて無視されます。
+<code>model_construct()</code>を呼び出しても検証は行われないので、<code>model_config.extra=='forbid'</code>を指定しても、余分な値が渡されてもエラーにはなりませんが、無視されます。</p>
 </div>
 
 
@@ -6342,7 +6367,7 @@ an error if extra values are passed, but they will be ignored.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The set of field names accepted for the Model instance.</p>
+                <p>Modelインスタンスに受け入れられるフィールド名のセット。</p>
               </div>
             </td>
             <td>
@@ -6356,7 +6381,7 @@ an error if extra values are passed, but they will be ignored.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Trusted or pre-validated data dictionary.</p>
+                <p>信頼できるデータ辞書または事前に検証されたデータ辞書。</p>
               </div>
             </td>
             <td>
@@ -6382,7 +6407,7 @@ an error if extra values are passed, but they will be ignored.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A new instance of the <code>Model</code> class with validated data.</p>
+                <p>検証されたデータを持つ<code>Model</code>クラスの新しいインスタンス。</p>
               </div>
             </td>
           </tr>
@@ -6391,7 +6416,11 @@ an error if extra values are passed, but they will be ignored.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">216</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
@@ -6467,29 +6496,27 @@ an error if extra values are passed, but they will be ignored.</p>
 <span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">292</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_construct</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">_fields_set</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>  <span class="c1"># noqa: C901</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a new instance of the `Model` class with validated data.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;検証されたデータを持つ`Model`クラスの新しいインスタンスを作成します。</span>
 
-<span class="sd">    Creates a new model setting `__dict__` and `__pydantic_fields_set__` from trusted or pre-validated data.</span>
-<span class="sd">    Default values are respected, but no other validation is performed.</span>
+<span class="sd">    信頼できるデータまたは事前に検証されたデータから、新しいモデル設定`__dict__`および`__pydantic_fields_set__`を作成します。</span>
+<span class="sd">    デフォルト値が使用されますが、その他の検証は実行されません。</span>
 
 <span class="sd">    !!! note</span>
-<span class="sd">        `model_construct()` generally respects the `model_config.extra` setting on the provided model.</span>
-<span class="sd">        That is, if `model_config.extra == &#39;allow&#39;`, then all extra passed values are added to the model instance&#39;s `__dict__`</span>
-<span class="sd">        and `__pydantic_extra__` fields. If `model_config.extra == &#39;ignore&#39;` (the default), then all extra passed values are ignored.</span>
-<span class="sd">        Because no validation is performed with a call to `model_construct()`, having `model_config.extra == &#39;forbid&#39;` does not result in</span>
-<span class="sd">        an error if extra values are passed, but they will be ignored.</span>
+<span class="sd">        # `model_construct()` generally respects the `model_config.extra` setting on the provided model.</span>
+<span class="sd">        # That is, if `model_config.extra == &#39;allow&#39;`, then all extra passed values are added to the model instance&#39;s `__dict__` and `__pydantic_extra__` fields. If `model_config.extra == &#39;ignore&#39;` (the default), then all extra passed values are ignored.</span>
+<span class="sd">        # Because no validation is performed with a call to `model_construct()`, having `model_config.extra == &#39;forbid&#39;` does not result in an error if extra values are passed, but they will be ignored.</span>
+<span class="sd">        `model_construct()`は一般に、提供されたモデルの`model_config.extra`設定を尊重します。</span>
+<span class="sd">        つまり、`model_config.extra==&#39;allow&#39;`の場合、余分に渡された値はすべてモデルインスタンスの`__dict__`フィールドと`__pydantic_extra__`フィールドに追加されます。`model_config.extra==&#39;ignore&#39;`(デフォルト)の場合、余分に渡された値はすべて無視されます。</span>
+<span class="sd">        `model_construct()`を呼び出しても検証は行われないので、`model_config.extra==&#39;forbid&#39;`を指定しても、余分な値が渡されてもエラーにはなりませんが、無視されます。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        _fields_set: The set of field names accepted for the Model instance.</span>
-<span class="sd">        values: Trusted or pre-validated data dictionary.</span>
+<span class="sd">        _fields_set: Modelインスタンスに受け入れられるフィールド名のセット。</span>
+<span class="sd">        values: 信頼できるデータ辞書または事前に検証されたデータ辞書。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A new instance of the `Model` class with validated data.</span>
+<span class="sd">        検証されたデータを持つ`Model`クラスの新しいインスタンス。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">m</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
     <span class="n">fields_values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -6578,11 +6605,8 @@ an error if extra values are passed, but they will be ignored.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/serialization/#model_copy"><code>model_copy(...)</code> <a name="model_copy"></a></p>
-</div>
-<p>Returns a copy of the model.</p>
+      <p>Usage docs: ../concepts/serialization/#model_copy</p>
+<p>モデルのコピーを返します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6603,8 +6627,7 @@ an error if extra values are passed, but they will be ignored.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Values to change/add in the new model. Note: the data is not validated
-before creating the new model. You should trust this data.</p>
+                <p>新しいモデルで変更または追加する値です。注意:新しいモデルを作成する前にデータは検証されません。このデータは信頼してください。</p>
               </div>
             </td>
             <td>
@@ -6618,7 +6641,7 @@ before creating the new model. You should trust this data.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Set to <code>True</code> to make a deep copy of the model.</p>
+                <p>モデルのディープコピーを作成するには<code>True</code>に設定します。</p>
               </div>
             </td>
             <td>
@@ -6644,7 +6667,7 @@ before creating the new model. You should trust this data.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>New model instance.</p>
+                <p>新しいモデルインスタンス。</p>
               </div>
             </td>
           </tr>
@@ -6653,7 +6676,10 @@ before creating the new model. You should trust this data.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">297</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
 <span class="normal">300</span>
@@ -6675,22 +6701,17 @@ before creating the new model. You should trust this data.</p>
 <span class="normal">316</span>
 <span class="normal">317</span>
 <span class="normal">318</span>
-<span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">update</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">deep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#model_copy</span>
+<span class="normal">319</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">update</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">deep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#model_copy</span>
 
-<span class="sd">    Returns a copy of the model.</span>
+<span class="sd">    モデルのコピーを返します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        update: Values to change/add in the new model. Note: the data is not validated</span>
-<span class="sd">            before creating the new model. You should trust this data.</span>
-<span class="sd">        deep: Set to `True` to make a deep copy of the model.</span>
+<span class="sd">        update: 新しいモデルで変更または追加する値です。注意:新しいモデルを作成する前にデータは検証されません。このデータは信頼してください。</span>
+<span class="sd">        deep: モデルのディープコピーを作成するには`True`に設定します。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        New model instance.</span>
+<span class="sd">        新しいモデルインスタンス。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">copied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__deepcopy__</span><span class="p">()</span> <span class="k">if</span> <span class="n">deep</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">__copy__</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">update</span><span class="p">:</span>
@@ -6745,11 +6766,8 @@ before creating the new model. You should trust this data.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/serialization/#modelmodel_dump"><code>model.model_dump(...)</code> <a name="model_dump"></a></a></p>
-</div>
-<p>Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.</p>
+      <p>Usage docs: ../concepts/serialization/#modelmodel_dump</p>
+<p>モデルのディクショナリ表現を生成します。オプションで、含めるフィールドまたは除外するフィールドを指定します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -6770,9 +6788,9 @@ before creating the new model. You should trust this data.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The mode in which <code>to_python</code> should run.
-If mode is 'json', the output will only contain JSON serializable types.
-If mode is 'python', the output may contain non-JSON-serializable Python objects.</p>
+                <p><code>to_python</code>が実行されるモード。
+modeが'json'の場合、出力にはJSONシリアライザブル型のみが含まれます。
+modeが'python'の場合、出力にはJSONシリアライズできないPythonオブジェクトが含まれる可能性があります。</p>
               </div>
             </td>
             <td>
@@ -6786,7 +6804,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A set of fields to include in the output.</p>
+                <p>出力に含めるフィールドのセット。</p>
               </div>
             </td>
             <td>
@@ -6800,7 +6818,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A set of fields to exclude from the output.</p>
+                <p>出力から除外するフィールドのセット。</p>
               </div>
             </td>
             <td>
@@ -6814,7 +6832,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional context to pass to the serializer.</p>
+                <p>シリアライザに渡す追加のコンテキスト。</p>
               </div>
             </td>
             <td>
@@ -6828,7 +6846,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to use the field's alias in the dictionary key if defined.</p>
+                <p>定義されている場合に、ディクショナリ・キーでフィールドの別名を使用するかどうか。</p>
               </div>
             </td>
             <td>
@@ -6842,7 +6860,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that have not been explicitly set.</p>
+                <p>明示的に設定されていないフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -6856,7 +6874,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that are set to their default value.</p>
+                <p>デフォルト値に設定されているフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -6870,7 +6888,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that have a value of <code>None</code>.</p>
+                <p><code>None</code>の値を持つフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -6884,7 +6902,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, dumped values should be valid as input for non-idempotent types such as Json[T].</p>
+                <p>Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</p>
               </div>
             </td>
             <td>
@@ -6898,8 +6916,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
-"error" raises a <a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.PydanticSerializationError"><code>PydanticSerializationError</code></a>.</p>
+                <p>シリアライゼーションエラーの処理方法。False/"none"はエラーを無視します。True/"warn"はエラーをログに記録します。"error"は<a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.PydanticSerializationError"><code>PydanticSerializationError</code></a>を発生させます。</p>
               </div>
             </td>
             <td>
@@ -6913,7 +6930,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to serialize fields with duck-typing serialization behavior.</p>
+                <p>ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</p>
               </div>
             </td>
             <td>
@@ -6939,7 +6956,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary representation of the model.</p>
+                <p>モデルのディクショナリ表現。</p>
               </div>
             </td>
           </tr>
@@ -6948,7 +6965,11 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">325</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
 <span class="normal">328</span>
@@ -6994,12 +7015,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 <span class="normal">368</span>
 <span class="normal">369</span>
 <span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump</span><span class="p">(</span>
+<span class="normal">371</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span>
@@ -7014,28 +7030,27 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
     <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#modelmodel_dump</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#modelmodel_dump</span>
 
-<span class="sd">    Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.</span>
+<span class="sd">    モデルのディクショナリ表現を生成します。オプションで、含めるフィールドまたは除外するフィールドを指定します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        mode: The mode in which `to_python` should run.</span>
-<span class="sd">            If mode is &#39;json&#39;, the output will only contain JSON serializable types.</span>
-<span class="sd">            If mode is &#39;python&#39;, the output may contain non-JSON-serializable Python objects.</span>
-<span class="sd">        include: A set of fields to include in the output.</span>
-<span class="sd">        exclude: A set of fields to exclude from the output.</span>
-<span class="sd">        context: Additional context to pass to the serializer.</span>
-<span class="sd">        by_alias: Whether to use the field&#39;s alias in the dictionary key if defined.</span>
-<span class="sd">        exclude_unset: Whether to exclude fields that have not been explicitly set.</span>
-<span class="sd">        exclude_defaults: Whether to exclude fields that are set to their default value.</span>
-<span class="sd">        exclude_none: Whether to exclude fields that have a value of `None`.</span>
-<span class="sd">        round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].</span>
-<span class="sd">        warnings: How to handle serialization errors. False/&quot;none&quot; ignores them, True/&quot;warn&quot; logs errors,</span>
-<span class="sd">            &quot;error&quot; raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].</span>
-<span class="sd">        serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.</span>
+<span class="sd">        mode: `to_python`が実行されるモード。</span>
+<span class="sd">            modeが&#39;json&#39;の場合、出力にはJSONシリアライザブル型のみが含まれます。</span>
+<span class="sd">            modeが&#39;python&#39;の場合、出力にはJSONシリアライズできないPythonオブジェクトが含まれる可能性があります。</span>
+<span class="sd">        include: 出力に含めるフィールドのセット。</span>
+<span class="sd">        exclude: 出力から除外するフィールドのセット。</span>
+<span class="sd">        context: シリアライザに渡す追加のコンテキスト。</span>
+<span class="sd">        by_alias: 定義されている場合に、ディクショナリ・キーでフィールドの別名を使用するかどうか。</span>
+<span class="sd">        exclude_unset: 明示的に設定されていないフィールドを除外するかどうか。</span>
+<span class="sd">        exclude_defaults: デフォルト値に設定されているフィールドを除外するかどうか。</span>
+<span class="sd">        exclude_none: `None`の値を持つフィールドを除外するかどうか。</span>
+<span class="sd">        round_trip: Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</span>
+<span class="sd">        warnings: シリアライゼーションエラーの処理方法。False/&quot;none&quot;はエラーを無視します。True/&quot;warn&quot;はエラーをログに記録します。&quot;error&quot;は[`PydanticSerializationError`][pydantic_core.PydanticSerializationError]を発生させます。</span>
+<span class="sd">        serialize_as_any: ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A dictionary representation of the model.</span>
+<span class="sd">        モデルのディクショナリ表現。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_serializer__</span><span class="o">.</span><span class="n">to_python</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -7090,11 +7105,8 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/serialization/#modelmodel_dump_json"><code>model.model_dump_json(...)</code> <a name="model_dump_json"></a></a></p>
-</div>
-<p>Generates a JSON representation of the model using Pydantic's <code>to_json</code> method.</p>
+      <p>Usage docs: ../concepts/serialization/#modelmodel_dump_json</p>
+<p>Pydanticの<code>to_json</code>メソッドを使用してモデルのJSON表現を生成します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7115,7 +7127,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Indentation to use in the JSON output. If None is passed, the output will be compact.</p>
+                <p>JSON出力で使用するインデント。Noneが渡された場合、出力はコンパクトになります。</p>
               </div>
             </td>
             <td>
@@ -7129,7 +7141,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Field(s) to include in the JSON output.</p>
+                <p>JSON出力に含めるフィールド。</p>
               </div>
             </td>
             <td>
@@ -7143,7 +7155,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Field(s) to exclude from the JSON output.</p>
+                <p>JSON出力から除外するフィールド。</p>
               </div>
             </td>
             <td>
@@ -7157,7 +7169,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional context to pass to the serializer.</p>
+                <p>シリアライザに渡す追加のコンテキスト。</p>
               </div>
             </td>
             <td>
@@ -7171,7 +7183,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to serialize using field aliases.</p>
+                <p>フィールドエイリアスを使用してシリアライズするかどうか。</p>
               </div>
             </td>
             <td>
@@ -7185,7 +7197,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that have not been explicitly set.</p>
+                <p>明示的に設定されていないフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -7199,7 +7211,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that are set to their default value.</p>
+                <p>デフォルト値に設定されているフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -7213,7 +7225,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude fields that have a value of <code>None</code>.</p>
+                <p><code>None</code>の値を持つフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -7227,7 +7239,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, dumped values should be valid as input for non-idempotent types such as Json[T].</p>
+                <p>Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</p>
               </div>
             </td>
             <td>
@@ -7241,8 +7253,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
-"error" raises a <a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.PydanticSerializationError"><code>PydanticSerializationError</code></a>.</p>
+                <p>シリアライゼーションエラーの処理方法。False/"none"はエラーを無視します。True/"warn"はエラーをログに記録します。"error"は<a class="autorefs autorefs-internal" href="../pydantic_core/#pydantic_core.PydanticSerializationError"><code>PydanticSerializationError</code></a>を発生させます。</p>
               </div>
             </td>
             <td>
@@ -7256,7 +7267,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to serialize fields with duck-typing serialization behavior.</p>
+                <p>ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</p>
               </div>
             </td>
             <td>
@@ -7282,7 +7293,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A JSON string representation of the model.</p>
+                <p>モデルのJSON文字列表現。</p>
               </div>
             </td>
           </tr>
@@ -7291,7 +7302,12 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">378</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
 <span class="normal">379</span>
 <span class="normal">380</span>
 <span class="normal">381</span>
@@ -7334,13 +7350,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 <span class="normal">418</span>
 <span class="normal">419</span>
 <span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump_json</span><span class="p">(</span>
+<span class="normal">421</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_dump_json</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">indent</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -7355,26 +7365,25 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
     <span class="n">warnings</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="s1">&#39;warn&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/serialization/#modelmodel_dump_json</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/serialization/#modelmodel_dump_json</span>
 
-<span class="sd">    Generates a JSON representation of the model using Pydantic&#39;s `to_json` method.</span>
+<span class="sd">    Pydanticの`to_json`メソッドを使用してモデルのJSON表現を生成します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        indent: Indentation to use in the JSON output. If None is passed, the output will be compact.</span>
-<span class="sd">        include: Field(s) to include in the JSON output.</span>
-<span class="sd">        exclude: Field(s) to exclude from the JSON output.</span>
-<span class="sd">        context: Additional context to pass to the serializer.</span>
-<span class="sd">        by_alias: Whether to serialize using field aliases.</span>
-<span class="sd">        exclude_unset: Whether to exclude fields that have not been explicitly set.</span>
-<span class="sd">        exclude_defaults: Whether to exclude fields that are set to their default value.</span>
-<span class="sd">        exclude_none: Whether to exclude fields that have a value of `None`.</span>
-<span class="sd">        round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].</span>
-<span class="sd">        warnings: How to handle serialization errors. False/&quot;none&quot; ignores them, True/&quot;warn&quot; logs errors,</span>
-<span class="sd">            &quot;error&quot; raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].</span>
-<span class="sd">        serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.</span>
+<span class="sd">        indent: JSON出力で使用するインデント。Noneが渡された場合、出力はコンパクトになります。</span>
+<span class="sd">        include: JSON出力に含めるフィールド。</span>
+<span class="sd">        exclude: JSON出力から除外するフィールド。</span>
+<span class="sd">        context: シリアライザに渡す追加のコンテキスト。</span>
+<span class="sd">        by_alias: フィールドエイリアスを使用してシリアライズするかどうか。</span>
+<span class="sd">        exclude_unset: 明示的に設定されていないフィールドを除外するかどうか。</span>
+<span class="sd">        exclude_defaults: デフォルト値に設定されているフィールドを除外するかどうか。</span>
+<span class="sd">        exclude_none: `None`の値を持つフィールドを除外するかどうか。</span>
+<span class="sd">        round_trip: Trueの場合、ダンプされた値はJson[T]のようなべき等でない型の入力として有効であるべきです。</span>
+<span class="sd">        warnings: シリアライゼーションエラーの処理方法。False/&quot;none&quot;はエラーを無視します。True/&quot;warn&quot;はエラーをログに記録します。&quot;error&quot;は[`PydanticSerializationError`][pydantic_core.PydanticSerializationError]を発生させます。</span>
+<span class="sd">        serialize_as_any: ダック型のシリアライズ動作でフィールドをシリアライズするかどうか。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A JSON string representation of the model.</span>
+<span class="sd">        モデルのJSON文字列表現。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__pydantic_serializer__</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -7425,7 +7434,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
     <div class="doc doc-contents ">
 
-      <p>Generates a JSON schema for a model class.</p>
+      <p>モデルクラスのJSONスキーマを生成します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7446,7 +7455,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to use attribute aliases or not.</p>
+                <p>属性の別名を使用するかどうか。</p>
               </div>
             </td>
             <td>
@@ -7460,7 +7469,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The reference template.</p>
+                <p>参照テンプレート。</p>
               </div>
             </td>
             <td>
@@ -7474,8 +7483,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>To override the logic used to generate the JSON schema, as a subclass of
-<code>GenerateJsonSchema</code> with your desired modifications</p>
+                <p>JSONスキーマの生成に使用されるロジックを、<code>GenerateJsonSchema</code>のサブクラスとして、必要な変更を加えてオーバーライドします。</p>
               </div>
             </td>
             <td>
@@ -7489,7 +7497,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The mode in which to generate the schema.</p>
+                <p>スキーマを生成するモード。</p>
               </div>
             </td>
             <td>
@@ -7515,7 +7523,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The JSON schema for the given model class.</p>
+                <p>指定されたモデルクラスのJSONスキーマ。</p>
               </div>
             </td>
           </tr>
@@ -7524,7 +7532,13 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">429</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
 <span class="normal">430</span>
 <span class="normal">431</span>
 <span class="normal">432</span>
@@ -7540,13 +7554,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 <span class="normal">442</span>
 <span class="normal">443</span>
 <span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">445</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_json_schema</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">by_alias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -7554,17 +7562,17 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
     <span class="n">schema_generator</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">GenerateJsonSchema</span><span class="p">]</span> <span class="o">=</span> <span class="n">GenerateJsonSchema</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">JsonSchemaMode</span> <span class="o">=</span> <span class="s1">&#39;validation&#39;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates a JSON schema for a model class.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;モデルクラスのJSONスキーマを生成します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        by_alias: Whether to use attribute aliases or not.</span>
-<span class="sd">        ref_template: The reference template.</span>
-<span class="sd">        schema_generator: To override the logic used to generate the JSON schema, as a subclass of</span>
-<span class="sd">            `GenerateJsonSchema` with your desired modifications</span>
-<span class="sd">        mode: The mode in which to generate the schema.</span>
+<span class="sd">        by_alias: 属性の別名を使用するかどうか。</span>
+<span class="sd">        ref_template:参照テンプレート。</span>
+<span class="sd">        schema_generator:JSONスキーマの生成に使用されるロジックを、`GenerateJsonSchema`のサブクラスとして、必要な変更を加えてオーバーライドします。</span>
+<span class="sd">        mode:スキーマを生成するモード。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The JSON schema for the given model class.</span>
+<span class="sd">        指定されたモデルクラスのJSONスキーマ。</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">model_json_schema</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span> <span class="n">by_alias</span><span class="o">=</span><span class="n">by_alias</span><span class="p">,</span> <span class="n">ref_template</span><span class="o">=</span><span class="n">ref_template</span><span class="p">,</span> <span class="n">schema_generator</span><span class="o">=</span><span class="n">schema_generator</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span>
@@ -7599,8 +7607,8 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
 
     <div class="doc doc-contents ">
 
-      <p>Compute the class name for parametrizations of generic classes.</p>
-<p>This method can be overridden to achieve a custom naming scheme for generic BaseModels.</p>
+      <p>ジェネリッククラスのパラメータ化のクラス名を計算します。</p>
+<p>このメソッドをオーバーライドして、汎用BaseModelsのカスタム命名スキームを実現できます。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7621,9 +7629,7 @@ If mode is 'python', the output may contain non-JSON-serializable Python objects
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Tuple of types of the class. Given a generic class
-<code>Model</code> with 2 type variables and a concrete model <code>Model[str, int]</code>,
-the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
+                <p>クラスの型のタプルです。2つの型変数を持つジェネリッククラス<code>Model</code>と具象モデル<code>Model[str, int]</code>が与えられると、値<code>(str, int)</code>が<code>params</code>に渡されます。</p>
               </div>
             </td>
             <td>
@@ -7649,7 +7655,7 @@ the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>String representing the new class where <code>params</code> are passed to <code>cls</code> as type variables.</p>
+                <p><code>params</code>が型変数として<code>cls</code>に渡される新しいクラスを表す文字列。</p>
               </div>
             </td>
           </tr>
@@ -7672,7 +7678,7 @@ the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Raised when trying to generate concrete names for non-generic models.</p>
+                <p>非ジェネリックモデルの具象名を生成しようとしたときに発生します。</p>
               </div>
             </td>
           </tr>
@@ -7681,7 +7687,13 @@ the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">453</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
 <span class="normal">454</span>
 <span class="normal">455</span>
 <span class="normal">456</span>
@@ -7699,29 +7711,21 @@ the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
 <span class="normal">468</span>
 <span class="normal">469</span>
 <span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
-<span class="normal">477</span>
-<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">471</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_parametrized_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="o">...</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the class name for parametrizations of generic classes.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ジェネリッククラスのパラメータ化のクラス名を計算します。</span>
 
-<span class="sd">    This method can be overridden to achieve a custom naming scheme for generic BaseModels.</span>
+<span class="sd">    このメソッドをオーバーライドして、汎用BaseModelsのカスタム命名スキームを実現できます。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        params: Tuple of types of the class. Given a generic class</span>
-<span class="sd">            `Model` with 2 type variables and a concrete model `Model[str, int]`,</span>
-<span class="sd">            the value `(str, int)` would be passed to `params`.</span>
+<span class="sd">        params: クラスの型のタプルです。2つの型変数を持つジェネリッククラス`Model`と具象モデル`Model[str, int]`が与えられると、値`(str, int)`が`params`に渡されます。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        String representing the new class where `params` are passed to `cls` as type variables.</span>
+<span class="sd">        `params`が型変数として`cls`に渡される新しいクラスを表す文字列。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        TypeError: Raised when trying to generate concrete names for non-generic models.</span>
+<span class="sd">        TypeError:非ジェネリックモデルの具象名を生成しようとしたときに発生します。</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Generic</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Concrete names should only be generated for generic models.&#39;</span><span class="p">)</span>
@@ -7756,18 +7760,18 @@ the value <code>(str, int)</code> would be passed to <code>params</code>.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Override this method to perform additional initialization after <code>__init__</code> and <code>model_construct</code>.
-This is useful if you want to do some validation that requires the entire model to be initialized.</p>
+      <p>このメソッドをオーバーライドして、<code>__init__</code>と<code>model_construct</code>の後に追加の初期化を実行します。
+これは、モデル全体を初期化する必要がある検証を行う場合に便利です。</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">480</span>
-<span class="normal">481</span>
-<span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__context</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Override this method to perform additional initialization after `__init__` and `model_construct`.</span>
-<span class="sd">    This is useful if you want to do some validation that requires the entire model to be initialized.</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_post_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">__context</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;このメソッドをオーバーライドして、`__init__`と`model_construct`の後に追加の初期化を実行します。</span>
+<span class="sd">    これは、モデル全体を初期化する必要がある検証を行う場合に便利です。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
@@ -7804,9 +7808,8 @@ This is useful if you want to do some validation that requires the entire model 
 
     <div class="doc doc-contents ">
 
-      <p>Try to rebuild the pydantic-core schema for the model.</p>
-<p>This may be necessary when one of the annotations is a ForwardRef which could not be resolved during
-the initial attempt to build the schema, and automatic rebuilding fails.</p>
+      <p>モデルのpydantic-coreスキーマを再構築してみてください。</p>
+<p>これは、最初にスキーマを構築しようとしたときに解決できなかったForwardRefが注釈の1つであり、自動再構築が失敗した場合に必要になることがあります。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -7827,7 +7830,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to force the rebuilding of the model schema, defaults to <code>False</code>.</p>
+                <p>モデルスキーマの再構築を強制するかどうか。デフォルトは<code>False</code>です。</p>
               </div>
             </td>
             <td>
@@ -7841,7 +7844,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to raise errors, defaults to <code>True</code>.</p>
+                <p>エラーを発生させるかどうか。デフォルトは<code>True</code>です。</p>
               </div>
             </td>
             <td>
@@ -7855,7 +7858,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The depth level of the parent namespace, defaults to 2.</p>
+                <p>親ネームスペースのデプスレベル。デフォルトは2です。</p>
               </div>
             </td>
             <td>
@@ -7869,7 +7872,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The types namespace, defaults to <code>None</code>.</p>
+                <p>タイプの名前空間で、デフォルトは<code>None</code>です。</p>
               </div>
             </td>
             <td>
@@ -7895,7 +7898,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Returns <code>None</code> if the schema is already "complete" and rebuilding was not required.</p>
+                <p>スキーマが既に"完了"していて、再構築が必要なかった場合は<code>None</code>を返します。</p>
               </div>
             </td>
           </tr>
@@ -7905,7 +7908,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If rebuilding <em>was</em> required, returns <code>True</code> if rebuilding was successful, otherwise <code>False</code>.</p>
+                <p>rebuilding_was_requiredの場合、再構築が成功した場合は<code>True</code>を返し、それ以外の場合は<code>False</code>を返します。</p>
               </div>
             </td>
           </tr>
@@ -7914,7 +7917,14 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">486</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
 <span class="normal">487</span>
 <span class="normal">488</span>
 <span class="normal">489</span>
@@ -7961,14 +7971,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">530</span>
 <span class="normal">531</span>
 <span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span>
-<span class="normal">535</span>
-<span class="normal">536</span>
-<span class="normal">537</span>
-<span class="normal">538</span>
-<span class="normal">539</span>
-<span class="normal">540</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">533</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_rebuild</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -7977,20 +7980,20 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">_parent_namespace_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">_types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Try to rebuild the pydantic-core schema for the model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;モデルのpydantic-coreスキーマを再構築してみてください。</span>
 
-<span class="sd">    This may be necessary when one of the annotations is a ForwardRef which could not be resolved during</span>
-<span class="sd">    the initial attempt to build the schema, and automatic rebuilding fails.</span>
+<span class="sd">    これは、最初にスキーマを構築しようとしたときに解決できなかったForwardRefが注釈の1つであり、自動再構築が失敗した場合に必要になることがあります。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        force: Whether to force the rebuilding of the model schema, defaults to `False`.</span>
-<span class="sd">        raise_errors: Whether to raise errors, defaults to `True`.</span>
-<span class="sd">        _parent_namespace_depth: The depth level of the parent namespace, defaults to 2.</span>
-<span class="sd">        _types_namespace: The types namespace, defaults to `None`.</span>
+<span class="sd">        force: モデルスキーマの再構築を強制するかどうか。デフォルトは`False`です。</span>
+<span class="sd">        raise_errors: エラーを発生させるかどうか。デフォルトは`True`です。</span>
+<span class="sd">        _parent_namespace_depth: 親ネームスペースのデプスレベル。デフォルトは2です。</span>
+<span class="sd">        _types_namespace: タイプの名前空間で、デフォルトは`None`です。</span>
+
 
 <span class="sd">    Returns:</span>
-<span class="sd">        Returns `None` if the schema is already &quot;complete&quot; and rebuilding was not required.</span>
-<span class="sd">        If rebuilding _was_ required, returns `True` if rebuilding was successful, otherwise `False`.</span>
+<span class="sd">        スキーマが既に&quot;完了&quot;していて、再構築が必要なかった場合は`None`を返します。</span>
+<span class="sd">        rebuilding_was_requiredの場合、再構築が成功した場合は`True`を返し、それ以外の場合は`False`を返します。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">force</span> <span class="ow">and</span> <span class="bp">cls</span><span class="o">.</span><span class="n">__pydantic_complete__</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -8057,7 +8060,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Validate a pydantic model instance.</p>
+      <p>pydanticモデルインスタンスを検証します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8078,7 +8081,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The object to validate.</p>
+                <p>検証するオブジェクト。</p>
               </div>
             </td>
             <td>
@@ -8092,7 +8095,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to enforce types strictly.</p>
+                <p>型を厳密に適用するかどうか。</p>
               </div>
             </td>
             <td>
@@ -8106,7 +8109,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to extract data from object attributes.</p>
+                <p>オブジェクト属性からデータを抽出するかどうか。</p>
               </div>
             </td>
             <td>
@@ -8120,7 +8123,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional context to pass to the validator.</p>
+                <p>バリデータに渡す追加のコンテキスト。</p>
               </div>
             </td>
             <td>
@@ -8146,7 +8149,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If the object could not be validated.</p>
+                <p>オブジェクトを検証できなかった場合。</p>
               </div>
             </td>
           </tr>
@@ -8169,7 +8172,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validated model instance.</p>
+                <p>検証されたモデルインスタンスです。</p>
               </div>
             </td>
           </tr>
@@ -8178,7 +8181,14 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">542</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
 <span class="normal">543</span>
 <span class="normal">544</span>
 <span class="normal">545</span>
@@ -8198,14 +8208,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">559</span>
 <span class="normal">560</span>
 <span class="normal">561</span>
-<span class="normal">562</span>
-<span class="normal">563</span>
-<span class="normal">564</span>
-<span class="normal">565</span>
-<span class="normal">566</span>
-<span class="normal">567</span>
-<span class="normal">568</span>
-<span class="normal">569</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">562</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_validate</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -8214,19 +8217,19 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">from_attributes</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate a pydantic model instance.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;pydanticモデルインスタンスを検証します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        obj: The object to validate.</span>
-<span class="sd">        strict: Whether to enforce types strictly.</span>
-<span class="sd">        from_attributes: Whether to extract data from object attributes.</span>
-<span class="sd">        context: Additional context to pass to the validator.</span>
+<span class="sd">        obj: 検証するオブジェクト。</span>
+<span class="sd">        strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">        from_attributes: オブジェクト属性からデータを抽出するかどうか。</span>
+<span class="sd">        context: バリデータに渡す追加のコンテキスト。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        ValidationError: If the object could not be validated.</span>
+<span class="sd">        ValidationError: オブジェクトを検証できなかった場合。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The validated model instance.</span>
+<span class="sd">        検証されたモデルインスタンスです。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
     <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -8266,11 +8269,8 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/json/#json-parsing">Json Parsing</a></p>
-</div>
-<p>Validate the given JSON data against the Pydantic model.</p>
+      <p>Usage docs: ../concepts/json/#json-parsing</p>
+<p>指定されたJSONデータをPydanticモデルに対して検証します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8291,7 +8291,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The JSON data to validate.</p>
+                <p>検証するJSONデータ。</p>
               </div>
             </td>
             <td>
@@ -8305,7 +8305,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to enforce types strictly.</p>
+                <p>型を厳密に適用するかどうか。</p>
               </div>
             </td>
             <td>
@@ -8319,7 +8319,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Extra variables to pass to the validator.</p>
+                <p>バリデータに渡す追加の変数。</p>
               </div>
             </td>
             <td>
@@ -8345,7 +8345,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validated Pydantic model.</p>
+                <p>検証されたPydanticモデル。</p>
               </div>
             </td>
           </tr>
@@ -8368,7 +8368,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If <code>json_data</code> is not a JSON string or the object could not be validated.</p>
+                <p><code>json_data</code>がJSON文字列でないか、オブジェクトを検証できなかった場合。</p>
               </div>
             </td>
           </tr>
@@ -8377,7 +8377,14 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">571</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">564</span>
+<span class="normal">565</span>
+<span class="normal">566</span>
+<span class="normal">567</span>
+<span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
 <span class="normal">572</span>
 <span class="normal">573</span>
 <span class="normal">574</span>
@@ -8395,14 +8402,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">586</span>
 <span class="normal">587</span>
 <span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">589</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_validate_json</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">json_data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span> <span class="o">|</span> <span class="nb">bytearray</span><span class="p">,</span>
@@ -8410,20 +8410,20 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/json/#json-parsing</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/json/#json-parsing</span>
 
-<span class="sd">    Validate the given JSON data against the Pydantic model.</span>
+<span class="sd">    指定されたJSONデータをPydanticモデルに対して検証します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        json_data: The JSON data to validate.</span>
-<span class="sd">        strict: Whether to enforce types strictly.</span>
-<span class="sd">        context: Extra variables to pass to the validator.</span>
+<span class="sd">        json_data: 検証するJSONデータ。</span>
+<span class="sd">        strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">        context: バリデータに渡す追加の変数。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The validated Pydantic model.</span>
+<span class="sd">        検証されたPydanticモデル。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        ValidationError: If `json_data` is not a JSON string or the object could not be validated.</span>
+<span class="sd">        ValidationError: `json_data`がJSON文字列でないか、オブジェクトを検証できなかった場合。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
     <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -8461,7 +8461,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Validate the given object with string data against the Pydantic model.</p>
+      <p>文字列データを持つ指定されたオブジェクトをPydanticモデルに対して検証します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8482,7 +8482,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The object containing string data to validate.</p>
+                <p>検証するストリング・データを含むオブジェクト。</p>
               </div>
             </td>
             <td>
@@ -8496,7 +8496,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to enforce types strictly.</p>
+                <p>型を厳密に適用するかどうか。</p>
               </div>
             </td>
             <td>
@@ -8510,7 +8510,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Extra variables to pass to the validator.</p>
+                <p>バリデータに渡す追加の変数。</p>
               </div>
             </td>
             <td>
@@ -8536,7 +8536,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validated Pydantic model.</p>
+                <p>検証されたPydanticモデル。</p>
               </div>
             </td>
           </tr>
@@ -8545,7 +8545,14 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">598</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">591</span>
+<span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
 <span class="normal">599</span>
 <span class="normal">600</span>
 <span class="normal">601</span>
@@ -8559,13 +8566,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">609</span>
 <span class="normal">610</span>
 <span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="normal">612</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span> <span class="nf">model_validate_strings</span><span class="p">(</span>
     <span class="bp">cls</span><span class="p">,</span>
     <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
@@ -8573,15 +8574,16 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">context</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate the given object with string data against the Pydantic model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;文字列データを持つ指定されたオブジェクトをPydanticモデルに対して検証します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        obj: The object containing string data to validate.</span>
-<span class="sd">        strict: Whether to enforce types strictly.</span>
-<span class="sd">        context: Extra variables to pass to the validator.</span>
+<span class="sd">        obj: 検証するストリング・データを含むオブジェクト。</span>
+<span class="sd">        strict: 型を厳密に適用するかどうか。</span>
+<span class="sd">        context: バリデータに渡す追加の変数。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The validated Pydantic model.</span>
+<span class="sd">        検証されたPydanticモデル。</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># `__tracebackhide__` tells pytest and some other tools to omit this function from tracebacks</span>
     <span class="n">__tracebackhide__</span> <span class="o">=</span> <span class="kc">True</span>
@@ -8620,12 +8622,12 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Returns a copy of the model.</p>
+      <p>モデルのコピーを戻します。</p>
 <div class="admonition warning">
 <p class="admonition-title">Deprecated</p>
-<p>This method is now deprecated; use <code>model_copy</code> instead.</p>
+<p>このメソッドは廃止されました。代わりに<code>model_copy</code>を使用してください。</p>
 </div>
-<p>If you need <code>include</code> or <code>exclude</code>, use:</p>
+<p><code>include</code>または<code>exclude</code>が必要な場合は、次のようにします。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">,</span> <span class="n">round_trip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">update</span> <span class="ow">or</span> <span class="p">{})}</span>
 <span class="n">copied</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -8650,7 +8652,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Optional set or mapping specifying which fields to include in the copied model.</p>
+                <p>コピーされたモデルに含めるフィールドを指定するオプションのセットまたはマッピング。</p>
               </div>
             </td>
             <td>
@@ -8664,7 +8666,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Optional set or mapping specifying which fields to exclude in the copied model.</p>
+                <p>コピーされたモデルで除外するフィールドを指定するオプションのセットまたはマッピング。</p>
               </div>
             </td>
             <td>
@@ -8678,7 +8680,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Optional dictionary of field-value pairs to override field values in the copied model.</p>
+                <p>コピーされたモデルのフィールド値を上書きするためのフィールド値ペアのオプション辞書。</p>
               </div>
             </td>
             <td>
@@ -8692,7 +8694,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If True, the values of fields that are Pydantic models will be deep-copied.</p>
+                <p>Trueの場合、Pydanticモデルであるフィールドの値がディープコピーされます。</p>
               </div>
             </td>
             <td>
@@ -8718,7 +8720,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A copy of the model with included, excluded and updated fields as specified.</p>
+                <p>指定されたフィールドが含まれ、除外され、更新されたモデルのコピー。</p>
               </div>
             </td>
           </tr>
@@ -8727,7 +8729,28 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1246</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span>
+<span class="normal">1241</span>
+<span class="normal">1242</span>
+<span class="normal">1243</span>
+<span class="normal">1244</span>
+<span class="normal">1245</span>
+<span class="normal">1246</span>
 <span class="normal">1247</span>
 <span class="normal">1248</span>
 <span class="normal">1249</span>
@@ -8780,28 +8803,7 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="normal">1296</span>
 <span class="normal">1297</span>
 <span class="normal">1298</span>
-<span class="normal">1299</span>
-<span class="normal">1300</span>
-<span class="normal">1301</span>
-<span class="normal">1302</span>
-<span class="normal">1303</span>
-<span class="normal">1304</span>
-<span class="normal">1305</span>
-<span class="normal">1306</span>
-<span class="normal">1307</span>
-<span class="normal">1308</span>
-<span class="normal">1309</span>
-<span class="normal">1310</span>
-<span class="normal">1311</span>
-<span class="normal">1312</span>
-<span class="normal">1313</span>
-<span class="normal">1314</span>
-<span class="normal">1315</span>
-<span class="normal">1316</span>
-<span class="normal">1317</span>
-<span class="normal">1318</span>
-<span class="normal">1319</span>
-<span class="normal">1320</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@typing_extensions</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
+<span class="normal">1299</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@typing_extensions</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
     <span class="s1">&#39;The `copy` method is deprecated; use `model_copy` instead. &#39;</span>
     <span class="s1">&#39;See the docstring of `BaseModel.copy` for details about how to handle `include` and `exclude`.&#39;</span><span class="p">,</span>
     <span class="n">category</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -8814,12 +8816,12 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
     <span class="n">update</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># noqa UP006</span>
     <span class="n">deep</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a copy of the model.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;モデルのコピーを戻します。</span>
 
 <span class="sd">    !!! warning &quot;Deprecated&quot;</span>
-<span class="sd">        This method is now deprecated; use `model_copy` instead.</span>
+<span class="sd">        このメソッドは廃止されました。代わりに`model_copy`を使用してください。</span>
 
-<span class="sd">    If you need `include` or `exclude`, use:</span>
+<span class="sd">    `include`または`exclude`が必要な場合は、次のようにします。</span>
 
 <span class="sd">    ```py</span>
 <span class="sd">    data = self.model_dump(include=include, exclude=exclude, round_trip=True)</span>
@@ -8828,13 +8830,13 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 <span class="sd">    ```</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        include: Optional set or mapping specifying which fields to include in the copied model.</span>
-<span class="sd">        exclude: Optional set or mapping specifying which fields to exclude in the copied model.</span>
-<span class="sd">        update: Optional dictionary of field-value pairs to override field values in the copied model.</span>
-<span class="sd">        deep: If True, the values of fields that are Pydantic models will be deep-copied.</span>
+<span class="sd">        include: コピーされたモデルに含めるフィールドを指定するオプションのセットまたはマッピング。</span>
+<span class="sd">        exclude: コピーされたモデルで除外するフィールドを指定するオプションのセットまたはマッピング。</span>
+<span class="sd">        update: コピーされたモデルのフィールド値を上書きするためのフィールド値ペアのオプション辞書。</span>
+<span class="sd">        deep: Trueの場合、Pydanticモデルであるフィールドの値がディープコピーされます。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A copy of the model with included, excluded and updated fields as specified.</span>
+<span class="sd">        指定されたフィールドが含まれ、除外され、更新されたモデルのコピー。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
         <span class="s1">&#39;The `copy` method is deprecated; use `model_copy` instead. &#39;</span>
@@ -8920,12 +8922,8 @@ the initial attempt to build the schema, and automatic rebuilding fails.</p>
 
     <div class="doc doc-contents first">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/models/#dynamic-model-creation">Dynamic model creation</a></p>
-</div>
-<p>Dynamically creates and returns a new Pydantic model, in other words, <code>create_model</code> dynamically creates a
-subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><code>BaseModel</code></a>.</p>
+      <p>Usage docs: ../concepts/models/#dynamic-model-creation</p>
+<p>新しいPydanticモデルを動的に作成して返します。言い換えれば、<code>create_model</code>は<a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><code>BaseModel</code></a>のサブクラスを動的に作成します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -8946,7 +8944,7 @@ subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The name of the newly created model.</p>
+                <p>新しく作成されたモデルの名前。</p>
               </div>
             </td>
             <td>
@@ -8960,7 +8958,7 @@ subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The configuration of the new model.</p>
+                <p>新しいモデルの構成。</p>
               </div>
             </td>
             <td>
@@ -8974,7 +8972,7 @@ subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The docstring of the new model.</p>
+                <p>新しいモデルのdocstring。</p>
               </div>
             </td>
             <td>
@@ -8988,7 +8986,7 @@ subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The base class or classes for the new model.</p>
+                <p>新しいモデルの1つまたは複数の基本クラス。</p>
               </div>
             </td>
             <td>
@@ -9002,8 +9000,7 @@ subclass of <a class="autorefs autorefs-internal" href="#pydantic.BaseModel"><co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The name of the module that the model belongs to;
-if <code>None</code>, the value is taken from <code>sys._getframe(1)</code></p>
+                <p>モデルが属するモジュールの名前。<code>None</code>の場合、値は<code>sys._getframe(1)</code>から取得されます。</p>
               </div>
             </td>
             <td>
@@ -9017,9 +9014,7 @@ if <code>None</code>, the value is taken from <code>sys._getframe(1)</code></p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary of methods that validate fields. The keys are the names of the validation methods to
-be added to the model, and the values are the validation methods themselves. You can read more about functional
-validators <a href="https://docs.pydantic.dev/2.8/concepts/validators/#field-validators">here</a>.</p>
+                <p>フィールドを検証するメソッドのディクショナリです。キーはモデルに追加される検証メソッドの名前で、値は検証メソッド自体です。関数型バリデータの詳細については、<a href="https: //docs.pydantic.dev/2.8/concepts/validators/#field-validators">ここ</a>を参照してください。</p>
               </div>
             </td>
             <td>
@@ -9033,7 +9028,7 @@ validators <a href="https://docs.pydantic.dev/2.8/concepts/validators/#field-val
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary of keyword arguments for class creation, such as <code>metaclass</code>.</p>
+                <p><code>metaclass</code>など、クラスを作成するためのキーワード引数の辞書です。</p>
               </div>
             </td>
             <td>
@@ -9047,7 +9042,7 @@ validators <a href="https://docs.pydantic.dev/2.8/concepts/validators/#field-val
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Deprecated. Should not be passed to <code>create_model</code>.</p>
+                <p>非推奨です。<code>create_model</code>に渡すべきではありません。</p>
               </div>
             </td>
             <td>
@@ -9061,9 +9056,7 @@ validators <a href="https://docs.pydantic.dev/2.8/concepts/validators/#field-val
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Attributes of the new model. They should be passed in the format:
-<code>&lt;name&gt;=(&lt;type&gt;, &lt;default value&gt;)</code>, <code>&lt;name&gt;=(&lt;type&gt;, &lt;FieldInfo&gt;)</code>, or <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt;]</code>.
-Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt;, ...]</code> will be ignored.</p>
+                <p>新しいモデルの属性です。次の形式で渡されます。<code>&lt;name&gt;=(&lt;type&gt;,&lt;default value&gt;)</code>、<code>&lt;name&gt;=(&lt;type&gt;,&lt;FieldInfo&gt;)</code>、<code>typing.Annotated[&lt;type&gt;,&lt;FieldInfo&gt;]</code>のいずれかです。<code>typing.Annotated[&lt;type&gt;,&lt;FieldInfo&gt;,...]</code>の追加のメタデータは無視されます。</p>
               </div>
             </td>
             <td>
@@ -9089,7 +9082,7 @@ Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The new <a class="autorefs autorefs-internal" href="#pydantic.BaseModel">model</a>.</p>
+                <p>新しい<a class="autorefs autorefs-internal" href="#pydantic.BaseModel">model</a>です。</p>
               </div>
             </td>
           </tr>
@@ -9108,11 +9101,11 @@ Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticUserError" href="../errors/#pydantic.errors.PydanticUserError">PydanticUserError</a></code>
+                  <code>PydantictUserError</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If <code>__base__</code> and <code>__config__</code> are both passed.</p>
+                <p><code>__base__</code>と<code>__config__</code>の両方が渡された場合。</p>
               </div>
             </td>
           </tr>
@@ -9121,7 +9114,28 @@ Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt
 
             <details class="quote">
               <summary>Source code in <code>pydantic/main.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1459</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1438</span>
+<span class="normal">1439</span>
+<span class="normal">1440</span>
+<span class="normal">1441</span>
+<span class="normal">1442</span>
+<span class="normal">1443</span>
+<span class="normal">1444</span>
+<span class="normal">1445</span>
+<span class="normal">1446</span>
+<span class="normal">1447</span>
+<span class="normal">1448</span>
+<span class="normal">1449</span>
+<span class="normal">1450</span>
+<span class="normal">1451</span>
+<span class="normal">1452</span>
+<span class="normal">1453</span>
+<span class="normal">1454</span>
+<span class="normal">1455</span>
+<span class="normal">1456</span>
+<span class="normal">1457</span>
+<span class="normal">1458</span>
+<span class="normal">1459</span>
 <span class="normal">1460</span>
 <span class="normal">1461</span>
 <span class="normal">1462</span>
@@ -9211,34 +9225,7 @@ Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt
 <span class="normal">1546</span>
 <span class="normal">1547</span>
 <span class="normal">1548</span>
-<span class="normal">1549</span>
-<span class="normal">1550</span>
-<span class="normal">1551</span>
-<span class="normal">1552</span>
-<span class="normal">1553</span>
-<span class="normal">1554</span>
-<span class="normal">1555</span>
-<span class="normal">1556</span>
-<span class="normal">1557</span>
-<span class="normal">1558</span>
-<span class="normal">1559</span>
-<span class="normal">1560</span>
-<span class="normal">1561</span>
-<span class="normal">1562</span>
-<span class="normal">1563</span>
-<span class="normal">1564</span>
-<span class="normal">1565</span>
-<span class="normal">1566</span>
-<span class="normal">1567</span>
-<span class="normal">1568</span>
-<span class="normal">1569</span>
-<span class="normal">1570</span>
-<span class="normal">1571</span>
-<span class="normal">1572</span>
-<span class="normal">1573</span>
-<span class="normal">1574</span>
-<span class="normal">1575</span>
-<span class="normal">1576</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span>  <span class="c1"># noqa: C901</span>
+<span class="normal">1549</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span>  <span class="c1"># noqa: C901</span>
     <span class="n">model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -9251,32 +9238,26 @@ Any additional metadata in <code>typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt
     <span class="vm">__slots__</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">**</span><span class="n">field_definitions</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">ModelT</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/models/#dynamic-model-creation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/models/#dynamic-model-creation</span>
 
-<span class="sd">    Dynamically creates and returns a new Pydantic model, in other words, `create_model` dynamically creates a</span>
-<span class="sd">    subclass of [`BaseModel`][pydantic.BaseModel].</span>
+<span class="sd">    新しいPydanticモデルを動的に作成して返します。言い換えれば、`create_model`は[`BaseModel`][pydantic.BaseModel]のサブクラスを動的に作成します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        model_name: The name of the newly created model.</span>
-<span class="sd">        __config__: The configuration of the new model.</span>
-<span class="sd">        __doc__: The docstring of the new model.</span>
-<span class="sd">        __base__: The base class or classes for the new model.</span>
-<span class="sd">        __module__: The name of the module that the model belongs to;</span>
-<span class="sd">            if `None`, the value is taken from `sys._getframe(1)`</span>
-<span class="sd">        __validators__: A dictionary of methods that validate fields. The keys are the names of the validation methods to</span>
-<span class="sd">            be added to the model, and the values are the validation methods themselves. You can read more about functional</span>
-<span class="sd">            validators [here](https://docs.pydantic.dev/2.8/concepts/validators/#field-validators).</span>
-<span class="sd">        __cls_kwargs__: A dictionary of keyword arguments for class creation, such as `metaclass`.</span>
-<span class="sd">        __slots__: Deprecated. Should not be passed to `create_model`.</span>
-<span class="sd">        **field_definitions: Attributes of the new model. They should be passed in the format:</span>
-<span class="sd">            `&lt;name&gt;=(&lt;type&gt;, &lt;default value&gt;)`, `&lt;name&gt;=(&lt;type&gt;, &lt;FieldInfo&gt;)`, or `typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt;]`.</span>
-<span class="sd">            Any additional metadata in `typing.Annotated[&lt;type&gt;, &lt;FieldInfo&gt;, ...]` will be ignored.</span>
+<span class="sd">        model_name: 新しく作成されたモデルの名前。</span>
+<span class="sd">        __config__: 新しいモデルの構成。</span>
+<span class="sd">        __doc__: 新しいモデルのdocstring。</span>
+<span class="sd">        __base__: 新しいモデルの1つまたは複数の基本クラス。</span>
+<span class="sd">        __module__: モデルが属するモジュールの名前。`None`の場合、値は`sys._getframe(1)`から取得されます。</span>
+<span class="sd">        __validators__: フィールドを検証するメソッドのディクショナリです。キーはモデルに追加される検証メソッドの名前で、値は検証メソッド自体です。関数型バリデータの詳細については、[ここ](https: //docs.pydantic.dev/2.8/concepts/validators/#field-validators)を参照してください。</span>
+<span class="sd">        __cls_kwargs__: `metaclass`など、クラスを作成するためのキーワード引数の辞書です。</span>
+<span class="sd">        __slots__: 非推奨です。`create_model`に渡すべきではありません。</span>
+<span class="sd">        **field_definitions: 新しいモデルの属性です。次の形式で渡されます。`&lt;name&gt;=(&lt;type&gt;,&lt;default value&gt;)`、`&lt;name&gt;=(&lt;type&gt;,&lt;FieldInfo&gt;)`、`typing.Annotated[&lt;type&gt;,&lt;FieldInfo&gt;]`のいずれかです。`typing.Annotated[&lt;type&gt;,&lt;FieldInfo&gt;,...]`の追加のメタデータは無視されます。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The new [model][pydantic.BaseModel].</span>
+<span class="sd">        新しい[model][pydantic.BaseModel]です。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        PydanticUserError: If `__base__` and `__config__` are both passed.</span>
+<span class="sd">        PydantictUserError: `__base__`と`__config__`の両方が渡された場合。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="vm">__slots__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="c1"># __slots__ will be ignored from here on</span>

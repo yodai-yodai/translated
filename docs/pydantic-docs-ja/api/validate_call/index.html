@@ -2791,6 +2791,18 @@
 
   <h1>Validate Call</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -2798,7 +2810,7 @@
 <a id="pydantic.validate_call_decorator"></a>
     <div class="doc doc-contents first">
 
-      <p>Decorator for validating function calls.</p>
+      <p>関数呼び出しを検証するためのデコレータ</p>
 
 
 
@@ -2831,12 +2843,9 @@
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validation_decorator/">Validation Decorator</a></p>
-</div>
-<p>Returns a decorated wrapper around the function that validates the arguments and, optionally, the return value.</p>
-<p>Usage may be either as a plain decorator <code>@validate_call</code> or with arguments <code>@validate_call(...)</code>.</p>
+      <p>Usage docs: ../concepts/validation_decorator/</p>
+<p>引数およびオプションで戻り値を検証する関数を囲むデコレートラッパーを返します。</p>
+<p>通常のデコレータ<code>@validate_call</code>として、または引数<code>@validate_call(...)</code>と共に使用できます。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -2857,7 +2866,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The function to be decorated.</p>
+                <p>デコレートする関数。</p>
               </div>
             </td>
             <td>
@@ -2871,7 +2880,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The configuration dictionary.</p>
+                <p>構成辞書。</p>
               </div>
             </td>
             <td>
@@ -2885,7 +2894,7 @@
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to validate the return value.</p>
+                <p>戻り値を検証するかどうか。</p>
               </div>
             </td>
             <td>
@@ -2968,16 +2977,16 @@
     <span class="n">config</span><span class="p">:</span> <span class="n">ConfigDict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">validate_return</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyCallableT</span> <span class="o">|</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">AnyCallableT</span><span class="p">],</span> <span class="n">AnyCallableT</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/validation_decorator/</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/validation_decorator/</span>
 
-<span class="sd">    Returns a decorated wrapper around the function that validates the arguments and, optionally, the return value.</span>
+<span class="sd">    引数およびオプションで戻り値を検証する関数を囲むデコレートラッパーを返します。</span>
 
-<span class="sd">    Usage may be either as a plain decorator `@validate_call` or with arguments `@validate_call(...)`.</span>
+<span class="sd">    通常のデコレータ`@validate_call`として、または引数`@validate_call(...)`と共に使用できます。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        func: The function to be decorated.</span>
-<span class="sd">        config: The configuration dictionary.</span>
-<span class="sd">        validate_return: Whether to validate the return value.</span>
+<span class="sd">        func: デコレートする関数。</span>
+<span class="sd">        config: 構成辞書。</span>
+<span class="sd">        validate_return: 戻り値を検証するかどうか。</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        The decorated function.</span>

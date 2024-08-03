@@ -3079,6 +3079,18 @@
 
   <h1>Functional Validators</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -3118,8 +3130,7 @@
 
     <div class="doc doc-contents ">
 
-      <p>A <code>@model_validator</code> decorated function signature. This is used when <code>mode='after'</code> and the function does not
-have info argument.</p>
+      <p><code>@model_validator</code>でデコレートされた関数のシグネチャ。これは、<code>mode='after'</code>で、関数にinfo引数がない場合に使用されます。</p>
     </div>
 
 </div>
@@ -3144,7 +3155,7 @@ have info argument.</p>
 
     <div class="doc doc-contents ">
 
-      <p>A <code>@model_validator</code> decorated function signature. This is used when <code>mode='after'</code>.</p>
+      <p><code>@model_validator</code>でデコレートされた関数のシグネチャ。これは<code>mode='after'</code>のときに使用されます。</p>
     </div>
 
 </div>
@@ -3173,11 +3184,8 @@ have info argument.</p>
     <div class="doc doc-contents ">
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#annotated-validators">Annotated Validators</a></p>
-</div>
-<p>A metadata class that indicates that a validation should be applied <strong>after</strong> the inner validation logic.</p>
+      <p>Usage docs: ../concepts/validators/#annotated-validators</p>
+<p>内部検証ロジックの<strong>後</strong>に検証を適用する必要があることを示すメタデータクラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3197,7 +3205,7 @@ have info argument.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validator function.</p>
+                <p>バリデーター関数。</p>
               </div>
             </td>
           </tr>
@@ -3282,11 +3290,8 @@ have info argument.</p>
     <div class="doc doc-contents ">
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#annotated-validators">Annotated Validators</a></p>
-</div>
-<p>A metadata class that indicates that a validation should be applied <strong>before</strong> the inner validation logic.</p>
+      <p>Usage docs: ../concepts/validators/#annotated-validators</p>
+<p>内部検証ロジックの<strong>前</strong>に検証を適用する必要があることを示すメタデータクラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3306,7 +3311,7 @@ have info argument.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validator function.</p>
+                <p>バリデーター関数。</p>
               </div>
             </td>
           </tr>
@@ -3379,11 +3384,8 @@ have info argument.</p>
     <div class="doc doc-contents ">
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#annotated-validators">Annotated Validators</a></p>
-</div>
-<p>A metadata class that indicates that a validation should be applied <strong>instead</strong> of the inner validation logic.</p>
+      <p>Usage docs: ../concepts/validators/#annotated-validators</p>
+<p>内部検証ロジックの<strong>代わりに</strong>検証を適用する必要があることを示すメタデータクラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3403,7 +3405,7 @@ have info argument.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validator function.</p>
+                <p>バリデーター関数。</p>
               </div>
             </td>
           </tr>
@@ -3471,11 +3473,8 @@ have info argument.</p>
     <div class="doc doc-contents ">
 
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#annotated-validators">Annotated Validators</a></p>
-</div>
-<p>A metadata class that indicates that a validation should be applied <strong>around</strong> the inner validation logic.</p>
+      <p>Usage docs: ../concepts/validators/#annotated-validators</p>
+<p>内部検証ロジックの<strong>周辺</strong>に検証を適用する必要があることを示すメタデータクラス。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -3495,7 +3494,7 @@ have info argument.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validator function.</p>
+                <p>バリデーター関数。</p>
               </div>
             </td>
           </tr>
@@ -3565,7 +3564,7 @@ have info argument.</p>
               Bases: <code><span title="pydantic_core.core_schema.ValidatorFunctionWrapHandler">ValidatorFunctionWrapHandler</span></code>, <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a>[<span title="pydantic.functional_validators._ModelTypeCo">_ModelTypeCo</span>]</code></p>
 
 
-      <p>@model_validator decorated function handler argument type. This is used when <code>mode='wrap'</code>.</p>
+      <p>@model_validatorデコレート関数ハンドラ引数タイプ。これは<code>mode='wrap'</code>のときに使用されます。</p>
 
 
 
@@ -3604,8 +3603,8 @@ have info argument.</p>
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a>[<span title="pydantic.functional_validators._ModelType">_ModelType</span>]</code></p>
 
 
-      <p>A @model_validator decorated function signature.
-This is used when <code>mode='wrap'</code> and the function does not have info argument.</p>
+      <p>@model_validatorでデコレートされた関数のシグネチャ。
+これは、<code>mode='wrap'</code>で関数にinfo引数がない場合に使用されます。</p>
 
 
 
@@ -3644,7 +3643,7 @@ This is used when <code>mode='wrap'</code> and the function does not have info a
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a>[<span title="pydantic.functional_validators._ModelType">_ModelType</span>]</code></p>
 
 
-      <p>A @model_validator decorated function signature. This is used when <code>mode='wrap'</code>.</p>
+      <p>@model_validatorでデコレートされた関数のシグネチャ。これは<code>mode='wrap'</code>のときに使用されます。</p>
 
 
 
@@ -3683,8 +3682,8 @@ This is used when <code>mode='wrap'</code> and the function does not have info a
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
 
 
-      <p>A @model_validator decorated function signature.
-This is used when <code>mode='before'</code> and the function does not have info argument.</p>
+      <p>@model_validatorでデコレートされた関数のシグネチャ。
+これは、<code>mode='before'</code>で関数にinfo引数がない場合に使用されます。</p>
 
 
 
@@ -3723,8 +3722,8 @@ This is used when <code>mode='before'</code> and the function does not have info
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
 
 
-      <p>A @model_validator decorated function signature.
-This is used when <code>mode='before'</code> and the function does not have info argument.</p>
+      <p>@model_validatorデコレータ関数のシグネチャ。
+これは、<code>mode='before'</code>で関数にinfo引数がない場合に使用されます。</p>
 
 
 
@@ -3763,7 +3762,7 @@ This is used when <code>mode='before'</code> and the function does not have info
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
 
 
-      <p>A <code>@model_validator</code> decorated function signature. This is used when <code>mode='before'</code>.</p>
+      <p><code>@model_validator</code>でデコレートされた関数のシグネチャ。これは<code>mode='before'</code>のときに使用されます。</p>
 
 
 
@@ -3802,7 +3801,7 @@ This is used when <code>mode='before'</code> and the function does not have info
               Bases: <code><a class="autorefs autorefs-external" title="typing.Protocol" href="https://docs.python.org/3/library/typing.html#typing.Protocol">Protocol</a></code></p>
 
 
-      <p>A <code>@model_validator</code> decorated function signature. This is used when <code>mode='before'</code>.</p>
+      <p><code>@model_validator</code>でデコレートされた関数のシグネチャ。これは<code>mode='before'</code>のときに使用されます。</p>
 
 
 
@@ -3844,7 +3843,7 @@ This is used when <code>mode='before'</code> and the function does not have info
     <div class="doc doc-contents ">
 
 
-      <p>Generic type for annotating a type that is an instance of a given class.</p>
+      <p>特定のクラスのインスタンスであるタイプに注釈を付けるための汎用タイプ。</p>
 
 
 <details class="example" open>
@@ -3916,13 +3915,9 @@ This is used when <code>mode='before'</code> and the function does not have info
     <div class="doc doc-contents ">
 
 
-      <p>If this is applied as an annotation (e.g., via <code>x: Annotated[int, SkipValidation]</code>), validation will be
-    skipped. You can also use <code>SkipValidation[int]</code> as a shorthand for <code>Annotated[int, SkipValidation]</code>.</p>
-<p>This can be useful if you want to use a type annotation for documentation/IDE/type-checking purposes,
-and know that it is safe to skip validation for one or more of the fields.</p>
-<p>Because this converts the validation schema to <code>any_schema</code>, subsequent annotation-applied transformations
-may not have the expected effects. Therefore, when used, this annotation should generally be the final
-annotation applied to a type.</p>
+      <p>これが注釈として適用される場合(例えば、<code>x:Annotated[int, SkipValidation]</code>)、検証はスキップされます。<code>SkipValidation[int]</code>を<code>Annotated[int, SkipValidation]</code>の省略形として使用することもできます。</p>
+<p>これは、ドキュメント/IDE/型チェックの目的で型アノテーションを使用し、1つ以上のフィールドの検証を省略しても安全であることがわかっている場合に便利です。</p>
+<p>これは検証スキーマを<code>any_schema</code>に変換するので、後続のアノテーション適用変換は期待された効果を持たない可能性があります。したがって、使用される場合、このアノテーションは通常、型に適用される最後のアノテーションである必要があります。</p>
 
 
 
@@ -3965,11 +3960,8 @@ annotation applied to a type.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#field-validators">Field validators</a></p>
-</div>
-<p>Decorate methods on the class indicating that they should be used to validate fields.</p>
+      <p>Usage docs: ../concepts/validators/#field-validators</p>
+<p>クラスのメソッドをデコレートして、フィールドの検証に使用する必要があることを示します。</p>
 <p>Example usage:
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
 
@@ -4002,7 +3994,7 @@ annotation applied to a type.</p>
 <span class="sd">      Value error, &quot;foobar&quot; not found in a [type=value_error, input_value=&#39;snap&#39;, input_type=str]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div></p>
-<p>For more in depth examples, see <a href="../../concepts/validators/#field-validators">Field Validators</a>.</p>
+<p>詳細な例については、<a href="../../concepts/validators/#field-validators">Field Validators</a>を参照してください。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4023,8 +4015,7 @@ annotation applied to a type.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The first field the <code>field_validator</code> should be called on; this is separate
-from <code>fields</code> to ensure an error is raised if you don't pass at least one.</p>
+                <p><code>field_validator</code>が呼び出される最初のフィールドです。これは<code>fields</code>とは別のもので、少なくとも1つ渡さないとエラーが発生します。</p>
               </div>
             </td>
             <td>
@@ -4038,7 +4029,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional field(s) the <code>field_validator</code> should be called on.</p>
+                <p><code>field_validator</code>が呼び出される追加フィールドです。</p>
               </div>
             </td>
             <td>
@@ -4052,7 +4043,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Specifies whether to validate the fields before or after validation.</p>
+                <p>検証の前または後にフィールドを検証するかどうかを指定します。</p>
               </div>
             </td>
             <td>
@@ -4066,7 +4057,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to check that the fields actually exist on the model.</p>
+                <p>フィールドがモデル上に実際に存在するかどうかをチェックするかどうか。</p>
               </div>
             </td>
             <td>
@@ -4092,7 +4083,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A decorator that can be used to decorate a function to be used as a field_validator.</p>
+                <p>field_validatorとして使用する関数を修飾するために使用できるデコレータ。</p>
               </div>
             </td>
           </tr>
@@ -4111,14 +4102,14 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
       <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-internal" title="pydantic.errors.PydanticUserError" href="../errors/#pydantic.errors.PydanticUserError">PydanticUserError</a></code>
+                  <code>PydantictUserError</code>
             </td>
             <td>
               <div class="doc-md-description">
                 <ul>
-<li>If <code>@field_validator</code> is used bare (with no fields).</li>
-<li>If the args passed to <code>@field_validator</code> as fields are not strings.</li>
-<li>If <code>@field_validator</code> applied to instance methods.</li>
+<li><code>@field_validator</code>が(フィールドなしで)使用されている場合。</li>
+<li>フィールドとして<code>@field_validator</code>に渡された引数が文字列でない場合。</li>
+<li><code>@field_validator</code>がインスタンスメソッドに適用された場合。</li>
 </ul>
               </div>
             </td>
@@ -4218,17 +4209,16 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
 <span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">field_validator</span><span class="p">(</span>
+<span class="normal">383</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">field_validator</span><span class="p">(</span>
     <span class="n">field</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="n">fields</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">FieldValidatorModes</span> <span class="o">=</span> <span class="s1">&#39;after&#39;</span><span class="p">,</span>
     <span class="n">check_fields</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/validators/#field-validators</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/validators/#field-validators</span>
 
-<span class="sd">    Decorate methods on the class indicating that they should be used to validate fields.</span>
+<span class="sd">    クラスのメソッドをデコレートして、フィールドの検証に使用する必要があることを示します。</span>
 
 <span class="sd">    Example usage:</span>
 <span class="sd">    ```py</span>
@@ -4264,23 +4254,22 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
 <span class="sd">        &#39;&#39;&#39;</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    For more in depth examples, see [Field Validators](../concepts/validators.md#field-validators).</span>
+<span class="sd">    詳細な例については、[Field Validators](../concepts/validators.md#field-validators)を参照してください。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        field: The first field the `field_validator` should be called on; this is separate</span>
-<span class="sd">            from `fields` to ensure an error is raised if you don&#39;t pass at least one.</span>
-<span class="sd">        *fields: Additional field(s) the `field_validator` should be called on.</span>
-<span class="sd">        mode: Specifies whether to validate the fields before or after validation.</span>
-<span class="sd">        check_fields: Whether to check that the fields actually exist on the model.</span>
+<span class="sd">        field: `field_validator`が呼び出される最初のフィールドです。これは`fields`とは別のもので、少なくとも1つ渡さないとエラーが発生します。</span>
+<span class="sd">        *fields: `field_validator`が呼び出される追加フィールドです。</span>
+<span class="sd">        mode: 検証の前または後にフィールドを検証するかどうかを指定します。</span>
+<span class="sd">        check_fields: フィールドがモデル上に実際に存在するかどうかをチェックするかどうか。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A decorator that can be used to decorate a function to be used as a field_validator.</span>
+<span class="sd">        field_validatorとして使用する関数を修飾するために使用できるデコレータ。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        PydanticUserError:</span>
-<span class="sd">            - If `@field_validator` is used bare (with no fields).</span>
-<span class="sd">            - If the args passed to `@field_validator` as fields are not strings.</span>
-<span class="sd">            - If `@field_validator` applied to instance methods.</span>
+<span class="sd">        PydantictUserError:</span>
+<span class="sd">            - `@field_validator`が(フィールドなしで)使用されている場合。</span>
+<span class="sd">            - フィールドとして`@field_validator`に渡された引数が文字列でない場合。</span>
+<span class="sd">            - `@field_validator`がインスタンスメソッドに適用された場合。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">field</span><span class="p">,</span> <span class="n">FunctionType</span><span class="p">):</span>
         <span class="k">raise</span> <span class="n">PydanticUserError</span><span class="p">(</span>
@@ -4332,11 +4321,9 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/validators/#model-validators">Model validators</a></p>
-</div>
-<p>Decorate model methods for validation purposes.</p>
+      <p>Usage docs: ../concepts/validators/#model-validators</p>
+<p>Decorate model methods for validation purposes.
+検証のためにモデルメソッドをデコレートする。</p>
 <p>Example usage:
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Self</span>
 
@@ -4365,7 +4352,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
 <span class="sd">      Value error, width and height do not match [type=value_error, input_value={&#39;width&#39;: 1, &#39;height&#39;: 2}, input_type=dict]</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </code></pre></div></p>
-<p>For more in depth examples, see <a href="../../concepts/validators/#model-validators">Model Validators</a>.</p>
+<p>詳細な例については、<a href="../../concepts/validators/#model-validators">Model Validators</a>を参照してください。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4386,8 +4373,7 @@ from <code>fields</code> to ensure an error is raised if you don't pass at least
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A required string literal that specifies the validation mode.
-It can be one of the following: 'wrap', 'before', or 'after'.</p>
+                <p>検証モードを指定する必須文字列リテラル。'wrap'、'before'、または'after'のいずれかです。</p>
               </div>
             </td>
             <td>
@@ -4413,7 +4399,7 @@ It can be one of the following: 'wrap', 'before', or 'after'.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A decorator that can be used to decorate a function to be used as a model validator.</p>
+                <p>モデルバリデータとして使用される関数をデコレートするために使用できるデコレータ。</p>
               </div>
             </td>
           </tr>
@@ -4476,13 +4462,15 @@ It can be one of the following: 'wrap', 'before', or 'after'.</p>
 <span class="normal">589</span>
 <span class="normal">590</span>
 <span class="normal">591</span>
-<span class="normal">592</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_validator</span><span class="p">(</span>
+<span class="normal">592</span>
+<span class="normal">593</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">model_validator</span><span class="p">(</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">mode</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;wrap&#39;</span><span class="p">,</span> <span class="s1">&#39;before&#39;</span><span class="p">,</span> <span class="s1">&#39;after&#39;</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/validators/#model-validators</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/validators/#model-validators</span>
 
 <span class="sd">    Decorate model methods for validation purposes.</span>
+<span class="sd">    検証のためにモデルメソッドをデコレートする。</span>
 
 <span class="sd">    Example usage:</span>
 <span class="sd">    ```py</span>
@@ -4514,14 +4502,14 @@ It can be one of the following: 'wrap', 'before', or 'after'.</p>
 <span class="sd">        &#39;&#39;&#39;</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    For more in depth examples, see [Model Validators](../concepts/validators.md#model-validators).</span>
+<span class="sd">    詳細な例については、[Model Validators](../concepts/validators.md#model-validators)を参照してください。</span>
+
 
 <span class="sd">    Args:</span>
-<span class="sd">        mode: A required string literal that specifies the validation mode.</span>
-<span class="sd">            It can be one of the following: &#39;wrap&#39;, &#39;before&#39;, or &#39;after&#39;.</span>
+<span class="sd">        mode: 検証モードを指定する必須文字列リテラル。&#39;wrap&#39;、&#39;before&#39;、または&#39;after&#39;のいずれかです。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A decorator that can be used to decorate a function to be used as a model validator.</span>
+<span class="sd">        モデルバリデータとして使用される関数をデコレートするために使用できるデコレータ。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">dec</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_decorators</span><span class="o">.</span><span class="n">PydanticDescriptorProxy</span><span class="p">[</span><span class="n">Any</span><span class="p">]:</span>

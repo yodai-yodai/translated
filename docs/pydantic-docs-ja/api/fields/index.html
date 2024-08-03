@@ -3115,6 +3115,18 @@
 
   <h1>Fields</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+
+
 <div class="doc doc-object doc-module">
 
 
@@ -3191,19 +3203,15 @@
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/fields/">Fields</a></p>
-</div>
-<p>Create a field for objects that can be configured.</p>
-<p>Used to provide extra information about a field, either for the model schema or complex validation. Some arguments
-apply only to number fields (<code>int</code>, <code>float</code>, <code>Decimal</code>) and some apply only to <code>str</code>.</p>
+      <p>Usage docs: ../concepts/fields</p>
+<p>設定可能なオブジェクトのフィールドを作成します。</p>
+<p>モデルスキーマまたは複雑な検証のために、フィールドに関する追加情報を提供するために使用されます。引数の中には、数値フィールド(<code>int</code>、<code>float</code>、<code>Decimal</code>)にのみ適用されるものと、<code>str</code>にのみ適用されるものがあります。</p>
 
 
 <details class="note" open>
   <summary>Note</summary>
   <ul>
-<li>Any <code>_Unset</code> objects will be replaced by the corresponding value defined in the <code>_DefaultValues</code> dictionary. If a key for the <code>_Unset</code> object is not found in the <code>_DefaultValues</code> dictionary, it will default to <code>None</code></li>
+<li><code>_Unset</code>オブジェクトは、<code>_DefaultValues</code>辞書で定義された対応する値に置き換えられます。<code>_Unset</code>オブジェクトのキーが<code>_DefaultValues</code>辞書で見つからない場合は、デフォルトで<code>None</code>になります。</li>
 </ul>
 </details>
 
@@ -3225,7 +3233,7 @@ apply only to number fields (<code>int</code>, <code>float</code>, <code>Decimal
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Default value if the field is not set.</p>
+                <p>フィールドが設定されていない場合のデフォルト値。</p>
               </div>
             </td>
             <td>
@@ -3239,7 +3247,7 @@ apply only to number fields (<code>int</code>, <code>float</code>, <code>Decimal
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable to generate the default value, such as :func:<code>~datetime.utcnow</code>.</p>
+                <p>:func: <code>~datetime.utcnow</code>のような、デフォルト値を生成するためにコールできるもの。</p>
               </div>
             </td>
             <td>
@@ -3253,8 +3261,7 @@ apply only to number fields (<code>int</code>, <code>float</code>, <code>Decimal
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The name to use for the attribute when validating or serializing by alias.
-This is often used for things like converting between snake and camel case.</p>
+                <p>エイリアスによる検証またはシリアライズ時にアトリビュートに使用する名前。スネークとキャメルケース間の変換などによく使用されます。</p>
               </div>
             </td>
             <td>
@@ -3268,7 +3275,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Priority of the alias. This affects whether an alias generator is used.</p>
+                <p>別名の優先度。別名ジェネレータを使用するかどうかに影響します。</p>
               </div>
             </td>
             <td>
@@ -3282,7 +3289,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Like <code>alias</code>, but only affects validation, not serialization.</p>
+                <p><code>alias</code>と似ていますが、検証にのみ影響し、シリアライゼーションには影響しません。</p>
               </div>
             </td>
             <td>
@@ -3296,7 +3303,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Like <code>alias</code>, but only affects serialization, not validation.</p>
+                <p><code>alias</code>と似ていますが、シリアライズにのみ影響し、検証には影響しません。</p>
               </div>
             </td>
             <td>
@@ -3310,7 +3317,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Human-readable title.</p>
+                <p>人間が読めるタイトル。</p>
               </div>
             </td>
             <td>
@@ -3324,7 +3331,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable that takes a field name and returns title for it.</p>
+                <p>フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</p>
               </div>
             </td>
             <td>
@@ -3338,7 +3345,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Human-readable description.</p>
+                <p>人間が読める形式の説明。</p>
               </div>
             </td>
             <td>
@@ -3352,7 +3359,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Example values for this field.</p>
+                <p>このフィールドの値の例。</p>
               </div>
             </td>
             <td>
@@ -3366,7 +3373,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude the field from the model serialization.</p>
+                <p>モデルのシリアライゼーションからフィールドを除外するかどうか。</p>
               </div>
             </td>
             <td>
@@ -3380,7 +3387,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Field name or Discriminator for discriminating the type in a tagged union.</p>
+                <p>タグ付き共用体の型を識別するためのフィールド名または識別子。</p>
               </div>
             </td>
             <td>
@@ -3394,8 +3401,7 @@ This is often used for things like converting between snake and camel case.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A deprecation message, an instance of <code>warnings.deprecated</code> or the <code>typing_extensions.deprecated</code> backport,
-or a boolean. If <code>True</code>, a default deprecation message will be emitted when accessing the field.</p>
+                <p>非推奨メッセージ、<code>warnings.deprecated</code>または<code>typing_extensions.deprecated</code>バックポートのインスタンス、またはブール値。<code>True</code>の場合、フィールドにアクセスするとデフォルトの非推奨メッセージが出力されます。</p>
               </div>
             </td>
             <td>
@@ -3409,7 +3415,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dict or callable to provide extra JSON schema properties.</p>
+                <p>追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</p>
               </div>
             </td>
             <td>
@@ -3423,7 +3429,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field is frozen. If true, attempts to change the value on an instance will raise an error.</p>
+                <p>フィールドが凍結されているかどうか。TRUEの場合、インスタンスの値を変更しようとするとエラーが発生します。</p>
               </div>
             </td>
             <td>
@@ -3437,8 +3443,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If <code>True</code>, apply validation to the default value every time you create an instance.
-Otherwise, for performance reasons, the default value of the field is trusted and not validated.</p>
+                <p><code>True</code>の場合、インスタンスを作成するたびにデフォルト値に検証が適用されます。それ以外の場合は、パフォーマンス上の理由から、フィールドのデフォルト値は信頼され、検証されません。</p>
               </div>
             </td>
             <td>
@@ -3452,7 +3457,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A boolean indicating whether to include the field in the <code>__repr__</code> output.</p>
+                <p>フィールドを<code>__repr__</code>出力に含めるかどうかを示すブール値です。</p>
               </div>
             </td>
             <td>
@@ -3466,8 +3471,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should be included in the constructor of the dataclass.
-(Only applies to dataclasses.)</p>
+                <p>フィールドをデータクラスのコンストラクタに含めるかどうかを指定します(データクラスにのみ適用されます)。</p>
               </div>
             </td>
             <td>
@@ -3481,8 +3485,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should <em>only</em> be included in the constructor of the dataclass.
-(Only applies to dataclasses.)</p>
+                <p>データ・クラスのコンストラクタにフィールドを含めるかどうか(データ・クラスにのみ適用)。</p>
               </div>
             </td>
             <td>
@@ -3496,8 +3499,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should be a keyword-only argument in the constructor of the dataclass.
-(Only applies to dataclasses.)</p>
+                <p>データクラスのコンストラクタで、フィールドをキーワードのみの引数にするかどうかを指定します(データクラスにのみ適用されます)。</p>
               </div>
             </td>
             <td>
@@ -3511,7 +3513,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to enable coercion of any <code>Number</code> type to <code>str</code> (not applicable in <code>strict</code> mode).</p>
+                <p><code>Number</code>型の<code>str</code>への強制を有効にするかどうか(<code>strict</code>モードでは適用されません)。</p>
               </div>
             </td>
             <td>
@@ -3525,8 +3527,7 @@ Otherwise, for performance reasons, the default value of the field is trusted an
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If <code>True</code>, strict validation is applied to the field.
-See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
+                <p><code>True</code>の場合、厳密な検証がフィールドに適用されます。詳細については、<a href="../../concepts/strict_mode/">Strict Mode</a>を参照してください。</p>
               </div>
             </td>
             <td>
@@ -3540,7 +3541,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Greater than. If set, value must be greater than this. Only applicable to numbers.</p>
+                <p>より大きい。設定する場合、値はこれより大きい必要があります。数値にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3554,7 +3555,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Greater than or equal. If set, value must be greater than or equal to this. Only applicable to numbers.</p>
+                <p>以上。設定する場合、値はこれ以上である必要があります。数値にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3568,7 +3569,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Less than. If set, value must be less than this. Only applicable to numbers.</p>
+                <p>より小さい。設定する場合、値はこれより小さくする必要があります。数値にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3582,7 +3583,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Less than or equal. If set, value must be less than or equal to this. Only applicable to numbers.</p>
+                <p>以下です。設定する場合、値はこれ以下である必要があります。数値にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3596,7 +3597,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Value must be a multiple of this. Only applicable to numbers.</p>
+                <p>値はこのの倍数である必要があります。数値にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3610,7 +3611,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Minimum length for iterables.</p>
+                <p>iterableの最小長。</p>
               </div>
             </td>
             <td>
@@ -3624,7 +3625,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Maximum length for iterables.</p>
+                <p>iterableの最大長。</p>
               </div>
             </td>
             <td>
@@ -3638,7 +3639,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Pattern for strings (a regular expression).</p>
+                <p>文字列のパターン(正規表現)。</p>
               </div>
             </td>
             <td>
@@ -3652,7 +3653,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Allow <code>inf</code>, <code>-inf</code>, <code>nan</code>. Only applicable to numbers.</p>
+                <p><code>inf</code>、<code>-inf</code>、<code>nan</code>を許可します。数値にのみ適用されます。</p>
               </div>
             </td>
             <td>
@@ -3666,7 +3667,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Maximum number of allow digits for strings.</p>
+                <p>文字列の最大許容桁数。</p>
               </div>
             </td>
             <td>
@@ -3680,7 +3681,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Maximum number of decimal places allowed for numbers.</p>
+                <p>数値の小数点以下の最大桁数。</p>
               </div>
             </td>
             <td>
@@ -3694,8 +3695,7 @@ See <a href="../../concepts/strict_mode/">Strict Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The strategy to apply when validating a union. Can be <code>smart</code> (the default), or <code>left_to_right</code>.
-See <a href="../../concepts/unions/#union-modes">Union Mode</a> for details.</p>
+                <p>共用体を検証するときに適用される方式。<code>smart</code>(デフォルト)または<code>left_to_right</code>のいずれかです。詳細については、<a href="../../concepts/unions/#union-modes">Union Mode</a>を参照してください。</p>
               </div>
             </td>
             <td>
@@ -3709,8 +3709,7 @@ See <a href="../../concepts/unions/#union-modes">Union Mode</a> for details.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If <code>True</code>, validation will stop on the first error. If <code>False</code>, all validation errors will be collected.
-This option can be applied only to iterable types (list, tuple, set, and frozenset).</p>
+                <p><code>True</code>の場合、検証は最初のエラーで停止します。<code>False</code>の場合、すべての検証エラーが収集されます。このオプションは、反復可能な型(list、tuple、set、frozenset)にのみ適用できます。</p>
               </div>
             </td>
             <td>
@@ -3724,10 +3723,10 @@ This option can be applied only to iterable types (list, tuple, set, and frozens
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(Deprecated) Extra fields that will be included in the JSON schema.</p>
+                <p>(非推奨)JSONスキーマに含まれる追加フィールド。</p>
 <div class="admonition warning deprecated">
 <p class="admonition-title">Warning</p>
-<p>The <code>extra</code> kwargs is deprecated. Use <code>json_schema_extra</code> instead.</p>
+<p><code>extra</code>kwargsは非推奨です。代わりに<code>json_schema_extra</code>を使用してください。</p>
 </div>
               </div>
             </td>
@@ -3754,8 +3753,7 @@ This option can be applied only to iterable types (list, tuple, set, and frozens
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A new <a class="autorefs autorefs-internal" href="#pydantic.fields.FieldInfo"><code>FieldInfo</code></a>. The return annotation is <code>Any</code> so <code>Field</code> can be used on
-type-annotated fields without causing a type error.</p>
+                <p>新しい<a class="autorefs autorefs-internal" href="#pydantic.fields.FieldInfo"><code>FieldInfo</code></a>。返される注釈は<code>Any</code>なので、型エラーを起こすことなく型注釈付きのフィールドで<code>Field</code>を使用できます。</p>
               </div>
             </td>
           </tr>
@@ -3764,7 +3762,21 @@ type-annotated fields without causing a type error.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">690</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span>
+<span class="normal">679</span>
+<span class="normal">680</span>
+<span class="normal">681</span>
+<span class="normal">682</span>
+<span class="normal">683</span>
+<span class="normal">684</span>
+<span class="normal">685</span>
+<span class="normal">686</span>
+<span class="normal">687</span>
+<span class="normal">688</span>
+<span class="normal">689</span>
+<span class="normal">690</span>
 <span class="normal">691</span>
 <span class="normal">692</span>
 <span class="normal">693</span>
@@ -3942,32 +3954,7 @@ type-annotated fields without causing a type error.</p>
 <span class="normal">865</span>
 <span class="normal">866</span>
 <span class="normal">867</span>
-<span class="normal">868</span>
-<span class="normal">869</span>
-<span class="normal">870</span>
-<span class="normal">871</span>
-<span class="normal">872</span>
-<span class="normal">873</span>
-<span class="normal">874</span>
-<span class="normal">875</span>
-<span class="normal">876</span>
-<span class="normal">877</span>
-<span class="normal">878</span>
-<span class="normal">879</span>
-<span class="normal">880</span>
-<span class="normal">881</span>
-<span class="normal">882</span>
-<span class="normal">883</span>
-<span class="normal">884</span>
-<span class="normal">885</span>
-<span class="normal">886</span>
-<span class="normal">887</span>
-<span class="normal">888</span>
-<span class="normal">889</span>
-<span class="normal">890</span>
-<span class="normal">891</span>
-<span class="normal">892</span>
-<span class="normal">893</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">Field</span><span class="p">(</span>  <span class="c1"># noqa: C901</span>
+<span class="normal">868</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">Field</span><span class="p">(</span>  <span class="c1"># noqa: C901</span>
     <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">default_factory</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_Unset</span><span class="p">,</span>
@@ -4006,69 +3993,58 @@ type-annotated fields without causing a type error.</p>
     <span class="n">fail_fast</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_Unset</span><span class="p">,</span>
     <span class="o">**</span><span class="n">extra</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_EmptyKwargs</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/fields</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/fields</span>
 
-<span class="sd">    Create a field for objects that can be configured.</span>
+<span class="sd">    設定可能なオブジェクトのフィールドを作成します。</span>
 
-<span class="sd">    Used to provide extra information about a field, either for the model schema or complex validation. Some arguments</span>
-<span class="sd">    apply only to number fields (`int`, `float`, `Decimal`) and some apply only to `str`.</span>
+<span class="sd">    モデルスキーマまたは複雑な検証のために、フィールドに関する追加情報を提供するために使用されます。引数の中には、数値フィールド(`int`、`float`、`Decimal`)にのみ適用されるものと、`str`にのみ適用されるものがあります。</span>
 
 <span class="sd">    Note:</span>
-<span class="sd">        - Any `_Unset` objects will be replaced by the corresponding value defined in the `_DefaultValues` dictionary. If a key for the `_Unset` object is not found in the `_DefaultValues` dictionary, it will default to `None`</span>
+<span class="sd">        - `_Unset`オブジェクトは、`_DefaultValues`辞書で定義された対応する値に置き換えられます。`_Unset`オブジェクトのキーが`_DefaultValues`辞書で見つからない場合は、デフォルトで`None`になります。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        default: Default value if the field is not set.</span>
-<span class="sd">        default_factory: A callable to generate the default value, such as :func:`~datetime.utcnow`.</span>
-<span class="sd">        alias: The name to use for the attribute when validating or serializing by alias.</span>
-<span class="sd">            This is often used for things like converting between snake and camel case.</span>
-<span class="sd">        alias_priority: Priority of the alias. This affects whether an alias generator is used.</span>
-<span class="sd">        validation_alias: Like `alias`, but only affects validation, not serialization.</span>
-<span class="sd">        serialization_alias: Like `alias`, but only affects serialization, not validation.</span>
-<span class="sd">        title: Human-readable title.</span>
-<span class="sd">        field_title_generator: A callable that takes a field name and returns title for it.</span>
-<span class="sd">        description: Human-readable description.</span>
-<span class="sd">        examples: Example values for this field.</span>
-<span class="sd">        exclude: Whether to exclude the field from the model serialization.</span>
-<span class="sd">        discriminator: Field name or Discriminator for discriminating the type in a tagged union.</span>
-<span class="sd">        deprecated: A deprecation message, an instance of `warnings.deprecated` or the `typing_extensions.deprecated` backport,</span>
-<span class="sd">            or a boolean. If `True`, a default deprecation message will be emitted when accessing the field.</span>
-<span class="sd">        json_schema_extra: A dict or callable to provide extra JSON schema properties.</span>
-<span class="sd">        frozen: Whether the field is frozen. If true, attempts to change the value on an instance will raise an error.</span>
-<span class="sd">        validate_default: If `True`, apply validation to the default value every time you create an instance.</span>
-<span class="sd">            Otherwise, for performance reasons, the default value of the field is trusted and not validated.</span>
-<span class="sd">        repr: A boolean indicating whether to include the field in the `__repr__` output.</span>
-<span class="sd">        init: Whether the field should be included in the constructor of the dataclass.</span>
-<span class="sd">            (Only applies to dataclasses.)</span>
-<span class="sd">        init_var: Whether the field should _only_ be included in the constructor of the dataclass.</span>
-<span class="sd">            (Only applies to dataclasses.)</span>
-<span class="sd">        kw_only: Whether the field should be a keyword-only argument in the constructor of the dataclass.</span>
-<span class="sd">            (Only applies to dataclasses.)</span>
-<span class="sd">        coerce_numbers_to_str: Whether to enable coercion of any `Number` type to `str` (not applicable in `strict` mode).</span>
-<span class="sd">        strict: If `True`, strict validation is applied to the field.</span>
-<span class="sd">            See [Strict Mode](../concepts/strict_mode.md) for details.</span>
-<span class="sd">        gt: Greater than. If set, value must be greater than this. Only applicable to numbers.</span>
-<span class="sd">        ge: Greater than or equal. If set, value must be greater than or equal to this. Only applicable to numbers.</span>
-<span class="sd">        lt: Less than. If set, value must be less than this. Only applicable to numbers.</span>
-<span class="sd">        le: Less than or equal. If set, value must be less than or equal to this. Only applicable to numbers.</span>
-<span class="sd">        multiple_of: Value must be a multiple of this. Only applicable to numbers.</span>
-<span class="sd">        min_length: Minimum length for iterables.</span>
-<span class="sd">        max_length: Maximum length for iterables.</span>
-<span class="sd">        pattern: Pattern for strings (a regular expression).</span>
-<span class="sd">        allow_inf_nan: Allow `inf`, `-inf`, `nan`. Only applicable to numbers.</span>
-<span class="sd">        max_digits: Maximum number of allow digits for strings.</span>
-<span class="sd">        decimal_places: Maximum number of decimal places allowed for numbers.</span>
-<span class="sd">        union_mode: The strategy to apply when validating a union. Can be `smart` (the default), or `left_to_right`.</span>
-<span class="sd">            See [Union Mode](../concepts/unions.md#union-modes) for details.</span>
-<span class="sd">        fail_fast: If `True`, validation will stop on the first error. If `False`, all validation errors will be collected.</span>
-<span class="sd">            This option can be applied only to iterable types (list, tuple, set, and frozenset).</span>
-<span class="sd">        extra: (Deprecated) Extra fields that will be included in the JSON schema.</span>
+<span class="sd">        default: フィールドが設定されていない場合のデフォルト値。</span>
+<span class="sd">        default_factory: :func: `~datetime.utcnow`のような、デフォルト値を生成するためにコールできるもの。</span>
+<span class="sd">        alias: エイリアスによる検証またはシリアライズ時にアトリビュートに使用する名前。スネークとキャメルケース間の変換などによく使用されます。</span>
+<span class="sd">        alias_priority: 別名の優先度。別名ジェネレータを使用するかどうかに影響します。</span>
+<span class="sd">        validation_alias: `alias`と似ていますが、検証にのみ影響し、シリアライゼーションには影響しません。</span>
+<span class="sd">        serialization_alias: `alias`と似ていますが、シリアライズにのみ影響し、検証には影響しません。</span>
+<span class="sd">        title: 人間が読めるタイトル。</span>
+<span class="sd">        field_title_generator: フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</span>
+<span class="sd">        description: 人間が読める形式の説明。</span>
+<span class="sd">        examples: このフィールドの値の例。</span>
+<span class="sd">        exclude: モデルのシリアライゼーションからフィールドを除外するかどうか。</span>
+<span class="sd">        discriminator: タグ付き共用体の型を識別するためのフィールド名または識別子。</span>
+<span class="sd">        deprecated: 非推奨メッセージ、`warnings.deprecated`または`typing_extensions.deprecated`バックポートのインスタンス、またはブール値。`True`の場合、フィールドにアクセスするとデフォルトの非推奨メッセージが出力されます。</span>
+<span class="sd">        json_schema_extra: 追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</span>
+<span class="sd">        frozen: フィールドが凍結されているかどうか。TRUEの場合、インスタンスの値を変更しようとするとエラーが発生します。</span>
+<span class="sd">        validate_default: `True`の場合、インスタンスを作成するたびにデフォルト値に検証が適用されます。それ以外の場合は、パフォーマンス上の理由から、フィールドのデフォルト値は信頼され、検証されません。</span>
+<span class="sd">        repr: フィールドを`__repr__`出力に含めるかどうかを示すブール値です。</span>
+<span class="sd">        init: フィールドをデータクラスのコンストラクタに含めるかどうかを指定します(データクラスにのみ適用されます)。</span>
+<span class="sd">        init_var: データ・クラスのコンストラクタにフィールドを含めるかどうか(データ・クラスにのみ適用)。</span>
+<span class="sd">        kw_only: データクラスのコンストラクタで、フィールドをキーワードのみの引数にするかどうかを指定します(データクラスにのみ適用されます)。</span>
+<span class="sd">        coerce_numbers_to_str: `Number`型の`str`への強制を有効にするかどうか(`strict`モードでは適用されません)。</span>
+<span class="sd">        strict: `True`の場合、厳密な検証がフィールドに適用されます。詳細については、[Strict Mode](../concepts/strict_mode.md)を参照してください。</span>
+<span class="sd">        gt: より大きい。設定する場合、値はこれより大きい必要があります。数値にのみ適用できます。</span>
+<span class="sd">        ge: 以上。設定する場合、値はこれ以上である必要があります。数値にのみ適用できます。</span>
+<span class="sd">        lt: より小さい。設定する場合、値はこれより小さくする必要があります。数値にのみ適用できます。</span>
+<span class="sd">        le: 以下です。設定する場合、値はこれ以下である必要があります。数値にのみ適用できます。</span>
+<span class="sd">        multiple_of: 値はこのの倍数である必要があります。数値にのみ適用できます。</span>
+<span class="sd">        min_length: iterableの最小長。</span>
+<span class="sd">        max_length: iterableの最大長。</span>
+<span class="sd">        pattern: 文字列のパターン(正規表現)。</span>
+<span class="sd">        allow_inf_nan: `inf`、`-inf`、`nan`を許可します。数値にのみ適用されます。</span>
+<span class="sd">        max_digits: 文字列の最大許容桁数。</span>
+<span class="sd">        decimal_places: 数値の小数点以下の最大桁数。</span>
+<span class="sd">        union_mode: 共用体を検証するときに適用される方式。`smart`(デフォルト)または`left_to_right`のいずれかです。詳細については、[Union Mode](../concepts/unions.md#union-modes)を参照してください。</span>
+<span class="sd">        fail_fast: `True`の場合、検証は最初のエラーで停止します。`False`の場合、すべての検証エラーが収集されます。このオプションは、反復可能な型(list、tuple、set、frozenset)にのみ適用できます。</span>
+<span class="sd">        extra: (非推奨)JSONスキーマに含まれる追加フィールド。</span>
 
 <span class="sd">            !!! warning Deprecated</span>
-<span class="sd">                The `extra` kwargs is deprecated. Use `json_schema_extra` instead.</span>
+<span class="sd">                `extra`kwargsは非推奨です。代わりに`json_schema_extra`を使用してください。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A new [`FieldInfo`][pydantic.fields.FieldInfo]. The return annotation is `Any` so `Field` can be used on</span>
-<span class="sd">            type-annotated fields without causing a type error.</span>
+<span class="sd">        新しい[`FieldInfo`][pydantic.fields.FieldInfo]。返される注釈は`Any`なので、型エラーを起こすことなく型注釈付きのフィールドで`Field`を使用できます。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Check deprecated and removed params from V1. This logic should eventually be removed.</span>
     <span class="n">const</span> <span class="o">=</span> <span class="n">extra</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;const&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
@@ -4199,13 +4175,11 @@ type-annotated fields without causing a type error.</p>
               Bases: <code><span title="pydantic._internal._repr.Representation">Representation</span></code></p>
 
 
-      <p>This class holds information about a field.</p>
-<p><code>FieldInfo</code> is used for any field definition regardless of whether the <a class="autorefs autorefs-internal" href="#pydantic.fields.Field"><code>Field()</code></a>
-function is explicitly used.</p>
+      <p>このクラスはフィールドに関する情報を保持します。</p>
+<p><code>FieldInfo</code>は、<a class="autorefs autorefs-internal" href="#pydantic.fields.Field"><code>Field()</code></a>関数が明示的に使用されているかどうかにかかわらず、すべてのフィールド定義に使用されます。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You generally shouldn't be creating <code>FieldInfo</code> directly, you'll only need to use it when accessing
-<a class="autorefs autorefs-internal" href="../base_model/#pydantic.BaseModel"><code>BaseModel</code></a> <code>.model_fields</code> internals.</p>
+<p>一般的には<code>FieldInfo</code>を直接作成すべきではありません。<a class="autorefs autorefs-internal" href="../base_model/#pydantic.BaseModel"><code>BaseModel</code></a><code>.model_fields</code>内部にアクセスするときにのみ使用する必要があります。</p>
 </div>
 
 
@@ -4226,7 +4200,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The type annotation of the field.</p>
+                <p>フィールドの型注釈。</p>
               </div>
             </td>
           </tr>
@@ -4237,7 +4211,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value of the field.</p>
+                <p>フィールドのデフォルト値。</p>
               </div>
             </td>
           </tr>
@@ -4248,7 +4222,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The factory function used to construct the default for the field.</p>
+                <p>フィールドのデフォルトを構成するために使用されるファクトリ関数。</p>
               </div>
             </td>
           </tr>
@@ -4259,7 +4233,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The alias name of the field.</p>
+                <p>フィールドのエイリアス名。</p>
               </div>
             </td>
           </tr>
@@ -4270,7 +4244,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The priority of the field's alias.</p>
+                <p>フィールドのエイリアスの優先度。</p>
               </div>
             </td>
           </tr>
@@ -4281,7 +4255,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The validation alias of the field.</p>
+                <p>フィールドの検証エイリアス。</p>
               </div>
             </td>
           </tr>
@@ -4292,7 +4266,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The serialization alias of the field.</p>
+                <p>フィールドのシリアル化エイリアス。</p>
               </div>
             </td>
           </tr>
@@ -4303,7 +4277,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The title of the field.</p>
+                <p>フィールドのタイトル。</p>
               </div>
             </td>
           </tr>
@@ -4314,7 +4288,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable that takes a field name and returns title for it.</p>
+                <p>フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</p>
               </div>
             </td>
           </tr>
@@ -4325,7 +4299,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The description of the field.</p>
+                <p>フィールドの説明。</p>
               </div>
             </td>
           </tr>
@@ -4336,7 +4310,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of examples of the field.</p>
+                <p>フィールドの例のリスト。</p>
               </div>
             </td>
           </tr>
@@ -4347,7 +4321,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to exclude the field from the model serialization.</p>
+                <p>モデルのシリアライゼーションからフィールドを除外するかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4358,7 +4332,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Field name or Discriminator for discriminating the type in a tagged union.</p>
+                <p>タグ付き共用体の型を識別するためのフィールド名または識別子。</p>
               </div>
             </td>
           </tr>
@@ -4369,8 +4343,7 @@ function is explicitly used.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A deprecation message, an instance of <code>warnings.deprecated</code> or the <code>typing_extensions.deprecated</code> backport,
-or a boolean. If <code>True</code>, a default deprecation message will be emitted when accessing the field.</p>
+                <p>非推奨メッセージ、<code>warnings.deprecated</code>または<code>typing_extensions.deprecated</code>バックポートのインスタンス、またはブール値。<code>True</code>の場合、フィールドにアクセスするとデフォルトの非推奨メッセージが出力されます。</p>
               </div>
             </td>
           </tr>
@@ -4381,7 +4354,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dict or callable to provide extra JSON schema properties.</p>
+                <p>追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</p>
               </div>
             </td>
           </tr>
@@ -4392,7 +4365,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field is frozen.</p>
+                <p>フィールドが凍結されているかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4403,7 +4376,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to validate the default value of the field.</p>
+                <p>フィールドのデフォルト値を検証するかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4414,7 +4387,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to include the field in representation of the model.</p>
+                <p>モデルの表現にフィールドを含めるかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4425,7 +4398,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should be included in the constructor of the dataclass.</p>
+                <p>フィールドをデータクラスのコンストラクタに含めるかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4436,7 +4409,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should <em>only</em> be included in the constructor of the dataclass, and not stored.</p>
+                <p>フィールドがデータ・クラスのコンストラクターに含まれ、保管されないようにするかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4447,7 +4420,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the field should be a keyword-only argument in the constructor of the dataclass.</p>
+                <p>データクラスのコンストラクタで、フィールドをキーワードのみの引数にするかどうか。</p>
               </div>
             </td>
           </tr>
@@ -4458,18 +4431,21 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>List of metadata constraints.</p>
+                <p>メタデータ制約のリスト。</p>
               </div>
             </td>
           </tr>
       </tbody>
     </table>
 
-      <p>See the signature of <code>pydantic.fields.Field</code> for more details about the expected arguments.</p>
+      <p>期待される引数の詳細については、<code>pydantic.fields.Field</code>のシグネチャを参照してください。</p>
 
                   <details class="quote">
                     <summary>Source code in <code>pydantic/fields.py</code></summary>
-                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
+                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
 <span class="normal">201</span>
@@ -4508,15 +4484,10 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_FieldInfoInputs</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;This class should generally not be initialized directly; instead, use the `pydantic.fields.Field` function</span>
-<span class="sd">    or one of the constructor classmethods.</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_FieldInfoInputs</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;このクラスは通常、直接初期化すべきではありません。代わりに、`pydantic.fields.Field`関数またはコンストラクタクラスメソッドの1つを使用してください。</span>
 
-<span class="sd">    See the signature of `pydantic.fields.Field` for more details about the expected arguments.</span>
+<span class="sd">    期待される引数の詳細については、`pydantic.fields.Field`のシグネチャを参照してください。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_attributes_set</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_Unset</span><span class="p">}</span>
     <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">_DefaultValues</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="n">_Unset</span> <span class="k">else</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>  <span class="c1"># type: ignore</span>
@@ -4589,7 +4560,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 
     <div class="doc doc-contents ">
 
-      <p>Create a new <code>FieldInfo</code> object with the <code>Field</code> function.</p>
+      <p><code>Field</code>関数を使用して新しい<code>FieldInfo</code>オブジェクトを作成します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -4610,7 +4581,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value for the field. Defaults to Undefined.</p>
+                <p>フィールドのデフォルト値。デフォルトは"未定義"です。</p>
               </div>
             </td>
             <td>
@@ -4624,7 +4595,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Additional arguments dictionary.</p>
+                <p>追加引数の辞書。</p>
               </div>
             </td>
             <td>
@@ -4650,7 +4621,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If 'annotation' is passed as a keyword argument.</p>
+                <p>'annotation'がキーワード引数として渡された場合。</p>
               </div>
             </td>
           </tr>
@@ -4673,7 +4644,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A new FieldInfo object with the given parameters.</p>
+                <p>指定されたパラメータを持つ新しいFieldInfoオブジェクト。</p>
               </div>
             </td>
           </tr>
@@ -4683,7 +4654,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 
 <details class="example" open>
   <summary>Example</summary>
-  <p>This is how you can create a field with default value like this:</p>
+  <p>次のようにして、デフォルト値を持つフィールドを作成できます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pydantic</span>
 
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">pydantic</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -4692,7 +4663,11 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 </details>
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">243</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
 <span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
@@ -4714,26 +4689,22 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_field</span><span class="p">(</span><span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_FromFieldInfoInputs</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">FieldInfo</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a new `FieldInfo` object with the `Field` function.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;`Field`関数を使用して新しい`FieldInfo`オブジェクトを作成します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        default: The default value for the field. Defaults to Undefined.</span>
-<span class="sd">        **kwargs: Additional arguments dictionary.</span>
+<span class="sd">        default: フィールドのデフォルト値。デフォルトは&quot;未定義&quot;です。</span>
+<span class="sd">        **kwargs: 追加引数の辞書。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        TypeError: If &#39;annotation&#39; is passed as a keyword argument.</span>
+<span class="sd">        TypeError: &#39;annotation&#39;がキーワード引数として渡された場合。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A new FieldInfo object with the given parameters.</span>
+<span class="sd">        指定されたパラメータを持つ新しいFieldInfoオブジェクト。</span>
 
 <span class="sd">    Example:</span>
-<span class="sd">        This is how you can create a field with default value like this:</span>
+<span class="sd">        次のようにして、デフォルト値を持つフィールドを作成できます。</span>
 
 <span class="sd">        ```python</span>
 <span class="sd">        import pydantic</span>
@@ -4773,15 +4744,14 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 
     <div class="doc doc-contents ">
 
-      <p>Creates a <code>FieldInfo</code> instance from a bare annotation.</p>
-<p>This function is used internally to create a <code>FieldInfo</code> from a bare annotation like this:</p>
+      <p>生の注釈から<code>FieldInfo</code>インスタンスを作成します。</p>
+<p>この関数は、次のような生の注釈から<code>FieldInfo</code>を作成するために内部的に使用されます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pydantic</span>
 
 <span class="k">class</span> <span class="nc">MyModel</span><span class="p">(</span><span class="n">pydantic</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">foo</span><span class="p">:</span> <span class="nb">int</span>  <span class="c1"># &lt;-- like this</span>
 </code></pre></div>
-<p>We also account for the case where the annotation can be an instance of <code>Annotated</code> and where
-one of the (not first) arguments in <code>Annotated</code> is an instance of <code>FieldInfo</code>, e.g.:</p>
+<p>また、注釈が<code>Annotated</code>のインスタンスである可能性があり、<code>Annotated</code>の(最初ではない)引数の1つが<code>FieldInfo</code>のインスタンスである場合についても説明します。次に例を示します。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">annotated_types</span>
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
@@ -4811,7 +4781,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An annotation object.</p>
+                <p>注釈オブジェクト。</p>
               </div>
             </td>
             <td>
@@ -4837,7 +4807,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An instance of the field metadata.</p>
+                <p>フィールドメタデータのインスタンス。</p>
               </div>
             </td>
           </tr>
@@ -4846,7 +4816,11 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">271</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span>
 <span class="normal">274</span>
@@ -4901,16 +4875,11 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="normal">323</span>
 <span class="normal">324</span>
 <span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">326</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_annotation</span><span class="p">(</span><span class="n">annotation</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">FieldInfo</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a `FieldInfo` instance from a bare annotation.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;生の注釈から`FieldInfo`インスタンスを作成します。</span>
 
-<span class="sd">    This function is used internally to create a `FieldInfo` from a bare annotation like this:</span>
+<span class="sd">    この関数は、次のような生の注釈から`FieldInfo`を作成するために内部的に使用されます。</span>
 
 <span class="sd">    ```python</span>
 <span class="sd">    import pydantic</span>
@@ -4919,8 +4888,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="sd">        foo: int  # &lt;-- like this</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    We also account for the case where the annotation can be an instance of `Annotated` and where</span>
-<span class="sd">    one of the (not first) arguments in `Annotated` is an instance of `FieldInfo`, e.g.:</span>
+<span class="sd">    また、注釈が`Annotated`のインスタンスである可能性があり、`Annotated`の(最初ではない)引数の1つが`FieldInfo`のインスタンスである場合についても説明します。次に例を示します。</span>
 
 <span class="sd">    ```python</span>
 <span class="sd">    import annotated_types</span>
@@ -4934,10 +4902,10 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="sd">    ```</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        annotation: An annotation object.</span>
+<span class="sd">        annotation: 注釈オブジェクト。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        An instance of the field metadata.</span>
+<span class="sd">        フィールドメタデータのインスタンス。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">final</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">_typing_extra</span><span class="o">.</span><span class="n">is_finalvar</span><span class="p">(</span><span class="n">annotation</span><span class="p">):</span>
@@ -4997,8 +4965,8 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
     <div class="doc doc-contents ">
 
-      <p>Create <code>FieldInfo</code> from an annotation with a default value.</p>
-<p>This is used in cases like the following:</p>
+      <p>デフォルト値を持つ注釈から<code>FieldInfo</code>を作成します。</p>
+<p>これは、次のような場合に使用されます。</p>
 <div class="language-python highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">annotated_types</span>
 <span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Annotated</span>
 
@@ -5029,7 +4997,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The type annotation of the field.</p>
+                <p>フィールドの型注釈。</p>
               </div>
             </td>
             <td>
@@ -5043,7 +5011,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value of the field.</p>
+                <p>フィールドのデフォルト値。</p>
               </div>
             </td>
             <td>
@@ -5069,7 +5037,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A field object with the passed values.</p>
+                <p>渡された値を持つフィールド・オブジェクト。</p>
               </div>
             </td>
           </tr>
@@ -5078,7 +5046,12 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">333</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
 <span class="normal">334</span>
 <span class="normal">335</span>
 <span class="normal">336</span>
@@ -5156,16 +5129,11 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="normal">408</span>
 <span class="normal">409</span>
 <span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">411</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">from_annotated_attribute</span><span class="p">(</span><span class="n">annotation</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FieldInfo</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create `FieldInfo` from an annotation with a default value.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;デフォルト値を持つ注釈から`FieldInfo`を作成します。</span>
 
-<span class="sd">    This is used in cases like the following:</span>
+<span class="sd">    これは、次のような場合に使用されます。</span>
 
 <span class="sd">    ```python</span>
 <span class="sd">    import annotated_types</span>
@@ -5180,11 +5148,11 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="sd">    ```</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        annotation: The type annotation of the field.</span>
-<span class="sd">        default: The default value of the field.</span>
+<span class="sd">        annotation: フィールドの型注釈。</span>
+<span class="sd">        default: フィールドのデフォルト値。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A field object with the passed values.</span>
+<span class="sd">        渡された値を持つフィールド・オブジェクト。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">annotation</span> <span class="ow">is</span> <span class="n">default</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">PydanticUserError</span><span class="p">(</span>
@@ -5275,8 +5243,8 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
     <div class="doc doc-contents ">
 
-      <p>Merge <code>FieldInfo</code> instances keeping only explicitly set attributes.</p>
-<p>Later <code>FieldInfo</code> instances override earlier ones.</p>
+      <p>明示的に設定された属性のみを保持して<code>FieldInfo</code>インスタンスをマージします。</p>
+<p>後の<code>FieldInfo</code>インスタンスは前のインスタンスを上書きします。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -5294,7 +5262,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A merged FieldInfo instance.</p>
+                <p>マージされたFieldInfoインスタンス。</p>
               </div>
             </td>
           </tr>
@@ -5303,7 +5271,12 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">418</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
 <span class="normal">419</span>
 <span class="normal">420</span>
 <span class="normal">421</span>
@@ -5354,19 +5327,14 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 <span class="normal">466</span>
 <span class="normal">467</span>
 <span class="normal">468</span>
-<span class="normal">469</span>
-<span class="normal">470</span>
-<span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">469</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">merge_field_infos</span><span class="p">(</span><span class="o">*</span><span class="n">field_infos</span><span class="p">:</span> <span class="n">FieldInfo</span><span class="p">,</span> <span class="o">**</span><span class="n">overrides</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FieldInfo</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge `FieldInfo` instances keeping only explicitly set attributes.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;明示的に設定された属性のみを保持して`FieldInfo`インスタンスをマージします。</span>
 
-<span class="sd">    Later `FieldInfo` instances override earlier ones.</span>
+<span class="sd">    後の`FieldInfo`インスタンスは前のインスタンスを上書きします。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        FieldInfo: A merged FieldInfo instance.</span>
+<span class="sd">        FieldInfo: マージされたFieldInfoインスタンス。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">flattened_field_infos</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">FieldInfo</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">field_info</span> <span class="ow">in</span> <span class="n">field_infos</span><span class="p">:</span>
@@ -5445,7 +5413,7 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
     <div class="doc doc-contents ">
 
-      <p>The deprecation message to be emitted, or <code>None</code> if not set.</p>
+      <p>発行される非推奨メッセージ、または設定されていない場合は<code>None</code>。</p>
     </div>
 
 </div>
@@ -5468,10 +5436,8 @@ one of the (not first) arguments in <code>Annotated</code> is an instance of <co
 
     <div class="doc doc-contents ">
 
-      <p>Get the default value.</p>
-<p>We expose an option for whether to call the default_factory (if present), as calling it may
-result in side effects that we want to avoid. However, there are times when it really should
-be called (namely, when instantiating a model via <code>model_construct</code>).</p>
+      <p>デフォルト値を取得します。</p>
+<p>default_factoryを呼び出すと、回避したい副作用が発生する可能性があるため、default_factory(存在する場合)を呼び出すかどうかのオプションを公開します。ただし、実際に呼び出す必要がある場合もあります(つまり、<code>model_construct</code>を使用してモデルをインスタンス化する場合)。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5492,7 +5458,7 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether to call the default_factory or not. Defaults to <code>False</code>.</p>
+                <p>default_factoryを呼び出すかどうか。デフォルトは<code>False</code>です。</p>
               </div>
             </td>
             <td>
@@ -5518,7 +5484,7 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value, calling the default factory if requested or <code>None</code> if not set.</p>
+                <p>デフォルト値。要求された場合はデフォルトのファクトリを呼び出し、設定されていない場合は<code>None</code>を呼び出します。</p>
               </div>
             </td>
           </tr>
@@ -5527,7 +5493,14 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">557</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">550</span>
+<span class="normal">551</span>
+<span class="normal">552</span>
+<span class="normal">553</span>
+<span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
 <span class="normal">558</span>
 <span class="normal">559</span>
 <span class="normal">560</span>
@@ -5536,27 +5509,16 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
 <span class="normal">563</span>
 <span class="normal">564</span>
 <span class="normal">565</span>
-<span class="normal">566</span>
-<span class="normal">567</span>
-<span class="normal">568</span>
-<span class="normal">569</span>
-<span class="normal">570</span>
-<span class="normal">571</span>
-<span class="normal">572</span>
-<span class="normal">573</span>
-<span class="normal">574</span>
-<span class="normal">575</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">call_default_factory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the default value.</span>
+<span class="normal">566</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">call_default_factory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;デフォルト値を取得します。</span>
 
-<span class="sd">    We expose an option for whether to call the default_factory (if present), as calling it may</span>
-<span class="sd">    result in side effects that we want to avoid. However, there are times when it really should</span>
-<span class="sd">    be called (namely, when instantiating a model via `model_construct`).</span>
+<span class="sd">    default_factoryを呼び出すと、回避したい副作用が発生する可能性があるため、default_factory(存在する場合)を呼び出すかどうかのオプションを公開します。ただし、実際に呼び出す必要がある場合もあります(つまり、`model_construct`を使用してモデルをインスタンス化する場合)。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        call_default_factory: Whether to call the default_factory or not. Defaults to `False`.</span>
+<span class="sd">        call_default_factory:default_factoryを呼び出すかどうか。デフォルトは`False`です。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The default value, calling the default factory if requested or `None` if not set.</span>
+<span class="sd">        デフォルト値。要求された場合はデフォルトのファクトリを呼び出し、設定されていない場合は`None`を呼び出します。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_utils</span><span class="o">.</span><span class="n">smart_deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">)</span>
@@ -5588,7 +5550,7 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
 
     <div class="doc doc-contents ">
 
-      <p>Check if the field is required (i.e., does not have a default value or factory).</p>
+      <p>フィールドが必要かどうかをチェックしてください(デフォルト値またはファクトリがないなど)。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -5606,7 +5568,7 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
             </td>
             <td>
               <div class="doc-md-description">
-                <p><code>True</code> if the field is required, <code>False</code> otherwise.</p>
+                <p>フィールドが必要な場合は<code>True</code>、そうでない場合は<code>False</code>です。</p>
               </div>
             </td>
           </tr>
@@ -5615,17 +5577,17 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span>
-<span class="normal">583</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_required</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the field is required (i.e., does not have a default value or factory).</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">568</span>
+<span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">is_required</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;フィールドが必要かどうかをチェックしてください(デフォルト値またはファクトリがないなど)。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        `True` if the field is required, `False` otherwise.</span>
+<span class="sd">        フィールドが必要な場合は`True`、そうでない場合は`False`です。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">PydanticUndefined</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="kc">None</span>
 </code></pre></div></td></tr></table></div>
@@ -5652,12 +5614,9 @@ be called (namely, when instantiating a model via <code>model_construct</code>).
 
     <div class="doc doc-contents ">
 
-      <p>Attempts to rebuild the original annotation for use in function signatures.</p>
-<p>If metadata is present, it adds it to the original annotation using
-<code>Annotated</code>. Otherwise, it returns the original annotation as-is.</p>
-<p>Note that because the metadata has been flattened, the original annotation
-may not be reconstructed exactly as originally provided, e.g. if the original
-type had unrecognized annotations, or was annotated with a call to <code>pydantic.Field</code>.</p>
+      <p>関数シグネチャで使用するために元の注釈を再構築しようとします。</p>
+<p>メタデータが存在する場合は、<code>Annotated</code>を使用して元の注釈に追加します。存在しない場合は、元の注釈をそのまま返します。</p>
+<p>メタデータがフラット化されているため、元の型に認識されないアノテーションがあったり、<code>pydantic.Field</code>を呼び出してアノテーションが付けられたりした場合など、元のアノテーションが元のまま正確に再構築されない可能性があることに注意してください。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -5675,7 +5634,7 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The rebuilt annotation.</p>
+                <p>再構築された注釈。</p>
               </div>
             </td>
           </tr>
@@ -5684,35 +5643,29 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">585</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
+<span class="normal">585</span>
 <span class="normal">586</span>
 <span class="normal">587</span>
 <span class="normal">588</span>
 <span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span>
-<span class="normal">593</span>
-<span class="normal">594</span>
-<span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rebuild_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Attempts to rebuild the original annotation for use in function signatures.</span>
+<span class="normal">590</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rebuild_annotation</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;関数シグネチャで使用するために元の注釈を再構築しようとします。</span>
 
-<span class="sd">    If metadata is present, it adds it to the original annotation using</span>
-<span class="sd">    `Annotated`. Otherwise, it returns the original annotation as-is.</span>
+<span class="sd">    メタデータが存在する場合は、`Annotated`を使用して元の注釈に追加します。存在しない場合は、元の注釈をそのまま返します。</span>
 
-<span class="sd">    Note that because the metadata has been flattened, the original annotation</span>
-<span class="sd">    may not be reconstructed exactly as originally provided, e.g. if the original</span>
-<span class="sd">    type had unrecognized annotations, or was annotated with a call to `pydantic.Field`.</span>
+<span class="sd">    メタデータがフラット化されているため、元の型に認識されないアノテーションがあったり、`pydantic.Field`を呼び出してアノテーションが付けられたりした場合など、元のアノテーションが元のまま正確に再構築されない可能性があることに注意してください。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The rebuilt annotation.</span>
+<span class="sd">        再構築された注釈。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotation</span>
@@ -5746,9 +5699,9 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
 
     <div class="doc doc-contents ">
 
-      <p>Apply a <code>typevars_map</code> to the annotation.</p>
-<p>This method is used when analyzing parametrized generic types to replace typevars with their concrete types.</p>
-<p>This method applies the <code>typevars_map</code> to the annotation in place.</p>
+      <p>注釈に<code>typevars_map</code>を適用してください。</p>
+<p>このメソッドは、パラメータ化されたジェネリック型を分析して、型変数を具体的な型に置き換えるときに使用されます。</p>
+<p>このメソッドは、<code>typevars_map</code>をアノテーションにインプレイスで適用します。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5769,7 +5722,7 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary mapping type variables to their concrete types.</p>
+                <p>型変数をその具象型にマップする辞書。</p>
               </div>
             </td>
             <td>
@@ -5779,11 +5732,11 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
           <tr class="doc-section-item">
             <td><code>types_namespace</code></td>
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> | None</code>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/library/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="typing.Any" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dictionary containing related types to the annotated type.</p>
+                <p>アノテーションが付けられた型に関連する型を含む辞書。</p>
               </div>
             </td>
             <td>
@@ -5796,41 +5749,38 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
 
 <details class="see-also" open>
   <summary>See Also</summary>
-  <p>pydantic._internal._generics.replace_types is used for replacing the typevars with
-    their concrete types.</p>
+  <p>pydantic._internal._generics.replace_typesは、typevarを具象型に置き換えるために使用されます。</p>
 </details>
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">604</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">592</span>
+<span class="normal">593</span>
+<span class="normal">594</span>
+<span class="normal">595</span>
+<span class="normal">596</span>
+<span class="normal">597</span>
+<span class="normal">598</span>
+<span class="normal">599</span>
+<span class="normal">600</span>
+<span class="normal">601</span>
+<span class="normal">602</span>
+<span class="normal">603</span>
+<span class="normal">604</span>
 <span class="normal">605</span>
 <span class="normal">606</span>
-<span class="normal">607</span>
-<span class="normal">608</span>
-<span class="normal">609</span>
-<span class="normal">610</span>
-<span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span>
-<span class="normal">620</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_typevars_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typevars_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply a `typevars_map` to the annotation.</span>
+<span class="normal">607</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">apply_typevars_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typevars_map</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">types_namespace</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;注釈に`typevars_map`を適用してください。</span>
 
-<span class="sd">    This method is used when analyzing parametrized generic types to replace typevars with their concrete types.</span>
+<span class="sd">    このメソッドは、パラメータ化されたジェネリック型を分析して、型変数を具体的な型に置き換えるときに使用されます。</span>
 
-<span class="sd">    This method applies the `typevars_map` to the annotation in place.</span>
+<span class="sd">    このメソッドは、`typevars_map`をアノテーションにインプレイスで適用します。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        typevars_map: A dictionary mapping type variables to their concrete types.</span>
-<span class="sd">        types_namespace (dict | None): A dictionary containing related types to the annotated type.</span>
+<span class="sd">        typevars_map: 型変数をその具象型にマップする辞書。</span>
+<span class="sd">        types_namespace: アノテーションが付けられた型に関連する型を含む辞書。</span>
 
 <span class="sd">    See Also:</span>
-<span class="sd">        pydantic._internal._generics.replace_types is used for replacing the typevars with</span>
-<span class="sd">            their concrete types.</span>
+<span class="sd">        pydantic._internal._generics.replace_typesは、typevarを具象型に置き換えるために使用されます。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">annotation</span> <span class="o">=</span> <span class="n">_typing_extra</span><span class="o">.</span><span class="n">eval_type_lenient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">annotation</span><span class="p">,</span> <span class="n">types_namespace</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">annotation</span> <span class="o">=</span> <span class="n">_generics</span><span class="o">.</span><span class="n">replace_types</span><span class="p">(</span><span class="n">annotation</span><span class="p">,</span> <span class="n">typevars_map</span><span class="p">)</span>
@@ -5872,13 +5822,10 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/models/#private-model-attributes">Private model attributes</a></p>
-</div>
-<p>Indicates that an attribute is intended for private use and not handled during normal validation/serialization.</p>
-<p>Private attributes are not validated by Pydantic, so it's up to you to ensure they are used in a type-safe manner.</p>
-<p>Private attributes are stored in <code>__private_attributes__</code> on the model.</p>
+      <p>Usage docs: ../concepts/models/#private-model-attributes</p>
+<p>属性がプライベートに使用され、通常の検証/シリアライゼーションでは処理されないことを示します。</p>
+<p>private属性はPydanticによって検証されないため、タイプセーフな方法で使用するかどうかはユーザー次第です。</p>
+<p>プライベート属性は、モデルの<code>__private_attributes__</code>に保存されます。</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -5899,7 +5846,7 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The attribute's default value. Defaults to Undefined.</p>
+                <p>属性のデフォルト値。デフォルトは"未定義"です。</p>
               </div>
             </td>
             <td>
@@ -5913,9 +5860,7 @@ type had unrecognized annotations, or was annotated with a call to <code>pydanti
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Callable that will be
-called when a default value is needed for this attribute.
-If both <code>default</code> and <code>default_factory</code> are set, an error will be raised.</p>
+                <p>この属性にデフォルト値が必要な場合に呼び出される呼び出し可能オブジェクト。<code>default</code>と<code>default_factory</code>の両方が設定されている場合、エラーが発生します。</p>
               </div>
             </td>
             <td>
@@ -5929,7 +5874,7 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Whether the attribute should be included in the constructor of the dataclass. Always <code>False</code>.</p>
+                <p>属性をデータクラスのコンストラクタに含めるかどうか。常に<code>False</code>です。</p>
               </div>
             </td>
             <td>
@@ -5955,7 +5900,7 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>An instance of <a class="autorefs autorefs-internal" href="#pydantic.fields.ModelPrivateAttr"><code>ModelPrivateAttr</code></a> class.</p>
+                <p><a class="autorefs autorefs-internal" href="#pydantic.fields.ModelPrivateAttr"><code>ModelPrivateAttr</code></a>クラスのインスタンスです。</p>
               </div>
             </td>
           </tr>
@@ -5978,7 +5923,7 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>If both <code>default</code> and <code>default_factory</code> are set.</p>
+                <p><code>default</code>と<code>default_factory</code>の両方が設定されている場合。</p>
               </div>
             </td>
           </tr>
@@ -5987,65 +5932,61 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">961</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">934</span>
+<span class="normal">935</span>
+<span class="normal">936</span>
+<span class="normal">937</span>
+<span class="normal">938</span>
+<span class="normal">939</span>
+<span class="normal">940</span>
+<span class="normal">941</span>
+<span class="normal">942</span>
+<span class="normal">943</span>
+<span class="normal">944</span>
+<span class="normal">945</span>
+<span class="normal">946</span>
+<span class="normal">947</span>
+<span class="normal">948</span>
+<span class="normal">949</span>
+<span class="normal">950</span>
+<span class="normal">951</span>
+<span class="normal">952</span>
+<span class="normal">953</span>
+<span class="normal">954</span>
+<span class="normal">955</span>
+<span class="normal">956</span>
+<span class="normal">957</span>
+<span class="normal">958</span>
+<span class="normal">959</span>
+<span class="normal">960</span>
+<span class="normal">961</span>
 <span class="normal">962</span>
 <span class="normal">963</span>
 <span class="normal">964</span>
-<span class="normal">965</span>
-<span class="normal">966</span>
-<span class="normal">967</span>
-<span class="normal">968</span>
-<span class="normal">969</span>
-<span class="normal">970</span>
-<span class="normal">971</span>
-<span class="normal">972</span>
-<span class="normal">973</span>
-<span class="normal">974</span>
-<span class="normal">975</span>
-<span class="normal">976</span>
-<span class="normal">977</span>
-<span class="normal">978</span>
-<span class="normal">979</span>
-<span class="normal">980</span>
-<span class="normal">981</span>
-<span class="normal">982</span>
-<span class="normal">983</span>
-<span class="normal">984</span>
-<span class="normal">985</span>
-<span class="normal">986</span>
-<span class="normal">987</span>
-<span class="normal">988</span>
-<span class="normal">989</span>
-<span class="normal">990</span>
-<span class="normal">991</span>
-<span class="normal">992</span>
-<span class="normal">993</span>
-<span class="normal">994</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">PrivateAttr</span><span class="p">(</span>
+<span class="normal">965</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">PrivateAttr</span><span class="p">(</span>
     <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">default_factory</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">init</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/models/#private-model-attributes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/models/#private-model-attributes</span>
 
-<span class="sd">    Indicates that an attribute is intended for private use and not handled during normal validation/serialization.</span>
+<span class="sd">    属性がプライベートに使用され、通常の検証/シリアライゼーションでは処理されないことを示します。</span>
 
-<span class="sd">    Private attributes are not validated by Pydantic, so it&#39;s up to you to ensure they are used in a type-safe manner.</span>
+<span class="sd">    private属性はPydanticによって検証されないため、タイプセーフな方法で使用するかどうかはユーザー次第です。</span>
 
-<span class="sd">    Private attributes are stored in `__private_attributes__` on the model.</span>
+<span class="sd">    プライベート属性は、モデルの`__private_attributes__`に保存されます。</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        default: The attribute&#39;s default value. Defaults to Undefined.</span>
-<span class="sd">        default_factory: Callable that will be</span>
-<span class="sd">            called when a default value is needed for this attribute.</span>
-<span class="sd">            If both `default` and `default_factory` are set, an error will be raised.</span>
-<span class="sd">        init: Whether the attribute should be included in the constructor of the dataclass. Always `False`.</span>
+<span class="sd">        default: 属性のデフォルト値。デフォルトは&quot;未定義&quot;です。</span>
+<span class="sd">        default_factory: この属性にデフォルト値が必要な場合に呼び出される呼び出し可能オブジェクト。`default`と`default_factory`の両方が設定されている場合、エラーが発生します。</span>
+<span class="sd">        init: 属性をデータクラスのコンストラクタに含めるかどうか。常に`False`です。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        An instance of [`ModelPrivateAttr`][pydantic.fields.ModelPrivateAttr] class.</span>
+<span class="sd">        [`ModelPrivateAttr`][pydantic.fields.ModelPrivateAttr]クラスのインスタンスです。</span>
 
 <span class="sd">    Raises:</span>
-<span class="sd">        ValueError: If both `default` and `default_factory` are set.</span>
+<span class="sd">        ValueError: `default`と`default_factory`の両方が設定されている場合。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">PydanticUndefined</span> <span class="ow">and</span> <span class="n">default_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;cannot specify both default and default_factory&#39;</span><span class="p">)</span>
@@ -6086,11 +6027,10 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
               Bases: <code><span title="pydantic._internal._repr.Representation">Representation</span></code></p>
 
 
-      <p>A descriptor for private attributes in class models.</p>
+      <p>クラスモデル内のプライベート属性の記述子。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You generally shouldn't be creating <code>ModelPrivateAttr</code> instances directly, instead use
-<code>pydantic.fields.PrivateAttr</code>. (This is similar to <code>FieldInfo</code> vs. <code>Field</code>.)</p>
+<p>一般的に、<code>ModelPrivateAttr</code>インスタンスを直接作成すべきではなく、代わりに<code>pydantic.fields.PrivateAttr</code>を使用してください(これは<code>FieldInfo</code>と<code>Field</code>に似ています)。</p>
 </div>
 
 
@@ -6110,7 +6050,7 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value of the attribute if not provided.</p>
+                <p>属性のデフォルト値(指定されていない場合)。</p>
               </div>
             </td>
           </tr>
@@ -6120,8 +6060,7 @@ If both <code>default</code> and <code>default_factory</code> are set, an error 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable function that generates the default value of the
-attribute if not provided.</p>
+                <p>指定されていない場合に属性のデフォルト値を生成する、呼び出し可能な関数。</p>
               </div>
             </td>
           </tr>
@@ -6130,11 +6069,11 @@ attribute if not provided.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>pydantic/fields.py</code></summary>
-                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">915</span>
-<span class="normal">916</span>
-<span class="normal">917</span>
-<span class="normal">918</span>
-<span class="normal">919</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+                    <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">888</span>
+<span class="normal">889</span>
+<span class="normal">890</span>
+<span class="normal">891</span>
+<span class="normal">892</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">default_factory</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">default</span> <span class="o">=</span> <span class="n">default</span>
@@ -6165,9 +6104,9 @@ attribute if not provided.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Retrieve the default value of the object.</p>
-<p>If <code>self.default_factory</code> is <code>None</code>, the method will return a deep copy of the <code>self.default</code> object.</p>
-<p>If <code>self.default_factory</code> is not <code>None</code>, it will call <code>self.default_factory</code> and return the value returned.</p>
+      <p>オブジェクトのデフォルト値を取得します。</p>
+<p><code>self.default_factory</code>が<code>None</code>の場合、このメソッドは<code>self.default</code>オブジェクトのディープコピーを返します。</p>
+<p><code>self.default_factory</code>が<code>None</code>でない場合、<code>self.default_factory</code>を呼び出し、返された値を返します。</p>
 
 
     <p><span class="doc-section-title">Returns:</span></p>
@@ -6185,7 +6124,7 @@ attribute if not provided.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The default value of the object.</p>
+                <p>オブジェクトのデフォルト値。</p>
               </div>
             </td>
           </tr>
@@ -6194,25 +6133,25 @@ attribute if not provided.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">942</span>
-<span class="normal">943</span>
-<span class="normal">944</span>
-<span class="normal">945</span>
-<span class="normal">946</span>
-<span class="normal">947</span>
-<span class="normal">948</span>
-<span class="normal">949</span>
-<span class="normal">950</span>
-<span class="normal">951</span>
-<span class="normal">952</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Retrieve the default value of the object.</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">915</span>
+<span class="normal">916</span>
+<span class="normal">917</span>
+<span class="normal">918</span>
+<span class="normal">919</span>
+<span class="normal">920</span>
+<span class="normal">921</span>
+<span class="normal">922</span>
+<span class="normal">923</span>
+<span class="normal">924</span>
+<span class="normal">925</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_default</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;オブジェクトのデフォルト値を取得します。</span>
 
-<span class="sd">    If `self.default_factory` is `None`, the method will return a deep copy of the `self.default` object.</span>
+<span class="sd">    `self.default_factory`が`None`の場合、このメソッドは`self.default`オブジェクトのディープコピーを返します。</span>
 
-<span class="sd">    If `self.default_factory` is not `None`, it will call `self.default_factory` and return the value returned.</span>
+<span class="sd">    `self.default_factory`が`None`でない場合、`self.default_factory`を呼び出し、返された値を返します。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        The default value of the object.</span>
+<span class="sd">        オブジェクトのデフォルト値。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">_utils</span><span class="o">.</span><span class="n">smart_deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_factory</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -6266,12 +6205,9 @@ attribute if not provided.</p>
 
     <div class="doc doc-contents ">
 
-      <div class="admonition abstract">
-<p class="admonition-title">Usage Documentation</p>
-<p><a href="../../concepts/fields/#the-computed_field-decorator">The <code>computed_field</code> decorator</a></p>
-</div>
-<p>Decorator to include <code>property</code> and <code>cached_property</code> when serializing models or dataclasses.</p>
-<p>This is useful for fields that are computed from other fields, or for fields that are expensive to compute and should be cached.</p>
+      <p>Usage docs: ../concepts/fields#the-computed_field-decorator</p>
+<p>モデルまたはデータクラスをシリアライズするときに<code>property</code>と<code>cached_property</code>を含めるデコレータ。</p>
+<p>これは、他のフィールドから計算されるフィールドや、計算にコストがかかり、キャッシュする必要があるフィールドに便利です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">computed_field</span>
 
 <span class="k">class</span> <span class="nc">Rectangle</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
@@ -6286,16 +6222,14 @@ attribute if not provided.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">Rectangle</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
 <span class="c1">#&gt; {&#39;width&#39;: 3, &#39;length&#39;: 2, &#39;area&#39;: 6}</span>
 </code></pre></div>
-<p>If applied to functions not yet decorated with <code>@property</code> or <code>@cached_property</code>, the function is
-automatically wrapped with <code>property</code>. Although this is more concise, you will lose IntelliSense in your IDE,
-and confuse static type checkers, thus explicit use of <code>@property</code> is recommended.</p>
+<p><code>@property</code>または<code>@cached_property</code>でデコレートされていない関数に適用すると、その関数は自動的に<code>property</code>でラップされます。
+これはより簡潔ですが、IDE内のIntelliSenseが失われ、静的型チェッカーが混乱するため、<code>@property</code>を明示的に使用することをお勧めします。</p>
 <div class="admonition warning">
 <p class="admonition-title">Mypy Warning</p>
-<p>Even with the <code>@property</code> or <code>@cached_property</code> applied to your function before <code>@computed_field</code>,
-mypy may throw a <code>Decorated property not supported</code> error.
-See <a href="https://github.com/python/mypy/issues/1362">mypy issue #1362</a>, for more information.
-To avoid this error message, add <code># type: ignore[misc]</code> to the <code>@computed_field</code> line.</p>
-<p><a href="https://github.com/microsoft/pyright">pyright</a> supports <code>@computed_field</code> without error.</p>
+<p><code>@computed_field</code>の前に<code>@property</code>または<code>@cached_property</code>を関数に適用しても、mypyは<code>Decorated property not supported</code>エラーをスローすることがあります。
+詳細については、<a href="https://github.com/python/mypy/issues/1362">mypy issue #1362</a>を参照してください。
+このエラーメッセージを回避するには、<code>@computed_field</code>行に<code>#type:ignore[misc]</code>を追加してください。</p>
+<p><a href="https://github.com/microsoft/pyright">pyright</a>はエラーなしで<code>@computed_field</code>をサポートしています。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">random</span>
 
@@ -6332,9 +6266,9 @@ To avoid this error message, add <code># type: ignore[misc]</code> to the <code>
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Overriding with <code>computed_field</code></p>
-<p>You can't override a field from a parent class with a <code>computed_field</code> in the child class.
-<code>mypy</code> complains about this behavior if allowed, and <code>dataclasses</code> doesn't allow this pattern either.
-See the example below:</p>
+<p>親クラスのフィールドを子クラスの<code>computed_field</code>で上書きすることはできません。
+<code>mypy</code>は許可されていればこのふるまいは許しませんし、<code>dataclasses</code>もこのパターンを許可していません。
+次の例を参照してください。</p>
 </div>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">computed_field</span>
 
@@ -6353,7 +6287,7 @@ See the example below:</p>
     <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
     <span class="c1">#&gt; ValueError(&quot;you can&#39;t override a field with a computed field&quot;)</span>
 </code></pre></div>
-<p>Private properties decorated with <code>@computed_field</code> have <code>repr=False</code> by default.</p>
+<p><code>@computed_field</code>でデコレートされたプライベートプロパティは、デフォルトで<code>repr=False</code>です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">cached_property</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">computed_field</span>
@@ -6395,7 +6329,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>the function to wrap.</p>
+                <p>ラップする関数。</p>
               </div>
             </td>
             <td>
@@ -6409,7 +6343,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>alias to use when serializing this computed field, only used when <code>by_alias=True</code></p>
+                <p>この計算フィールドをシリアライズするときに使用するエイリアス。<code>by_alias=True</code>の場合にのみ使用されます。</p>
               </div>
             </td>
             <td>
@@ -6423,7 +6357,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>priority of the alias. This affects whether an alias generator is used</p>
+                <p>別名の優先度。これは、別名ジェネレータを使用するかどうかに影響します。</p>
               </div>
             </td>
             <td>
@@ -6437,7 +6371,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Title to use when including this computed field in JSON Schema</p>
+                <p>この計算フィールドをJSONスキーマに含めるときに使用するタイトル</p>
               </div>
             </td>
             <td>
@@ -6451,7 +6385,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable that takes a field name and returns title for it.</p>
+                <p>フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</p>
               </div>
             </td>
             <td>
@@ -6465,8 +6399,7 @@ See the example below:</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description to use when including this computed field in JSON Schema, defaults to the function's
-docstring</p>
+                <p>この計算フィールドをJSONスキーマに含めるときに使用する説明。デフォルトは関数のdocstringです。</p>
               </div>
             </td>
             <td>
@@ -6480,9 +6413,7 @@ docstring</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A deprecation message (or an instance of <code>warnings.deprecated</code> or the <code>typing_extensions.deprecated</code> backport).
-to be emitted when accessing the field. Or a boolean. This will automatically be set if the property is decorated with the
-<code>deprecated</code> decorator.</p>
+                <p>非推奨メッセージ(または<code>warnings.deprecated</code>または<code>typing_extensions.deprecated</code>バックポートのインスタンス)。フィールドにアクセスするときに発行されます。またはブール値。プロパティが<code>deprecated</code>デコレータでデコレートされている場合、これは自動的に設定されます。</p>
               </div>
             </td>
             <td>
@@ -6496,7 +6427,7 @@ to be emitted when accessing the field. Or a boolean. This will automatically be
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Example values to use when including this computed field in JSON Schema</p>
+                <p>この計算フィールドをJSONスキーマに含める場合に使用する値の例</p>
               </div>
             </td>
             <td>
@@ -6510,7 +6441,7 @@ to be emitted when accessing the field. Or a boolean. This will automatically be
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dict or callable to provide extra JSON schema properties.</p>
+                <p>追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</p>
               </div>
             </td>
             <td>
@@ -6524,8 +6455,7 @@ to be emitted when accessing the field. Or a boolean. This will automatically be
             </td>
             <td>
               <div class="doc-md-description">
-                <p>whether to include this computed field in model repr.
-Default is <code>False</code> for private properties and <code>True</code> for public properties.</p>
+                <p>この計算済みフィールドをモデルreprに含めるかどうか。デフォルトは、プライベートプロパティの場合は<code>False</code>で、パブリックプロパティの場合は<code>True</code>です。</p>
               </div>
             </td>
             <td>
@@ -6539,10 +6469,7 @@ Default is <code>False</code> for private properties and <code>True</code> for p
             </td>
             <td>
               <div class="doc-md-description">
-                <p>optional return for serialization logic to expect when serializing to JSON, if included
-this must be correct, otherwise a <code>TypeError</code> is raised.
-If you don't include a return type Any is used, which does runtime introspection to handle arbitrary
-objects.</p>
+                <p>JSONへのシリアライズ時に期待されるシリアライズロジックのオプションの戻り値。これが含まれている場合は正しくなければなりません。含まれていない場合は<code>TypeError</code>が発生します。戻り値の型が含まれていない場合は、任意のオブジェクトを処理するために実行時イントロスペクションを行うAnyが使用されます。</p>
               </div>
             </td>
             <td>
@@ -6568,7 +6495,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A proxy wrapper for the property.</p>
+                <p>プロパティのプロキシラッパー。</p>
               </div>
             </td>
           </tr>
@@ -6577,7 +6504,37 @@ objects.</p>
 
             <details class="quote">
               <summary>Source code in <code>pydantic/fields.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1077</span>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span>
+<span class="normal">1064</span>
+<span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
 <span class="normal">1078</span>
 <span class="normal">1079</span>
 <span class="normal">1080</span>
@@ -6732,46 +6689,7 @@ objects.</p>
 <span class="normal">1229</span>
 <span class="normal">1230</span>
 <span class="normal">1231</span>
-<span class="normal">1232</span>
-<span class="normal">1233</span>
-<span class="normal">1234</span>
-<span class="normal">1235</span>
-<span class="normal">1236</span>
-<span class="normal">1237</span>
-<span class="normal">1238</span>
-<span class="normal">1239</span>
-<span class="normal">1240</span>
-<span class="normal">1241</span>
-<span class="normal">1242</span>
-<span class="normal">1243</span>
-<span class="normal">1244</span>
-<span class="normal">1245</span>
-<span class="normal">1246</span>
-<span class="normal">1247</span>
-<span class="normal">1248</span>
-<span class="normal">1249</span>
-<span class="normal">1250</span>
-<span class="normal">1251</span>
-<span class="normal">1252</span>
-<span class="normal">1253</span>
-<span class="normal">1254</span>
-<span class="normal">1255</span>
-<span class="normal">1256</span>
-<span class="normal">1257</span>
-<span class="normal">1258</span>
-<span class="normal">1259</span>
-<span class="normal">1260</span>
-<span class="normal">1261</span>
-<span class="normal">1262</span>
-<span class="normal">1263</span>
-<span class="normal">1264</span>
-<span class="normal">1265</span>
-<span class="normal">1266</span>
-<span class="normal">1267</span>
-<span class="normal">1268</span>
-<span class="normal">1269</span>
-<span class="normal">1270</span>
-<span class="normal">1271</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">computed_field</span><span class="p">(</span>
+<span class="normal">1232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">computed_field</span><span class="p">(</span>
     <span class="n">func</span><span class="p">:</span> <span class="n">PropertyT</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -6786,11 +6704,11 @@ objects.</p>
     <span class="nb">repr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">return_type</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PropertyT</span> <span class="o">|</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">PropertyT</span><span class="p">],</span> <span class="n">PropertyT</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://docs.pydantic.dev/2.9/concepts/fields#the-computed_field-decorator</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: ../concepts/fields#the-computed_field-decorator</span>
 
-<span class="sd">    Decorator to include `property` and `cached_property` when serializing models or dataclasses.</span>
+<span class="sd">    モデルまたはデータクラスをシリアライズするときに`property`と`cached_property`を含めるデコレータ。</span>
 
-<span class="sd">    This is useful for fields that are computed from other fields, or for fields that are expensive to compute and should be cached.</span>
+<span class="sd">    これは、他のフィールドから計算されるフィールドや、計算にコストがかかり、キャッシュする必要があるフィールドに便利です。</span>
 
 <span class="sd">    ```py</span>
 <span class="sd">    from pydantic import BaseModel, computed_field</span>
@@ -6808,17 +6726,15 @@ objects.</p>
 <span class="sd">    #&gt; {&#39;width&#39;: 3, &#39;length&#39;: 2, &#39;area&#39;: 6}</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    If applied to functions not yet decorated with `@property` or `@cached_property`, the function is</span>
-<span class="sd">    automatically wrapped with `property`. Although this is more concise, you will lose IntelliSense in your IDE,</span>
-<span class="sd">    and confuse static type checkers, thus explicit use of `@property` is recommended.</span>
+<span class="sd">    `@property`または`@cached_property`でデコレートされていない関数に適用すると、その関数は自動的に`property`でラップされます。</span>
+<span class="sd">    これはより簡潔ですが、IDE内のIntelliSenseが失われ、静的型チェッカーが混乱するため、`@property`を明示的に使用することをお勧めします。</span>
 
 <span class="sd">    !!! warning &quot;Mypy Warning&quot;</span>
-<span class="sd">        Even with the `@property` or `@cached_property` applied to your function before `@computed_field`,</span>
-<span class="sd">        mypy may throw a `Decorated property not supported` error.</span>
-<span class="sd">        See [mypy issue #1362](https://github.com/python/mypy/issues/1362), for more information.</span>
-<span class="sd">        To avoid this error message, add `# type: ignore[misc]` to the `@computed_field` line.</span>
+<span class="sd">        `@computed_field`の前に`@property`または`@cached_property`を関数に適用しても、mypyは`Decorated property not supported`エラーをスローすることがあります。</span>
+<span class="sd">        詳細については、[mypy issue #1362](https://github.com/python/mypy/issues/1362)を参照してください。</span>
+<span class="sd">        このエラーメッセージを回避するには、`@computed_field`行に`#type:ignore[misc]`を追加してください。</span>
 
-<span class="sd">        [pyright](https://github.com/microsoft/pyright) supports `@computed_field` without error.</span>
+<span class="sd">        [pyright](https://github.com/microsoft/pyright)はエラーなしで`@computed_field`をサポートしています。</span>
 
 <span class="sd">    ```py</span>
 <span class="sd">    import random</span>
@@ -6856,9 +6772,9 @@ objects.</p>
 <span class="sd">    ```</span>
 
 <span class="sd">    !!! warning &quot;Overriding with `computed_field`&quot;</span>
-<span class="sd">        You can&#39;t override a field from a parent class with a `computed_field` in the child class.</span>
-<span class="sd">        `mypy` complains about this behavior if allowed, and `dataclasses` doesn&#39;t allow this pattern either.</span>
-<span class="sd">        See the example below:</span>
+<span class="sd">        親クラスのフィールドを子クラスの`computed_field`で上書きすることはできません。</span>
+<span class="sd">        `mypy`は許可されていればこのふるまいは許しませんし、`dataclasses`もこのパターンを許可していません。</span>
+<span class="sd">        次の例を参照してください。</span>
 
 <span class="sd">    ```py</span>
 <span class="sd">    from pydantic import BaseModel, computed_field</span>
@@ -6879,7 +6795,7 @@ objects.</p>
 <span class="sd">        #&gt; ValueError(&quot;you can&#39;t override a field with a computed field&quot;)</span>
 <span class="sd">    ```</span>
 
-<span class="sd">    Private properties decorated with `@computed_field` have `repr=False` by default.</span>
+<span class="sd">    `@computed_field`でデコレートされたプライベートプロパティは、デフォルトで`repr=False`です。</span>
 
 <span class="sd">    ```py</span>
 <span class="sd">    from functools import cached_property</span>
@@ -6905,27 +6821,20 @@ objects.</p>
 <span class="sd">    ```</span>
 
 <span class="sd">    Args:</span>
-<span class="sd">        func: the function to wrap.</span>
-<span class="sd">        alias: alias to use when serializing this computed field, only used when `by_alias=True`</span>
-<span class="sd">        alias_priority: priority of the alias. This affects whether an alias generator is used</span>
-<span class="sd">        title: Title to use when including this computed field in JSON Schema</span>
-<span class="sd">        field_title_generator: A callable that takes a field name and returns title for it.</span>
-<span class="sd">        description: Description to use when including this computed field in JSON Schema, defaults to the function&#39;s</span>
-<span class="sd">            docstring</span>
-<span class="sd">        deprecated: A deprecation message (or an instance of `warnings.deprecated` or the `typing_extensions.deprecated` backport).</span>
-<span class="sd">            to be emitted when accessing the field. Or a boolean. This will automatically be set if the property is decorated with the</span>
-<span class="sd">            `deprecated` decorator.</span>
-<span class="sd">        examples: Example values to use when including this computed field in JSON Schema</span>
-<span class="sd">        json_schema_extra: A dict or callable to provide extra JSON schema properties.</span>
-<span class="sd">        repr: whether to include this computed field in model repr.</span>
-<span class="sd">            Default is `False` for private properties and `True` for public properties.</span>
-<span class="sd">        return_type: optional return for serialization logic to expect when serializing to JSON, if included</span>
-<span class="sd">            this must be correct, otherwise a `TypeError` is raised.</span>
-<span class="sd">            If you don&#39;t include a return type Any is used, which does runtime introspection to handle arbitrary</span>
-<span class="sd">            objects.</span>
+<span class="sd">        func: ラップする関数。</span>
+<span class="sd">        alias: この計算フィールドをシリアライズするときに使用するエイリアス。`by_alias=True`の場合にのみ使用されます。</span>
+<span class="sd">        alias_priority: 別名の優先度。これは、別名ジェネレータを使用するかどうかに影響します。</span>
+<span class="sd">        title: この計算フィールドをJSONスキーマに含めるときに使用するタイトル</span>
+<span class="sd">        field_title_generator: フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</span>
+<span class="sd">        description: この計算フィールドをJSONスキーマに含めるときに使用する説明。デフォルトは関数のdocstringです。</span>
+<span class="sd">        deprecated: 非推奨メッセージ(または`warnings.deprecated`または`typing_extensions.deprecated`バックポートのインスタンス)。フィールドにアクセスするときに発行されます。またはブール値。プロパティが`deprecated`デコレータでデコレートされている場合、これは自動的に設定されます。</span>
+<span class="sd">        examples: この計算フィールドをJSONスキーマに含める場合に使用する値の例</span>
+<span class="sd">        json_schema_extra: 追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</span>
+<span class="sd">        repr: この計算済みフィールドをモデルreprに含めるかどうか。デフォルトは、プライベートプロパティの場合は`False`で、パブリックプロパティの場合は`True`です。</span>
+<span class="sd">        return_type: JSONへのシリアライズ時に期待されるシリアライズロジックのオプションの戻り値。これが含まれている場合は正しくなければなりません。含まれていない場合は`TypeError`が発生します。戻り値の型が含まれていない場合は、任意のオブジェクトを処理するために実行時イントロスペクションを行うAnyが使用されます。</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        A proxy wrapper for the property.</span>
+<span class="sd">        プロパティのプロキシラッパー。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">dec</span><span class="p">(</span><span class="n">f</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
@@ -7012,7 +6921,7 @@ objects.</p>
     <div class="doc doc-contents ">
 
 
-      <p>A container for data from <code>@computed_field</code> so that we can access it while building the pydantic-core schema.</p>
+      <p>pydantic-coreスキーマを構築する際にアクセスできるように、<code>@computed_field</code>からのデータのコンテナ。</p>
 
 
 <p><span class="doc-section-title">Attributes:</span></p>
@@ -7032,7 +6941,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A class variable representing the decorator string, '@computed_field'.</p>
+                <p>デコレータ文字列'@computed_field'を表すクラス変数。</p>
               </div>
             </td>
           </tr>
@@ -7043,7 +6952,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The wrapped computed field property.</p>
+                <p>ラップされた計算結果フィールド・プロパティ。</p>
               </div>
             </td>
           </tr>
@@ -7054,7 +6963,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The type of the computed field property's return value.</p>
+                <p>計算フィールド・プロパティの戻り値の型。</p>
               </div>
             </td>
           </tr>
@@ -7065,7 +6974,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The alias of the property to be used during serialization.</p>
+                <p>シリアライズ中に使用されるプロパティのエイリアス。</p>
               </div>
             </td>
           </tr>
@@ -7076,7 +6985,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The priority of the alias. This affects whether an alias generator is used.</p>
+                <p>別名の優先度。これは、別名ジェネレータを使用するかどうかに影響します。</p>
               </div>
             </td>
           </tr>
@@ -7087,7 +6996,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Title of the computed field to include in the serialization JSON schema.</p>
+                <p>シリアライゼーションJSONスキーマに含める計算フィールドのタイトル。</p>
               </div>
             </td>
           </tr>
@@ -7098,7 +7007,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A callable that takes a field name and returns title for it.</p>
+                <p>フィールド名を受け取り、そのタイトルを返す呼び出し可能オブジェクト。</p>
               </div>
             </td>
           </tr>
@@ -7109,7 +7018,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Description of the computed field to include in the serialization JSON schema.</p>
+                <p>シリアライゼーションJSONスキーマに含める計算フィールドの説明。</p>
               </div>
             </td>
           </tr>
@@ -7120,8 +7029,7 @@ objects.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A deprecation message, an instance of <code>warnings.deprecated</code> or the <code>typing_extensions.deprecated</code> backport,
-or a boolean. If <code>True</code>, a default deprecation message will be emitted when accessing the field.</p>
+                <p>非推奨メッセージ、<code>warnings.deprecated</code>または<code>typing_extensions.deprecated</code>バックポートのインスタンス、またはブール値。<code>True</code>の場合、フィールドにアクセスするとデフォルトの非推奨メッセージが出力されます。</p>
               </div>
             </td>
           </tr>
@@ -7132,7 +7040,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>Example values of the computed field to include in the serialization JSON schema.</p>
+                <p>シリアライズJSONスキーマに含める計算結果フィールドの値の例。</p>
               </div>
             </td>
           </tr>
@@ -7143,7 +7051,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A dict or callable to provide extra JSON schema properties.</p>
+                <p>追加のJSONスキーマ・プロパティーを提供するためのdictまたはcallable。</p>
               </div>
             </td>
           </tr>
@@ -7154,7 +7062,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
             </td>
             <td>
               <div class="doc-md-description">
-                <p>A boolean indicating whether to include the field in the <strong>repr</strong> output.</p>
+                <p>__repr__出力にフィールドを含めるかどうかを示すブール値。</p>
               </div>
             </td>
           </tr>
@@ -7190,7 +7098,7 @@ or a boolean. If <code>True</code>, a default deprecation message will be emitte
 
     <div class="doc doc-contents ">
 
-      <p>The deprecation message to be emitted, or <code>None</code> if not set.</p>
+      <p>出力される非推奨メッセージ、または設定されていない場合は<code>None</code>。</p>
     </div>
 
 </div>
