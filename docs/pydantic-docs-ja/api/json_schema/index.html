@@ -59,8 +59,6 @@
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-  
-
 
     
     
@@ -4604,7 +4602,7 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json_schema/#customizing-the-json-schema-generation-process</p>
+      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#customizing-the-json-schema-generation-process</p>
 <p>JSONスキーマを生成するためのクラス。</p>
 <p>このクラスは、設定されたパラメータに基づいてJSONスキーマを生成します。デフォルトのスキーマダイアレクトは<a href="https://json-schema.org/draft/2020-12/schema">https://json-schema.org/draft/2020-12/schema</a>です。
 このクラスは、複数の名前を持つフィールドの処理方法を設定するために<code>by_alias</code>を使用し、参照名をフォーマットするために<code>ref_template</code>を使用します。</p>
@@ -12747,7 +12745,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        正規化された名前。</span>
-<span class="sd">   &quot;&quot;&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;[^a-zA-Z0-9.\-_]&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;__&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -13680,7 +13678,7 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json_schema/#withjsonschema-annotation</p>
+      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#withjsonschema-annotation</p>
 <p>これをフィールドのアノテーションとして追加し、そのフィールドに対して生成される(ベース)JSONスキーマをオーバーライドします。
 これにより、pydantic.json_schema.GenerateJsonSchemaのカスタムサブクラスを作成しなくても、CallableなどのJSONスキーマの生成時にエラーが発生する型や、is-instanceコアスキーマを持つ型に対してJSONスキーマを設定する方法が提供される。
 通常行われるスキーマへの変更(モデルフィールドのタイトルの設定など)は
@@ -13776,7 +13774,7 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json_schema/#skipjsonschema-annotation</p>
+      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#skipjsonschema-annotation</p>
 <p>これをアノテーションとしてフィールドに追加すると、そのフィールドのJSONスキーマの生成がスキップされます。</p>
 
 
@@ -14440,49 +14438,7 @@
 
 
 
-  
 
-
-
-  <form class="md-feedback" name="feedback" hidden>
-    <fieldset>
-      <legend class="md-feedback__title">
-        Was this page helpful?
-      </legend>
-      <div class="md-feedback__inner">
-        <div class="md-feedback__list">
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
-            </button>
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
-            </button>
-          
-        </div>
-        <div class="md-feedback__note">
-          
-            <div data-md-value="1" hidden>
-              
-              
-                
-              
-              Thanks for your feedback!
-            </div>
-          
-            <div data-md-value="0" hidden>
-              
-              
-                
-              
-              Thanks for your feedback!
-            </div>
-          
-        </div>
-      </div>
-    </fieldset>
-  </form>
 
 
                 

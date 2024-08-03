@@ -59,8 +59,6 @@
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
-  
-
 
     
     
@@ -3129,7 +3127,7 @@ Pydantic以外では、"シリアライズ"という言葉は通常、メモリ�
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><!-- The one exception to sub-models being converted to dictionaries is that <a href="models.md#rootmodel-and-custom-root-types">klzzwxh:0183</a> and its subclasses will have the <code>root</code> field value dumped directly, without a wrapping dictionary. This is also done recursively. -->
-辞書に変換されるサブモデルの1つの例外は、<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>とそのサブクラスが、ラッピング辞書なしで直接ダンプされる<code>root</code>フィールド値を持つことです。これも再帰的に行われます。</p>
+辞書に変換されるサブモデルの1つの例外は、<a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a>とそのサブクラスが、ラッピング辞書なしで直接ダンプされる<code>root</code>フィールド値を持つことです。これも再帰的に行われます。</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -3269,10 +3267,10 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
     <span class="c1">#&gt; bar: whatever=123</span>
 </code></pre></div>
 <!-- Note also that [`RootModel`](models.md#rootmodel-and-custom-root-types) _does_ get converted to a dictionary with the key `'root'`. -->
-<p><a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>_does_が<code>'root'</code>キーを持つ辞書に変換されることにも注意してください。</p>
+<p><a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a>_does_が<code>'root'</code>キーを持つ辞書に変換されることにも注意してください。</p>
 <h2 id="custom-serializers">Custom serializers<a class="headerlink" href="#custom-serializers" title="Permanent link">&para;</a></h2>
 <!-- Pydantic provides several [functional serializers][pydantic.functional_serializers] to customise how a model is serialized to a dictionary or JSON. -->
-<p>Pydanticには、モデルを辞書やJSONにシリアライズする方法をカスタマイズするための<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers">functional serializer</a>がいくつか用意されています。</p>
+<p>Pydanticには、モデルを辞書やJSONにシリアライズする方法をカスタマイズするための<a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers">functional serializers</a>がいくつか用意されています。</p>
 <ul>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.field_serializer"><code>@field_serializer</code></a></li>
 <li><a class="autorefs autorefs-internal" href="../../api/functional_serializers/#pydantic.functional_serializers.model_serializer"><code>@model_serializer</code></a></li>
@@ -3432,7 +3430,7 @@ Pydanticは、一般的に使用されている多くの型を、単純な<code>
         <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span> <span class="o">...</span>
 </code></pre></div>
 <!-- This trick is actually used in [`RootModel`](models.md#rootmodel-and-custom-root-types) for precisely this purpose. -->
-<p>このトリックは、実際には<a href="../models/#RootModel-and-custom-root-types"><code>RootModel</code></a>でまさにこの目的のために使われています。</p>
+<p>このトリックは、実際には<a href="../models/#rootmodel-and-custom-root-types"><code>RootModel</code></a>でまさにこの目的のために使われています。</p>
 <h2 id="serializing-subclasses">Serializing subclasses<a class="headerlink" href="#serializing-subclasses" title="Permanent link">&para;</a></h2>
 <h3 id="subclasses-of-standard-types">Subclasses of standard types<a class="headerlink" href="#subclasses-of-standard-types" title="Permanent link">&para;</a></h3>
 <!-- Subclasses of standard types are automatically dumped like their super-classes: -->
@@ -4028,49 +4026,7 @@ To exclude a field from **every** member of a list or tuple, the dictionary key 
 
 
 
-  
 
-
-
-  <form class="md-feedback" name="feedback" hidden>
-    <fieldset>
-      <legend class="md-feedback__title">
-        Was this page helpful?
-      </legend>
-      <div class="md-feedback__inner">
-        <div class="md-feedback__list">
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9h4m4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21H9m0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03V19Z"/></svg>
-            </button>
-          
-            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12h-4M15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3h9m0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97V5Z"/></svg>
-            </button>
-          
-        </div>
-        <div class="md-feedback__note">
-          
-            <div data-md-value="1" hidden>
-              
-              
-                
-              
-              Thanks for your feedback!
-            </div>
-          
-            <div data-md-value="0" hidden>
-              
-              
-                
-              
-              Thanks for your feedback!
-            </div>
-          
-        </div>
-      </div>
-    </fieldset>
-  </form>
 
 
                 
