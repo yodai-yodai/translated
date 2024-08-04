@@ -2768,13 +2768,23 @@
 
   <h1>Linting</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <h2 id="flake8-plugin">Flake8 plugin<a class="headerlink" href="#flake8-plugin" title="Permanent link">&para;</a></h2>
-<p>If using Flake8 in your project, a <a href="https://pypi.org/project/flake8-pydantic/">plugin</a> is available
-and can be installed using the following:</p>
+<!-- If using Flake8 in your project, a [plugin](https://pypi.org/project/flake8-pydantic/) is available and can be installed using the following: -->
+<p>プロジェクトでFlake8を使用している場合は、<a href="https://pypi.org/project/Flake8-pydantic/">プラグイン</a>が利用でき、以下を使用してインストールできます。</p>
 <div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>flake8-pydantic
 </code></pre></div>
-<p>The lint errors provided by this plugin are namespaced under the <code>PYDXXX</code> code. To ignore some unwanted
-rules, the Flake8 configuration can be adapted:</p>
+<!-- The lint errors provided by this plugin are namespaced under the `PYDXXX` code. To ignore some unwanted rules, the Flake8 configuration can be adapted: -->
+<p>このプラグインによって提供されるlintエラーは、<code>PYDXXX</code>コードの下に名前空間があります。いくつかの不要なルールを無視するために、Flake8の設定を適用することができる。</p>
 <div class="language-ini highlight"><pre><span></span><code><span class="k">[flake8]</span>
 <span class="na">extend-ignore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">PYD001,PYD002</span>
 </code></pre></div>

@@ -2790,23 +2790,36 @@
   
 
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <h1 id="code-generation-with-datamodel-code-generator">Code Generation with datamodel-code-generator<a class="headerlink" href="#code-generation-with-datamodel-code-generator" title="Permanent link">&para;</a></h1>
-<p>The <a href="https://github.com/koxudaxi/datamodel-code-generator/">datamodel-code-generator</a> project is a library and command-line utility to generate pydantic models from just about any data source, including:</p>
+<!-- The [datamodel-code-generator](https://github.com/koxudaxi/datamodel-code-generator/) project is a library and command-line utility to generate pydantic models from just about any data source, including: -->
+<p><a href="https://github.com/koxudaxi/datamodel-code-generator/">datamodel-code-generator</a>プロジェクトは、以下のようなあらゆるデータソースからpydanticモデルを生成するためのライブラリとコマンドラインユーティリティです。</p>
 <ul>
 <li>OpenAPI 3 (YAML/JSON)</li>
 <li>JSON Schema</li>
-<li>JSON/YAML/CSV Data (which will be converted to JSON Schema)</li>
-<li>Python dictionary (which will be converted to JSON Schema)</li>
+<li>JSON/YAML/CSV Data (JSONスキーマに変換されます)</li>
+<li>Python dictionary (JSONスキーマに変換されます)</li>
 <li>GraphQL schema</li>
 </ul>
-<p>Whenever you find yourself with any data convertible JSON but without pydantic models, this tool will allow you to generate type-safe model hierarchies on demand.</p>
+<!-- Whenever you find yourself with any data convertible JSON but without pydantic models, this tool will allow you to generate type-safe model hierarchies on demand. -->
+<p>データ変換可能なJSONを使用していますが、pydanticモデルを使用していない場合は、このツールを使用すると、タイプセーフなモデル階層をオンデマンドで生成できます。</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>datamodel-code-generator
 </code></pre></div>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
-<p>In this case, datamodel-code-generator creates pydantic models from a JSON Schema file.
+<!-- In this case, datamodel-code-generator creates pydantic models from a JSON Schema file. -->
+<p>この場合、datamodel-code-generatorはJSON Schemaファイルからpydanticモデルを作成します。</p>
 <div class="language-bash highlight"><pre><span></span><code>datamodel-codegen<span class="w">  </span>--input<span class="w"> </span>person.json<span class="w"> </span>--input-file-type<span class="w"> </span>jsonschema<span class="w"> </span>--output<span class="w"> </span>model.py
-</code></pre></div></p>
+</code></pre></div>
 <p>person.json:
 <div class="language-json highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;$id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;person.json&quot;</span><span class="p">,</span>
@@ -2880,8 +2893,8 @@
     <span class="n">pets</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Pet</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">comment</span><span class="p">:</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div></p>
-<p>More information can be found on the
-<a href="https://koxudaxi.github.io/datamodel-code-generator/">official documentation</a></p>
+<!-- More information can be found on the [official documentation](https://koxudaxi.github.io/datamodel-code-generator/) -->
+<p>詳細については、<a href="https://koxudaxi.github.io/datamodel-code-generator/">official documentation</a>を参照してください。</p>
 
 
 

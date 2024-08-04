@@ -3090,10 +3090,12 @@
 </div>
 <!-- END INCLUDE -->
 
-<p>Pydantic works well with <a href="http://mypy-lang.org">mypy</a> right out of the box.</p>
-<p>However, Pydantic also ships with a mypy plugin that adds a number of important pydantic-specific
-features to mypy that improve its ability to type-check your code.</p>
-<p>For example, consider the following script:</p>
+<!-- Pydantic works well with [mypy](http://mypy-lang.org) right out of the box. -->
+<p>Pydanticはすぐに<a href="http://mypy-lang.org">mypy</a>とうまく連携します。</p>
+<!-- However, Pydantic also ships with a mypy plugin that adds a number of important pydantic-specific features to mypy that improve its ability to type-check your code. -->
+<p>Pydanticにはmypyプラグインも付属しており、コードの型チェック機能を改善するpydantic固有の重要な機能がmypyに追加されています。</p>
+<!-- For example, consider the following script: -->
+<p>たとえば、次のスクリプトを考えてみます。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span>
 
@@ -3112,24 +3114,28 @@ features to mypy that improve its ability to type-check your code.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">middle_name</span><span class="p">)</span>  <span class="c1"># not a model field!</span>
 <span class="n">Model</span><span class="p">()</span>  <span class="c1"># will raise a validation error for age and list_of_ints</span>
 </code></pre></div>
-<p>Without any special configuration, mypy does not catch the <a href="https://docs.pydantic.dev/2.5/errors/usage_errors/#model-field-missing-annotation">missing model field annotation</a> and warns about the <code>list_of_ints</code> argument which Pydantic parses correctly:</p>
+<!-- Without any special configuration, mypy does not catch the [missing model field annotation](https://docs.pydantic.dev/2.5/errors/usage_errors/#model-field-missing-annotation) and warns about the `list_of_ints` argument which Pydantic parses correctly: -->
+<p>特別な設定がなければ、mypyは<a href="https://docs.pydantic.dev/2.5/errors/usage_errors/#model-field-missing-annotation">missing model field annotation</a>をキャッチせず、Pydanticが正しく解析する<code>list_of_ints</code>引数について警告します。</p>
 <div class="language-text highlight"><pre><span></span><code>test.py:15: error: List item 1 has incompatible type &quot;str&quot;; expected &quot;int&quot;  [list-item]
 test.py:15: error: List item 2 has incompatible type &quot;bytes&quot;; expected &quot;int&quot;  [list-item]
 test.py:16: error: &quot;Model&quot; has no attribute &quot;middle_name&quot;  [attr-defined]
 test.py:17: error: Missing named argument &quot;age&quot; for &quot;Model&quot;  [call-arg]
 test.py:17: error: Missing named argument &quot;list_of_ints&quot; for &quot;Model&quot;  [call-arg]
 </code></pre></div>
-<p>But <a href="#enabling-the-plugin">with the plugin enabled</a>, it gives the correct error:
+<!-- But [with the plugin enabled](#enabling-the-plugin), it gives the correct error: -->
+<p>しかし、<a href="#enabling-the-plugin">with the plugin enabled</a>、正しいエラーが表示されます。
 <div class="language-text highlight"><pre><span></span><code>9: error: Untyped fields disallowed  [pydantic-field]
 16: error: &quot;Model&quot; has no attribute &quot;middle_name&quot;  [attr-defined]
 17: error: Missing named argument &quot;age&quot; for &quot;Model&quot;  [call-arg]
 17: error: Missing named argument &quot;list_of_ints&quot; for &quot;Model&quot;  [call-arg]
 </code></pre></div></p>
-<p>With the pydantic mypy plugin, you can fearlessly refactor your models knowing mypy will catch any mistakes
-if your field names or types change.</p>
-<p>There are other benefits too! See below for more details.</p>
+<!-- With the pydantic mypy plugin, you can fearlessly refactor your models knowing mypy will catch any mistakes if your field names or types change. -->
+<p>pydantic mypyプラグインを使用すると、フィールド名や型が変更された場合にmypyが間違いをキャッチすることを知っているので、恐れずにモデルをリファクタリングすることができます。</p>
+<!-- There are other benefits too! See below for more details. -->
+<p>他にも利点があります!詳細は以下を参照してください。</p>
 <h2 id="using-mypy-without-the-plugin">Using mypy without the plugin<a class="headerlink" href="#using-mypy-without-the-plugin" title="Permanent link">&para;</a></h2>
-<p>You can run your code through mypy with:</p>
+<!-- You can run your code through mypy with: -->
+<p>コードをmypyで実行するには、次のようにします。</p>
 <div class="language-bash highlight"><pre><span></span><code>mypy<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ignore-missing-imports<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--follow-imports<span class="o">=</span>skip<span class="w"> </span><span class="se">\</span>
@@ -3137,78 +3143,89 @@ if your field names or types change.</p>
 <span class="w">  </span>pydantic_mypy_test.py
 </code></pre></div>
 <h3 id="strict-optional">Strict Optional<a class="headerlink" href="#strict-optional" title="Permanent link">&para;</a></h3>
-<p>For your code to pass with <code>--strict-optional</code>, you need to use <code>Optional[]</code> or an alias of <code>Optional[]</code>
-for all fields with <code>None</code> as the default. (This is standard with mypy.)</p>
+<!-- For your code to pass with `--strict-optional`, you need to use `Optional[]` or an alias of `Optional[]` for all fields with `None` as the default. (This is standard with mypy.) -->
+<p>コードで<code>--strict-optional</code>を渡すためには、デフォルトとして<code>None</code>を持つすべてのフィールドに<code>Optional[]</code>または<code>Optional[]</code>のエイリアスを使用する必要があります(これはmypyでは標準です)。</p>
 <h3 id="other-pydantic-interfaces">Other Pydantic interfaces<a class="headerlink" href="#other-pydantic-interfaces" title="Permanent link">&para;</a></h3>
-<p>Pydantic <a href="../../concepts/dataclasses/">dataclasses</a> and the <a href="../../concepts/validation_decorator/"><code>validate_call</code> decorator</a>
-should also work well with mypy.</p>
+<!-- Pydantic [dataclasses](../concepts/dataclasses.md) and the [`validate_call` decorator](../concepts/validation_decorator.md) should also work well with mypy. -->
+<p>Pydantic<a href="../../concepts/dataclasses/">dataclasses</a>と<a href="../../concepts/validation_decorator/"><code>validate_call</code> decorator</a>もmypyでうまく動作するはずです。</p>
 <h2 id="mypy-plugin-capabilities">Mypy Plugin Capabilities<a class="headerlink" href="#mypy-plugin-capabilities" title="Permanent link">&para;</a></h2>
 <h3 id="generate-a-signature-for-model__init__">Generate a signature for <code>Model.__init__</code><a class="headerlink" href="#generate-a-signature-for-model__init__" title="Permanent link">&para;</a></h3>
+<!-- * Any required fields that don't have dynamically-determined aliases will be included as required keyword arguments.
+* If `Config.populate_by_name=True`, the generated signature will use the field names, rather than aliases.
+* If `Config.extra='forbid'` and you don't make use of dynamically-determined aliases, the generated signature will not allow unexpected inputs.
+* **Optional:** If the [`init_forbid_extra` **plugin setting**](#configuring-the-plugin) is set to `True`, unexpected inputs to `__init__` will raise errors even if `Config.extra` is not `'forbid'`.
+* **Optional:** If the [`init_typed` **plugin setting**](#configuring-the-plugin) is set to `True`, the generated signature will use the types of the model fields (otherwise they will be annotated as `Any` to allow parsing). -->
 <ul>
-<li>Any required fields that don't have dynamically-determined aliases will be included as required
-  keyword arguments.</li>
-<li>If <code>Config.populate_by_name=True</code>, the generated signature will use the field names,
-  rather than aliases.</li>
-<li>If <code>Config.extra='forbid'</code> and you don't make use of dynamically-determined aliases, the generated signature
-  will not allow unexpected inputs.</li>
-<li><strong>Optional:</strong> If the <a href="#configuring-the-plugin"><code>init_forbid_extra</code> <strong>plugin setting</strong></a> is set to <code>True</code>, unexpected inputs to
-  <code>__init__</code> will raise errors even if <code>Config.extra</code> is not <code>'forbid'</code>.</li>
-<li><strong>Optional:</strong> If the <a href="#configuring-the-plugin"><code>init_typed</code> <strong>plugin setting</strong></a> is set to <code>True</code>, the generated signature
-  will use the types of the model fields (otherwise they will be annotated as <code>Any</code> to allow parsing).</li>
+<li>動的に決定されるエイリアスを持たない必須フィールドは、必須キーワード引数として含まれます。</li>
+<li><code>Config.populate_by_name=True</code>の場合、生成されたシグネチャはエイリアスではなくフィールド名を使用します。</li>
+<li><code>Config.extra='forbid'</code>で、動的に決定されるエイリアスを使用しない場合、生成されたシグネチャは予期しない入力を許可しません。</li>
+<li><strong>オプション:</strong> <a href="#configuring-the-plugin"><code>init_forbid_extra</code> <strong>plugin setting</strong></a>が<code>True</code>に設定されている場合、<code>Config.extra</code>が<code>'forbid'</code>でなくても、<code>__init__</code>への予期しない入力によってエラーが発生します。</li>
+<li><strong>オプション:</strong> <a href="#configuring-the-plugin"><code>init_typed</code> <strong>plugin setting</strong></a>が<code>True</code>に設定されている場合、生成されたシグネチャはモデルフィールドの型を使用します(そうでない場合は、解析を可能にするために<code>Any</code>として注釈が付けられます)。</li>
 </ul>
 <h3 id="generate-a-typed-signature-for-modelmodel_construct">Generate a typed signature for <code>Model.model_construct</code><a class="headerlink" href="#generate-a-typed-signature-for-modelmodel_construct" title="Permanent link">&para;</a></h3>
+<!-- * The [`model_construct`](../concepts/models.md#creating-models-without-validation) method is an alternative to `__init__` when input data is known to be valid and should not be parsed. Because this method performs no runtime validation, static checking is important to detect errors. -->
 <ul>
-<li>The <a href="../../concepts/models/#creating-models-without-validation"><code>model_construct</code></a> method is an alternative to <code>__init__</code>
-  when input data is known to be valid and should not be parsed. Because this method performs no runtime validation,
-  static checking is important to detect errors.</li>
+<li><a href="../../concepts/models/#creating-models-without-validation"><code>model_construct</code></a>メソッドは、入力データが有効であることがわかっており、解析する必要がない場合に、<code>__init__</code>の代わりに使用できます。このメソッドは実行時に検証を行わないため、エラーを検出するには静的チェックが重要です。</li>
 </ul>
 <h3 id="respect-configfrozen">Respect <code>Config.frozen</code><a class="headerlink" href="#respect-configfrozen" title="Permanent link">&para;</a></h3>
+<!-- * If `Config.frozen` is `True`, you'll get a mypy error if you try to change the value of a model field; cf.
+[faux immutability](../concepts/models.md#faux-immutability). -->
 <ul>
-<li>If <code>Config.frozen</code> is <code>True</code>, you'll get a mypy error if you try to change
-  the value of a model field; cf. <a href="../../concepts/models/#faux-immutability">faux immutability</a>.</li>
+<li><code>Config.frozen</code>が<code>True</code>の場合、モデルフィールドの値を変更しようとするとmypyエラーが発生します。<a href="../../concepts/models/#faux-immutability">faux immutability</a></li>
 </ul>
 <h3 id="generate-a-signature-for-dataclasses">Generate a signature for <code>dataclasses</code><a class="headerlink" href="#generate-a-signature-for-dataclasses" title="Permanent link">&para;</a></h3>
+<!-- * classes decorated with [`@pydantic.dataclasses.dataclass`](../concepts/dataclasses.md) are type checked the same as standard Python dataclasses
+* The `@pydantic.dataclasses.dataclass` decorator accepts a `config` keyword argument which has the same meaning as [the `Config` sub-class](../concepts/config.md). -->
 <ul>
-<li>classes decorated with <a href="../../concepts/dataclasses/"><code>@pydantic.dataclasses.dataclass</code></a> are type checked the same as standard Python dataclasses</li>
-<li>The <code>@pydantic.dataclasses.dataclass</code> decorator accepts a <code>config</code> keyword argument which has the same meaning as <a href="../../concepts/config/">the <code>Config</code> sub-class</a>.</li>
+<li><a href="../../concepts/dataclasses/"><code>@pydantic.dataclasses.dataclass</code></a>で装飾されたクラスは、標準のPythonデータクラスと同様に型チェックされます。</li>
+<li><code>@pydantic.dataclasses.dataclass</code>デコレータは、<a href="../../concepts/config/">the <code>Config</code> sub-class</a>と同じ意味を持つ<code>config</code>キーワード引数を受け入れます。</li>
 </ul>
 <h3 id="respect-the-type-of-the-fields-default-and-default_factory">Respect the type of the <code>Field</code>'s <code>default</code> and <code>default_factory</code><a class="headerlink" href="#respect-the-type-of-the-fields-default-and-default_factory" title="Permanent link">&para;</a></h3>
+<!-- * Field with both a `default` and a `default_factory` will result in an error during static checking.
+* The type of the `default` and `default_factory` value must be compatible with the one of the field. -->
 <ul>
-<li>Field with both a <code>default</code> and a <code>default_factory</code> will result in an error during static checking.</li>
-<li>The type of the <code>default</code> and <code>default_factory</code> value must be compatible with the one of the field.</li>
+<li><code>default</code>と<code>default_factory</code>の両方を持つフィールドは、静的チェック中にエラーになります。</li>
+<li><code>default</code>および<code>default_factory</code>値の型は、フィールドの型と互換性がなければなりません。</li>
 </ul>
 <h3 id="warn-about-the-use-of-untyped-fields">Warn about the use of untyped fields<a class="headerlink" href="#warn-about-the-use-of-untyped-fields" title="Permanent link">&para;</a></h3>
+<!-- * You'll get a mypy error any time you assign a public attribute on a model without annotating its type
+* If your goal is to set a ClassVar, you should explicitly annotate the field using typing.ClassVar -->
 <ul>
-<li>You'll get a mypy error any time you assign a public attribute on a model without annotating its type</li>
-<li>If your goal is to set a ClassVar, you should explicitly annotate the field using typing.ClassVar</li>
+<li>型に注釈を付けずにモデルにパブリック属性を割り当てると、mypyエラーが発生します。</li>
+<li>目的がClassVarを設定することである場合は、入力を使用してフィールドに明示的に注釈を付ける必要があります。ClassVar</li>
 </ul>
 <h2 id="optional-capabilities">Optional Capabilities:<a class="headerlink" href="#optional-capabilities" title="Permanent link">&para;</a></h2>
 <h3 id="prevent-the-use-of-required-dynamic-aliases">Prevent the use of required dynamic aliases<a class="headerlink" href="#prevent-the-use-of-required-dynamic-aliases" title="Permanent link">&para;</a></h3>
+<!-- * If the [`warn_required_dynamic_aliases` **plugin setting**](#configuring-the-plugin) is set to `True`, you'll get a mypy error any time you use a dynamically-determined alias or alias generator on a model with `Config.populate_by_name=False`.
+* This is important because if such aliases are present, mypy cannot properly type check calls to `__init__`.
+  In this case, it will default to treating all arguments as optional. -->
 <ul>
-<li>If the <a href="#configuring-the-plugin"><code>warn_required_dynamic_aliases</code> <strong>plugin setting</strong></a> is set to <code>True</code>, you'll get a mypy
-  error any time you use a dynamically-determined alias or alias generator on a model with
-  <code>Config.populate_by_name=False</code>.</li>
-<li>This is important because if such aliases are present, mypy cannot properly type check calls to <code>__init__</code>.
-  In this case, it will default to treating all arguments as optional.</li>
+<li><a href="#configuring-the-plugin"><code>warn_required_dynamic_aliases</code><strong>plugin setting</strong></a>が<code>True</code>に設定されている場合、<code>Config.populate_by_name=False</code>のモデルで動的に決定されるエイリアスまたはエイリアスジェネレータを使用すると、mypyエラーが発生します。</li>
+<li>このようなエイリアスが存在すると、mypyは<code>__init__</code>を正しく型チェックできないので、これは重要です。
+  この場合、デフォルトですべての引数がオプションとして扱われます。</li>
 </ul>
 <h2 id="enabling-the-plugin">Enabling the Plugin<a class="headerlink" href="#enabling-the-plugin" title="Permanent link">&para;</a></h2>
-<p>To enable the plugin, just add <code>pydantic.mypy</code> to the list of plugins in your
-<a href="https://mypy.readthedocs.io/en/latest/config_file.html">mypy config file</a>
-(this could be <code>mypy.ini</code>, <code>pyproject.toml</code>, or <code>setup.cfg</code>).</p>
-<p>To get started, all you need to do is create a <code>mypy.ini</code> file with following contents:
+<!-- To enable the plugin, just add `pydantic.mypy` to the list of plugins in your [mypy config file](https://mypy.readthedocs.io/en/latest/config_file.html) (this could be `mypy.ini`, `pyproject.toml`, or `setup.cfg`). -->
+<p>プラグインを有効にするには、<a href="https://mypy.readthedocs.io/en/latest/config_file.html">mypy config file</a>のプラグインのリストに<code>pydantic.mypy</code>を追加します(<code>mypy.ini</code>,<code>pyproject.toml</code>,<code>setup.cfg</code>)。</p>
+<!-- To get started, all you need to do is create a `mypy.ini` file with following contents: -->
+<p>開始するには、以下の内容の<code>mypy.ini</code>ファイルを作成するだけです。</p>
 <div class="language-ini highlight"><pre><span></span><code><span class="k">[mypy]</span>
 <span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">pydantic.mypy</span>
-</code></pre></div></p>
+</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 </div>
-<p>If you're using <code>pydantic.v1</code> models, you'll need to add <code>pydantic.v1.mypy</code> to your list of plugins.</p>
-<p>The plugin is compatible with mypy versions <code>&gt;=0.930</code>.</p>
-<p>See the <a href="#configuring-the-plugin">plugin configuration</a> docs for more details.</p>
+<!-- If you're using `pydantic.v1` models, you'll need to add `pydantic.v1.mypy` to your list of plugins. -->
+<p><code>pydantic.v1</code>モデルを使用している場合は、プラグインのリストに<code>pydantic.v1.mypy</code>を追加する必要があります。</p>
+<!-- The plugin is compatible with mypy versions `>=0.930`. -->
+<p>このプラグインはmypyバージョン<code>&gt;=0.930</code>と互換性があります。</p>
+<!-- See the [plugin configuration](#configuring-the-plugin) docs for more details. -->
+<p>詳細については、<a href="#configuring-the-plugin">plugin configuration</a>ドキュメントを参照してください。</p>
 <h3 id="configuring-the-plugin">Configuring the Plugin<a class="headerlink" href="#configuring-the-plugin" title="Permanent link">&para;</a></h3>
-<p>To change the values of the plugin settings, create a section in your mypy config file called <code>[pydantic-mypy]</code>,
-and add any key-value pairs for settings you want to override.</p>
-<p>A <code>mypy.ini</code> file with all plugin strictness flags enabled (and some other mypy strictness flags, too) might look like:</p>
+<!-- To change the values of the plugin settings, create a section in your mypy config file called `[pydantic-mypy]`, and add any key-value pairs for settings you want to override. -->
+<p>プラグイン設定の値を変更するには、mypy設定ファイルに<code>[pydantic-mypy]</code>というセクションを作成し、オーバーライドしたい設定のキーと値のペアを追加します。</p>
+<!-- A `mypy.ini` file with all plugin strictness flags enabled (and some other mypy strictness flags, too) might look like: -->
+<p>プラグインのstrictnessフラグをすべて有効にした<code>mypy.ini</code>ファイル(およびその他のmypy strictnessフラグも)は、次のようになります。</p>
 <div class="language-ini highlight"><pre><span></span><code><span class="k">[mypy]</span>
 <span class="na">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">pydantic.mypy</span>
 
@@ -3227,8 +3244,10 @@ and add any key-value pairs for settings you want to override.</p>
 <span class="na">init_typed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 <span class="na">warn_required_dynamic_aliases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">True</span>
 </code></pre></div>
-<p>As of <code>mypy&gt;=0.900</code>, mypy config may also be included in the <code>pyproject.toml</code> file rather than <code>mypy.ini</code>.
-The same configuration as above would be:</p>
+<!-- As of `mypy>=0.900`, mypy config may also be included in the `pyproject.toml` file rather than `mypy.ini`.
+The same configuration as above would be: -->
+<p><code>mypy&gt;=0.900</code>の時点で、mypy configは<code>mypy.ini</code>ではなく<code>pyproject.toml</code>ファイルに含めることもできます。
+上記と同じ設定は次のようになります。</p>
 <div class="language-toml highlight"><pre><span></span><code><span class="k">[tool.mypy]</span>
 <span class="n">plugins</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">  </span><span class="s2">&quot;pydantic.mypy&quot;</span>
@@ -3250,21 +3269,25 @@ The same configuration as above would be:</p>
 <span class="n">warn_required_dynamic_aliases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
 <h4 id="note-on-disallow-any-explicit">Note on <code>--disallow-any-explicit</code><a class="headerlink" href="#note-on-disallow-any-explicit" title="Permanent link">&para;</a></h4>
-<p>If you're using the <code>--disallow-any-explicit</code> mypy config setting (or other settings that ban <code>Any</code>), you may encounter <code>no-any-explicit</code> errors when extending <code>BaseModel</code>. This is because by default, Pydantic's <code>mypy</code> plugin adds an <code>__init__</code> method with a signature like <code>def __init__(self, field_1: Any, field_2: Any, **kwargs: Any):</code></p>
+<!-- If you're using the `--disallow-any-explicit` mypy config setting (or other settings that ban `Any`), you may encounter `no-any-explicit` errors when extending `BaseModel`. This is because by default, Pydantic's `mypy` plugin adds an `__init__` method with a signature like `def __init__(self, field_1: Any, field_2: Any, **kwargs: Any):` -->
+<p><code>--disallow-any-explicit</code>mypy設定(または<code>Any</code>を禁止するその他の設定)を使用している場合、<code>BaseModel</code>を拡張するときに<code>no-any-explicit</code>エラーが発生する可能性があります。これは、デフォルトでは、Pydanticの<code>mypy</code>プラグインが<code>def__init__(self, field_1:Any, field_2:Any, **kwargs:Any):</code>のようなシグネチャを持つ<code>__init__</code>メソッドを追加するためです。</p>
 <div class="admonition note">
 <p class="admonition-title">Why the extra signature?</p>
-<p>The Pydantic <code>mypy</code> plugin adds an <code>__init__</code> method with a signature like <code>def __init__(self, field_1: Any, field_2: Any, **kwargs: Any):</code> in
-order to avoid type errors when initializing models with types that don't match the field annotations.
-For example <code>Model(date='2024-01-01')</code> would raise a type error without this <code>Any</code> signature, but Pydantic has the ability to parse the string
-<code>'2024-01-01'</code> into a <code>datetime.date</code> type.</p>
+<p><!-- The Pydantic <code>mypy</code> plugin adds an <code>__init__</code> method with a signature like <code>def __init__(self, field_1: Any, field_2: Any, **kwargs: Any):</code> in order to avoid type errors when initializing models with types that don't match the field annotations.
+For example <code>Model(date='2024-01-01')</code> would raise a type error without this <code>Any</code> signature, but Pydantic has the ability to parse the string <code>'2024-01-01'</code> into a <code>datetime.date</code> type. -->
+Pydantic<code>mypy</code>プラグインは、フィールドアノテーションと一致しない型でモデルを初期化する際の型エラーを避けるために、<code>def__init__(self, field_1:Any, field_2:Any, **kwargs:Any):</code>のようなシグネチャを持つ<code>__init__</code>メソッドを追加します。
+例えば<code>Model(date='2024-01-01')</code>はこの<code>Any</code>シグネチャがなければ型エラーになりますが、Pydanticには文字列<code>'2024-01-01'</code>を<code>datetime.date</code>型に解析する機能があります。</p>
 </div>
-<p>To resolve this issue, you need to enable strict mode settings for the Pydantic mypy plugin. Specifically, add these options to your <code>[pydantic-mypy]</code> section:</p>
+<!-- To resolve this issue, you need to enable strict mode settings for the Pydantic mypy plugin. Specifically, add these options to your `[pydantic-mypy]` section: -->
+<p>この問題を解決するには、Pydantic mypyプラグインの厳密なモード設定を有効にする必要があります。具体的には、<code>[pydantic-mypy]</code>セクションに次のオプションを追加します。</p>
 <div class="language-toml highlight"><pre><span></span><code><span class="k">[tool.pydantic-mypy]</span>
 <span class="n">init_forbid_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">init_typed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 </code></pre></div>
-<p>With <code>init_forbid_extra = True</code>, the <code>**kwargs</code> are removed from the generated <code>__init__</code> signature. With <code>init_typed = True</code>, the <code>Any</code> types for fields are replaced with their actual type hints.</p>
-<p>This configuration allows you to use <code>--disallow-any-explicit</code> without getting errors on your Pydantic models. However, be aware that this stricter checking might flag some valid Pydantic use cases (like passing a string for a datetime field) as type errors.</p>
+<!-- With `init_forbid_extra = True`, the `**kwargs` are removed from the generated `__init__` signature. With `init_typed = True`, the `Any` types for fields are replaced with their actual type hints. -->
+<p><code>init_prohibit_extra=True</code>の場合、<code>**kwargs</code>は生成された<code>__init__</code>シグネチャから削除されます。<code>init_typed=True</code>の場合、フィールドの<code>Any</code>型は実際の型ヒントに置き換えられます。</p>
+<!-- This configuration allows you to use `--disallow-any-explicit` without getting errors on your Pydantic models. However, be aware that this stricter checking might flag some valid Pydantic use cases (like passing a string for a datetime field) as type errors. -->
+<p>この設定により、Pydanticモデルでエラーを発生させることなく<code>--disallow-any-explicit</code>を使用することができます。ただし、この厳密なチェックによって、有効なPydanticユースケース(datetimeフィールドに文字列を渡すなど)が型エラーとしてフラグ付けされる可能性があることに注意してください。</p>
 
 
 

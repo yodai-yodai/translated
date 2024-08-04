@@ -2707,16 +2707,27 @@
 
   <h1>devtools</h1>
 
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Admission:</strong> I (the primary developer of Pydantic) also develop python-devtools.</p>
+<p><!-- **Admission:** I (the primary developer of Pydantic) also develop python-devtools. -->
+<strong>謝辞:</strong>私(Pydanticの主要な開発者)もpython-devtoolsを開発しています。</p>
 </div>
-<p><a href="https://python-devtools.helpmanual.io/">python-devtools</a> (<code>pip install devtools</code>) provides a number of tools which
-are useful during Python development, including <code>debug()</code> an alternative to <code>print()</code> which formats output in a way
-which should be easier to read than <code>print</code> as well as giving information about which file/line the print statement
-is on and what value was printed.</p>
-<p>Pydantic integrates with <em>devtools</em> by implementing the <code>__pretty__</code> method on most public classes.</p>
-<p>In particular <code>debug()</code> is useful when inspecting models:</p>
+<!-- [python-devtools](https://python-devtools.helpmanual.io/) (`pip install devtools`) provides a number of tools which are useful during Python development, including `debug()` an alternative to `print()` which formats output in a way which should be easier to read than `print` as well as giving information about which file/line the print statement is on and what value was printed. -->
+<p><a href="https://python-devtools.helpmanual.io/">python-devtools</a>(<code>pip install devtools</code>)には、Python開発時に便利なツールが多数用意されています。たとえば、<code>print()</code>の代わりに<code>debug()</code>を使用すると、<code>print</code>よりも読みやすい方法で出力をフォーマットできます。また、print文がどのファイル/行にあり、どの値が出力されたかについての情報も得られます。</p>
+<!-- Pydantic integrates with *devtools* by implementing the `__pretty__` method on most public classes. -->
+<p>Pydanticは、ほとんどのパブリッククラスで<code>__pretty__</code>メソッドを実装することで、<em>devtools</em>と統合されています。</p>
+<!-- In particular `debug()` is useful when inspecting models: -->
+<p>特に<code>debug()</code>はモデルを調べる時に便利です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 
@@ -2779,7 +2790,8 @@ user: id=123 name='John Doe' signup_ts=datetime.datetime(2019, 6, 1, 12, 22) fri
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><code>python-devtools</code> doesn't yet support Python 3.13.</p>
+<p><!-- <code>python-devtools</code> doesn't yet support Python 3.13. -->
+<code>python-devtools</code>はまだPython 3.13をサポートしていません。</p>
 </div>
 
 

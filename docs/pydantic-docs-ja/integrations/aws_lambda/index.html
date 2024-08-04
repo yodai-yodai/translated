@@ -2918,24 +2918,43 @@
 
   <h1>AWS Lambda</h1>
 
-<p><code>pydantic</code> integrates well with AWS Lambda functions. In this guide, we'll discuss how to setup <code>pydantic</code> for an AWS Lambda function.</p>
+<!-- BEGIN INCLUDE ../warning.md -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>本サイトのドキュメントは、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>の日本語翻訳の私家版です。</p>
+<p>内容に不審な点がある場合は、<a href="https://docs.pydantic.dev/latest/">Pydantic</a>のドキュメントを確認してください。</p>
+<p>翻訳に使用したPydanticのバージョンは、v2.8.2になります。</p>
+</div>
+<!-- END INCLUDE -->
+
+<!-- `pydantic` integrates well with AWS Lambda functions. In this guide, we'll discuss how to setup `pydantic` for an AWS Lambda function. -->
+<p><code>pydantic</code>はAWS Lambda関数とうまく統合されています。このガイドでは、AWS Lambda関数に<code>pydantic</code>を設定する方法について説明します。</p>
 <h2 id="installing-python-libraries-for-aws-lambda-functions">Installing Python libraries for AWS Lambda functions<a class="headerlink" href="#installing-python-libraries-for-aws-lambda-functions" title="Permanent link">&para;</a></h2>
-<p>There are many ways to utilize Python libraries in AWS Lambda functions. As outlined in the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html">AWS Lambda documentation</a>, the most common approaches include:</p>
+<!-- There are many ways to utilize Python libraries in AWS Lambda functions. As outlined in the [AWS Lambda documentation](https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html), the most common approaches include: -->
+<p>AWS Lambda関数でPythonライブラリを利用する方法は数多くあります。<a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-python.html">AWS Lambdaドキュメント</a>で概説されているように、最も一般的なアプローチには次のものがあります。</p>
+<!-- * Using a [`.zip` file archive](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html) to package your code and dependencies
+* Using [AWS Lambda Layers](https://docs.aws.amazon.com/lambda/latest/dg/python-layers.html) to share libraries across multiple functions
+* Using a [container image](https://docs.aws.amazon.com/lambda/latest/dg/python-image.html) to package your code and dependencies -->
 <ul>
-<li>Using a <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-package.html"><code>.zip</code> file archive</a> to package your code and dependencies</li>
-<li>Using <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-layers.html">AWS Lambda Layers</a> to share libraries across multiple functions</li>
-<li>Using a <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html">container image</a> to package your code and dependencies</li>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/python-package.html"><code>.zip</code> file archive</a>を使用して、コードと依存関係をパッケージ化します。</li>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/python-layers.html">AWS Lambda Layers</a>を使用して、複数の関数間でライブラリを共有します。</li>
+<li><a href="https://docs.aws.amazon.com/lambda/latest/dg/python-image.html">container image</a>を使用してコードと依存関係をパッケージ化します。</li>
 </ul>
-<p>All of these approaches can be used with <code>pydantic</code>. The best approach for you will depend on your specific requirements and constraints. We'll cover the first two cases more in-depth here, as dependency management with
-a container image is more straightforward. If you're using a container image, you might find <a href="https://github.com/pydantic/pydantic/issues/6557#issuecomment-1699456562">this comment</a> helpful for installing <code>pydantic</code>.</p>
+<!-- All of these approaches can be used with `pydantic`.
+The best approach for you will depend on your specific requirements and constraints. We'll cover the first two cases more in-depth here, as dependency management with a container image is more straightforward. If you're using a container image, you might find [this comment](https://github.com/pydantic/pydantic/issues/6557#issuecomment-1699456562) helpful for installing `pydantic`. -->
+<p>これらのアプローチはすべて<code>pydantic</code>で使用できます。
+最適なアプローチは、特定の要件と制約によって異なります。コンテナイメージを使用した依存関係管理の方が簡単なので、ここでは最初の2つのケースについて詳しく説明します。コンテナイメージを使用している場合は、<a href="https://github.com/pydantic/pydantic/issues/6557#issuecomment-1699456562">this comment</a>が<code>pydantic</code>のインストールに役立つことがわかります。</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you use <code>pydantic</code> across multiple functions, you may want to consider AWS Lambda Layers, which support seamless sharing of libraries across multiple functions.</p>
+<p><!-- If you use <code>pydantic</code> across multiple functions, you may want to consider AWS Lambda Layers, which support seamless sharing of libraries across multiple functions. -->
+複数の関数にわたって<code>pydantic</code>を使用する場合は、複数の関数間でライブラリをシームレスに共有できるAWS Lambda Layersを検討するとよいでしょう。</p>
 </div>
-<p>Regardless of the dependencies management approach you choose, it's beneficial to adhere to these guidelines to ensure a smooth
-dependency management process.</p>
+<!-- Regardless of the dependencies management approach you choose, it's beneficial to adhere to these guidelines to ensure a smooth dependency management process. -->
+<p>選択する依存関係管理の手法にかかわらず、円滑な依存関係管理プロセスを確実にするために、これらのガイドラインに従うことは有益です。</p>
 <h2 id="installing-pydantic-for-aws-lambda-functions">Installing <code>pydantic</code> for AWS Lambda functions<a class="headerlink" href="#installing-pydantic-for-aws-lambda-functions" title="Permanent link">&para;</a></h2>
-<p>When you're building your <code>.zip</code> file archive with your code and dependencies or organizing your <code>.zip</code> file for a Lambda Layer, you'll likely use a local virtual environment to install and manage your dependencies. This can be a bit tricky if you're using <code>pip</code> because <code>pip</code> installs wheels compiled for your local platform, which may not be compatible with the Lambda environment.</p>
+<!-- When you're building your `.zip` file archive with your code and dependencies or organizing your `.zip` file for a Lambda Layer, you'll likely use a local virtual environment to install and manage your dependencies. This can be a bit tricky if you're using `pip` because `pip` installs wheels compiled for your local platform, which may not be compatible with the Lambda environment. -->
+<p>コードと依存関係を使用して<code>.zip</code>ファイルアーカイブを構築したり、<code>.zip</code>ファイルをLambda Layer用に整理したりする場合は、依存関係のインストールと管理にローカルの仮想環境を使用する可能性があります。<code>pip</code>を使用している場合、<code>pip</code>はローカルプラットフォーム用にコンパイルされたwheelsをインストールするため、これは少し厄介ですが、Lambda環境と互換性がない可能性があります。</p>
 <p>Thus, we suggest you use a command similar to the following:</p>
 <div class="language-bash highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>--platform<span class="w"> </span>manylinux2014_x86_64<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># (1)!</span>
@@ -2945,22 +2964,32 @@ dependency management process.</p>
 <span class="w">    </span>--only-binary<span class="o">=</span>:all:<span class="w"> </span><span class="se">\ </span><span class="w"> </span><span class="c1"># (5)!</span>
 <span class="w">    </span>--upgrade<span class="w"> </span>pydantic<span class="w">  </span><span class="c1"># (6)!</span>
 </code></pre></div>
+<!-- 1. Use the platform corresponding to your Lambda runtime.
+2. Specify the directory where you want to install the package (often `python` for Lambda Layers).
+3. Use the CPython implementation.
+4. The Python version must be compatible with the Lambda runtime.
+5. This flag ensures that the package is installed pre-built binary wheels.
+6. The latest version of `pydantic` will be installed. -->
 <ol>
-<li>Use the platform corresponding to your Lambda runtime.</li>
-<li>Specify the directory where you want to install the package (often <code>python</code> for Lambda Layers).</li>
-<li>Use the CPython implementation.</li>
-<li>The Python version must be compatible with the Lambda runtime.</li>
-<li>This flag ensures that the package is installed pre-built binary wheels.</li>
-<li>The latest version of <code>pydantic</code> will be installed.</li>
+<li>Lambdaランタイムに対応するプラットフォームを使用します。</li>
+<li>パッケージをインストールするディレクトリを指定します(Lambdaレイヤーの場合は<code>python</code>がよく使用されます)。</li>
+<li>CPython実装を使用します。</li>
+<li>PythonバージョンはLambdaランタイムと互換性がある必要があります。</li>
+<li>このフラグは、パッケージが事前に構築されたバイナリホイールにインストールされていることを確認します。</li>
+<li><code>pydantic</code>の最新バージョンがインストールされます。</li>
 </ol>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="no-module-named-pydantic_core_pydantic_core"><code>no module named 'pydantic_core._pydantic_core'</code><a class="headerlink" href="#no-module-named-pydantic_core_pydantic_core" title="Permanent link">&para;</a></h3>
-<p>The
+<p>この
 <div class="language-text highlight"><pre><span></span><code>no module named `pydantic_core._pydantic_core`
 </code></pre></div></p>
-<p>error is a common issue that indicates you have installed <code>pydantic</code> incorrectly. To debug this issue, you can try the following steps (before the failing import):</p>
+<!-- error is a common issue that indicates you have installed `pydantic` incorrectly.
+To debug this issue, you can try the following steps (before the failing import): -->
+<p>エラーは、<code>pydantic</code>が正しくインストールされていないことを示す一般的な問題です。
+この問題をデバッグするには、次の手順を実行します(インポートが失敗する前)。</p>
+<!-- 1. Check the contents of the installed `pydantic-core` package. Are the compiled library and its type stubs both present? -->
 <ol>
-<li>Check the contents of the installed <code>pydantic-core</code> package. Are the compiled library and its type stubs both present?</li>
+<li>インストールされている<code>pydantic-core</code>パッケージの内容を確認します。コンパイルされたライブラリとその型スタブの両方が存在しますか?</li>
 </ol>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">importlib.metadata</span> <span class="kn">import</span> <span class="n">files</span>
 <span class="nb">print</span><span class="p">([</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">(</span><span class="s1">&#39;pydantic-core&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_pydantic_core&#39;</span><span class="p">)])</span>
@@ -2968,45 +2997,58 @@ dependency management process.</p>
 <span class="sd">[PackagePath(&#39;pydantic_core/_pydantic_core.pyi&#39;), PackagePath(&#39;pydantic_core/_pydantic_core.cpython-312-x86_64-linux-gnu.so&#39;)]</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<p>You should expect to see two files like those printed above. The compile library file will be a .so or .pyd with a name that varies according to the OS and Python version.</p>
+<!-- You should expect to see two files like those printed above. The compile library file will be a .so or .pyd with a name that varies according to the OS and Python version. -->
+<p>上記のような2つのファイルが表示されるはずです。コンパイルライブラリファイルは.soまたは.pydで、名前はOSとPythonのバージョンによって異なります。</p>
+<!-- 2. Check that your lambda's Python version is compatible with the compiled library version found above. -->
 <ol>
-<li>Check that your lambda's Python version is compatible with the compiled library version found above.</li>
+<li>lambdaのPythonバージョンが上記のコンパイルされたライブラリバージョンと互換性があることを確認します。</li>
 </ol>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sysconfig</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sysconfig</span><span class="o">.</span><span class="n">get_config_var</span><span class="p">(</span><span class="s2">&quot;EXT_SUFFIX&quot;</span><span class="p">))</span>
 <span class="c1">#&gt; &#39;.cpython-312-x86_64-linux-gnu.so&#39;</span>
 </code></pre></div>
-<p>You should expect to see the same suffix here as the compiled library, for example here we see this suffix <code>.cpython-312-x86_64-linux-gnu.so</code> indeed matches <code>_pydantic_core.cpython-312-x86_64-linux-gnu.so</code>.</p>
-<p>If these two checks do not match, your build steps have not installed the correct native code for your lambda's target platform. You should adjust your build steps to change the version of the installed library which gets installed.</p>
+<!-- You should expect to see the same suffix here as the compiled library, for example here we see this suffix `.cpython-312-x86_64-linux-gnu.so` indeed matches `_pydantic_core.cpython-312-x86_64-linux-gnu.so`. -->
+<p>コンパイルされたライブラリと同じサフィックスがここに表示されるはずです。例えば、ここでは<code>.cpython-312-x86_64-linux-gnu.so</code>というサフィックスが<code>_pydantic_core.cpython-312-x86_64-linux-gnu.so</code>と実際に一致しています。</p>
+<!-- If these two checks do not match, your build steps have not installed the correct native code for your lambda's target platform. You should adjust your build steps to change the version of the installed library which gets installed. -->
+<p>これら2つのチェックが一致しない場合は、ビルドステップでラムダのターゲットプラットフォーム用の正しいネイティブコードがインストールされていません。インストールされるインストール済みライブラリのバージョンを変更するために、ビルドステップを調整する必要があります。</p>
 <p>Most likely errors:</p>
+<!-- * Your OS or CPU architecture is mismatched (e.g. darwin vs x86_64-linux-gnu). Try passing correct `--platform` argument to `pip install` when installing your lambda dependencies, or build inside a linux docker container for the correct platform. Possible platforms at the moment include `--platform manylinux2014_x86_64` or `--platform manylinux2014_aarch64`, but these may change with a future Pydantic major release. -->
 <ul>
-<li>
-<p>Your OS or CPU architecture is mismatched (e.g. darwin vs x86_64-linux-gnu). Try passing correct <code>--platform</code> argument to <code>pip install</code> when installing your lambda dependencies, or build inside a linux docker container for the correct platform. Possible platforms at the moment include <code>--platform manylinux2014_x86_64</code> or <code>--platform manylinux2014_aarch64</code>, but these may change with a future Pydantic major release.</p>
-</li>
-<li>
-<p>Your Python version is mismatched (e.g. <code>cpython-310</code> vs <code>cpython-312</code>). Try passing correct <code>--python-version</code> argument to <code>pip install</code>, or otherwise change the Python version used on your build.</p>
-</li>
+<li>OSまたはCPUのアーキテクチャが一致していません(例:darwin vs x86_64-linux-gnu)。lambda依存関係をインストールするときに正しい<code>--platform</code>引数を<code>pip install</code>に渡すか、正しいプラットフォーム用のlinux dockerコンテナ内でビルドしてみてください。現在使用可能なプラットフォームには<code>--platform manylinux2014_x86_64</code>または<code>--platform manylinux2014_aarch64</code>がありますが、これらは将来のPydanticメジャーリリースで変更される可能性があります。</li>
+</ul>
+<!-- * Your Python version is mismatched (e.g. `cpython-310` vs `cpython-312`). Try passing correct `--python-version` argument to `pip install`, or otherwise change the Python version used on your build. -->
+<ul>
+<li>あなたのPythonのバージョンが一致していません(例えば<code>cpython-310</code>と<code>cpython-312</code>)。<code>pip install</code>に正しい<code>--python-version</code>引数を渡すか、あなたのビルドで使用されているPythonのバージョンを変更してください。</li>
 </ul>
 <h3 id="no-package-metadata-was-found-for-email-validator">No package metadata was found for <code>email-validator</code><a class="headerlink" href="#no-package-metadata-was-found-for-email-validator" title="Permanent link">&para;</a></h3>
-<p>Pydantic uses <code>version</code> from <code>importlib.metadata</code> to <a href="https://github.com/pydantic/pydantic/pull/6033">check what version</a> of <code>email-validator</code> is installed.
-This package versioning mechanism is somewhat incompatible with AWS Lambda, even though it's the industry standard for versioning packages in Python. There
-are a few ways to fix this issue:</p>
-<p>If you're deploying your lambda with the serverless framework, it's likely that the appropriate metadata for the <code>email-validator</code> package is not being included in your deployment package. Tools like <a href="https://github.com/serverless/serverless-python-requirements/tree/master"><code>serverless-python-requirements</code></a>
-remove metadata to reduce package size. You can fix this issue by setting the <code>slim</code> setting to false in your <code>serverless.yml</code> file:</p>
+<!-- Pydantic uses `version` from `importlib.metadata` to [check what version](https://github.com/pydantic/pydantic/pull/6033) of `email-validator` is installed.
+This package versioning mechanism is somewhat incompatible with AWS Lambda, even though it's the industry standard for versioning packages in Python.
+There are a few ways to fix this issue: -->
+<p>Pydanticは、<code>importlib.metadata</code>の<code>version</code>を使用して、<code>email-validator</code>がインストールされている<a href="https://github.com/pydantic/pydantic/pull/6033">check what version</a>。
+このパッケージのバージョン管理メカニズムは、Pythonでのパッケージのバージョン管理の業界標準であるにもかかわらず、AWS Lambdaとは多少互換性がありません。
+この問題を解決するにはいくつかの方法があります。</p>
+<!-- If you're deploying your lambda with the serverless framework, it's likely that the appropriate metadata for the `email-validator` package is not being included in your deployment package.
+Tools like [`serverless-python-requirements`](https://github.com/serverless/serverless-python-requirements/tree/master) remove metadata to reduce package size. You can fix this issue by setting the `slim` setting to false in your `serverless.yml` file: -->
+<p>サーバレスフレームワークでlambdaをデプロイしている場合、<code>email-validator</code>パッケージの適切なメタデータがデプロイパッケージに含まれていない可能性があります。
+<a href="https://github.com/serverless/serverless-python-requirements/tree/master"><code>serverless-python-requirements</code></a>などのツールは、パッケージサイズを小さくするためにメタデータを削除します。この問題は、<code>serverless.yml</code>ファイルで<code>slim</code>設定をfalseに設定することで修正できます。</p>
 <div class="language-text highlight"><pre><span></span><code>pythonRequirements:
     dockerizePip: non-linux
     slim: false
     fileName: requirements.txt
 </code></pre></div>
-<p>You can read more about this fix, and other <code>slim</code> settings that might be relevant <a href="https://biercoff.com/how-to-fix-package-not-found-error-importlib-metadata/">here</a>.</p>
-<p>If you're using a <code>.zip</code> archive for your code and/or dependencies, make sure that your package contains the required version metadata. To do this, make sure you include the <code>dist-info</code> directory in your <code>.zip</code> archive for the <code>email-validator</code> package.</p>
-<p>This issue has been reported for other popular python libraries like <a href="https://github.com/python-jsonschema/jsonschema/issues/584"><code>jsonschema</code></a>, so you can
-read more about the issue and potential fixes there as well.</p>
+<!-- You can read more about this fix, and other `slim` settings that might be relevant [here](https://biercoff.com/how-to-fix-package-not-found-error-importlib-metadata/). -->
+<p>この修正、および関連する可能性のあるその他の"slim"設定の詳細については、<a href="https://biercoff.com/how-to-fix-package-not-found-error-importlib-metadata/">here</a>を参照してください。</p>
+<!-- If you're using a `.zip` archive for your code and/or dependencies, make sure that your package contains the required version metadata. To do this, make sure you include the `dist-info` directory in your `.zip` archive for the `email-validator` package. -->
+<p>コードや依存関係に<code>.zip</code>アーカイブを使用している場合は、パッケージに必要なバージョンメタデータが含まれていることを確認してください。これを行うには、<code>.zip</code>アーカイブに<code>dist-info</code>ディレクトリを<code>email-validator</code>パッケージ用に含めてください。</p>
+<!-- This issue has been reported for other popular python libraries like [`jsonschema`](https://github.com/python-jsonschema/jsonschema/issues/584), so you can read more about the issue and potential fixes there as well. -->
+<p>この問題は、<a href="https://github.com/python-jsonschema/jsonschema/issues/584"><code>jsonschema</code></a>のような他の人気のあるpythonライブラリで報告されているので、この問題と潜在的な修正についてもそこで読むことができます。</p>
 <h2 id="extra-resources">Extra Resources<a class="headerlink" href="#extra-resources" title="Permanent link">&para;</a></h2>
 <h3 id="more-debugging-tips">More Debugging Tips<a class="headerlink" href="#more-debugging-tips" title="Permanent link">&para;</a></h3>
-<p>If you're still struggling with installing <code>pydantic</code> for your AWS Lambda, you might consult with <a href="https://github.com/pydantic/pydantic/issues/6557">this issue</a>, which covers a variety of problems and solutions encountered by other developers.</p>
+<!-- If you're still struggling with installing `pydantic` for your AWS Lambda, you might consult with [this issue](https://github.com/pydantic/pydantic/issues/6557), which covers a variety of problems and solutions encountered by other developers. -->
+<p>AWS Lambdaに<code>pydantic</code>をインストールするのにまだ苦労している場合は、他の開発者が遭遇するさまざまな問題と解決策をカバーしている<a href="https://github.com/pydantic/pydantic/issues/6557">this issue</a>を参照してください。</p>
 <h3 id="validating-event-and-context-data">Validating <code>event</code> and <code>context</code> data<a class="headerlink" href="#validating-event-and-context-data" title="Permanent link">&para;</a></h3>
-<p>Check out our <a href="https://pydantic.dev/articles/lambda-intro">blog post</a> to learn more about how to use <code>pydantic</code> to validate <code>event</code> and <code>context</code> data in AWS Lambda functions.</p>
+<!-- Check out our [blog post](https://pydantic.dev/articles/lambda-intro) to learn more about how to use `pydantic` to validate `event` and `context` data in AWS Lambda functions. -->
+<p>AWS Lambda関数で<code>pydantic</code>を使用して<code>event</code>および<code>context</code>データを検証する方法について詳しくは、私たちの<a href="https://pydantic.dev/articles/lambda-intro">blog post</a>を参照してください。</p>
 
 
 
