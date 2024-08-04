@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.pydantic.dev/api/fields/">
+        <link rel="canonical" href="https://yodai-yodai.github.io/translated/pydantic-docs-ja/api/fields/">
       
       
         <link rel="prev" href="../validate_call/">
@@ -3201,7 +3201,10 @@
 
     <div class="doc doc-contents ">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/fields/">Fields</a></p>
+</div>
 <p>設定可能なオブジェクトのフィールドを作成します。</p>
 <p>モデルスキーマまたは複雑な検証のために、フィールドに関する追加情報を提供するために使用されます。引数の中には、数値フィールド(<code>int</code>、<code>float</code>、<code>Decimal</code>)にのみ適用されるものと、<code>str</code>にのみ適用されるものがあります。</p>
 
@@ -3991,7 +3994,7 @@
     <span class="n">fail_fast</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_Unset</span><span class="p">,</span>
     <span class="o">**</span><span class="n">extra</span><span class="p">:</span> <span class="n">Unpack</span><span class="p">[</span><span class="n">_EmptyKwargs</span><span class="p">],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/fields</span>
 
 <span class="sd">    設定可能なオブジェクトのフィールドを作成します。</span>
 
@@ -5820,7 +5823,10 @@
 
     <div class="doc doc-contents ">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/models/#private-model-attributes</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/models/#private-model-attributes">Private model attributes</a></p>
+</div>
 <p>属性がプライベートに使用され、通常の検証/シリアライゼーションでは処理されないことを示します。</p>
 <p>private属性はPydanticによって検証されないため、タイプセーフな方法で使用するかどうかはユーザー次第です。</p>
 <p>プライベート属性は、モデルの<code>__private_attributes__</code>に保存されます。</p>
@@ -5967,7 +5973,7 @@
     <span class="n">default_factory</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">init</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/models/#private-model-attributes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/models/#private-model-attributes</span>
 
 <span class="sd">    属性がプライベートに使用され、通常の検証/シリアライゼーションでは処理されないことを示します。</span>
 
@@ -6203,7 +6209,10 @@
 
     <div class="doc doc-contents ">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields#the-computed_field-decorator</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/fields/#the-computed_field-decorator">The <code>computed_field</code> decorator</a></p>
+</div>
 <p>モデルまたはデータクラスをシリアライズするときに<code>property</code>と<code>cached_property</code>を含めるデコレータ。</p>
 <p>これは、他のフィールドから計算されるフィールドや、計算にコストがかかり、キャッシュする必要があるフィールドに便利です。</p>
 <div class="language-py highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">computed_field</span>
@@ -6702,7 +6711,7 @@
     <span class="nb">repr</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">return_type</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="n">PydanticUndefined</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PropertyT</span> <span class="o">|</span> <span class="n">typing</span><span class="o">.</span><span class="n">Callable</span><span class="p">[[</span><span class="n">PropertyT</span><span class="p">],</span> <span class="n">PropertyT</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields#the-computed_field-decorator</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/fields#the-computed_field-decorator</span>
 
 <span class="sd">    モデルまたはデータクラスをシリアライズするときに`property`と`cached_property`を含めるデコレータ。</span>
 

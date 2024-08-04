@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.pydantic.dev/api/type_adapter/">
+        <link rel="canonical" href="https://yodai-yodai.github.io/translated/pydantic-docs-ja/api/type_adapter/">
       
       
         <link rel="prev" href="../dataclasses/">
@@ -2991,7 +2991,10 @@
               Bases: <code><a class="autorefs autorefs-external" title="typing.Generic" href="https://docs.python.org/3/library/typing.html#typing.Generic">Generic</a>[<span title="pydantic.type_adapter.T">T</span>]</code></p>
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/type_adapter/</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/type_adapter/">Type Adapter</a></p>
+</div>
 <p>タイプアダプタは、Pythonタイプに基づいて検証とシリアライゼーションを実行する柔軟な方法を提供します。</p>
 <p><code>TypeAdapter</code>インスタンスは、そのようなメソッドを持たない型(データクラス、プリミティブ型など)に対して、<code>BaseModel</code>インスタンスメソッドの機能の一部を公開します。</p>
 <p><strong>Note:</strong> <code>TypeAdapter</code>インスタンスは型ではなく、フィールドの型注釈として使用することはできません。</p>
@@ -3572,7 +3575,10 @@
 
     <div class="doc doc-contents ">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json/#json-parsing</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json/#json-parsing">Json Parsing</a></p>
+</div>
 <p>JSON文字列またはバイトをモデルに対して検証します。</p>
 
 
@@ -3677,7 +3683,7 @@
 <span class="k">def</span> <span class="nf">validate_json</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="nb">bytes</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">strict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json/#json-parsing</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json/#json-parsing</span>
 
 <span class="sd">    JSON文字列またはバイトをモデルに対して検証します。</span>
 
@@ -4323,7 +4329,10 @@
 
     <div class="doc doc-contents ">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json/#json-serialization</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json/#json-serialization">JSON Serialization</a></p>
+</div>
 <p>適応型のインスタンスをJSONにシリアライズします。</p>
 
 
@@ -4604,7 +4613,7 @@
     <span class="n">serialize_as_any</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">context</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bytes</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json/#json-serialization</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json/#json-serialization</span>
 
 <span class="sd">    適応型のインスタンスをJSONにシリアライズします。</span>
 

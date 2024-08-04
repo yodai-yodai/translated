@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.pydantic.dev/api/json_schema/">
+        <link rel="canonical" href="https://yodai-yodai.github.io/translated/pydantic-docs-ja/api/json_schema/">
       
       
         <link rel="prev" href="../config/">
@@ -4422,7 +4422,10 @@
 <a id="pydantic.json_schema"></a>
     <div class="doc doc-contents first">
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/json_schema/</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json_schema/">Json Schema</a></p>
+</div>
 <p><code>json_schema</code>モジュールには、<a href="https://json-schema.org/">JSON Schema</a>の生成方法をカスタマイズできるようにするクラスと関数が含まれています。</p>
 <p>一般的に、このモジュールを直接使用する必要はありません。代わりに、<a class="autorefs autorefs-internal" href="../base_model/#pydantic.BaseModel.model_json_schema"><code>BaseModel.model_json_schema</code></a>と<a class="autorefs autorefs-internal" href="../type_adapter/#pydantic.type_adapter.TypeAdapter.json_schema"><code>TypeAdapter.json_schema</code></a>を使用できます。</p>
 
@@ -4602,7 +4605,10 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#customizing-the-json-schema-generation-process</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json_schema/#customizing-the-json-schema-generation-process">Customizing the JSON Schema Generation Process</a></p>
+</div>
 <p>JSONスキーマを生成するためのクラス。</p>
 <p>このクラスは、設定されたパラメータに基づいてJSONスキーマを生成します。デフォルトのスキーマダイアレクトは<a href="https://json-schema.org/draft/2020-12/schema">https://json-schema.org/draft/2020-12/schema</a>です。
 このクラスは、複数の名前を持つフィールドの処理方法を設定するために<code>by_alias</code>を使用し、参照名をフォーマットするために<code>ref_template</code>を使用します。</p>
@@ -13678,7 +13684,10 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#withjsonschema-annotation</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json_schema/#withjsonschema-annotation"><code>WithJsonSchema</code> annotation</a></p>
+</div>
 <p>これをフィールドのアノテーションとして追加し、そのフィールドに対して生成される(ベース)JSONスキーマをオーバーライドします。
 これにより、pydantic.json_schema.GenerateJsonSchemaのカスタムサブクラスを作成しなくても、CallableなどのJSONスキーマの生成時にエラーが発生する型や、is-instanceコアスキーマを持つ型に対してJSONスキーマを設定する方法が提供される。
 通常行われるスキーマへの変更(モデルフィールドのタイトルの設定など)は
@@ -13774,7 +13783,10 @@
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/json_schema/#skipjsonschema-annotation</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/json_schema/#skipjsonschema-annotation"><code>SkipJsonSchema</code> annotation</a></p>
+</div>
 <p>これをアノテーションとしてフィールドに追加すると、そのフィールドのJSONスキーマの生成がスキップされます。</p>
 
 

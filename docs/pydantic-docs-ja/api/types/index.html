@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://docs.pydantic.dev/api/types/">
+        <link rel="canonical" href="https://yodai-yodai.github.io/translated/pydantic-docs-ja/api/types/">
       
       
         <link rel="prev" href="../standard_library_types/">
@@ -5616,7 +5616,10 @@
               Bases: <code><span title="pydantic._internal._fields.PydanticMetadata">PydanticMetadata</span></code>, <code><span title="annotated_types.BaseMetadata">BaseMetadata</span></code></p>
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/strict_mode/#strict-mode-with-annotated-strict</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/strict_mode/#strict-mode-with-annotated-strict">Strict mode with <code>Annotated[..., Strict()]</code></a></p>
+</div>
 <p>フィールドがstrictモードで検証される必要があることを示すフィールドメタデータクラス。</p>
 
 
@@ -5680,7 +5683,7 @@
 <span class="normal">134</span>
 <span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@_dataclasses</span><span class="o">.</span><span class="n">dataclass</span>
 <span class="k">class</span> <span class="nc">Strict</span><span class="p">(</span><span class="n">_fields</span><span class="o">.</span><span class="n">PydanticMetadata</span><span class="p">,</span> <span class="n">BaseMetadata</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/strict_mode/#strict-mode-with-annotated-strict</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/strict_mode/#strict-mode-with-annotated-strict</span>
 
 <span class="sd">    フィールドがstrictモードで検証される必要があることを示すフィールドメタデータクラス。</span>
 
@@ -5806,7 +5809,10 @@
               Bases: <code><span title="annotated_types.GroupedMetadata">GroupedMetadata</span></code></p>
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields/#string-constraints</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/fields/#string-constraints">String Constraints</a></p>
+</div>
 <p><code>str</code>型に制約を適用します。</p>
 
 
@@ -5946,7 +5952,7 @@
 <span class="normal">709</span>
 <span class="normal">710</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@_dataclasses</span><span class="o">.</span><span class="n">dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">StringConstraints</span><span class="p">(</span><span class="n">annotated_types</span><span class="o">.</span><span class="n">GroupedMetadata</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/fields/#string-constraints</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/fields/#string-constraints</span>
 
 <span class="sd">    `str`型に制約を適用します。</span>
 
@@ -11024,7 +11030,10 @@ kibit, mibit, gibit, tibit, pibit, eibit (bit units).</p>
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/types/#using-getpydanticschema-to-reduce-boilerplate</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/types/#using-getpydanticschema-to-reduce-boilerplate">Using <code>GetPydanticSchema</code> to reduce boilerplate</a></p>
+</div>
 <p>pydanticカスタム型フックを提供する注釈を作成するための便利なクラスです。</p>
 <p>このクラスは、<code>__get_pydantic_core_schema__</code>および<code>__get_pydantic_json_schema__</code>カスタムフックメソッドを定義するカスタム"マーカー"を作成する必要性をなくすことを目的としています。</p>
 <p>例えば、型チェッカーでは<code>int</code>として扱われますが、pydanticでは<code>Any</code>として扱われるようにするには、次のようにします。</p>
@@ -11092,7 +11101,7 @@ kibit, mibit, gibit, tibit, pibit, eibit (bit units).</p>
 <span class="normal">2607</span>
 <span class="normal">2608</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@_dataclasses</span><span class="o">.</span><span class="n">dataclass</span><span class="p">(</span><span class="o">**</span><span class="n">_internal_dataclass</span><span class="o">.</span><span class="n">slots_true</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">GetPydanticSchema</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/types/#using-getpydanticschema-to-reduce-boilerplate</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/types/#using-getpydanticschema-to-reduce-boilerplate</span>
 
 <span class="sd">    pydanticカスタム型フックを提供する注釈を作成するための便利なクラスです。</span>
 
@@ -11444,7 +11453,10 @@ kibit, mibit, gibit, tibit, pibit, eibit (bit units).</p>
     <div class="doc doc-contents ">
 
 
-      <p>Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/unions/#discriminated-unions-with-callable-discriminator</p>
+      <div class="admonition abstract">
+<p class="admonition-title">Usage Documentation</p>
+<p><a href="../../concepts/unions/#discriminated-unions-with-callable-discriminator">Discriminated Unions with callable <code>Discriminator</code></a></p>
+</div>
 <p>Union識別子の値を抽出する方法として、カスタムの呼び出し可能オブジェクトを使用する方法を提供します。</p>
 <p>これにより、<code>Field(discriminator=&lt;field_name&gt;)</code>から得られるような検証動作を得ることができますが、すべてのUnionの選択にわたって単一の共有フィールドを持つ必要はありません。これにより、識別されたUnionスタイルの検証エラーを持つモデルとプリミティブ型のUnionを処理することも可能になります。
 最後に、これにより、識別されたUnionのパフォーマンス上の利点をすべて確認しながら、値が属するUnionのメンバーを識別する方法として、カスタムの呼び出し可能オブジェクトを使用できます。</p>
@@ -11653,7 +11665,7 @@ kibit, mibit, gibit, tibit, pibit, eibit (bit units).</p>
 <span class="normal">2839</span>
 <span class="normal">2840</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@_dataclasses</span><span class="o">.</span><span class="n">dataclass</span><span class="p">(</span><span class="o">**</span><span class="n">_internal_dataclass</span><span class="o">.</span><span class="n">slots_true</span><span class="p">,</span> <span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">class</span> <span class="nc">Discriminator</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/pydantic-docs-ja/unions/#discriminated-unions-with-callable-discriminator</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Usage docs: https://yodai-yodai.github.io/translated/pydantic-docs-ja/concepts/unions/#discriminated-unions-with-callable-discriminator</span>
 
 <span class="sd">    Union識別子の値を抽出する方法として、カスタムの呼び出し可能オブジェクトを使用する方法を提供します。</span>
 
