@@ -2888,8 +2888,9 @@ Pydantic V1の使用?アプリケーションでのPydantic V2へのアップグ
 <li><strong>実戦テスト済み</strong> &mdash; Pydanticは7,000万回/月以上ダウンロードされ、すべてのFAANG企業とNASDAQの上位25社のうち20社で使用されています。Pydanticで何かをしようとしているのであれば、おそらく他の誰かがすでにそれをしています。
 <a href="why/#using-pydantic">Learn more…</a></li>
 </ul>
-<p><a href="install/">Installing Pydantic</a> is as simple as: <code>pip install pydantic</code>
-<a href="install/">Installing Pydantic</a>とてもシンプルです: <code>pip install pydantic</code></p>
+<!-- [Installing Pydantic](install.md) is as simple as: `pip install pydantic` -->
+
+<p>インストールはとてもシンプルです。 <a href="install/">Installing Pydantic</a> : <code>pip install pydantic</code></p>
 <h2 id="pydantic-examples">Pydantic examples<a class="headerlink" href="#pydantic-examples" title="Permanent link">&para;</a></h2>
 <!-- To see Pydantic at work, let's start with a simple example, creating a custom class that inherits from `BaseModel`: -->
 <p>Pydanticの動作を確認するために、<code>BaseModel</code>から継承するカスタムクラスを作成する簡単な例から始めましょう。</p>
@@ -2929,49 +2930,31 @@ Pydantic V1の使用?アプリケーションでのPydantic V2へのアップグ
 <span class="sd">}</span>
 <span class="sd">&quot;&quot;&quot;</span>
 </code></pre></div>
-<!-- 1. `id` is of type `int`; the annotation-only declaration tells Pydantic that this field is required. Strings, bytes, or floats will be coerced to ints if possible; otherwise an exception will be raised. -->
 <ol>
 <li><code>id</code>は<code>int</code>型です。注釈のみの宣言は、このフィールドが必須であることをPydanticに伝えます。文字列、バイト、または浮動小数点は、可能であればintに強制されます。そうでない場合は例外が発生します。</li>
-</ol>
-<!-- 2. `name` is a string; because it has a default, it is not required. -->
-<ol>
 <li><code>name</code>は文字列です。デフォルトがあるので、必須ではありません。</li>
-</ol>
-<!-- 3. `signup_ts` is a `datetime` field that is required, but the value `None` may be provided; -->
-<ol>
 <li><code>signup_ts</code>は<code>datetime</code>フィールドで必須ですが、値<code>None</code>を指定することもできます。
-PydanticはUNIXのタイムスタンプint(例えば<code>1496498400</code>)か、日付と時刻を表す文字列を処理します。
-  <!-- Pydantic will process either a unix timestamp int (e.g. `1496498400`) or a string representing the date and time. --></li>
-</ol>
-<p>PydanticはUNIXのタイムスタンプint(例えば<code>1496498400</code>)か、日付と時刻を表す文字列を処理します。</p>
-<!-- 4. `tastes` is a dictionary with string keys and positive integer values. The `PositiveInt` type is shorthand for `Annotated[int, annotated_types.Gt(0)]`. -->
-<ol>
+  PydanticはUNIXのタイムスタンプint(例えば<code>1496498400</code>)か、日付と時刻を表す文字列を処理します。</li>
 <li><code>taste</code>は文字列キーと正の整数値を持つ辞書です。<code>PositiveInt</code>型は<code>Annotated[int, annotated_types.Gt(0)]</code>の省略形です。</li>
-</ol>
-<!-- 5. The input here is an ISO8601 formatted datetime, Pydantic will convert it to a `datetime` object. -->
-<ol>
 <li>ここでの入力はISO8601フォーマットのdatetimeで、Pydanticはこれを<code>datetime</code>オブジェクトに変換します。</li>
-</ol>
-<!-- 6. The key here is `bytes`, but Pydantic will take care of coercing it to a string. -->
-<ol>
 <li>ここで重要なのは<code>bytes</code>ですが、Pydanticはこれを文字列に強制的に変換します。</li>
-</ol>
-<!-- 7. Similarly, Pydantic will coerce the string `'1'` to an integer `1`. -->
-<ol>
 <li>同様に、Pydanticは文字列"1"を整数"1"に強制的に変換します。</li>
-</ol>
-<!-- 8. Here we create instance of `User` by passing our external data to `User` as keyword arguments -->
-<ol>
 <li>ここでは、外部データをキーワード引数として<code>User</code>に渡すことによって<code>User</code>のインスタンスを作成します。</li>
-</ol>
-<!-- 9. We can access fields as attributes of the model -->
-<ol>
 <li>モデルの属性としてフィールドにアクセスできます。</li>
-</ol>
-<!-- 10. We can convert the model to a dictionary with `model_dump()` -->
-<ol>
 <li>モデルを辞書に変換するには<code>model_dump()</code>を使用します。</li>
 </ol>
+<!-- 1. `id` is of type `int`; the annotation-only declaration tells Pydantic that this field is required. Strings, bytes, or floats will be coerced to ints if possible; otherwise an exception will be raised. -->
+<!-- 2. `name` is a string; because it has a default, it is not required. -->
+<!-- 3. `signup_ts` is a `datetime` field that is required, but the value `None` may be provided; -->
+<!-- Pydantic will process either a unix timestamp int (e.g. `1496498400`) or a string representing the date and time. -->
+<!-- 4. `tastes` is a dictionary with string keys and positive integer values. The `PositiveInt` type is shorthand for `Annotated[int, annotated_types.Gt(0)]`. -->
+<!-- 5. The input here is an ISO8601 formatted datetime, Pydantic will convert it to a `datetime` object. -->
+<!-- 6. The key here is `bytes`, but Pydantic will take care of coercing it to a string. -->
+<!-- 7. Similarly, Pydantic will coerce the string `'1'` to an integer `1`. -->
+<!-- 8. Here we create instance of `User` by passing our external data to `User` as keyword arguments -->
+<!-- 9. We can access fields as attributes of the model -->
+<!-- 10. We can convert the model to a dictionary with `model_dump()` -->
+
 <!-- If validation fails, Pydantic will raise an error with a breakdown of what was wrong: -->
 <p>検証が失敗した場合、Pydanticは何が間違っていたかの詳細を示すエラーを発生させます:</p>
 <div class="language-py highlight"><span class="filename">Validation Error</span><pre><span></span><code><span class="c1"># continuing the above example...</span>
@@ -3011,14 +2994,13 @@ PydanticはUNIXのタイムスタンプint(例えば<code>1496498400</code>)か�
 <span class="sd">    ]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </code></pre></div>
-<!-- 1. The input data is wrong here &mdash; `id` is not a valid integer, and `signup_ts` is missing -->
 <ol>
 <li>入力データが間違っています&mdash;<code>id</code>は有効な整数ではなく、<code>signup_ts</code>がありません。</li>
-</ol>
-<!-- 2. `User(...)` will raise a `ValidationError` with a list of errors -->
-<ol>
 <li><code>User(...)</code>はエラーのリストと共に<code>ValidationError</code>を発生させます。</li>
 </ol>
+<!-- 1. The input data is wrong here &mdash; `id` is not a valid integer, and `signup_ts` is missing -->
+<!-- 2. `User(...)` will raise a `ValidationError` with a list of errors -->
+
 <h2 id="who-is-using-pydantic">Who is using Pydantic?<a class="headerlink" href="#who-is-using-pydantic" title="Permanent link">&para;</a></h2>
 <!-- Hundreds of organisations and packages are using Pydantic. Some of the prominent companies and organizations around the world who are using Pydantic include: -->
 <p>何百もの組織やパッケージがPydanticを使用しています。こちらがPydanticを使用している世界中の著名な企業や組織です。</p>
